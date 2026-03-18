@@ -1,7 +1,7 @@
 // app/services/[serviceSlug]/[locationSlug]/page.tsx - TEMPLATE
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, MapPin, Star, Clock, Shield, Award, Users } from 'lucide-react';
@@ -20,10 +20,11 @@ import { siteConfig } from '@/data/site';
 import { serviceLocationContent } from '@/data/serviceLocationContent';
 
 
-export default function ServiceLocationPage({ params }: { params: { serviceSlug: string; locationSlug: string } }) {
+export default function ServiceLocationPage({ params }: { params: Promise<{ serviceSlug: string; locationSlug: string }> }) {
+  const { serviceSlug, locationSlug } = use(params);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const service = getServiceBySlug(params.serviceSlug);
-  const cityName = getCityBySlug(params.locationSlug);
+  const service = getServiceBySlug(serviceSlug);
+  const cityName = getCityBySlug(locationSlug);
   if (!service || !cityName) notFound();
 
   const allCities = Object.values(LOCATIONS).flat();
@@ -43,7 +44,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
     '@context': 'https://schema.org',
     '@type': 'LegalService',
     name: `${service.title} in ${cityName}`,
-    url: `${siteConfig.url}/services/${service.slug}/${params.locationSlug}/`,
+    url: `${siteConfig.url}/services/${service.slug}/${locationSlug}/`,
     description: `Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation.`,
     areaServed: {
       '@type': 'City',
@@ -179,7 +180,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
                   <ul className="space-y-2 mb-8">
                     {services.filter(s => s.id !== service.id).map(s => (
                       <li key={s.id}>
-                        <Link href={`/services/${s.slug}/${params.locationSlug}/`} className="block px-4 py-3 rounded-lg bg-gray-50 border border-gray-100 hover:border-brand-300 hover:bg-brand-50 text-gray-700 hover:text-brand-700 transition-all text-sm font-medium">
+                        <Link href={`/services/${s.slug}/${locationSlug}/`} className="block px-4 py-3 rounded-lg bg-gray-50 border border-gray-100 hover:border-brand-300 hover:bg-brand-50 text-gray-700 hover:text-brand-700 transition-all text-sm font-medium">
                           {s.title} in {cityName}
                         </Link>
                       </li>

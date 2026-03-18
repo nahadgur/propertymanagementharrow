@@ -1,7 +1,7 @@
 // app/blog/[slug]/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
@@ -62,8 +62,8 @@ function renderBlock(block: ContentBlock, index: number) {
     case 'cta':
       return (
         <div key={index} className="bg-brand-50 border border-brand-100 rounded-xl p-6 my-8 text-center">
-          <p className="font-display font-bold text-gray-900 text-lg mb-2">{block.text || 'Get Your Free Will Writing Quote'}</p>
-          <p className="text-sm text-gray-600 mb-4">Speak to vetted will writing professionals in London. Free matching service.</p>
+          <p className="font-display font-bold text-gray-900 text-lg mb-2">{block.text || 'Get Your Free Quote'}</p>
+          <p className="text-sm text-gray-600 mb-4">Speak to vetted property management specialists in Harrow. Free matching service.</p>
         </div>
       );
     case 'related-articles':
@@ -94,9 +94,10 @@ function renderBlock(block: ContentBlock, index: number) {
   }
 }
 
-export default function BlogArticlePage({ params }: { params: { slug: string } }) {
+export default function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const article = getArticleBySlug(params.slug);
+  const { slug } = use(params);
+  const article = getArticleBySlug(slug);
   if (!article) notFound();
 
   const relatedArticles = blogArticles
@@ -171,13 +172,13 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-3">Get a Free Quote</h3>
                   <p className="text-gray-600 text-sm mb-5">
-                    Ready to write your will? We will match you with a vetted will writing professional in London at no cost.
+                    Ready to find a property manager? We will match you with a vetted specialist in Harrow at no cost.
                   </p>
                   <button
                     onClick={() => setIsModalOpen(true)}
                     className="block w-full btn-primary text-center"
                   >
-                    Find a Will Writing Service
+                    Find a Property Manager
                   </button>
                 </div>
 

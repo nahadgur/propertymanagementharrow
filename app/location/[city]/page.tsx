@@ -1,7 +1,7 @@
 // app/location/[city]/page.tsx - TEMPLATE
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle, Clock, Shield, Star } from 'lucide-react';
@@ -20,9 +20,10 @@ import { Testimonials } from '@/components/Testimonials';
 import { siteConfig } from '@/data/site';
 import { cityPageContent } from '@/data/cityContent';
 
-export default function CityPage({ params }: { params: { city: string } }) {
+export default function CityPage({ params }: { params: Promise<{ city: string }> }) {
+  const { city: citySlug } = use(params);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const cityName = getCityBySlug(params.city);
+  const cityName = getCityBySlug(citySlug);
   if (!cityName) notFound();
 
   const cityFaqs = [...FAQS_LOCATION, ...FAQS_SERVICES];
@@ -33,7 +34,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
     name: `${siteConfig.name} in ${cityName}`,
-    url: `${siteConfig.url}/location/${params.city}/`,
+    url: `${siteConfig.url}/location/${citySlug}/`,
     description: `Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation.`,
     areaServed: {
       '@type': 'City',
@@ -93,7 +94,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">Services Available in {cityName}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {services.map(service => (
-                    <Link key={service.id} href={`/services/${service.slug}/${params.city}/`} className="block group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                    <Link key={service.id} href={`/services/${service.slug}/${citySlug}/`} className="block group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                       <div className="h-36 overflow-hidden">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />

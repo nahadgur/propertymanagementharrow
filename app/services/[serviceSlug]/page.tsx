@@ -1,7 +1,7 @@
 // app/services/[serviceSlug]/page.tsx - TEMPLATE
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, Clock, Shield, Star, Search, CheckCircle, ArrowRight, ChevronDown, Award, Users, CreditCard, Sparkles } from 'lucide-react';
@@ -20,11 +20,12 @@ import { PricingSection } from '@/components/PricingSection';
 import { serviceContent } from '@/data/serviceContent';
 import { siteConfig } from '@/data/site';
 
-export default function ServicePage({ params }: { params: { serviceSlug: string } }) {
+export default function ServicePage({ params }: { params: Promise<{ serviceSlug: string }> }) {
+  const { serviceSlug } = use(params);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showLocations, setShowLocations] = useState(false);
-  const service = getServiceBySlug(params.serviceSlug);
+  const service = getServiceBySlug(serviceSlug);
   if (!service) notFound();
 
   const content = serviceContent[service.id] || serviceContent[services[0].id];
