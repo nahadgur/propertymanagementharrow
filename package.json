@@ -12,7 +12,9 @@
     "next": "15.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "lucide-react": "^0.460.0"
+    "lucide-react": "^0.460.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "typescript": "^5",
