@@ -96,3 +96,6 @@ export const blogArticles: BlogArticle[] = [
     ]
   }
 ];
+
+export const getArticleBySlug = (slug: string): BlogArticle | undefined => blogArticles.find(a => a.slug === slug);
+export const getAllArticleSlugs = (): string[] => blogArticles.map(a => a.slug);
