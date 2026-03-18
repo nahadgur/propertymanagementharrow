@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --brand-50: #EDF5F5;
+  --brand-100: #D0E8E8;
+  --brand-200: #A8D4D4;
+  --brand-300: #6BAAAA;
+  --brand-400: #3D9090;
+  --brand-500: #1F7A7A;
+  --brand-600: #196666;
+  --brand-700: #145252;
+  --brand-800: #0F3E3E;
+  --brand-900: #0A2E2E;
+  --brand-950: #061E1E;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800 antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 active:bg-brand-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-sm hover:shadow-md;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 font-bold py-3 px-6 rounded-xl border-2 border-gray-200 hover:border-brand-300 transition-all;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes modal-in { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes modal-out { from { opacity: 1; transform: scale(1) translateY(0); } to { opacity: 0; transform: scale(0.95) translateY(10px); } }
+
+.animate-backdrop-in { animation: backdrop-in 0.2s ease-out forwards; }
+.animate-backdrop-out { animation: backdrop-out 0.2s ease-in forwards; }
+.animate-modal-in { animation: modal-in 0.3s ease-out forwards; }
+.animate-modal-out { animation: modal-out 0.2s ease-in forwards; }
