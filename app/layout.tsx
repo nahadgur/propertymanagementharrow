@@ -7,15 +7,15 @@ import { siteConfig } from '@/data/site';
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name + ' | Find Vetted Will Writing Specialists in London',
+    default: siteConfig.name + ' | Find Vetted Property Management Services in Harrow',
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   alternates: { canonical: siteConfig.url },
   robots: { index: true, follow: true },
-  // verification: {
-  //   google: 'ADD_GOOGLE_VERIFICATION_CODE_HERE',
-  // },
+  verification: {
+    google: 'XFzSXTpxepsWdCH4sSHWBYMVJtL5yDOeF684TIUe6q4',
+  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -56,7 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     alternateName: siteConfig.tagline,
     url: siteConfig.url,
   };
-
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -75,7 +74,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       availableLanguage: 'English',
     },
   };
-
   return (
     <html lang="en-GB">
       <head>
@@ -89,9 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        {/* Analytics — uncomment and add your GA ID when ready
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=GA_ID"
+          src="https://www.googletagmanager.com/gtag/js?id=G-1QDEPBMQJV"
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -99,11 +96,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'GA_ID');
+            gtag('config', 'G-1QDEPBMQJV');
           `}
         </Script>
-        */}
-
         {children}
       </body>
     </html>
