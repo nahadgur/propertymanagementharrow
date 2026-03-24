@@ -7,14 +7,14 @@ import { siteConfig } from '@/data/site';
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name + ' | Find Vetted Property Management Services in Harrow',
+    default: siteConfig.name + ' | Find Trusted Property Tax Accountants in Harrow',
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   alternates: { canonical: siteConfig.url },
   robots: { index: true, follow: true },
   verification: {
-    google: 'XFzSXTpxepsWdCH4sSHWBYMVJtL5yDOeF684TIUe6q4',
+    google: 'xDM_HCxlilOoedBIEonagUjSBoDAu7lkwQVvLjz7L0A',
   },
   icons: {
     icon: [
@@ -56,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     alternateName: siteConfig.tagline,
     url: siteConfig.url,
   };
+
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       availableLanguage: 'English',
     },
   };
+
   return (
     <html lang="en-GB">
       <head>
@@ -88,7 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen flex flex-col">
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1QDEPBMQJV"
+          src="https://www.googletagmanager.com/gtag/js?id=G-YNVW7NT591"
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -96,9 +98,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-1QDEPBMQJV');
+            gtag('config', 'G-YNVW7NT591');
           `}
         </Script>
+
         {children}
       </body>
     </html>

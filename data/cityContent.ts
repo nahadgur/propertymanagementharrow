@@ -4,89 +4,89 @@ import { getLocationProfileByName, type LocationProfile } from './locationProfil
 function prof(city: string): LocationProfile | null { return getLocationProfileByName(city) || null; }
 function titleCase(str: string): string { return str.replace(/\b\w/g, c => c.toUpperCase()); }
 function sizeLabel(p: LocationProfile): string {
-  switch (p.avgPortfolioType) { case 'single-let': return 'single-property landlords'; case 'small-portfolio': return 'portfolio landlords'; case 'mixed': return 'landlords of all sizes'; case 'block-management': return 'freeholders and landlords'; default: return 'landlords'; }
+  switch (p.avgClientType) { case 'homeowner': return 'homeowners'; case 'small-investor': return 'property investors'; case 'portfolio': return 'portfolio holders'; case 'developer': return 'developers'; default: return 'property owners'; }
 }
 function mixList(p: LocationProfile, n: number = 3): string {
-  const items = p.propertyMix.slice(0, n);
+  const items = p.investorMix.slice(0, n);
   return items.length <= 1 ? items[0] : items.slice(0, -1).join(', ') + ' and ' + items[items.length - 1];
 }
 
 export const cityPageContent = {
   heroDesc: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return `Connect with vetted property management specialists covering ${cityName}. Free matching, no obligation.`;
-    return `From ${p.propertyMix[0]} to ${p.propertyMix[2] || p.propertyMix[1]} — whatever you let in ${cityName}, we match you with a management specialist who works with ${p.borough} properties every day. Free matching, no obligation.`;
+    if (!p) return `Connect with specialist property tax accountants covering ${cityName}. Free matching, no obligation.`;
+    return `From ${p.investorMix[0]} to ${p.investorMix[2] || p.investorMix[1]} — whatever your property tax situation in ${cityName}, we match you with a specialist who handles ${p.postcode} area property transactions every day. Free matching, no obligation.`;
   },
   introHeading: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return `Property Management Services in ${cityName}`;
-    return `Property Management for ${cityName}'s ${titleCase(p.propertyMix[0])} Sector and Beyond`;
+    if (!p) return `Property Tax Services in ${cityName}`;
+    return `Property Tax Advice for ${cityName}'s ${titleCase(p.investorMix[0])} and Beyond`;
   },
   introParagraphs: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return [`Finding the right property management specialist in ${cityName} means going beyond a generic directory search.`, `Our matching service connects landlords with professionals who have specific local experience.`];
+    if (!p) return [`Property owners in ${cityName} face complex tax challenges across CGT, SDLT, IHT, and Section 24.`, `Our matching service connects you with specialists who understand these specific scenarios.`];
     return [
-      `${p.marketContext} Our matching service connects you with property managers who understand this local market — not generic agents who treat every area the same.`,
-      `The management challenges here are specific to ${cityName}'s rental stock: ${p.managementChallenges.charAt(0).toLowerCase() + p.managementChallenges.slice(1)}. ${cityName}'s ${sizeLabel(p)} need agents who know the ${p.postcode} area's tenant demographics and property maintenance requirements.`
+      `${p.marketContext} Our matching service connects you with property tax specialists who understand this local market — not generalists who treat every property transaction the same way.`,
+      `The tax exposure here is specific to ${cityName}'s property economy: ${p.taxExposure.charAt(0).toLowerCase() + p.taxExposure.slice(1)}. ${cityName}'s ${sizeLabel(p)} need accountants who know the ${p.postcode} area market and the specific CGT, SDLT, and IHT scenarios it creates.`
     ];
   },
   matchingHeading: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return `Benefits of Our Property Management Matching in ${cityName}`;
-    return `Why ${cityName}'s ${titleCase(p.propertyMix[0])} Landlords Need Specialist Management`;
+    if (!p) return `Benefits of Specialist Property Tax Advice in ${cityName}`;
+    return `Why ${cityName}'s ${titleCase(p.investorMix[0])} Need Specialist Property Tax Support`;
   },
   matchingCards: (cityName: string) => {
     const p = prof(cityName);
     if (!p) return [
-      { iconName: 'Star', title: "Local Expertise", desc: `Agents who specialise in ${cityName}'s rental market.` },
-      { iconName: 'Shield', title: "Verified Specialists", desc: `All agents vetted for qualifications, insurance, and local experience.` },
-      { iconName: 'Clock', title: "Fast Matching", desc: `Connected with agents within 48 hours.` },
-      { iconName: 'CheckCircle', title: "Fee Comparison", desc: `Compare services and fees from multiple specialists.` }
+      { iconName: 'Star', title: "Property Tax Expertise", desc: `Specialists in CGT, SDLT, IHT, and Section 24 covering ${cityName}.` },
+      { iconName: 'Shield', title: "Verified Specialists", desc: `All accountants vetted for property tax expertise and qualifications.` },
+      { iconName: 'Clock', title: "Local Knowledge", desc: `Accountants who understand ${cityName}'s property market.` },
+      { iconName: 'CheckCircle', title: "Fee Comparison", desc: `Compare services and fees from multiple property tax specialists.` }
     ];
     return [
-      { iconName: 'Star', title: `${titleCase(p.propertyMix[0])} Expertise`, desc: `${cityName}'s rental market centres on ${mixList(p, 3)}. We match you with agents who handle these property types daily — from ${p.managementChallenges.split(',')[0].toLowerCase()} to the compliance requirements specific to the ${p.postcode} area.` },
-      { iconName: 'Shield', title: "Full Compliance Coverage", desc: `Every matched agent provides complete compliance management — gas safety, EICR, EPC, deposit protection, and right-to-rent configured for ${sizeLabel(p)} in ${cityName}.` },
-      { iconName: 'Clock', title: `${p.borough} Contractor Networks`, desc: `${p.rentalStock}. Your matched agent maintains vetted contractor relationships across the ${p.postcode} area for responsive, quality maintenance.` },
-      { iconName: 'CheckCircle', title: "Tenant Quality Focus", desc: `${p.tenantBase}. Your matched agent targets these tenants through effective marketing and thorough referencing that minimises void periods and arrears risk.` }
+      { iconName: 'Star', title: `${titleCase(p.investorMix[0])} Tax Expertise`, desc: `${cityName}'s property market creates specific tax scenarios around ${mixList(p, 3)}. We match you with specialists who handle these exact situations — not generalists guessing at relief calculations.` },
+      { iconName: 'Shield', title: "CGT and SDLT Planning", desc: `Every matched specialist provides pre-transaction CGT analysis, SDLT surcharge assessment, and 60-day return compliance configured for ${sizeLabel(p)} in the ${p.postcode} area.` },
+      { iconName: 'Clock', title: `${p.borough} Market Knowledge`, desc: `${p.transactionTypes}. Your matched specialist understands these transaction types and the tax treatment each one demands.` },
+      { iconName: 'CheckCircle', title: "IHT and Estate Planning", desc: `${cityName} property values create IHT exposure that many ${sizeLabel(p)} don't recognise until it's too late. Your specialist assesses exposure and implements lifetime planning strategies.` }
     ];
   },
   sidebarCta: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return { heading: `Property Management in ${cityName}`, description: `Vetted specialists serving landlords throughout ${cityName}.` };
-    return { heading: `Management Specialists for ${cityName}'s ${titleCase(p.propertyMix[0])}`, description: `Get matched with agents who manage ${p.propertyMix[0]} and ${p.propertyMix[1]} in the ${p.postcode} area. Free matching, no obligation.` };
+    if (!p) return { heading: `Property Tax Advice in ${cityName}`, description: `Specialist accountants serving property owners throughout ${cityName}.` };
+    return { heading: `Property Tax Specialists for ${cityName}'s ${titleCase(p.investorMix[0])}`, description: `Get matched with accountants who handle ${p.transactionTypes.split(',')[0].toLowerCase()} in the ${p.postcode} area. Free matching, no obligation.` };
   },
   sidebarFinance: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return { heading: `Competitive Management Fees`, description: `Property managers in ${cityName} offer transparent fee structures with no hidden charges.` };
-    return { heading: `Transparent Fees for ${cityName}'s ${titleCase(sizeLabel(p))}`, description: `Management agents in our ${cityName} network provide clear fee schedules — typically 8-15% for full management — with no hidden charges or unexpected costs.` };
+    if (!p) return { heading: `Transparent Fees`, description: `Property tax specialists in ${cityName} provide fixed-fee quotes for defined work.` };
+    return { heading: `Transparent Fees for ${cityName} ${titleCase(sizeLabel(p))}`, description: `Most property tax specialists provide fixed-fee quotes for CGT returns, SDLT calculations, and IHT reviews. Ongoing advisory work is typically priced monthly.` };
   },
   sidebarTrustPoints: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return [{ text: "Free property assessment within 48 hours" }, { text: "All agents compliance-verified" }, { text: "Professional indemnity cover required" }];
+    if (!p) return [{ text: "Free consultation within 48 hours" }, { text: "All specialists property tax verified" }, { text: "Professional indemnity cover required" }];
     return [
-      { text: `Specialists experienced with ${p.propertyMix[0]} in the ${p.postcode} area` },
-      { text: `Compliance-verified agents serving ${p.borough} landlords` },
-      { text: `Free property assessment — no obligation at any stage` },
+      { text: `Specialists experienced with ${p.investorMix[0]} in the ${p.postcode} area` },
+      { text: `Property tax verified accountants serving ${p.borough} clients` },
+      { text: `Free initial consultation — no obligation at any stage` },
     ];
   },
   bottomCta: (cityName: string) => {
     const p = prof(cityName);
-    if (!p) return { heading: `Find Your Property Management Specialist in ${cityName}`, description: `Connect with vetted agents who understand your property and local market.` };
-    return { heading: `Get Matched With a ${cityName} Property Management Specialist`, description: `Whether you have ${p.propertyMix[0]}, ${p.propertyMix[2] || p.propertyMix[1]}, or any other rental property in ${cityName}, we match you with an agent who manages your property type every day.` };
+    if (!p) return { heading: `Find Your Property Tax Specialist in ${cityName}`, description: `Connect with experts who understand CGT, SDLT, IHT, and Section 24.` };
+    return { heading: `Get Matched With a ${cityName} Property Tax Specialist`, description: `Whether you are dealing with ${p.investorMix[0]}, ${p.investorMix[2] || p.investorMix[1]}, or any other property tax situation in ${cityName}, we match you with a specialist who handles your scenario every day.` };
   },
   faqs: (cityName: string) => {
     const p = prof(cityName);
     if (!p) return [
-      { question: `Do your agents cover ${cityName}?`, answer: `Yes, our network includes vetted property management specialists serving landlords throughout ${cityName}.` },
-      { question: `Why use a matching service?`, answer: `We vet agents for local experience, compliance standards, and fee transparency so you don't have to.` },
-      { question: `How much does management cost?`, answer: `8-15% of monthly rent for full management. All agents provide clear fee schedules upfront.` },
+      { question: `Do your specialists cover ${cityName}?`, answer: `Yes, our network includes property tax specialists serving clients throughout ${cityName}.` },
+      { question: `Why choose a property tax specialist?`, answer: `CGT, SDLT, IHT, and Section 24 interact in complex ways that general accountants rarely handle properly.` },
+      { question: `How much do property tax specialists charge?`, answer: `Fixed fees for specific work (CGT returns, SDLT calculations) plus monthly retainers for ongoing advisory.` },
     ];
     return [
-      { question: `What types of ${cityName} properties do your agents manage?`, answer: `Our ${cityName} network manages the property types that define the local market — particularly ${mixList(p, 3)}. ${p.managementChallenges}. Whether you're a ${p.avgPortfolioType === 'single-let' ? 'single-property landlord' : 'portfolio investor'} or a freeholder, we match you with an agent experienced with your property type.` },
-      { question: `Why choose a specialist ${cityName} agent over a national chain?`, answer: `${p.rentalStock}. National chains apply generic processes, while local specialists understand ${cityName}'s tenant demographics, pricing dynamics, and the specific maintenance needs of ${p.postcode} area properties. Local knowledge directly translates to fewer void periods and better tenant retention.` },
-      { question: `How much do property managers charge in ${cityName}?`, answer: `Full management fees range from 8-15% of monthly rent for ${sizeLabel(p)} in ${cityName}. Tenant-find-only services cost 4-8 weeks' rent as a one-off. ${p.avgPortfolioType === 'block-management' ? 'Block management is typically £150-£400 per unit per year.' : 'All agents provide transparent fee schedules with no hidden charges.'}` },
-      { question: `Can I meet a property manager in ${cityName}?`, answer: `Yes — most agents in our ${cityName} network conduct free property assessments at your ${p.postcode} area property, providing face-to-face advice on rental value, compliance requirements, and management approach before you commit.` },
+      { question: `What property tax situations do your ${cityName} specialists handle?`, answer: `Our ${cityName} network handles the scenarios that define the local market — particularly ${mixList(p, 3)}. ${p.taxExposure.split('.')[0]}. Whether you are a ${p.avgClientType === 'homeowner' ? 'homeowner selling or downsizing' : p.avgClientType === 'developer' ? 'developer structuring a project' : 'investor managing a portfolio'}, we match you with someone who handles your type of property tax work regularly.` },
+      { question: `Why choose a ${cityName} property tax specialist over a general accountant?`, answer: `${p.transactionTypes}. General accountants miss CGT reliefs, overcalculate SDLT, and don't plan for IHT until it is too late. A specialist who works with ${cityName}'s ${sizeLabel(p)} catches issues that generalists miss and saves you money.` },
+      { question: `How much do property tax specialists charge in ${cityName}?`, answer: `CGT returns typically cost £500-£1,500 depending on complexity. SDLT calculations £300-£800. IHT reviews £750-£2,500. Ongoing advisory for ${sizeLabel(p)} with active portfolios runs £150-£500/month. All specialists provide fixed-fee quotes before work begins.` },
+      { question: `Can I meet a property tax specialist in ${cityName}?`, answer: `Most specialists in our ${cityName} network offer face-to-face or video consultations. For ${p.postcode} area property transactions, an initial meeting to review your situation is typically free and without obligation.` },
     ];
   },
-  schemaServiceTypes: ["residential-lettings-management", "block-estate-management", "tenant-find-referencing", "property-maintenance-coordination", "rent-collection-arrears-management", "hmo-management"],
+  schemaServiceTypes: ["capital-gains-tax-planning", "property-company-structuring", "stamp-duty-advice", "non-resident-cgt", "property-development-tax", "inheritance-tax-property"],
 };

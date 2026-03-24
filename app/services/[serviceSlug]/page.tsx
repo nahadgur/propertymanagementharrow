@@ -1,7 +1,7 @@
 // app/services/[serviceSlug]/page.tsx - TEMPLATE
 'use client';
 
-import { useState, useMemo, use } from 'react';
+import { useState, useMemo } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, Clock, Shield, Star, Search, CheckCircle, ArrowRight, ChevronDown, Award, Users, CreditCard, Sparkles } from 'lucide-react';
@@ -20,15 +20,14 @@ import { PricingSection } from '@/components/PricingSection';
 import { serviceContent } from '@/data/serviceContent';
 import { siteConfig } from '@/data/site';
 
-export default function ServicePage({ params }: { params: Promise<{ serviceSlug: string }> }) {
-  const { serviceSlug } = use(params);
+export default function ServicePage({ params }: { params: { serviceSlug: string } }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showLocations, setShowLocations] = useState(false);
-  const service = getServiceBySlug(serviceSlug);
+  const service = getServiceBySlug(params.serviceSlug);
   if (!service) notFound();
 
-  const content = serviceContent[service.id] || serviceContent[services[0].id];
+  const content = serviceContent[service.id] || serviceContent['capital-gains-tax-planning'];
   const relatedServices = services.filter(s => s.id !== service.id);
 
   const filteredLocations = useMemo(() => {
@@ -91,7 +90,7 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">{service.description}</p>
                 <div className="space-y-3">
-                  {['Compare up to 3 free quotes', 'Every specialist vetted and insured', `${totalCities}+ locations covered`].map((item, i) => (
+                  {['Compare up to 3 free quotes', 'Every accountant qualified and insured', `${totalCities}+ locations covered`].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-brand-400 flex-shrink-0" />
                       <span className="text-lg">{item}</span>
@@ -139,7 +138,7 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
               <section className="mb-14">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-2">Find {service.title} Professionals</h2>
+                    <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-2">Find {service.title} Specialists</h2>
                     <p className="text-gray-600">
                       Specialists for {service.title.toLowerCase()} covering {totalCities} towns and areas.
                     </p>
@@ -193,13 +192,13 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
 
                 {!showLocations && (
                   <p className="text-sm text-gray-500">
-                    Search for your area above or <button onClick={() => setShowLocations(true)} className="text-brand-600 font-medium hover:underline">browse all locations</button> to find {service.title.toLowerCase()} professionals near you.
+                    Search for your area above or <button onClick={() => setShowLocations(true)} className="text-brand-600 font-medium hover:underline">browse all locations</button> to find {service.title.toLowerCase()} specialists near you.
                   </p>
                 )}
               </section>
 
               <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Is {service.title} Right for You?</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Who Needs {service.title}?</h2>
                 <p className="text-gray-600 mb-4">{content.candidateIntro}</p>
                 <div className="bg-brand-50 rounded-xl p-6 border border-brand-100">
                   <ul className="space-y-3">
@@ -212,7 +211,7 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
                   </ul>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
-                  Our matched estate planning specialists will review your brief and requirements, then provide a clear quote and timeline before any work begins.
+                  Our matched property tax accountants will review your situation and requirements, then provide a clear recommendation and fixed-fee quote before any work begins.
                 </p>
               </section>
 
@@ -238,7 +237,7 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
               </div>
 
               <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Say</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Harrow Property Investors Say</h2>
                 <Testimonials limit={3} />
               </section>
             </div>
@@ -247,12 +246,12 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
               <div className="sticky top-28 space-y-6">
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-3">Get Matched for {service.title}</h3>
-                  <p className="text-gray-600 mb-5 text-sm">Free match with vetted estate planning specialists in your area.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
+                  <p className="text-gray-600 mb-5 text-sm">Free match with vetted property tax accountants in your area.</p>
+                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Property Tax Accountant</button>
                   <div className="mt-5 pt-5 border-t border-gray-100 space-y-3">
                     {[
-                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Consultations available this week" },
-                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "Expert vetted specialists" },
+                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Free consultation within 48 hours" },
+                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "CGT and SDLT specialists" },
                       { icon: <Star className="w-4 h-4 text-brand-500" />, text: "4.9 average rating" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
@@ -264,8 +263,8 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
                 </div>
 
                 <div className="bg-brand-900 text-white p-6 rounded-2xl">
-                  <h3 className="font-display font-bold mb-2">From &pound;89/month</h3>
-                  <p className="text-brand-100 text-sm mb-4">Fixed monthly fees from most Harrow property management specialists. No hidden charges.</p>
+                  <h3 className="font-display font-bold mb-2">From &pound;149/month</h3>
+                  <p className="text-brand-100 text-sm mb-4">Fixed monthly fees available. Property tax planning and compliance at transparent prices.</p>
                   <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">Get Free Quotes</button>
                 </div>
 

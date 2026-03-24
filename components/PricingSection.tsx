@@ -13,16 +13,16 @@ export function PricingSection({ cityName, serviceId, serviceName }: PricingSect
   const tiers = serviceId ? getPricingForService(serviceId) : pricingTiers;
 
   const heading = cityName && serviceName
-    ? `${serviceName} Fees in ${cityName}`
+    ? `How Much Do ${serviceName} Cost in ${cityName}?`
     : cityName
-    ? `Will Writing and Estate Planning Fees in ${cityName}`
+    ? `How Much Do Property Tax Services Cost in ${cityName}?`
     : serviceName
     ? `${serviceName} Pricing Guide`
     : 'Pricing Guide';
 
   const intro = cityName
-    ? `Fees in ${cityName} vary depending on the service and complexity of your estate. Below are typical costs from vetted specialists in the ${cityName} area. All prices are in GBP.`
-    : 'Fees vary depending on the service and estate complexity. Below are typical costs from specialists in our network. All prices are in GBP.';
+    ? `Prices in ${cityName} vary depending on portfolio complexity and the specific services required. Below are typical costs from vetted property tax accountants in the ${cityName} area.`
+    : 'Prices vary depending on portfolio complexity and services required. Below are typical costs from property tax accountants in our network.';
 
   return (
     <section className="mb-16">
@@ -41,7 +41,7 @@ export function PricingSection({ cityName, serviceId, serviceName }: PricingSect
             <tr className="bg-brand-50 text-left">
               <th className="px-5 py-3 font-bold text-gray-900">Service Type</th>
               <th className="px-5 py-3 font-bold text-gray-900">Price Range</th>
-              <th className="px-5 py-3 font-bold text-gray-900 hidden md:table-cell">Timeframe</th>
+              <th className="px-5 py-3 font-bold text-gray-900 hidden md:table-cell">Service Frequency</th>
               <th className="px-5 py-3 font-bold text-gray-900 hidden lg:table-cell">What is Included</th>
             </tr>
           </thead>
@@ -82,7 +82,7 @@ export function PricingSection({ cityName, serviceId, serviceName }: PricingSect
       {/* What's Included + Finance */}
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-brand-50 rounded-xl p-6 border border-brand-100">
-          <h3 className="font-display font-bold text-gray-900 mb-4">What&apos;s Included in the Fee</h3>
+          <h3 className="font-display font-bold text-gray-900 mb-4">What&apos;s Included in the Price</h3>
           <ul className="space-y-2.5">
             {treatmentIncludes.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
@@ -112,7 +112,7 @@ export function PricingSection({ cityName, serviceId, serviceName }: PricingSect
       {cityName && (
         <div className="mt-8 prose prose-sm max-w-none text-gray-600">
           <p>
-            Will writing and estate planning fees in {cityName} depend on the complexity of your estate and the services required. Specialists in our {cityName} network provide clear fixed-fee quotes following a free initial consultation.
+            The cost of property tax services in {cityName} depends on your portfolio complexity and the specific advice required. Property tax accountants in our {cityName} network offer transparent pricing and will provide a clear fixed-fee quote before any work begins.
           </p>
         </div>
       )}

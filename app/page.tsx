@@ -52,7 +52,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'LegalService',
+          '@type': 'AccountingService',
           '@id': siteConfig.url,
           name: siteConfig.name,
           description: siteConfig.description,
@@ -139,7 +139,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Service cards */}
+        {/* Gate types */}
         <section className="section-padding bg-white">
           <div className="container-width">
             <div className="text-center mb-12">
@@ -151,7 +151,7 @@ export default function HomePage() {
                 <Link key={service.id} href={`/services/${service.slug}/`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
                   <div className="h-44 overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={service.image} alt={`${service.title} specialists in London`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={service.image} alt={`${service.title} installed on a residential property`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </div>
                   <div className="p-5">
                     <h3 className="text-lg font-display font-bold text-gray-900 group-hover:text-brand-600 mb-2">{service.title}</h3>
