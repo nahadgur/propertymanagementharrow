@@ -48,8 +48,31 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
     ...FAQS_SERVICES,
   ];
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    url: `${siteConfig.url}/services/${service.slug}/`,
+    description: service.description,
+    provider: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+    areaServed: { '@type': 'AdministrativeArea', name: 'Harrow' },
+    serviceType: service.title,
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: combinedFaqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Header onOpenModal={() => setIsModalOpen(true)} />
       <main className="flex-grow">
@@ -241,8 +264,8 @@ export default function ServicePage({ params }: { params: Promise<{ serviceSlug:
                 </div>
 
                 <div className="bg-brand-900 text-white p-6 rounded-2xl">
-                  <h3 className="font-display font-bold mb-2">From &pound;99/month</h3>
-                  <p className="text-brand-100 text-sm mb-4">0% finance available. Spread the cost over 6 to 36 months.</p>
+                  <h3 className="font-display font-bold mb-2">From &pound;89/month</h3>
+                  <p className="text-brand-100 text-sm mb-4">Fixed monthly fees from most Harrow property management specialists. No hidden charges.</p>
                   <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">Get Free Quotes</button>
                 </div>
 

@@ -21,7 +21,7 @@ export const problemFraming = {
   ]
 };
 
-export const propertyTypes = {
+export const clientTypes = {
   heading: "Harrow Landlords and Freeholders We Work With Every Day",
   subheading: "Different portfolios need different expertise. We match based on your specific property type and circumstances.",
   cards: [

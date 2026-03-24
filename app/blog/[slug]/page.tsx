@@ -9,9 +9,16 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { ServiceBanner } from '@/components/ServiceBanner';
 import { getArticleBySlug, blogArticles } from '@/data/blog';
+import { services, getServiceBySlug } from '@/data/services';
 import { siteConfig } from '@/data/site';
 import type { ContentBlock } from '@/data/blog';
+
+const categoryServiceMap: Record<string, string> = {
+  'Landlord Guides': 'residential-lettings-management',
+  'HMO Guidance': 'hmo-management',
+};
 
 function renderBlock(block: ContentBlock, index: number) {
   switch (block.type) {
@@ -163,7 +170,24 @@ export default function BlogArticlePage({ params }: { params: Promise<{ slug: st
 
             {/* Article body */}
             <article className="lg:col-span-2 max-w-none">
-              {article.content.map((block, i) => renderBlock(block, i))}
+              {(() => {
+                const serviceSlug = categoryServiceMap[article.category] || 'residential-lettings-management';
+                const matchedService = getServiceBySlug(serviceSlug) || services[0];
+                let h2Count = 0;
+                let secondH2Index = -1;
+                for (let i = 0; i < article.content.length; i++) {
+                  if (article.content[i].type === 'h2') {
+                    h2Count++;
+                    if (h2Count === 2) { secondH2Index = i; break; }
+                  }
+                }
+                return article.content.map((block, i) => (
+                  <div key={i}>
+                    {i === secondH2Index && <ServiceBanner service={matchedService} />}
+                    {renderBlock(block, i)}
+                  </div>
+                ));
+              })()}
             </article>
 
             {/* Sidebar */}

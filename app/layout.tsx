@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     description: siteConfig.description,
     areaServed: {
       '@type': 'AdministrativeArea',
-      name: siteConfig.name.split(' ').pop() || '',
+      name: 'Harrow',
       containedInPlace: { '@type': 'Country', name: 'United Kingdom' },
     },
     contactPoint: {

@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle, Clock, Shield, Star } from 'lucide-react';
 import { services } from '@/data/services';
 import { getCityBySlug } from '@/data/locations';
-import { FAQS_SERVICES, FAQS_LOCATION } from '@/data/site';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
@@ -26,7 +25,7 @@ export default function CityPage({ params }: { params: Promise<{ city: string }>
   const cityName = getCityBySlug(citySlug);
   if (!cityName) notFound();
 
-  const cityFaqs = [...FAQS_LOCATION, ...FAQS_SERVICES];
+  const cityFaqs = cityPageContent.faqs(cityName);
   const whyCards = cityPageContent.matchingCards(cityName);
   const introParagraphs = cityPageContent.introParagraphs(cityName);
 
@@ -35,19 +34,30 @@ export default function CityPage({ params }: { params: Promise<{ city: string }>
     '@type': 'LegalService',
     name: `${siteConfig.name} in ${cityName}`,
     url: `${siteConfig.url}/location/${citySlug}/`,
-    description: `Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation.`,
+    description: cityPageContent.heroDesc(cityName),
     areaServed: {
       '@type': 'City',
       name: cityName,
-      containedInPlace: { '@type': 'AdministrativeArea', name: siteConfig.name.split(' ').pop() },
+      containedInPlace: { '@type': 'AdministrativeArea', name: 'Harrow' },
     },
     serviceType: cityPageContent.schemaServiceTypes,
     priceRange: '\u00a3\u00a3',
   };
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: cityFaqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Header onOpenModal={() => setIsModalOpen(true)} />
       <main className="flex-grow">
@@ -65,7 +75,7 @@ export default function CityPage({ params }: { params: Promise<{ city: string }>
                   {siteConfig.name.split(" ").slice(0, -1).join(" ") + " in"} <span className="text-brand-400">{cityName}</span>
                 </h1>
                 <p className="text-xl text-gray-300 leading-relaxed">
-                  {`Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation to proceed.`}
+                  {cityPageContent.heroDesc(cityName)}
                 </p>
               </div>
               <div>
@@ -151,13 +161,11 @@ export default function CityPage({ params }: { params: Promise<{ city: string }>
                   <p className="text-gray-600 text-sm mb-6">{cityPageContent.sidebarCta(cityName).description}</p>
                   <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
                   <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
-                    {[
-                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Consultations available this week" },
-                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "50+ vetted specialists" },
-                      { icon: <Star className="w-4 h-4 text-brand-500" />, text: "Qualified and professionally insured" },
-                    ].map((item, i) => (
+                    {cityPageContent.sidebarTrustPoints(cityName).map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <div className="bg-brand-100 p-1.5 rounded-full">{item.icon}</div>
+                        <div className="bg-brand-100 p-1.5 rounded-full">
+                          {[<Clock key="c" className="w-4 h-4 text-brand-500" />, <Shield key="s" className="w-4 h-4 text-brand-500" />, <Star key="st" className="w-4 h-4 text-brand-500" />][i % 3]}
+                        </div>
                         <span className="text-sm font-medium text-gray-700">{item.text}</span>
                       </div>
                     ))}

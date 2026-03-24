@@ -19,7 +19,7 @@ import {
   topAreas,
   heroContent,
   problemFraming,
-  propertyTypes,
+  clientTypes,
   serviceCardsHeading,
   howItWorks,
   regionalContext,
@@ -120,15 +120,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Property types */}
+        {/* Client types */}
         <section className="section-padding bg-gray-50">
           <div className="container-width">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">{propertyTypes.heading}</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">{propertyTypes.subheading}</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">{clientTypes.heading}</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">{clientTypes.subheading}</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {propertyTypes.cards.map((item, i) => (
+              {clientTypes.cards.map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                   <div className="bg-brand-100 p-3 rounded-xl text-brand-600 w-fit mb-4">{iconMap[item.iconName] || <Award className="w-6 h-6" />}</div>
                   <h3 className="font-display font-bold text-gray-900 mb-2">{item.title}</h3>
