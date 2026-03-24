@@ -34,6 +34,9 @@ export default function ServiceLocationPage({ params }: { params: Promise<{ serv
   const trustLine = content.trustLine(cityName);
   const benefits = content.benefits(cityName);
   const intro = content.intro(cityName);
+  const introHeading = content.introHeading(cityName);
+  const stepsHeading = content.stepsHeading(cityName);
+  const whyHeading = content.whyHeading(cityName);
   const steps = content.steps(cityName);
   const whyPoints = content.whyPoints(cityName);
   const faqs = content.faqs(cityName);
@@ -87,19 +90,19 @@ export default function ServiceLocationPage({ params }: { params: Promise<{ serv
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <section className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4">{service.title} in {cityName}: What to Expect</h2>
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4">{introHeading}</h2>
                 <div className="prose prose-gray max-w-none text-gray-600 space-y-4">{intro.map((p, i) => <p key={i}>{p}</p>)}</div>
               </section>
               <NearbyAreasGrid cityName={cityName} serviceSlug={service.slug} serviceName={service.title} />
               <section className="mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">How {service.title} Works in {cityName}</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">{stepsHeading}</h2>
                 <div className="space-y-4">
                   {steps.map((step, i) => (<div key={i} className="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100"><div className="flex-shrink-0 w-8 h-8 bg-brand-500 text-white rounded-full flex items-center justify-center font-bold text-sm">{i + 1}</div><p className="text-gray-700 font-medium pt-1">{step}</p></div>))}
                 </div>
               </section>
               <PricingSection cityName={cityName} serviceId={service.id} serviceName={service.title} />
               <section className="mb-12">
-                <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">Why Get {service.title} in {cityName} Through Us?</h3>
+                <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">{whyHeading}</h3>
                 <div className="space-y-3">
                   {whyPoints.map((point, i) => (<div key={i} className="flex items-start gap-3 bg-brand-50 p-4 rounded-xl border border-brand-100"><CheckCircle className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" /><span className="text-gray-800 font-medium text-sm">{point}</span></div>))}
                 </div>

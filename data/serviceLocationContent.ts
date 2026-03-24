@@ -5,10 +5,15 @@ function prof(city: string): LocationProfile | null { return getLocationProfileB
 function sizeLabel(p: LocationProfile): string {
   switch (p.avgPortfolioType) { case 'single-let': return 'single-property landlords'; case 'small-portfolio': return 'portfolio landlords'; case 'mixed': return 'landlords of all sizes'; case 'block-management': return 'freeholders and portfolio landlords'; default: return 'landlords'; }
 }
-function mixList(p: LocationProfile, n: number = 3): string {
-  const items = p.propertyMix.slice(0, n);
-  return items.length <= 1 ? items[0] : items.slice(0, -1).join(', ') + ' and ' + items[items.length - 1];
+
+// ── Structural variation helpers ──
+// Hash city name to a stable number for rotating between content patterns
+function cityHash(city: string): number {
+  let h = 0;
+  for (let i = 0; i < city.length; i++) h = ((h << 5) - h + city.charCodeAt(i)) | 0;
+  return Math.abs(h);
 }
+function pick<T>(city: string, options: T[]): T { return options[cityHash(city) % options.length]; }
 
 export interface ServiceLocationPageContent {
   heroDesc: (city: string) => string;
@@ -16,6 +21,9 @@ export interface ServiceLocationPageContent {
   trustLine: (city: string) => string;
   benefits: (city: string) => { title: string; desc: string }[];
   intro: (city: string) => string[];
+  introHeading: (city: string) => string;
+  stepsHeading: (city: string) => string;
+  whyHeading: (city: string) => string;
   steps: (city: string) => string[];
   whyPoints: (city: string) => string[];
   faqs: (city: string) => { question: string; answer: string }[];
@@ -24,220 +32,305 @@ export interface ServiceLocationPageContent {
 export const serviceLocationContent: Record<string, ServiceLocationPageContent> = {
 
 "residential-lettings-management": {
-  heroDesc: (city) => { const p = prof(city); return p ? `${city}'s rental market — from ${mixList(p, 2)} — needs management by specialists who understand ${p.borough} tenant demand and compliance obligations. We match ${sizeLabel(p)} with full-service letting agents.` : `Residential lettings management specialists covering ${city}. Free matching, no obligation.`; },
-  heroBullets: (city) => { const p = prof(city); return p ? [`Letting specialists experienced with ${p.propertyMix[0]} and ${p.propertyMix[1]} in ${city}`, `Full compliance management including gas safety, EPC, electrical inspections, and deposit protection for ${p.postcode} area properties`, `Tenant find, referencing, rent collection, and ongoing management tailored to ${city}'s rental market`] : [`Lettings management specialists covering ${city}`, 'Full compliance and tenant management', 'Rent collection and maintenance coordination']; },
-  trustLine: (city) => { const p = prof(city); return p ? `Trusted by landlords across ${city} and ${p.borough}` : `Trusted by landlords across ${city}`; },
-  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: `${city} Lettings Expertise`, desc: `Your agent manages ${p.propertyMix[0]} and ${p.propertyMix[1]} in ${city} regularly — they understand the rental values, tenant expectations, and void period patterns that ${sizeLabel(p)} in the ${p.postcode} area face.` },
-    { title: "Full Compliance Management", desc: `${p.managementChallenges.split(',')[0]}. Your agent handles gas safety certificates, EPC compliance, electrical safety inspections, smoke and CO alarms, and deposit protection for your ${city} properties.` },
-    { title: "Tenant Quality and Retention", desc: `${p.tenantBase}. Your agent's referencing processes and tenant management approach are designed to attract and retain the right tenants for your ${city} property.` },
-    { title: `${p.borough} Market Knowledge`, desc: `${p.marketContext.split('.')[0]}. Your agent uses this local knowledge to price accurately, market effectively, and minimise void periods for your ${p.postcode} area property.` }
-  ]; },
-  intro: (city) => { const p = prof(city); if (!p) return [`Residential lettings management in ${city} requires local expertise and full compliance coverage.`, `Professional agents handle everything from tenant find to ongoing property management.`]; return [
-    `${p.marketContext} For ${sizeLabel(p)} operating in this market, professional management means more than just finding tenants — it means pricing correctly, vetting thoroughly, maintaining compliantly, and retaining good tenants long-term.`,
-    `${p.managementChallenges}. A letting agent who works with ${city}'s rental market handles these challenges routinely, delivering the local knowledge and compliance systems that protect your investment and maximise your returns.`
-  ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [
-    `Assess your ${city} property including condition, rental potential, and any compliance gaps that need addressing before letting`,
-    `Prepare your property for the ${p.postcode} area market including professional photography, floor plans, and accurate pricing based on local comparable data`,
-    `Market across major portals and local channels, targeting the ${city} tenant demographic your property suits`,
-    `Conduct thorough referencing including employment verification, credit checks, previous landlord references, and right-to-rent checks`,
-    `Manage move-in with detailed inventory, meter readings, deposit protection, and compliant tenancy agreement execution`,
-    `Provide ongoing management including rent collection, maintenance coordination, periodic inspections, and full compliance monitoring`,
-    `Handle tenancy renewals, rent reviews, and any issues that arise throughout the tenancy of your ${city} property`
-  ]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [
-    `Letting agents experienced with ${p.propertyMix[0]} and ${p.propertyMix[1]} in ${city}'s ${p.postcode} area`,
-    `Full compliance management covering every legal obligation for ${sizeLabel(p)} in ${p.borough}`,
-    `Local market knowledge that minimises void periods and maximises rental income for your ${city} property`,
-    `Ongoing tenant management and maintenance coordination that protects your investment long-term`
-  ]; },
-  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['residential-lettings-management'](city); return [
-    { question: `How much do letting agents charge in ${city}?`, answer: `Full management fees in ${city} typically range from 8-15% of monthly rent for ${sizeLabel(p)}, depending on the level of service. ${p.propertyMix[0]} with higher rental values often attract lower percentage rates. All agents in our network provide clear fee schedules upfront with no hidden charges.` },
-    { question: `How quickly can a ${city} property be let?`, answer: `Well-priced, compliant properties in ${city} typically let within 2-4 weeks. ${p.marketContext.split('.')[0]}. Your agent prices accurately using local comparable data and markets effectively to minimise void periods for your ${p.postcode} area property.` },
-    { question: `What compliance do ${city} landlords need?`, answer: `Gas safety certificate (annual), EPC (minimum E rating), electrical installation condition report (5-yearly), smoke and CO alarms, deposit protection within 30 days, right-to-rent checks, and a compliant tenancy agreement. For ${sizeLabel(p)} in ${city}, your agent manages the complete compliance calendar so nothing is missed.` }
-  ]; }
+  introHeading: (city) => {
+    const p = prof(city);
+    if (!p) return `Residential Lettings Management in ${city}`;
+    const patterns = [
+      `Managing ${p.propertyMix[0]} in ${city}: What Sets Professional Agents Apart`,
+      `What ${city} Landlords Should Expect From a Lettings Management Specialist`,
+      `The ${city} Rental Market: Why DIY Management Costs More Than You Think`,
+      `Letting ${p.propertyMix[0]} in ${city}'s ${p.postcode} Area: Beyond Tenant Find`,
+      `Full-Service Lettings in ${city}: From Compliance to Tenant Retention`,
+    ];
+    return pick(city, patterns);
+  },
+  stepsHeading: (city) => {
+    const p = prof(city);
+    if (!p) return `How Lettings Management Works in ${city}`;
+    const patterns = [
+      `From Empty Property to Settled Tenant: How It Works in ${city}`,
+      `Your ${city} Lettings Journey: Step by Step`,
+      `Getting Your ${p.postcode} Area Property Let and Managed`,
+      `How Our ${city} Agents Take a Property From Vacant to Fully Managed`,
+    ];
+    return pick(city, patterns);
+  },
+  whyHeading: (city) => {
+    const p = prof(city);
+    if (!p) return `Why Use Our Matching Service in ${city}`;
+    const patterns = [
+      `Why ${city} Landlords Use Our Matching Service`,
+      `The Advantage of Matched Management for ${p.postcode} Area Landlords`,
+      `What Makes Our ${city} Agent Matching Different`,
+      `Why Not Just Pick an Agent Off Google? Here Is What ${city} Landlords Get Instead`,
+    ];
+    return pick(city, patterns);
+  },
+  heroDesc: (city) => {
+    const p = prof(city);
+    if (!p) return `Residential lettings management specialists covering ${city}. Free matching, no obligation.`;
+    // Different framing based on portfolio type
+    if (p.avgPortfolioType === 'single-let') return `You have a property in ${city} and you want it managed properly — compliant, well-tenanted, and hassle-free. We connect ${sizeLabel(p)} in the ${p.postcode} area with agents who handle ${p.propertyMix[0]} like yours every week.`;
+    if (p.avgPortfolioType === 'block-management') return `${city}'s mix of blocks and individual lets needs agents who can do both. We match ${sizeLabel(p)} in the ${p.postcode} area with specialists who handle service charge administration and single-let management under one roof.`;
+    return `Managing ${p.propertyMix[0]} across ${city} takes local knowledge, vetted contractors, and bulletproof compliance systems. We match ${sizeLabel(p)} in the ${p.postcode} area with agents who already work this market.`;
+  },
+  heroBullets: (city) => {
+    const p = prof(city);
+    if (!p) return ['Lettings management specialists covering your area', 'Full compliance and tenant management', 'Responsive maintenance coordination'];
+    // Vary bullets based on character
+    if (p.avgPortfolioType === 'single-let') return [
+      `Agents who already manage ${p.propertyMix[0]} in your part of ${city}`,
+      `Every compliance obligation covered — gas, electrical, EPC, deposit, right-to-rent`,
+      `Tenants matched to your property type, not just the first applicant who passes referencing`,
+    ];
+    return [
+      `${p.borough} specialists managing ${p.propertyMix[0]} and ${p.propertyMix[1]} across the ${p.postcode} area`,
+      `Compliance calendar that tracks every certificate, inspection, and renewal date for your portfolio`,
+      `Consolidated reporting across all your ${city} properties — income, costs, voids, and maintenance`,
+    ];
+  },
+  trustLine: (city) => { const p = prof(city); return p ? `Trusted by ${sizeLabel(p)} across ${city} and ${p.borough}` : `Trusted by landlords across ${city}`; },
+  benefits: (city) => {
+    const p = prof(city);
+    if (!p) return defBenefits(city);
+    // Genuinely different benefit sets based on location type
+    if (p.avgPortfolioType === 'single-let') return [
+      { title: "Your Tenant, Not Just Any Tenant", desc: `${p.tenantBase}. Your agent targets this specific demographic and refs them properly — employment, credit, previous landlord, affordability. The right tenant for your ${city} property stays longer and pays on time.` },
+      { title: "Compliance Without the Headache", desc: `Gas safety, EICR, EPC, deposit protection, prescribed information, smoke alarms, CO detectors, right-to-rent. Miss one and you cannot serve a Section 21. Your agent tracks every deadline for your ${p.postcode} area property.` },
+      { title: "Maintenance That Actually Works", desc: `${p.managementChallenges}. Your agent has vetted ${p.borough} contractors on speed dial — plumbers, electricians, locksmiths — and manages the work so you never deal with a 2am boiler call.` },
+      { title: "Honest Local Pricing", desc: `Your agent prices your ${city} property using live comparable data from the ${p.postcode} area, not a Zoopla estimate. Accurate pricing lets within 2-3 weeks. Overpricing costs you months of void.` },
+    ];
+    if (p.avgPortfolioType === 'block-management') return [
+      { title: "Block and Individual Under One Roof", desc: `${city} has both purpose-built blocks and individual lets. Your agent handles service charge administration and single-property management, so you deal with one contact for everything.` },
+      { title: "Section 20 Without the Drama", desc: `Major works on ${city} blocks need formal leaseholder consultation. Your agent manages the Section 20 process end to end — notices, tenders, documentation — preventing the tribunal challenges that derail projects.` },
+      { title: "Leaseholder Communication", desc: `${p.tenantBase}. Your agent maintains professional communication channels that keep leaseholders informed without overwhelming them, reducing complaints and building constructive relationships.` },
+      { title: "Contractor Management at Scale", desc: `${p.managementChallenges}. Your agent tenders competitively across their ${p.borough} block portfolio, getting better prices than individual landlords can negotiate alone.` },
+    ];
+    return [
+      { title: "Portfolio-Level Visibility", desc: `You have ${p.propertyMix[0]} and ${p.propertyMix[1]} across ${city}. Your agent provides consolidated monthly statements showing income, voids, maintenance costs, and compliance status per property — not separate reports you have to stitch together.` },
+      { title: "Consistent Standards Everywhere", desc: `Every property in your ${city} portfolio gets the same standard of tenant vetting, inspection, and maintenance coordination. No agent favouring their easier properties while your HMO languishes.` },
+      { title: "Local Contractor Buying Power", desc: `${p.managementChallenges}. Agents managing multiple ${p.borough} properties negotiate better contractor rates than you can alone — the plumber who does 15 of their properties answers faster and charges less.` },
+      { title: "Strategic Growth Advice", desc: `${p.marketContext.split('.')[0]}. Your agent advises on whether the next acquisition in ${city} makes management sense, not just financial sense.` },
+    ];
+  },
+  intro: (city) => {
+    const p = prof(city);
+    if (!p) return ['Professional lettings management covers everything from tenant find to ongoing property care.', 'The right agent saves you time, protects your compliance, and keeps good tenants longer.'];
+    // Structurally different intros based on location character
+    if (p.avgPortfolioType === 'single-let') return [
+      `Most ${city} landlords with a single property start by managing it themselves. It works until it doesn't — a midnight boiler failure, a tenant who stops paying, or a gas safety certificate that expired three months ago without you noticing. ${p.managementChallenges}. Professional management in the ${p.postcode} area typically costs 8-12% of rent, which is a fraction of what one compliance failure or bad tenant costs you.`,
+      `${p.tenantBase}. The right agent finds these tenants through targeted marketing and thorough referencing, then keeps them through responsive maintenance and professional communication. The wrong agent — or no agent — means you're fielding WhatsApp messages about dripping taps at 11pm and hoping your deposit protection hasn't expired.`,
+    ];
+    if (p.avgPortfolioType === 'block-management') return [
+      `Blocks in ${city} need a different kind of management than individual lets. Service charge budgeting, Section 20 consultation for major works, fire risk assessments, communal area maintenance, and the diplomatic skill to keep leaseholders informed without constant complaints. ${p.marketContext}`,
+      `${p.managementChallenges}. The managing agent you choose directly affects both the building's condition and every leaseholder's service charge bill. An agent who tenders competitively, manages contractors properly, and communicates transparently saves the block thousands annually compared to one who rubber-stamps invoices and ignores emails.`,
+    ];
+    return [
+      `Running a portfolio across ${city} means every property is a compliance liability, a maintenance obligation, and a tenant relationship — multiplied by however many doors you have. ${p.marketContext} Without a management agent who can handle the volume, something always falls through the cracks. The gas cert expires on your ${p.propertyMix[0]}, the boiler fails in your ${p.propertyMix[1]}, and the tenant in your flat stops paying — all in the same week.`,
+      `${p.managementChallenges}. A portfolio-grade agent in the ${p.postcode} area gives you one point of contact, consolidated reporting, and the confidence that every property meets every obligation every month. That is worth considerably more than the 10-15% management fee.`,
+    ];
+  },
+  steps: (city) => {
+    const p = prof(city);
+    if (!p) return defSteps(city);
+    if (p.avgPortfolioType === 'single-let') return [
+      `Your agent visits your ${city} property, checks its condition, and identifies any compliance gaps — expired gas cert, missing EPC, deposit protection issues`,
+      `They photograph it properly (not phone photos), write compelling copy, and price it using live ${p.postcode} area data from recent lets, not asking prices`,
+      `The listing goes live across Rightmove, Zoopla, and OnTheMarket. Your agent conducts accompanied viewings and pre-qualifies applicants before they apply`,
+      `Full referencing: employer confirmation, credit check, previous landlord reference, right-to-rent documents, affordability calculation`,
+      `Compliant move-in: AST signed, deposit protected within 30 days, prescribed information served, inventory agreed, meter readings recorded`,
+      `Ongoing: rent collected by standing order, chased from day one if late, maintenance handled through vetted ${p.borough} contractors, quarterly inspections`,
+      `Tenancy renewal negotiated with rent review, or if the tenant leaves, the re-letting process begins immediately to minimise void`,
+    ];
+    return [
+      `Portfolio audit: your agent reviews every ${city} property for compliance status, tenancy terms, maintenance backlog, and current rental values`,
+      `Gap analysis identifies properties that are under-rented, non-compliant, or costing you in avoidable maintenance — with a prioritised action plan`,
+      `Each property gets accurate ${p.postcode} area pricing, professional marketing, and targeted tenant matching based on the specific property type`,
+      `Consolidated compliance calendar tracks every certificate, inspection, and renewal date across your entire ${city} portfolio`,
+      `Single monthly statement covers rental income, void periods, maintenance costs, and compliance status for every property in one report`,
+      `Maintenance coordinated through vetted ${p.borough} contractors with portfolio-level buying power on pricing`,
+      `Quarterly portfolio review with your agent covering performance, market trends, and strategic advice for your ${city} investments`,
+    ];
+  },
+  whyPoints: (city) => {
+    const p = prof(city);
+    if (!p) return defWhyPoints(city);
+    return pick(city, [
+      [
+        `We vet agents for ${p.postcode} area experience — not just any ARLA member who covers "North West London"`,
+        `Every matched agent already manages ${p.propertyMix[0]} in ${city}, so there is no learning curve with your property`,
+        `You compare up to three agents on fees, services, and approach before committing to anyone`,
+        `Free matching with zero obligation — if none of the agents suit, you walk away`,
+      ],
+      [
+        `Agents matched specifically to your property type, not randomly assigned from a general database`,
+        `${p.borough} compliance expertise covering the specific council requirements that affect ${city} landlords`,
+        `Vetted contractor networks already established in the ${p.postcode} area for responsive maintenance`,
+        `Transparent fee comparison so you know exactly what you are paying and what you are getting`,
+      ],
+      [
+        `Local agents who know the ${p.postcode} area tenant demographic and what they will pay for your type of property`,
+        `Compliance track record verified — we check that agents actually maintain their managed properties properly`,
+        `No lock-in: our matching is free, and you deal directly with the agent you choose`,
+        `${p.managementChallenges} — your matched agent handles this specific challenge routinely`,
+      ],
+    ]);
+  },
+  faqs: (city) => {
+    const p = prof(city);
+    if (!p) return defFaqs['residential-lettings-management'](city);
+    // Different FAQ structures based on location type
+    if (p.avgPortfolioType === 'single-let') return [
+      { question: `I only have one property in ${city} — is professional management worth it?`, answer: `Yes, if your time has any value. A single property still requires annual gas safety checks, five-yearly electrical inspections, deposit protection, right-to-rent checks, and responsive maintenance. Missing any of these prevents you from serving a Section 21 notice. Full management typically costs 8-12% of rent in the ${p.postcode} area — roughly ${p.rentalStock.includes('premium') ? '£120-£200' : '£80-£150'} per month. One compliance failure or one month with a bad tenant costs far more.` },
+      { question: `How do ${city} agents find tenants for ${p.propertyMix[0]}?`, answer: `Professional marketing across Rightmove, Zoopla, and OnTheMarket with quality photography and compelling descriptions. Your agent prices using current ${p.postcode} area comparable data — not Zoopla estimates — and targets ${p.tenantBase.toLowerCase()}. Accompanied viewings filter time-wasters, and thorough referencing protects you from problem tenants.` },
+      { question: `What if I am unhappy with my ${city} managing agent?`, answer: `Most management contracts require 1-3 months' notice. If your agent underperforms, you can switch. Our matching service helps you find a replacement quickly. The key is choosing the right agent from the start — which is exactly what our vetting and matching process is designed to ensure for ${p.postcode} area properties.` },
+    ];
+    return [
+      { question: `How do ${city} agents handle multiple properties at once?`, answer: `Portfolio-grade agents use property management software that tracks every tenancy, compliance date, and maintenance issue across all your ${city} properties in one system. You get a consolidated monthly statement rather than separate reports. ${p.managementChallenges}. Agents who manage at portfolio scale have processes for this that single-property managers simply lack.` },
+      { question: `What management fees should I expect for ${p.propertyMix[0]} in ${city}?`, answer: `Full management in the ${p.postcode} area runs 8-15% of monthly rent depending on property type and service level. ${p.propertyMix[0]} typically sit at ${p.rentalStock.includes('premium') ? '8-10%' : '10-14%'} because ${p.rentalStock.includes('premium') ? 'higher rents generate more fee income at lower percentages' : 'agents factor in the maintenance intensity typical of this stock'}. Tenant-find-only is 4-8 weeks rent as a one-off.` },
+      { question: `What compliance do ${city} landlords actually need?`, answer: `Gas safety certificate (annual), electrical installation condition report (5-yearly), EPC at minimum E rating, smoke alarms on every floor, CO detectors in rooms with solid fuel, deposit protected within 30 days with prescribed information served, and right-to-rent checks before the tenancy starts. Miss any one and you lose the ability to serve a Section 21 for your ${p.postcode} area property. Your agent maintains a compliance calendar that tracks every date.` },
+    ];
+  },
 },
 
 "block-estate-management": {
-  heroDesc: (city) => { const p = prof(city); return p ? `${city}'s residential blocks need professional service charge administration, compliance management, and leaseholder communication. We match freeholders and RMC directors with block management specialists covering the ${p.postcode} area.` : `Block and estate management specialists covering ${city}. Free matching, no obligation.`; },
-  heroBullets: (city) => { const p = prof(city); return p ? [`Block management specialists experienced with residential developments in ${city}'s ${p.postcode} area`, `Service charge budgeting, Section 20 consultation, and sinking fund management for ${p.borough} blocks`, `Health and safety compliance, insurance administration, and contractor management for ${city} developments`] : [`Block management specialists covering ${city}`, 'Service charge and Section 20 compliance', 'Health and safety management']; },
-  trustLine: (city) => { const p = prof(city); return p ? `Managing residential blocks across ${city} and ${p.borough}` : `Managing residential blocks across ${city}`; },
+  introHeading: (city) => {
+    const p = prof(city);
+    if (!p) return `Block and Estate Management in ${city}`;
+    return pick(city, [
+      `Running a Residential Block in ${city}: What Professional Management Actually Delivers`,
+      `Service Charges, Safety, and Section 20: Block Management in the ${p.postcode} Area`,
+      `Why ${city} Freeholders and RMC Directors Choose Professional Block Agents`,
+      `Beyond Collecting Service Charges: What ${city} Block Management Should Look Like`,
+    ]);
+  },
+  stepsHeading: (city) => pick(city, [`Appointing a Block Agent for Your ${city} Development`, `How Professional Block Management Works in ${city}`, `From Assessment to Annual Accounts: Your ${city} Block Journey`, `Taking Over Your ${city} Block: The Transition Process`]),
+  whyHeading: (city) => pick(city, [`Why Match Through Us for ${city} Block Management`, `The Case for Matched Block Management in ${city}`, `What ${city} RMC Directors Get From Our Matching Service`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Block management specialists covering ${city}. Free matching, no obligation.`; return `Your ${city} block needs more than someone who collects service charges and ignores the fire risk assessment. We match freeholders and RMC directors in the ${p.postcode} area with agents who actually manage buildings — budgets, compliance, contractors, and leaseholder communication.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Block management specialists covering your area', 'Service charge administration and compliance', 'Health and safety management']; return [`Service charge budgeting and transparent year-end accounts for ${city} blocks`, `Fire risk assessments, asbestos management, and building safety compliance in the ${p.postcode} area`, `Section 20 major works consultation managed from first notice to final account`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Managing residential blocks across ${city} and ${p.borough}` : `Managing blocks across ${city}`; },
   benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: "Service Charge Administration", desc: `Professional budgeting, collection, and year-end accounting for your ${city} block. Your agent prepares transparent service charge accounts that satisfy Section 21 requirements and leaseholder expectations.` },
-    { title: "Section 20 Compliance", desc: `Major works exceeding the qualifying threshold require formal consultation with leaseholders. Your agent manages the complete Section 20 process for ${city} blocks, from initial notices to tender evaluation and final accounts.` },
-    { title: "Health and Safety Management", desc: `Fire risk assessments, asbestos management, water hygiene, lift maintenance, and communal area safety for your ${p.postcode} area block — all managed proactively by specialists who understand residential block obligations.` },
-    { title: `${p.borough} Block Expertise`, desc: `${p.marketContext.split('.')[0]}. Your agent understands the specific block management challenges in ${city} and delivers the professional standards that freeholders and leaseholders expect.` }
+    { title: "Budgets That Actually Add Up", desc: `Your agent prepares service charge budgets from real costs — not last year's figures plus inflation. They know what ${p.borough} contractors charge for communal cleaning, gardening, and building insurance because they manage other blocks in the ${p.postcode} area.` },
+    { title: "Safety Compliance That Protects You Personally", desc: `Fire risk assessments, legionella checks, asbestos registers, lift maintenance, emergency lighting tests. As a director or freeholder, these are your personal legal obligations. Your agent maintains every one.` },
+    { title: "Section 20 Done Right", desc: `Major works over the qualifying threshold need formal leaseholder consultation. Your agent handles the notices, the tendering, the observation period, and the final accounts. A procedural error means you cannot recover the cost — and tribunal challenges are expensive.` },
+    { title: "Leaseholders Who Feel Heard", desc: `${p.tenantBase}. Good communication prevents 90% of complaints. Your agent provides regular updates, responds to queries within working hours, and holds AGMs that are professionally managed rather than shouting matches.` },
   ]; },
-  intro: (city) => { const p = prof(city); if (!p) return [`Block management in ${city} requires specialist expertise in service charge administration and building compliance.`, `Professional managing agents handle everything from budgeting to health and safety.`]; return [
-    `${p.marketContext} For residential blocks in this area, professional management means transparent service charge administration, proactive compliance management, and responsive communication with leaseholders who expect value for their service charge contributions.`,
-    `${p.managementChallenges}. A block management specialist who works with ${city}'s residential developments handles these obligations routinely, delivering the expertise that protects freeholders from compliance risk and maintains property values across the block.`
+  intro: (city) => { const p = prof(city); if (!p) return ['Block management requires specialist expertise in service charges, compliance, and leaseholder relations.', 'The right agent protects both the building and the people responsible for it.']; return [
+    `A block in ${city} is a shared asset, a shared liability, and a shared headache if it is managed badly. ${p.marketContext} The managing agent's competence directly determines whether the building is maintained, the service charges are fair, and the freeholder or directors avoid personal liability for safety failures.`,
+    `${p.managementChallenges}. That is not a job for someone who mainly does single lets and picked up a block as a favour. It needs an agent with block-specific expertise, building safety knowledge, and the systems to handle service charge accounting properly.`,
   ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [
-    `Assess your ${city} block including current management arrangements, service charge structure, and compliance status`,
-    `Review health and safety compliance including fire risk assessment, asbestos register, water hygiene, and communal area safety`,
-    `Establish service charge budgets based on accurate cost forecasting for your ${p.postcode} area block`,
-    `Set up leaseholder communication systems including notice distribution, meeting management, and query handling`,
-    `Implement contractor management with competitive tendering for routine and major works`,
-    `Manage ongoing compliance calendar including insurance renewal, safety inspections, and Section 20 consultations`,
-    `Prepare annual service charge accounts and manage year-end reconciliation for your ${city} block`
-  ]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [
-    `Block management specialists with experience managing residential developments in ${city}'s ${p.postcode} area`,
-    `Transparent service charge administration that satisfies both freeholder and leaseholder expectations`,
-    `Proactive health and safety compliance preventing costly enforcement action on ${city} blocks`,
-    `Professional Section 20 management for major works, protecting freeholders from consultation challenges`
-  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Block assessment: your agent inspects the building, reviews existing management files, and identifies compliance gaps and maintenance priorities`, `Service charge budget preparation based on actual ${p.borough} contractor costs and realistic reserve fund contributions`, `Transition of management files, contractor relationships, and leaseholder communication from the previous agent`, `Compliance audit covering fire risk assessment, asbestos register, water hygiene, lift maintenance, and electrical testing`, `Contractor tendering for routine services — cleaning, gardening, maintenance — with competitive ${p.postcode} area pricing`, `Leaseholder communication setup including regular updates, query handling, and AGM preparation`, `Annual service charge accounts preparation with full transparency for leaseholder review`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`We match you with agents who specialise in blocks, not agents who dabble alongside their lettings business`, `Block-specific compliance expertise covering the building safety obligations that apply to ${city} developments`, `Service charge accounting that satisfies Section 21 requirements and withstands leaseholder scrutiny`, `Competitive tendering through agents with established ${p.borough} contractor relationships`]; },
   faqs: (city) => { const p = prof(city); if (!p) return defFaqs['block-estate-management'](city); return [
-    { question: `How much does block management cost in ${city}?`, answer: `Block management fees typically range from £150-£400 per unit per year for ${city} developments, depending on block size, services required, and complexity. Larger blocks with lifts, communal gardens, and complex service charge structures cost more. All agents provide detailed fee proposals before appointment.` },
-    { question: `What does block management include in ${city}?`, answer: `Service charge budgeting and collection, building insurance administration, health and safety compliance, communal area maintenance, contractor management, leaseholder communication, Section 20 major works consultation, and annual accounts preparation. For blocks in ${city}'s ${p.postcode} area, your agent handles the complete management obligation.` },
-    { question: `How do we change block managing agent in ${city}?`, answer: `The process depends on your block structure. RMC-managed blocks can change by board resolution, while freeholder-appointed agents may require notice periods. Section 24 tribunal applications allow leaseholders to appoint their own agent in certain circumstances. Your new agent manages the transition process for ${city} blocks.` }
-  ]; }
+    { question: `Our ${city} block is badly managed — how do we change agent?`, answer: `If you are an RMC, the board can resolve to appoint a new agent, typically with a notice period matching the current contract (usually 1-3 months). Leaseholders without an RMC can apply to the First-Tier Tribunal under Section 24 to have a new agent appointed. Your new agent manages the complete transition including file handover, contractor novation, and leaseholder communication.` },
+    { question: `What should block management cost for a ${city} development?`, answer: `Typically £150-£400 per unit per year, depending on block size, number of units, and facilities. A 12-flat block with a lift and communal garden in the ${p.postcode} area will cost more than a 6-flat walk-up with no shared amenities. Your agent provides a detailed proposal based on the actual management requirement, not a generic per-unit rate.` },
+    { question: `Who is personally liable if something goes wrong in our ${city} block?`, answer: `The freeholder or, if management has been delegated, the RMC directors. Fire safety failures, legionella incidents, and asbestos exposure can result in personal prosecution. This is why professional management is not optional for blocks — it is personal liability protection for the people responsible. Your agent maintains every safety obligation for your ${p.postcode} area building.` },
+  ]; },
 },
 
 "tenant-find-referencing": {
-  heroDesc: (city) => { const p = prof(city); return p ? `Need a quality tenant for your ${city} property? We match ${sizeLabel(p)} with tenant-find specialists who know the ${p.postcode} area market, conduct thorough referencing, and place tenants who stay.` : `Tenant find and referencing specialists covering ${city}. Free matching, no obligation.`; },
-  heroBullets: (city) => { const p = prof(city); return p ? [`Tenant-find specialists who understand ${city}'s tenant demographics and rental pricing in the ${p.postcode} area`, `Comprehensive referencing including employment, credit, landlord references, and right-to-rent for ${p.borough} properties`, `Professional marketing across major portals with photography and accurate pricing for ${city}'s rental market`] : [`Tenant find specialists covering ${city}`, 'Comprehensive referencing and vetting', 'Professional property marketing']; },
+  introHeading: (city) => { const p = prof(city); if (!p) return `Tenant Find and Referencing in ${city}`; return pick(city, [`Finding the Right Tenant for Your ${city} Property — Not Just the First One`, `Tenant Find in the ${p.postcode} Area: What Thorough Referencing Actually Looks Like`, `Why ${city} Landlords Pay for Professional Tenant Find Instead of Going Direct`, `Beyond Rightmove: How ${city} Agents Find Tenants Who Stay and Pay`]); },
+  stepsHeading: (city) => pick(city, [`From Empty to Occupied: Tenant Find in ${city}`, `The ${city} Tenant Find Process`, `How We Fill Your ${city} Property With the Right Tenant`, `Marketing to Move-In: Your ${city} Tenant Find Timeline`]),
+  whyHeading: (city) => pick(city, [`Why ${city} Landlords Use Matched Tenant Find`, `What Professional Tenant Find Gets You in ${city}`, `The Value of Expert Tenant Find in the ${city} Market`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Tenant find and referencing specialists covering ${city}. Free matching, no obligation.`; return `A bad tenant costs more than months of management fees. We match ${sizeLabel(p)} in ${city} with agents who find tenants properly — accurate pricing, targeted marketing, and referencing that actually protects you.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Professional tenant find covering your area', 'Comprehensive referencing', 'Compliant tenancy setup']; return [`Pricing based on actual ${p.postcode} area lets, not asking prices or Zoopla estimates`, `Full referencing: employer, credit, landlord, affordability, right-to-rent — no shortcuts`, `Compliant tenancy setup covering deposit, prescribed information, and every legal requirement`]; },
   trustLine: (city) => { const p = prof(city); return p ? `Finding quality tenants for ${city} landlords` : `Finding quality tenants across ${city}`; },
   benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: `${city} Market Pricing`, desc: `${p.marketContext.split('.')[0]}. Your agent prices your property using current ${p.postcode} area comparable data, balancing maximum rent against void period risk to optimise your annual income.` },
-    { title: "Thorough Referencing", desc: `Employment verification, credit checks, previous landlord references, right-to-rent documentation, and affordability assessment. For ${p.propertyMix[0]} in ${city}, your agent's referencing catches the issues that protect you from problem tenancies.` },
-    { title: "Professional Marketing", desc: `${p.tenantBase}. Your agent targets this specific demographic through portal advertising, social media, and local marketing channels that reach the right tenants for your ${city} property.` },
-    { title: "Compliant Tenancy Setup", desc: `Deposit protection, prescribed information, gas safety, EPC, how-to-rent guide, and a compliant AST — your agent ensures every legal requirement is met before your ${city} tenant moves in.` }
+    { title: "Pricing That Lets Quickly", desc: `${p.marketContext.split('.')[0]}. Your agent prices from recent lets in the ${p.postcode} area — what actually rented, not what's still sitting empty at an ambitious asking price. Accurate pricing typically lets within 2-3 weeks.` },
+    { title: "Referencing With Teeth", desc: `Employer confirmation (not just a payslip), credit history, direct previous landlord contact, right-to-rent documents verified against the original, and affordability calculated at 2.5x rent. For ${p.propertyMix[0]} in ${city}, this is the difference between a tenant who pays and one who doesn't.` },
+    { title: "Marketing That Targets", desc: `${p.tenantBase}. Your agent writes copy and selects photos that appeal specifically to this demographic — not generic "spacious property, must see" descriptions that attract everyone and appeal to no one.` },
+    { title: "Legal Setup From Day One", desc: `Deposit protected, prescribed information served, how-to-rent guide provided, gas cert and EPC shared, right-to-rent documented. Every legal prerequisite for a valid Section 21 notice completed before your ${city} tenant moves in.` },
   ]; },
-  intro: (city) => { const p = prof(city); if (!p) return [`Tenant find services in ${city} go beyond advertising your property.`, `Professional agents conduct thorough referencing and ensure full legal compliance from day one.`]; return [
-    `${p.marketContext} Finding the right tenant for your ${city} property means more than advertising on Rightmove — it means pricing accurately for the local market, targeting the right demographic, and conducting referencing that actually protects you from problem tenancies.`,
-    `${p.tenantBase}. A tenant-find specialist who knows ${city}'s rental market targets these specific tenants through the right channels, conducts thorough vetting, and sets up a compliant tenancy that protects your position from day one.`
+  intro: (city) => { const p = prof(city); if (!p) return ['Tenant find is not just about advertising your property.', 'The right agent finds tenants who pay on time and treat your property well.']; return [
+    `You can list your ${city} property on OpenRent for £50 and get 30 enquiries by Tuesday. Most of them will be unsuitable, several will ghost you at viewing, and the one who seems great might have a County Court Judgment you never checked for. Professional tenant find in the ${p.postcode} area costs more upfront but prevents the expensive mistakes that DIY landlords make.`,
+    `${p.tenantBase}. A local agent knows where these tenants look, what they respond to, and what red flags to catch during referencing. They also handle the legal setup — deposit protection, prescribed information, compliant AST — that many DIY landlords get wrong, invalidating their Section 21 rights without even knowing it.`,
   ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [
-    `Assess your ${city} property and advise on any preparation needed to maximise rental value and tenant quality`,
-    `Price using current ${p.postcode} area comparable data, balancing rental income against time-to-let`,
-    `Photograph professionally and prepare compelling marketing copy targeting ${city}'s tenant demographic`,
-    `Advertise across Rightmove, Zoopla, OnTheMarket, and targeted local channels reaching the ${p.borough} area`,
-    `Conduct viewings, qualify applicants, and shortlist candidates that match your ${city} property profile`,
-    `Complete comprehensive referencing including employment, credit, landlord references, and right-to-rent checks`,
-    `Prepare compliant tenancy documentation, protect deposit, serve prescribed information, and manage check-in for your ${city} property`
-  ]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [
-    `Tenant-find specialists who understand the demand profile for ${p.propertyMix[0]} in ${city}'s ${p.postcode} area`,
-    `Accurate pricing using live ${p.borough} comparable data that minimises void periods`,
-    `Thorough referencing processes that protect ${sizeLabel(p)} from problem tenancies`,
-    `Fully compliant tenancy setup covering every legal requirement before your ${city} tenant moves in`
-  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Property visit to assess condition, identify any pre-let compliance gaps, and photograph professionally`, `Pricing analysis using actual recent lets in the ${p.postcode} area — comparable properties that actually rented, not asking prices`, `Listing across Rightmove, Zoopla, and OnTheMarket with targeted copy and professional images`, `Accompanied viewings with applicant pre-qualification to filter out timewasters before they view`, `Full referencing: employer confirmation, credit check, previous landlord contact, right-to-rent, affordability`, `Tenancy documentation: AST, deposit protection, prescribed information, how-to-rent guide, gas and EPC certificates`, `Professional check-in with detailed inventory, meter readings, and key handover`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Agents matched to your specific ${city} property type, not just whoever is nearest on Google`, `Referencing that goes beyond a credit check — direct employer and landlord verification`, `${p.postcode} area pricing expertise that balances rent maximisation against void period cost`, `Compliant setup that protects your Section 21 rights from day one`]; },
   faqs: (city) => { const p = prof(city); if (!p) return defFaqs['tenant-find-referencing'](city); return [
-    { question: `How much does tenant find cost in ${city}?`, answer: `Tenant-find fees in ${city} typically range from 4-8 weeks' rent as a one-off charge, covering marketing, viewings, referencing, and tenancy setup. For ${sizeLabel(p)} in the ${p.postcode} area, this represents significantly better value than extended void periods from poor marketing or unsuitable tenants.` },
-    { question: `How long does tenant find take in ${city}?`, answer: `Well-priced, well-marketed properties in ${city} typically receive applications within 1-2 weeks, with referencing and move-in completed within 2-4 weeks total. ${p.marketContext.split('.')[0]}. Your agent manages the complete process efficiently to minimise void time.` },
-    { question: `What referencing checks do ${city} agents conduct?`, answer: `Employment verification and income assessment, credit history checks, previous landlord references, identity verification, right-to-rent documentation checks, and affordability calculations. For ${p.propertyMix[0]} in ${city}, thorough referencing is the single most important protection against tenant problems.` }
-  ]; }
+    { question: `What does tenant find cost in ${city} and is it worth it?`, answer: `Typically 4-8 weeks' rent as a one-off, which sounds like a lot until you calculate the cost of a bad tenant. One month of void from poor marketing, plus a month of arrears from poor referencing, plus legal costs to remove them — that is easily 6 months' rent lost. Professional tenant find for ${p.propertyMix[0]} in the ${p.postcode} area pays for itself with one avoided problem tenant.` },
+    { question: `How long will it take to find a tenant for my ${city} property?`, answer: `Accurately priced, well-marketed properties in ${city} typically receive strong applications within 1-2 weeks, with the tenant moved in within 3-4 weeks total. ${p.marketContext.split('.')[0]}. If your property has been sitting empty for weeks, the price is probably wrong — your matched agent will tell you honestly.` },
+    { question: `Can I meet the prospective tenant for my ${city} property?`, answer: `Yes, many landlords want to. Your agent handles viewings and referencing first, then introduces shortlisted candidates. For ${p.propertyMix[0]} in ${city}, meeting the tenant before signing often provides reassurance, though the referencing data should drive your decision, not your gut feeling.` },
+  ]; },
 },
 
 "property-maintenance-coordination": {
-  heroDesc: (city) => { const p = prof(city); return p ? `${city} landlords need responsive maintenance coordination that protects their investment without inflating costs. We match ${sizeLabel(p)} with management specialists who have trusted ${p.borough} contractor networks for ${p.propertyMix[0]} and ${p.propertyMix[1]}.` : `Property maintenance coordination specialists covering ${city}. Free matching, no obligation.`; },
-  heroBullets: (city) => { const p = prof(city); return p ? [`Maintenance coordinators with vetted ${p.borough} contractor networks for ${p.propertyMix[0]} in ${city}`, `24/7 emergency response, planned maintenance programmes, and cost-controlled repairs for ${p.postcode} area properties`, `Compliance-linked maintenance including gas safety, electrical testing, and legionella risk management`] : [`Maintenance coordination covering ${city}`, 'Vetted contractor networks', 'Emergency and planned maintenance']; },
-  trustLine: (city) => { const p = prof(city); return p ? `Coordinating property maintenance across ${city} and ${p.borough}` : `Coordinating property maintenance across ${city}`; },
+  introHeading: (city) => { const p = prof(city); if (!p) return `Property Maintenance Coordination in ${city}`; return pick(city, [`Keeping ${p.propertyMix[0]} in ${city} Maintained Without Losing Your Mind`, `Responsive Maintenance for ${city} Landlords: Not Just an Emergency Number`, `The Real Cost of DIY Maintenance for ${city} Rental Properties`, `${p.borough} Contractor Networks: What ${city} Landlords Get Through Professional Coordination`]); },
+  stepsHeading: (city) => pick(city, [`How Maintenance Coordination Works for ${city} Properties`, `From Report to Resolution: Maintenance in ${city}`, `Your ${city} Maintenance Process`, `Planned and Emergency Maintenance for ${city} Landlords`]),
+  whyHeading: (city) => pick(city, [`Why ${city} Landlords Outsource Maintenance Coordination`, `The Value of Professional Maintenance Management in ${city}`, `What Coordinated Maintenance Gets You in ${city}`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Property maintenance coordination covering ${city}. Free matching, no obligation.`; return `Tenants judge your property by how quickly you fix things. In ${city}'s ${p.postcode} area, responsive maintenance keeps good tenants and protects your investment. We match you with agents who have vetted ${p.borough} contractors ready to go.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Vetted contractor networks', 'Emergency and planned maintenance', 'Cost-controlled repairs']; return [`Vetted ${p.borough} contractors covering plumbing, electrics, gas, roofing, and specialist trades`, `24/7 emergency line for your ${city} tenants — burst pipes, boiler failures, lock-outs handled without waking you`, `Planned maintenance schedules that prevent the expensive emergencies caused by neglect`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Coordinating maintenance across ${city} and ${p.borough}` : `Coordinating maintenance across ${city}`; },
   benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: `${city} Contractor Network`, desc: `Your agent maintains vetted contractor relationships across the ${p.postcode} area covering plumbing, electrical, gas, roofing, decorating, and specialist trades needed for ${p.propertyMix[0]} in ${city}.` },
-    { title: "Cost-Controlled Repairs", desc: `${p.managementChallenges.split(',')[0]}. Your agent obtains competitive quotes, manages contractor quality, and ensures you only pay for necessary work at fair prices.` },
-    { title: "Emergency Response", desc: `24/7 emergency contact for ${city} tenants covering burst pipes, boiler failures, lock-outs, and security issues. Your agent manages the response, coordinates contractors, and keeps you informed without requiring your direct involvement.` },
-    { title: "Planned Maintenance", desc: `Proactive maintenance programmes for your ${city} property covering boiler servicing, gutter clearing, seasonal checks, and the ongoing upkeep that prevents expensive emergency repairs.` }
+    { title: "Contractors You Can Trust", desc: `Your agent has established relationships with ${p.borough} trades — not someone found on Checkatrade at midnight. These contractors are vetted, insured, priced competitively, and accountable because they want to keep the agent's ongoing work.` },
+    { title: "Emergency Without the Panic", desc: `Your ${city} tenant calls a 24/7 number, not your personal mobile. The agent triages the issue, contacts the right contractor, and manages the resolution. You get an update by email, not a 2am phone call.` },
+    { title: "Prevention Over Cure", desc: `${p.managementChallenges}. Annual boiler services, gutter clearances, seasonal drainage checks, and proactive inspection of wear items prevent the £3,000 emergency that a £200 service would have caught.` },
+    { title: "Cost Transparency", desc: `Every repair quoted competitively, every cost above your pre-agreed threshold approved before work starts, every invoice checked before payment. No surprise bills, no unnecessary work, no contractor markups hidden in management fees.` },
   ]; },
-  intro: (city) => { const p = prof(city); if (!p) return [`Property maintenance coordination in ${city} requires reliable contractor networks and responsive systems.`, `Professional agents manage both emergency and planned maintenance efficiently.`]; return [
-    `${p.marketContext} For ${sizeLabel(p)} in this market, responsive maintenance coordination is the difference between retained tenants and costly void periods. Tenants who experience slow or poor-quality repairs leave — and replacing them costs far more than the repair itself.`,
-    `${p.managementChallenges}. A maintenance coordinator with established ${city} contractor relationships handles both emergencies and planned work efficiently, keeping costs controlled while maintaining the property standards that retain good tenants.`
+  intro: (city) => { const p = prof(city); if (!p) return ['Maintenance coordination means responsive repairs and planned upkeep.', 'The right agent protects your property and keeps your tenants happy.']; return [
+    `The tenant in your ${city} property does not care that you are in a meeting, on holiday, or asleep. When the boiler breaks, they want it fixed today. When the tap drips, they want someone there this week. And when you ignore maintenance, they leave — costing you a month of void, re-letting fees, and whatever the next tenant negotiates off the rent because the place looks tired.`,
+    `${p.managementChallenges}. An agent with established ${p.borough} contractor relationships handles all of this without your involvement. They know which plumber answers on Saturday, which electrician does quality work at fair prices, and which roofer actually turns up when they say they will.`,
   ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [
-    `Assess your ${city} property condition and identify any immediate maintenance priorities`,
-    `Establish maintenance protocols including reporting channels, approval thresholds, and emergency response procedures`,
-    `Connect your property to vetted ${p.postcode} area contractor networks covering all standard and specialist trades`,
-    `Set up a planned maintenance programme covering boiler servicing, safety checks, and seasonal upkeep`,
-    `Manage day-to-day repair requests from your ${city} tenants with competitive quoting and quality oversight`,
-    `Provide 24/7 emergency response for urgent issues at your ${city} property`,
-    `Deliver regular maintenance reporting showing costs, contractor performance, and property condition for your ${p.borough} area investment`
-  ]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [
-    `Established ${p.borough} contractor networks with vetted trades covering every maintenance need for ${city} properties`,
-    `Cost-controlled repairs with competitive quoting and quality oversight protecting ${sizeLabel(p)} from inflated costs`,
-    `24/7 emergency response ensuring your ${city} tenants' urgent issues are handled without requiring your direct involvement`,
-    `Planned maintenance programmes preventing expensive emergency repairs and maintaining property values long-term`
-  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Maintenance audit of your ${city} property identifying immediate priorities and planned maintenance needs`, `Set up reporting channels — how your tenant contacts the agent, how the agent contacts you, and your approval threshold for works`, `Connect your property to vetted ${p.postcode} area contractors covering every standard and specialist trade`, `Planned maintenance calendar: boiler service, gutter clear, smoke alarm test, seasonal checks`, `Day-to-day repairs managed from report to completion with competitive quoting and quality oversight`, `24/7 emergency response for genuine emergencies at your ${city} property`, `Monthly maintenance reporting showing costs, outstanding works, and property condition notes`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Vetted ${p.borough} contractor networks with established pricing and accountability`, `24/7 emergency cover so your ${city} tenants' urgent issues never land on your phone`, `Planned maintenance that prevents the expensive emergency repairs neglected properties generate`, `Cost transparency with competitive quoting and pre-approval for works above threshold`]; },
   faqs: (city) => { const p = prof(city); if (!p) return defFaqs['property-maintenance-coordination'](city); return [
-    { question: `How does maintenance coordination work for ${city} properties?`, answer: `Your agent receives maintenance requests from tenants, assesses urgency, obtains competitive quotes from vetted ${p.borough} contractors, seeks your approval (or handles within pre-agreed thresholds), and manages the work to completion. For ${sizeLabel(p)} in ${city}, this means responsive repairs without requiring your direct involvement in contractor management.` },
-    { question: `What does emergency maintenance cover in ${city}?`, answer: `24/7 response for burst pipes, boiler failure in cold weather, gas leaks, electrical hazards, lock-outs, storm damage, and security issues. Your agent contacts vetted emergency contractors, manages the response, and reports to you. For ${p.propertyMix[0]} in the ${p.postcode} area, emergency response protects both tenant safety and your property.` },
-    { question: `How are maintenance costs controlled for ${city} properties?`, answer: `Through competitive quoting from vetted contractors, pre-agreed approval thresholds, regular cost reporting, and the buying power that comes from managing multiple properties across the ${p.borough} area. For ${sizeLabel(p)}, your agent ensures you pay fair prices for quality work without inflated management markups.` }
-  ]; }
+    { question: `Who pays for repairs in my ${city} rental property?`, answer: `Landlords are responsible for structure, exterior, heating, plumbing, electrics, and gas. Tenants are responsible for minor consumables and damage they cause. The grey area — where most disputes live — is wear and tear versus damage. Your agent documents property condition at check-in and inspections, making it clear who is responsible when issues arise.` },
+    { question: `How quickly do contractors respond to ${city} tenant requests?`, answer: `Emergencies (flooding, gas leaks, no heating in winter) get same-day response. Urgent issues (broken appliance, plumbing leak) within 24-48 hours. Routine maintenance within 3-5 working days. Your agent's ${p.borough} contractor relationships mean faster response than you would get calling around yourself.` },
+    { question: `How are maintenance costs controlled for ${city} properties?`, answer: `Pre-agreed approval thresholds (typically £150-£300) let your agent handle routine repairs without calling you for every washer replacement. Above the threshold, they obtain competitive quotes before proceeding. Monthly reporting shows exactly what was spent and why. For ${p.propertyMix[0]} in the ${p.postcode} area, this prevents both over-spending and the under-maintenance that costs more long-term.` },
+  ]; },
 },
 
 "rent-collection-arrears-management": {
-  heroDesc: (city) => { const p = prof(city); return p ? `Consistent rent collection and effective arrears management protect your ${city} rental income. We match ${sizeLabel(p)} with specialists who ensure your ${p.postcode} area tenants pay on time and handle the difficult conversations when they don't.` : `Rent collection and arrears management specialists covering ${city}. Free matching, no obligation.`; },
-  heroBullets: (city) => { const p = prof(city); return p ? [`Rent collection specialists with proven processes for ${p.propertyMix[0]} and ${p.propertyMix[1]} in ${city}`, `Arrears prevention through proper referencing, clear communication, and early intervention for ${p.postcode} area tenancies`, `Legal compliance for Section 8 and Section 21 notices when arrears escalate on ${city} properties`] : [`Rent collection specialists covering ${city}`, 'Arrears prevention and early intervention', 'Legal compliance and escalation']; },
+  introHeading: (city) => { const p = prof(city); if (!p) return `Rent Collection and Arrears Management in ${city}`; return pick(city, [`Getting Paid On Time in ${city}: Rent Collection That Actually Works`, `When ${city} Tenants Stop Paying: Arrears Management Before It Gets Legal`, `Rent Collection for ${city} Landlords: Process, Not Hope`, `Protecting Your ${city} Rental Income From Day One to Day One Thousand`]); },
+  stepsHeading: (city) => pick(city, [`How Rent Collection Works for ${city} Properties`, `The ${city} Rent Collection and Arrears Process`, `From Standing Order to Legal Notice: Your ${city} Protection`, `Systematic Rent Collection for ${city} Landlords`]),
+  whyHeading: (city) => pick(city, [`Why ${city} Landlords Outsource Rent Collection`, `The Value of Professional Rent Recovery in ${city}`, `What Systematic Collection Gets ${city} Landlords`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Rent collection and arrears management covering ${city}. Free matching, no obligation.`; return `Late rent becomes arrears. Arrears become court proceedings. Court proceedings become £5,000+ in legal fees. We match ${sizeLabel(p)} in ${city}'s ${p.postcode} area with agents whose collection processes stop the spiral before it starts.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Systematic rent collection', 'Early arrears intervention', 'Legal compliance for notices']; return [`Standing order setup, automated tracking, and day-one chasing if rent is late from your ${city} tenant`, `Early intervention that resolves 95% of payment issues before they become formal arrears`, `Legally compliant Section 8 and Section 21 notices when arrears escalate — procedural accuracy that prevents court delays`]; },
   trustLine: (city) => { const p = prof(city); return p ? `Protecting rental income for ${city} landlords` : `Protecting rental income across ${city}`; },
   benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: "Consistent Collection", desc: `Standing order setup, payment tracking, and same-day reporting for your ${city} rental income. Your agent chases late payments from day one, before arrears accumulate into serious problems.` },
-    { title: "Early Intervention", desc: `${p.tenantBase}. Your agent understands these tenants and intervenes early when payment patterns change, addressing problems before they escalate into formal arrears.` },
-    { title: "Legal Compliance", desc: `When arrears escalate, your agent ensures correct notice service under Section 8 or Section 21, compliant with the latest requirements. For ${sizeLabel(p)} in ${city}, procedural accuracy prevents costly court delays.` },
-    { title: "Arrears Prevention", desc: `${p.managementChallenges.split(',')[0]}. Your agent's referencing and tenant management approach minimises arrears risk from the outset for your ${p.postcode} area property.` }
+    { title: "Chased From Day One", desc: `Not day five, not day fourteen, not "when we get round to it." Your agent contacts the tenant on the first day rent is late. Early contact resolves most late payments immediately — before the tenant spends the money on something else.` },
+    { title: "Process, Not Hope", desc: `Day 1: phone call. Day 3: written reminder. Day 7: formal letter. Day 14: notice served. It is systematic, documented, and legally sound. Hope is not a rent collection strategy for your ${city} property.` },
+    { title: "Legal Accuracy When It Matters", desc: `Section 8 notices must cite the correct grounds, serve the correct notice period, and follow the correct format. One procedural error delays possession by months. Your agent has served these notices for ${p.postcode} area properties and knows the process cold.` },
+    { title: "Prevention Through Vetting", desc: `${p.tenantBase}. The best arrears management is preventing bad tenants from moving in. Your agent's referencing process checks affordability properly — not just "can they pay" but "can they pay after their other commitments."` },
   ]; },
-  intro: (city) => { const p = prof(city); if (!p) return [`Rent collection in ${city} requires consistent processes and effective arrears management.`, `Professional agents ensure timely payment and handle escalation when needed.`]; return [
-    `${p.marketContext} For ${sizeLabel(p)} in this market, consistent rent collection is the foundation of a viable investment. Late payments that aren't chased immediately become arrears that become possession proceedings — each stage more expensive and stressful than the last.`,
-    `${p.tenantBase}. A rent collection specialist who works with ${city}'s rental market understands these tenants, sets clear payment expectations from the start, and intervenes early when patterns change — preventing the arrears situations that cost landlords thousands in lost income and legal fees.`
+  intro: (city) => { const p = prof(city); if (!p) return ['Rent collection requires consistent processes and early intervention.', 'Professional agents ensure timely payment and handle escalation properly.']; return [
+    `Every landlord thinks their tenant will pay on time until they don't. In ${city}'s ${p.postcode} area, even reliable tenants hit financial difficulties — redundancy, relationship breakdown, unexpected bills. The difference between a resolved hiccup and a five-figure legal nightmare is how quickly and professionally the agent responds.`,
+    `${p.managementChallenges}. An agent with a systematic collection process contacts late payers on day one, documents every communication, and serves legally compliant notices when necessary. This is not something you can do effectively yourself at 7am before work while trying to sound professional on the phone to someone who owes you £1,500.`,
   ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [
-    `Establish standing order payments with your ${city} tenant from day one of the tenancy`,
-    `Implement automated payment tracking with same-day alerts for missed or late payments`,
-    `Chase late payments from day one with structured communication escalating from reminder to formal notice`,
-    `Conduct early intervention meetings when payment patterns change, identifying problems before they become arrears`,
-    `Serve compliant notices where arrears persist, following current Section 8 and Section 21 requirements`,
-    `Coordinate with specialist landlord solicitors for court proceedings where necessary`,
-    `Provide monthly rent statements and arrears reporting for your ${city} property portfolio`
-  ]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [
-    `Proven rent collection processes achieving 99%+ collection rates for ${sizeLabel(p)} in ${city}'s ${p.postcode} area`,
-    `Early intervention approach that addresses payment problems before they become formal arrears`,
-    `Legally compliant notice service protecting your position if possession proceedings become necessary`,
-    `Arrears prevention through quality referencing and clear tenant communication from the start of every ${city} tenancy`
-  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Tenancy starts with standing order setup — not bank transfer promises — and clear written payment expectations`, `Automated rent tracking flags any missed or partial payment on the day it should have arrived`, `Day-one contact: your agent phones the tenant, confirms the situation, and agrees a resolution`, `If not resolved within 7 days, formal written communication begins with a documented trail`, `Persistent non-payment triggers compliant notice service — Section 8 for arrears, Section 21 for no-fault — with correct grounds and periods`, `If court proceedings become necessary, your agent coordinates with specialist landlord solicitors`, `Monthly rent statements and arrears reporting keep you informed throughout`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Systematic day-one chasing that prevents most late payments from becoming arrears`, `Documented communication trail that supports court proceedings if they become necessary`, `Legally accurate notice service for ${p.postcode} area properties — no procedural errors that delay possession`, `Prevention through proper affordability checks at the referencing stage`]; },
   faqs: (city) => { const p = prof(city); if (!p) return defFaqs['rent-collection-arrears-management'](city); return [
-    { question: `What happens when a ${city} tenant doesn't pay rent?`, answer: `Your agent contacts the tenant on day one of a missed payment. If payment isn't received within 3-5 days, formal written communication begins. Persistent non-payment triggers compliant notice service. For ${sizeLabel(p)} in ${city}, early intervention resolves most situations without formal proceedings — but your agent is prepared to escalate legally if needed.` },
-    { question: `How do ${city} agents prevent rent arrears?`, answer: `Through thorough pre-tenancy referencing that verifies affordability, clear payment expectations at move-in, standing order setup, automated payment monitoring, and early intervention when patterns change. For ${p.propertyMix[0]} in the ${p.postcode} area, prevention is significantly cheaper than cure.` },
-    { question: `What notice must ${city} landlords give for rent arrears?`, answer: `Section 8 notices for rent arrears require specific grounds (typically Ground 8 for 2+ months' arrears) with prescribed notice periods. Section 21 no-fault notices require compliance with deposit protection, prescribed information, and gas safety obligations. Your agent ensures correct procedural compliance for ${city} properties to avoid costly court challenges.` }
-  ]; }
+    { question: `How much rent arrears before I can evict a ${city} tenant?`, answer: `Under Section 8 Ground 8, the tenant must be at least 2 months' rent in arrears both when you serve the notice AND at the court hearing date. This is a mandatory ground — the judge must grant possession. Ground 10 and 11 allow action for lesser or persistent arrears but are discretionary. Your agent advises which grounds apply to your ${city} situation and serves notices that meet the legal requirements.` },
+    { question: `What happens if my ${city} tenant just stops paying?`, answer: `Your agent contacts them on day one. If there is a genuine short-term problem (job change, bank error), they agree a repayment plan. If there is no engagement or no resolution, notices are served within 14 days. The full process from first missed payment to court possession typically takes 4-8 months — which is why early intervention and correct procedure matter so much for ${p.postcode} area properties.` },
+    { question: `Can ${city} agents guarantee rent collection?`, answer: `No agent can guarantee a tenant will pay. What they can guarantee is process: day-one chasing, documented communication, correct legal notices, and efficient escalation. Some agents offer rent guarantee insurance as an add-on, which pays your rent if the tenant defaults. Ask your matched agent about availability for your ${city} property.` },
+  ]; },
 },
 
 "hmo-management": {
-  heroDesc: (city) => { const p = prof(city); return p ? `HMO properties in ${city} need specialist management — ${p.borough} licensing compliance, fire safety, room-by-room letting, and multi-tenant coordination. We match ${sizeLabel(p)} operating HMOs in the ${p.postcode} area with experienced multi-let specialists.` : `HMO management specialists covering ${city}. Free matching, no obligation.`; },
-  heroBullets: (city) => { const p = prof(city); return p ? [`HMO specialists experienced with multi-let properties in ${city}'s ${p.postcode} area and ${p.borough} licensing requirements`, `Room-by-room tenant management, communal area maintenance, and fire safety compliance for ${city} HMOs`, `${p.borough} council licensing applications, renewals, and ongoing compliance management`] : [`HMO management specialists covering ${city}`, 'Licensing and fire safety compliance', 'Room-by-room tenant management']; },
+  introHeading: (city) => { const p = prof(city); if (!p) return `HMO Management in ${city}`; return pick(city, [`Managing an HMO in ${city}: Licensing, Fire Safety, and Five Separate Tenancy Agreements`, `Why ${city} HMO Landlords Cannot Wing It: The Compliance Reality`, `HMO Management in the ${p.postcode} Area: Higher Yields, Higher Complexity`, `${p.borough} HMO Licensing and Management: What ${city} Landlords Need to Know`]); },
+  stepsHeading: (city) => pick(city, [`Setting Up Professional HMO Management in ${city}`, `How HMO Management Works in ${city}`, `From Licensing to Room-by-Room Letting: ${city} HMO Process`, `Getting Your ${city} HMO Properly Managed`]),
+  whyHeading: (city) => pick(city, [`Why ${city} HMO Landlords Need Specialist Agents`, `The Case for Professional HMO Management in ${city}`, `What HMO-Specialist Agents Deliver in ${city}`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `HMO management specialists covering ${city}. Free matching, no obligation.`; return `An HMO in ${city}'s ${p.postcode} area generates 30-50% more income than a single let — and 300% more compliance headaches. Licensing, fire safety, room-by-room tenancies, communal area standards. We match you with agents who specialise in multi-let management.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['HMO management specialists', 'Licensing and fire safety', 'Room-by-room management']; return [`${p.borough} council HMO licensing applications, conditions compliance, and renewals managed end to end`, `Fire risk assessments, interlinked detection, fire doors, escape routes, and emergency lighting maintained`, `Room-by-room tenant find, individual referencing, separate inventories, and coordinated void management`]; },
   trustLine: (city) => { const p = prof(city); return p ? `Specialist HMO management across ${city} and ${p.borough}` : `Specialist HMO management across ${city}`; },
   benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: `${p.borough} HMO Licensing`, desc: `Your agent manages the complete ${p.borough} council licensing process — applications, conditions compliance, renewals, and the ongoing documentation that mandatory and additional licensing schemes require for ${city} HMOs.` },
-    { title: "Fire Safety Compliance", desc: `Fire risk assessments, detection systems, escape route maintenance, fire doors, and emergency lighting for your ${city} HMO. Your agent ensures continuous compliance with the fire safety standards that licensing conditions demand.` },
-    { title: "Room-by-Room Management", desc: `Individual tenant management across multiple rooms — separate referencing, individual tenancy agreements, room-specific inventories, and coordinated move-in/move-out management for your ${p.postcode} area HMO.` },
-    { title: "Communal Area Standards", desc: `Kitchen, bathroom, and shared space maintenance at the standards ${p.borough} council requires for licensed HMOs. Your agent coordinates cleaning, repairs, and periodic inspections to maintain compliance.` }
+    { title: "Licensing Sorted", desc: `${p.borough} council's HMO licensing requirements including room sizes, amenity ratios, and conditions compliance. Your agent handles the application, manages the conditions, and tracks renewal dates. Operating without a license risks unlimited fines and rent repayment orders.` },
+    { title: "Fire Safety That Passes Inspection", desc: `Interlinked smoke and heat detection, fire doors with intumescent strips and closers, emergency lighting, fire blankets, maintained escape routes. Not a checklist — a continuously managed system that satisfies ${p.borough} council inspections at your ${city} HMO.` },
+    { title: "Room-by-Room, Not Room-by-Headache", desc: `Five tenants means five referencing processes, five deposit protections, five sets of prescribed information, and five different notice dates. Your agent manages each tenancy individually while coordinating the shared spaces, void periods, and communal maintenance.` },
+    { title: "Yield Protection", desc: `HMO yields depend on minimising room voids and managing communal costs efficiently. Your agent markets individual rooms to the ${p.postcode} area demographic, keeps rooms filled, and manages the higher maintenance load that shared living creates.` },
   ]; },
-  intro: (city) => { const p = prof(city); if (!p) return [`HMO management in ${city} requires specialist expertise in licensing, fire safety, and multi-tenant coordination.`, `Professional agents handle the complexity that makes HMOs both profitable and demanding.`]; return [
-    `${p.marketContext} For HMO operators in this market, the management complexity far exceeds standard single lets — licensing compliance, fire safety obligations, communal area maintenance, and the coordination of multiple individual tenancies within a single property demand specialist expertise.`,
-    `${p.managementChallenges}. An HMO management specialist who works with ${city}'s multi-let market handles these obligations routinely, maintaining the compliance standards that protect your license while maximising occupancy across all rooms.`
+  intro: (city) => { const p = prof(city); if (!p) return ['HMO management requires specialist expertise in licensing, fire safety, and multi-tenant coordination.', 'The right agent maximises your yield while keeping you compliant.']; return [
+    `An HMO in ${city} is not a house with more tenants. It is a licensed premises with fire safety obligations, amenity standards, room size requirements, and individual tenancy management that multiplies every task by the number of rooms. ${p.managementChallenges}. Self-managing landlords who treat HMOs like single lets eventually get a ${p.borough} council inspection visit — and the fines for non-compliance start at £5,000 per offence.`,
+    `Professional HMO management costs more than single-let management — typically 12-18% of gross rent. But HMOs generate 30-50% more income, and the management fee buys you licensing compliance, fire safety maintenance, room-by-room tenant coordination, and communal area standards that you cannot realistically maintain yourself alongside a day job. The maths works.`,
   ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [
-    `Assess your ${city} HMO including current licensing status, fire safety compliance, and room standards`,
-    `Manage ${p.borough} council licensing applications or renewals with all required documentation and conditions compliance`,
-    `Establish fire safety systems including detection, escape routes, fire doors, and emergency lighting maintenance`,
-    `Set up room-by-room letting with individual tenancy agreements, inventories, and deposit protection per tenant`,
-    `Implement communal area maintenance schedules meeting ${p.borough} licensing standards`,
-    `Coordinate ongoing tenant management including individual references, check-ins, and room-specific maintenance`,
-    `Provide occupancy reporting, financial summaries, and compliance monitoring for your ${city} HMO portfolio`
-  ]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [
-    `HMO specialists who understand ${p.borough} council licensing requirements and fire safety standards for ${city} properties`,
-    `Room-by-room tenant management maximising occupancy and minimising void periods across your HMO`,
-    `Communal area maintenance at the standards ${p.borough} licensing conditions require`,
-    `Ongoing compliance monitoring protecting your HMO license and investment in ${city}'s ${p.postcode} area`
-  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`HMO compliance audit: licensing status, fire safety, room sizes, amenity ratios, and current management against ${p.borough} council requirements`, `License application or renewal management including all documentation, floor plans, and conditions compliance`, `Fire safety system installation or upgrade: interlinked detection, fire doors, emergency lighting, escape route signage`, `Room-by-room marketing to the ${p.postcode} area sharers market with individual tenancy setup per room`, `Communal area management: cleaning schedules, shared kitchen and bathroom maintenance, and condition inspections`, `Individual tenant management: separate rent collection, individual deposit protection, room-specific maintenance`, `Ongoing compliance monitoring: annual fire safety review, licensing conditions checks, and ${p.borough} council liaison`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`HMO specialists who understand ${p.borough} licensing requirements — not generalist agents guessing at compliance`, `Fire safety expertise maintaining the systems that protect both your tenants and your license`, `Room-by-room management processes that handle five tenancies as efficiently as one`, `Communal area standards that satisfy ${p.borough} council inspections and prevent tenant complaints`]; },
   faqs: (city) => { const p = prof(city); if (!p) return defFaqs['hmo-management'](city); return [
-    { question: `Does my ${city} property need an HMO license?`, answer: `Mandatory licensing applies to properties with 5+ occupants forming 2+ households. ${p.borough} council may also operate additional licensing schemes covering smaller HMOs. Your agent assesses your ${city} property against current requirements and manages the application process if licensing is required.` },
-    { question: `How much does HMO management cost in ${city}?`, answer: `HMO management fees are typically 12-18% of gross rental income for ${city} properties, reflecting the additional complexity of multi-tenant management, licensing compliance, and communal area maintenance. The higher fees are justified by the significantly higher yields HMOs generate compared to single lets in the ${p.postcode} area.` },
-    { question: `What fire safety is required for ${city} HMOs?`, answer: `Licensed HMOs in ${city} require fire risk assessments, Grade A detection systems (interlinked alarms), fire doors to habitable rooms and kitchens, emergency lighting in escape routes, fire blankets in kitchens, and maintained escape routes. ${p.borough} council conditions may specify additional requirements. Your agent manages the complete fire safety obligation.` }
-  ]; }
-}
+    { question: `Does my ${city} property need an HMO license?`, answer: `Mandatory licensing applies if you have 5+ tenants forming 2+ households. ${p.borough} council may also run additional licensing schemes covering smaller HMOs (3-4 tenants, 2+ households). Penalties for operating without a license include unlimited fines and rent repayment orders covering up to 12 months' rent. Your agent checks your ${p.postcode} area property against current requirements and manages the application if needed.` },
+    { question: `How much does HMO management cost in ${city}?`, answer: `12-18% of gross rental income, which is higher than single-let management (8-12%) but reflects the additional work: room-by-room tenancies, licensing compliance, fire safety management, and communal area maintenance. For an HMO generating £3,000/month in the ${p.postcode} area, management costs £360-£540/month — a fraction of the additional income HMO conversion generates over a single let.` },
+    { question: `What happens if ${p.borough} council inspects my ${city} HMO?`, answer: `If you are compliant, nothing happens except a satisfied inspector. If you are not, the consequences range from improvement notices (requiring works within a deadline) to prosecution (unlimited fines) to civil penalty notices (up to £30,000) to rent repayment orders (refunding tenants up to 12 months rent). Professional management ensures you are always inspection-ready.` },
+  ]; },
+},
 
 };
 
@@ -247,13 +340,13 @@ function defBenefits(city: string) { return [
   { title: "Full Compliance", desc: `Complete compliance management covering every landlord obligation.` },
   { title: "Matched to Your Property", desc: `We match you with agents experienced with your specific property type.` }
 ]; }
-function defSteps(city: string) { return [`Assess your property and management needs`, `Match you with experienced local agents`, `Arrange property assessments and fee comparisons`, `Select your agent and establish services`, `Implement management systems and compliance`, `Commence tenant management or tenant find`, `Ongoing reporting and performance management`]; }
-function defWhyPoints(city: string) { return [`Local property management specialists covering ${city}`, `Full compliance and tenant management`, `Responsive maintenance coordination`, `Transparent fees and regular reporting`]; }
+function defSteps(city: string) { return [`Assess your property and management needs`, `Match with experienced local agents`, `Arrange assessments and fee comparisons`, `Select your agent`, `Implement management and compliance`, `Commence tenant management`, `Ongoing reporting`]; }
+function defWhyPoints(city: string) { return [`Local specialists covering ${city}`, `Full compliance management`, `Responsive maintenance`, `Transparent fees`]; }
 const defFaqs: Record<string, (city: string) => { question: string; answer: string }[]> = {
-  'residential-lettings-management': (c) => [{ question: `How much do agents charge?`, answer: `8-15% of monthly rent typically. All agents provide clear fee schedules.` }, { question: `How quickly can you let?`, answer: `2-4 weeks for well-priced, compliant properties.` }, { question: `What compliance is needed?`, answer: `Gas safety, EPC, EICR, smoke/CO alarms, deposit protection, right-to-rent.` }],
-  'block-estate-management': (c) => [{ question: `How much does block management cost?`, answer: `£150-£400 per unit per year depending on block size and complexity.` }, { question: `What does it include?`, answer: `Service charge admin, H&S, insurance, contractor management, accounts.` }, { question: `How do we change agent?`, answer: `Process depends on structure — RMC resolution or Section 24 tribunal.` }],
-  'tenant-find-referencing': (c) => [{ question: `How much does tenant find cost?`, answer: `4-8 weeks' rent typically as a one-off charge.` }, { question: `How long does it take?`, answer: `2-4 weeks from marketing to move-in for well-priced properties.` }, { question: `What referencing is done?`, answer: `Employment, credit, landlord references, right-to-rent, affordability.` }],
-  'property-maintenance-coordination': (c) => [{ question: `How does it work?`, answer: `Agent receives requests, obtains quotes, manages work to completion.` }, { question: `What about emergencies?`, answer: `24/7 response for burst pipes, boiler failure, security issues.` }, { question: `How are costs controlled?`, answer: `Competitive quoting, approval thresholds, regular reporting.` }],
-  'rent-collection-arrears-management': (c) => [{ question: `What if a tenant doesn't pay?`, answer: `Contact from day one, formal process escalating to legal if needed.` }, { question: `How are arrears prevented?`, answer: `Thorough referencing, clear expectations, early intervention.` }, { question: `What notice is needed?`, answer: `Section 8 for arrears grounds, Section 21 for no-fault — both require compliance.` }],
-  'hmo-management': (c) => [{ question: `Do I need a license?`, answer: `Mandatory for 5+ occupants, 2+ households. Additional schemes may apply.` }, { question: `How much does HMO management cost?`, answer: `12-18% of gross rent, reflecting multi-tenant complexity.` }, { question: `What fire safety is required?`, answer: `Fire risk assessment, interlinked alarms, fire doors, emergency lighting.` }]
+  'residential-lettings-management': (c) => [{ question: `How much do agents charge?`, answer: `8-15% for full management. All provide clear fee schedules.` }, { question: `How quickly can you let?`, answer: `2-4 weeks for well-priced properties.` }, { question: `What compliance is needed?`, answer: `Gas, EICR, EPC, deposit, right-to-rent, smoke/CO alarms.` }],
+  'block-estate-management': (c) => [{ question: `How much does block management cost?`, answer: `£150-£400 per unit per year.` }, { question: `What does it include?`, answer: `Service charges, H&S, insurance, contractors, accounts.` }, { question: `How do we change agent?`, answer: `Board resolution or Section 24 tribunal application.` }],
+  'tenant-find-referencing': (c) => [{ question: `What does it cost?`, answer: `4-8 weeks rent as a one-off.` }, { question: `How long?`, answer: `2-4 weeks to move-in.` }, { question: `What checks?`, answer: `Employment, credit, landlord, right-to-rent, affordability.` }],
+  'property-maintenance-coordination': (c) => [{ question: `How does it work?`, answer: `Agent receives reports, obtains quotes, manages work.` }, { question: `Emergencies?`, answer: `24/7 response for genuine emergencies.` }, { question: `Cost control?`, answer: `Approval thresholds, competitive quoting, monthly reporting.` }],
+  'rent-collection-arrears-management': (c) => [{ question: `What if they dont pay?`, answer: `Day-one contact, formal process, legal escalation if needed.` }, { question: `Prevention?`, answer: `Thorough referencing and clear payment expectations.` }, { question: `What notice?`, answer: `Section 8 for arrears, Section 21 for no-fault.` }],
+  'hmo-management': (c) => [{ question: `Need a license?`, answer: `Mandatory for 5+ tenants, 2+ households. Additional schemes may apply.` }, { question: `Cost?`, answer: `12-18% of gross rent.` }, { question: `Fire safety?`, answer: `Interlinked alarms, fire doors, emergency lighting, maintained escape routes.` }],
 };
