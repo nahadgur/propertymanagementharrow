@@ -1,7 +1,7 @@
 // app/location/[city]/page.tsx - TEMPLATE
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle, Clock, Shield, Star } from 'lucide-react';
@@ -19,9 +19,10 @@ import { Testimonials } from '@/components/Testimonials';
 import { siteConfig } from '@/data/site';
 import { cityPageContent } from '@/data/cityContent';
 
-export default function CityPage({ params }: { params: { city: string } }) {
+export default function CityPage({ params }: { params: Promise<{ city: string }> }) {
+  const { city: citySlug } = use(params);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const cityName = getCityBySlug(params.city);
+  const cityName = getCityBySlug(citySlug);
   if (!cityName) notFound();
 
   const cityFaqs = cityPageContent.faqs(cityName);
@@ -30,9 +31,9 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'AccountingService',
+    '@type': 'LegalService',
     name: `${siteConfig.name} in ${cityName}`,
-    url: `${siteConfig.url}/location/${params.city}/`,
+    url: `${siteConfig.url}/location/${citySlug}/`,
     description: cityPageContent.heroDesc(cityName),
     areaServed: {
       '@type': 'City',
@@ -103,7 +104,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">Services Available in {cityName}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {services.map(service => (
-                    <Link key={service.id} href={`/services/${service.slug}/${params.city}/`} className="block group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                    <Link key={service.id} href={`/services/${service.slug}/${citySlug}/`} className="block group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                       <div className="h-36 overflow-hidden">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
@@ -148,7 +149,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               <div className="mb-12"><FAQ faqs={cityFaqs} title={`${siteConfig.name} in ${cityName}: Common Questions`} /></div>
 
               <section className="mb-16">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Harrow Property Investors Are Saying</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Are Saying</h2>
                 <Testimonials limit={3} />
               </section>
             </div>
@@ -158,7 +159,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-4">{cityPageContent.sidebarCta(cityName).heading}</h3>
                   <p className="text-gray-600 text-sm mb-6">{cityPageContent.sidebarCta(cityName).description}</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Property Tax Accountant</button>
+                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
                   <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
                     {cityPageContent.sidebarTrustPoints(cityName).map((item, i) => (
                       <div key={i} className="flex items-center gap-3">

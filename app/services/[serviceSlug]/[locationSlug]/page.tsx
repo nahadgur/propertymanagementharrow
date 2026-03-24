@@ -1,6 +1,6 @@
 // app/services/[serviceSlug]/[locationSlug]/page.tsx
 'use client';
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, MapPin, Star, Clock, Shield, Award, Users } from 'lucide-react';
@@ -20,14 +20,15 @@ import { serviceLocationContent } from '@/data/serviceLocationContent';
 
 const benefitIcons = [<Award key="a" className="w-6 h-6" />, <Clock key="c" className="w-6 h-6" />, <Shield key="s" className="w-6 h-6" />, <Users key="u" className="w-6 h-6" />];
 
-export default function ServiceLocationPage({ params }: { params: { serviceSlug: string; locationSlug: string } }) {
+export default function ServiceLocationPage({ params }: { params: Promise<{ serviceSlug: string; locationSlug: string }> }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const service = getServiceBySlug(params.serviceSlug);
-  const cityName = getCityBySlug(params.locationSlug);
+  const { serviceSlug, locationSlug } = use(params);
+  const service = getServiceBySlug(serviceSlug);
+  const cityName = getCityBySlug(locationSlug);
   if (!service || !cityName) notFound();
 
   const allCities = Object.values(LOCATIONS).flat();
-  const content = serviceLocationContent[service.id] || serviceLocationContent['capital-gains-tax-planning'];
+  const content = serviceLocationContent[service.id] || serviceLocationContent['residential-lettings-management'];
   const heroDesc = content.heroDesc(cityName);
   const heroBullets = content.heroBullets(cityName);
   const trustLine = content.trustLine(cityName);
@@ -40,7 +41,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
   const whyPoints = content.whyPoints(cityName);
   const faqs = content.faqs(cityName);
 
-  const localBusinessSchema = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: `${service.title} in ${cityName}`, url: `${siteConfig.url}/services/${service.slug}/${params.locationSlug}/`, description: heroDesc, areaServed: { '@type': 'City', name: cityName, containedInPlace: { '@type': 'AdministrativeArea', name: 'Harrow' } }, serviceType: service.title, priceRange: '\u00a3\u00a3' };
+  const localBusinessSchema = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: `${service.title} in ${cityName}`, url: `${siteConfig.url}/services/${service.slug}/${locationSlug}/`, description: heroDesc, areaServed: { '@type': 'City', name: cityName, containedInPlace: { '@type': 'AdministrativeArea', name: 'Harrow' } }, serviceType: service.title, priceRange: '\u00a3\u00a3' };
   const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) };
 
   return (
@@ -61,7 +62,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-6">
               <div>
                 <div className="inline-flex items-center gap-2 bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full text-sm font-medium mb-6 border border-brand-500/30">
-                  <MapPin className="w-4 h-4" /> Property Tax Specialists in {cityName}
+                  <MapPin className="w-4 h-4" /> Property Management in {cityName}
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">{service.title} in <span className="text-brand-400">{cityName}</span></h1>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">{heroDesc}</p>
@@ -108,7 +109,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
               </section>
               {faqs.length > 0 && (<div className="mb-12"><FAQ faqs={faqs} title={`${service.title} in ${cityName}: Common Questions`} /></div>)}
               <section className="mt-12 mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Harrow Property Investors Are Saying</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Harrow Landlords Are Saying</h2>
                 <Testimonials limit={2} />
               </section>
             </div>
@@ -117,7 +118,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-4">Other Services in {cityName}</h3>
                   <ul className="space-y-2 mb-8">
-                    {services.filter(s => s.id !== service.id).map(s => (<li key={s.id}><Link href={`/services/${s.slug}/${params.locationSlug}/`} className="block px-4 py-3 rounded-lg bg-gray-50 border border-gray-100 hover:border-brand-300 hover:bg-brand-50 text-gray-700 hover:text-brand-700 transition-all text-sm font-medium">{s.title} in {cityName}</Link></li>))}
+                    {services.filter(s => s.id !== service.id).map(s => (<li key={s.id}><Link href={`/services/${s.slug}/${locationSlug}/`} className="block px-4 py-3 rounded-lg bg-gray-50 border border-gray-100 hover:border-brand-300 hover:bg-brand-50 text-gray-700 hover:text-brand-700 transition-all text-sm font-medium">{s.title} in {cityName}</Link></li>))}
                   </ul>
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-4">{service.title} Elsewhere</h3>
                   <ul className="space-y-2">
@@ -125,16 +126,16 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
                   </ul>
                 </div>
                 <div className="bg-brand-900 text-white p-6 rounded-2xl shadow-lg">
-                  <h3 className="text-lg font-display font-bold mb-3">From &pound;149/month</h3>
-                  <p className="text-brand-100 text-sm mb-4">Fixed fees for CGT returns, SDLT calculations, and ongoing advisory. No hidden charges.</p>
+                  <h3 className="text-lg font-display font-bold mb-3">From &pound;89/month</h3>
+                  <p className="text-brand-100 text-sm mb-4">Transparent management fees from most {cityName} property specialists. No hidden charges.</p>
                   <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">Get Free Quotes</button>
                 </div>
               </div>
             </aside>
           </div>
           <div className="bg-brand-900 rounded-2xl p-8 md:p-12 text-center mt-12">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">Get {service.title} Advice in {cityName}</h2>
-            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">Submit your enquiry in under two minutes. We match you with up to three vetted {cityName} property tax specialists with no obligation.</p>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">Get {service.title} Quotes in {cityName}</h2>
+            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">Submit your enquiry in under two minutes. We will match you with up to three vetted {cityName} property management specialists with no obligation.</p>
             <button onClick={() => setIsModalOpen(true)} className="bg-white text-brand-900 font-bold text-lg py-4 px-10 rounded-xl hover:bg-brand-50 transition-colors">Get Your Free Quotes</button>
           </div>
         </div>
