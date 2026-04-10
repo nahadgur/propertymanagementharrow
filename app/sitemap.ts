@@ -157,6 +157,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // ── Service × Location pages ───────────────────────────────────────────────
+  const serviceLocationPages: MetadataRoute.Sitemap = []
+  for (const service of services) {
+    for (const area of spokeAreas) {
+      serviceLocationPages.push({
+        url:             `${base}/services/${service.slug}/${area.slug}/`,
+        lastModified:    NOW,
+        changeFrequency: 'monthly' as const,
+        priority:        0.75,
+      })
+    }
+  }
+
   return [
     ...corePages,
     ...serviceIndex,
@@ -169,5 +182,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolIndex,
     ...toolPages,
     ...legalPages,
+    ...serviceLocationPages,
   ]
 }
