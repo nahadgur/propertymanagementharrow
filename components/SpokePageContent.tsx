@@ -79,7 +79,9 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
               </div>
               </div>
             </div>
-            <HeroLeadForm location={`${area.name} Hero`} />
+            
+
+<HeroLeadForm location={`${area.name} Hero`} />
           </div>
         </section>
 
@@ -328,4 +330,3 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
     </>
   )
 }
-              </div>

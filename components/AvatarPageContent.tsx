@@ -86,7 +86,9 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
               </div>
               </div>
             </div>
-            <HeroLeadForm location={`${avatar.title} Hero`} />
+            
+
+<HeroLeadForm location={`${avatar.title} Hero`} />
           </div>
         </section>
 
@@ -366,4 +368,3 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
     </>
   )
 }
-              </div>
