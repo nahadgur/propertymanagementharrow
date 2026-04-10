@@ -1,107 +1,91 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { siteConfig, navLinks } from '@/data/site'
+import { useState } from 'react'
 
-interface HeaderProps {
-  onOpenModal: () => void
-}
+const NAV_LINKS = [
+  { label: 'Services',  href: '/services/' },
+  { label: 'Landlords', href: '/landlords/' },
+  { label: 'About',     href: '/about/' },
+  { label: 'Contact',   href: '/contact/' },
+]
 
-export default function Header({ onOpenModal }: HeaderProps) {
-  const [mobileOpen, setMobileOpen] = useState(false)
+export default function Header() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
-      {/* Top bar */}
-      <div style={{ background: 'var(--green)' }} className="hidden md:block">
-        <div className="site-container flex justify-between items-center h-9">
-          <p className="text-white/70 text-[11px] tracking-wide">
-            Harrow&apos;s Vetted Property Management Specialists — ARLA Propertymark Members
-          </p>
-          <div className="flex items-center gap-6">
-            <a
-              href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-              className="text-white text-[11px] font-semibold tracking-wide hover:text-white/80 transition-colors"
+    <header
+      className="sticky top-0 z-50"
+      style={{ background: '#fff', borderBottom: '1px solid var(--border)' }}
+    >
+      <div className="site-container flex items-center justify-between h-[60px]">
+
+        {/* Logo */}
+        <Link href="/" className="no-underline flex flex-col gap-0">
+          <span className="font-raleway font-800 text-[15px] leading-none tracking-[-0.01em]" style={{ color: 'var(--text)' }}>
+            Harrow <span style={{ color: 'var(--green)' }}>Property Management</span>
+          </span>
+          <span className="font-raleway font-500 text-[9px] uppercase tracking-[.14em]" style={{ color: 'var(--text-light)' }}>
+            ARLA Registered · Est. 2011
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-6">
+          {NAV_LINKS.map(l => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="font-raleway font-600 text-[11px] uppercase tracking-[.05em] no-underline transition-colors"
+              style={{ color: '#9aab9e' }}
             >
-              {siteConfig.phone}
-            </a>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="text-white/70 text-[11px] hover:text-white transition-colors"
-            >
-              {siteConfig.email}
-            </a>
-          </div>
-        </div>
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href="/contact/"
+            className="pm-btn-outline text-[11px]"
+          >
+            Free Quote
+          </Link>
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex flex-col gap-[5px] p-1 border-0 bg-transparent cursor-pointer"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          <span className="block w-5 h-[1.5px]" style={{ background: 'var(--text)', transition: 'transform .2s', transform: open ? 'translateY(6.5px) rotate(45deg)' : 'none' }} />
+          <span className="block w-5 h-[1.5px]" style={{ background: 'var(--text)', opacity: open ? 0 : 1, transition: 'opacity .2s' }} />
+          <span className="block w-5 h-[1.5px]" style={{ background: 'var(--text)', transition: 'transform .2s', transform: open ? 'translateY(-6.5px) rotate(-45deg)' : 'none' }} />
+        </button>
       </div>
 
-      {/* Main nav */}
-      <nav className="border-b border-[#f0eee8] bg-white relative">
-        <div className="site-container flex items-center justify-between h-[68px]">
-          {/* Logo */}
-          <Link href="/" className="flex flex-col gap-0.5 no-underline">
-            <span className="font-display text-[16px] md:text-[19px] text-text leading-none tracking-[-0.01em]">
-              Property<span style={{ color: 'var(--green)' }}>Management</span>Harrow
-            </span>
-            <span className="text-[9px] uppercase tracking-[0.18em] text-text-faint font-medium font-sans">
-              Vetted Specialist Network
-            </span>
-          </Link>
-
-          {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[12px] text-text-muted no-underline hover:text-text transition-colors font-sans tracking-wide"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <button
-              onClick={onOpenModal}
-              className="btn-primary text-[12px] py-3 px-6"
+      {/* Mobile dropdown */}
+      {open && (
+        <div
+          className="md:hidden flex flex-col border-t"
+          style={{ background: '#fff', borderColor: 'var(--border)' }}
+        >
+          {NAV_LINKS.map(l => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="font-raleway font-600 text-[12px] uppercase tracking-[.05em] no-underline px-7 py-3 border-b"
+              style={{ color: 'var(--text-muted)', borderColor: 'var(--border)' }}
             >
-              Get Matched — Free
-            </button>
+              {l.label}
+            </Link>
+          ))}
+          <div className="px-7 py-4">
+            <Link href="/contact/" className="pm-btn block text-center" onClick={() => setOpen(false)}>
+              Get a Free Quote
+            </Link>
           </div>
-
-          {/* Mobile hamburger */}
-          <button
-            className="lg:hidden flex flex-col gap-[5px] p-2 cursor-pointer"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-5 h-[1.5px] bg-text transition-all ${mobileOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`} />
-            <span className={`block w-5 h-[1.5px] bg-text transition-all ${mobileOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-5 h-[1.5px] bg-text transition-all ${mobileOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`} />
-          </button>
         </div>
-
-        {/* Mobile menu - absolute so it overlays content */}
-        {mobileOpen && (
-          <div className="lg:hidden absolute left-0 right-0 top-full z-50 border-t border-[#f0eee8] bg-white shadow-xl px-6 py-6 flex flex-col gap-5">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[14px] text-text-muted no-underline font-sans"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <button
-              onClick={() => { setMobileOpen(false); onOpenModal() }}
-              className="btn-primary text-[13px] py-3 mt-2 self-start px-6"
-            >
-              Get Matched — Free
-            </button>
-          </div>
-        )}
-      </nav>
+      )}
     </header>
   )
 }

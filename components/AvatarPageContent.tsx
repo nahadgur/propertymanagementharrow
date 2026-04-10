@@ -41,7 +41,7 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
         onClose={() => setModalOpen(false)}
         location={`Avatar: ${avatar.slug}`}
       />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 

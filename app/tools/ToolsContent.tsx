@@ -17,7 +17,7 @@ export default function ToolsContent() {
   return (
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Tools Index" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
       <main className="flex-grow">
         <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
           <img src="/images/hero-services.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />

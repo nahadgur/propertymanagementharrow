@@ -57,7 +57,7 @@ export default function TenantScreeningGuideContent() {
         mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.propertymanagementharrow.co.uk/guides/tenant-screening-best-practices/' },
       }) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Tenant Screening Guide" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
         {/* Hero */}

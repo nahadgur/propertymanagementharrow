@@ -57,7 +57,7 @@ export default function HMOLicensingGuideContent() {
         mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.propertymanagementharrow.co.uk/guides/hmo-licensing-harrow/' },
       }) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="HMO Licensing Guide" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
         {/* Hero */}

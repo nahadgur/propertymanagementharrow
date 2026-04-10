@@ -57,7 +57,7 @@ export default function ComplianceChecklistContent() {
         mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.propertymanagementharrow.co.uk/guides/landlord-compliance-checklist/' },
       }) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Compliance Checklist Guide" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
         {/* Hero */}

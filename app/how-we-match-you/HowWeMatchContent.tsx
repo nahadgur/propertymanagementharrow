@@ -81,7 +81,7 @@ export default function HowWeMatchContent() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="How We Match You" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
         {/* Hero */}

@@ -13,7 +13,7 @@ export default function AboutContent() {
   return (
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="About" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
       <main className="flex-grow">
         <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
           <img src="/images/property-maintenance-coordination.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />

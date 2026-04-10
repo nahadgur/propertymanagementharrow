@@ -18,7 +18,7 @@ export default function LocalHubContent() {
   return (
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Harrow Hub" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 

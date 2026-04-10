@@ -57,7 +57,7 @@ export default function HomePageContent() {
       />
 
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Homepage" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 

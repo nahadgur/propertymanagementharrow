@@ -21,7 +21,7 @@ export default function RentalYieldCalcContent() {
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
       }) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Rental Yield Calculator" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
       <main className="flex-grow">
         <section className="relative py-16 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
           <img src="/images/hero-services.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />

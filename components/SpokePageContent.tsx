@@ -32,7 +32,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
         onClose={() => setModalOpen(false)}
         location={`Spoke: ${area.name}`}
       />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 

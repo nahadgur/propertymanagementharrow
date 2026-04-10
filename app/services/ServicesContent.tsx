@@ -16,7 +16,7 @@ export default function ServicesContent() {
   return (
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Services Index" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
         {/* Hero */}

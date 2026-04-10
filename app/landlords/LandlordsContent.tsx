@@ -25,7 +25,7 @@ export default function LandlordsContent() {
   return (
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Landlords Index" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
         {/* Hero */}

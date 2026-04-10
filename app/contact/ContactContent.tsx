@@ -35,7 +35,7 @@ export default function ContactContent() {
   return (
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Contact" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
       <main className="flex-grow">
         <section style={{ background: 'var(--green-deep)' }} className="py-20">
           <div className="site-container">

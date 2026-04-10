@@ -92,7 +92,7 @@ export default function LocationsContent() {
         url: 'https://www.propertymanagementharrow.co.uk/locations/',
       }) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Locations Page" />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 

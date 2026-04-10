@@ -52,7 +52,7 @@ export default function ServiceLocationContent({ service, content, area }: Props
     <>
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)}
         service={service.title} location={`${service.title} — ${area.name}`} />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 

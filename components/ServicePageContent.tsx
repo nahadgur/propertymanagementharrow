@@ -38,7 +38,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
         service={service.title}
         location={`Service: ${service.slug}`}
       />
-      <Header onOpenModal={() => setModalOpen(true)} />
+      <Header />
 
       <main className="flex-grow">
 
