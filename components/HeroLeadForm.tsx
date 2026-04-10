@@ -8,7 +8,7 @@ interface HeroLeadFormProps {
   image?:    string
 }
 
-const SCRIPT_URL = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? ''
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFsGn1hEa134t4at3Qv_dVSUBrUI8DuS8STgtyw0Nvnr8sEONvut-CUyxCy_uH9Jt1/exec'
 
 export default function HeroLeadForm({ service, location, image = '/images/hero-main.png' }: HeroLeadFormProps) {
   const [form, setForm] = useState({

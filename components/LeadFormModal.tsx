@@ -9,7 +9,7 @@ interface LeadFormModalProps {
   location?: string
 }
 
-const SCRIPT_URL = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? ''
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFsGn1hEa134t4at3Qv_dVSUBrUI8DuS8STgtyw0Nvnr8sEONvut-CUyxCy_uH9Jt1/exec'
 
 export default function LeadFormModal({ isOpen, onClose, service, location }: LeadFormModalProps) {
   const [form, setForm] = useState({
