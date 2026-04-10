@@ -62,8 +62,10 @@ export default function Section24GuidePage() {
 
       <main className="flex-grow">
         {/* Hero */}
-        <section style={{ background: 'var(--green-deep)' }} className="py-20">
-          <div className="site-container">
+        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/residential-lettings-management.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(15,51,32,0.88) 0%, rgba(15,51,32,0.6) 100%)' }} />
+          <div className="site-container relative z-10">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides', href: '/guides/' }, { label: 'Section 24 Guide' }]} />
             <div className="max-w-2xl">
               <span className="inline-block font-sans text-[10px] uppercase tracking-widest font-semibold px-3 py-1.5 mb-6" style={{ background: 'rgba(39,118,73,0.25)', color: 'var(--green-mid)' }}>

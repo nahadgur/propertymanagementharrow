@@ -22,8 +22,10 @@ export default function SPVCalculatorPage() {
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="SPV Calculator" />
       <Header onOpenModal={() => setModalOpen(true)} />
       <main className="flex-grow">
-        <section style={{ background: 'var(--green-deep)' }} className="py-16">
-          <div className="site-container">
+        <section className="relative py-16 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/block-estate-management.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(15,51,32,0.88) 0%, rgba(15,51,32,0.6) 100%)' }} />
+          <div className="site-container relative z-10">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Tools', href: '/tools/' }, { label: 'SPV vs Personal Tax Calculator' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Free Tool</p>
             <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-4 leading-tight">SPV vs Personal Tax Calculator</h1>
