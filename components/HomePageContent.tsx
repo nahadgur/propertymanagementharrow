@@ -63,22 +63,22 @@ export default function HomePageContent() {
 
         {/* ── HERO ─────────────────────────────────────────────────── */}
         <section>
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] min-h-[calc(100vh-108px)]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_440px]">
             {/* Left — copy */}
-            <div className="flex flex-col justify-between px-16 py-20 bg-white">
+            <div className="flex flex-col justify-between px-6 py-12 md:px-12 lg:px-16 lg:py-20 bg-white">
               <div>
                 <div className="flex items-center gap-3 mb-8">
                   <div style={{ width: 36, height: 2, background: 'var(--green)' }} />
                   <span className="eyebrow">Property Tax Specialists — Harrow</span>
                 </div>
 
-                <h1 className="font-display text-hero text-text mb-6 max-w-[580px]">
+                <h1 className="font-display text-[2.8rem] md:text-[3.5rem] lg:text-hero leading-tight text-text mb-6 max-w-[580px]">
                   Serious property<br />
                   needs <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>serious</em><br />
                   tax counsel.
                 </h1>
 
-                <p className="font-sans text-[17px] text-text-muted leading-relaxed max-w-[500px] mb-10">
+                <p className="font-sans text-[15px] md:text-[17px] text-text-muted leading-relaxed max-w-[500px] mb-8 md:mb-10">
                   We connect Harrow&apos;s property investors with ACCA and ICAEW certified accountants whose practices are built entirely around one thing: protecting portfolio wealth through Section 24, SPV structuring, and generational planning.
                 </p>
 
@@ -93,10 +93,10 @@ export default function HomePageContent() {
               </div>
 
               {/* Stats */}
-              <div className="flex gap-0 border-t border-[#f0eee8] pt-10">
+              <div className="flex flex-wrap gap-8 border-t border-[#f0eee8] pt-8 md:pt-10">
                 {stats.map((s, i) => (
                   <div key={s.number}
-                    className={`pr-10 mr-10 ${i < stats.length - 1 ? 'border-r border-[#f0eee8]' : ''}`}>
+                    className="flex flex-col">
                     <span className="font-display text-[40px] leading-none" style={{ color: 'var(--green)' }}>
                       {s.number}
                     </span>
@@ -216,7 +216,7 @@ export default function HomePageContent() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
               {services.map(svc => (
                 <Link
                   key={svc.id}
@@ -265,7 +265,7 @@ export default function HomePageContent() {
         {/* ── HOW WE MATCH YOU ─────────────────────────────────────── */}
         <section className="section-pad bg-white">
           <div className="site-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               <div>
                 <p className="eyebrow mb-4">Our Process</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
@@ -325,7 +325,7 @@ export default function HomePageContent() {
               What Harrow landlords say after being matched.
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {testimonials.map(t => (
                 <div key={t.id} className="bg-white p-8 border border-[#e8e4de] flex flex-col">
                   {/* Stars */}
@@ -359,7 +359,7 @@ export default function HomePageContent() {
         {/* ── LOCAL CITADEL CTA ─────────────────────────────────────── */}
         <section className="py-16 bg-white border-y border-[#f0eee8]">
           <div className="site-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
                 <p className="eyebrow mb-4">Harrow Specialists</p>
                 <h2 className="font-display text-h2 text-text mb-4 leading-tight">
@@ -402,7 +402,7 @@ export default function HomePageContent() {
         {/* ── FAQ ──────────────────────────────────────────────────── */}
         <section className="section-pad bg-white">
           <div className="site-container">
-            <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 lg:gap-20">
               <div>
                 <p className="eyebrow mb-4">Common Questions</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">

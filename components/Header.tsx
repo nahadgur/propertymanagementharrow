@@ -41,7 +41,7 @@ export default function Header({ onOpenModal }: HeaderProps) {
         <div className="site-container flex items-center justify-between h-[68px]">
           {/* Logo */}
           <Link href="/" className="flex flex-col gap-0.5 no-underline">
-            <span className="font-display text-[19px] text-text leading-none tracking-[-0.01em]">
+            <span className="font-display text-[16px] md:text-[19px] text-text leading-none tracking-[-0.01em]">
               Property<span style={{ color: 'var(--green)' }}>Accountants</span>Harrow
             </span>
             <span className="text-[9px] uppercase tracking-[0.18em] text-text-faint font-medium font-sans">

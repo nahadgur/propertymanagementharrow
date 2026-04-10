@@ -36,11 +36,11 @@
 @layer components {
   /* ── Layout ── */
   .site-container {
-    @apply max-w-site mx-auto px-16;
+    @apply max-w-site mx-auto px-4 md:px-8 lg:px-16;
   }
 
   .section-pad {
-    @apply py-20;
+    @apply py-12 md:py-20;
   }
 
   /* ── Buttons ── */
