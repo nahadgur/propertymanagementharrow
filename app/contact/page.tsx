@@ -44,7 +44,7 @@ export default function ContactPage() {
               <span>/</span>
               <span style={{ color: 'rgba(255,255,255,0.7)' }}>Contact</span>
             </nav>
-            <h1 className="font-display text-h1 text-white mb-4 leading-tight">Get in touch.</h1>
+            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-4 leading-tight">Get in touch.</h1>
             <p className="font-sans text-[17px]" style={{ color: 'rgba(255,255,255,0.6)' }}>
               We respond to all enquiries within 24 hours.
             </p>

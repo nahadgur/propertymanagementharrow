@@ -67,7 +67,7 @@ export default function IncorporationGuidePage() {
               <span className="inline-block font-sans text-[10px] uppercase tracking-widest font-semibold px-3 py-1.5 mb-6" style={{ background: 'rgba(39,118,73,0.25)', color: 'var(--green-mid)' }}>
                 Complete Guide — Updated March 2025
               </span>
-              <h1 className="font-display text-h1 text-white mb-6 leading-tight">
+              <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
                 The Complete Guide to Incorporating a Buy-to-Let Portfolio into an SPV
               </h1>
               <p className="font-sans text-[17px] leading-relaxed mb-8" style={{ color: 'rgba(255,255,255,0.6)' }}>

@@ -26,7 +26,7 @@ export default function SPVCalculatorPage() {
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Tools', href: '/tools/' }, { label: 'SPV vs Personal Tax Calculator' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Free Tool</p>
-            <h1 className="font-display text-h1 text-white mb-4 leading-tight">SPV vs Personal Tax Calculator</h1>
+            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-4 leading-tight">SPV vs Personal Tax Calculator</h1>
             <p className="font-sans text-[17px] max-w-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>
               Compare the annual tax in personal name against an SPV limited company — and calculate how long it takes to recover the transfer costs.
             </p>

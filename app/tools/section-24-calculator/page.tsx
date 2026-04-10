@@ -28,7 +28,7 @@ export default function Section24CalculatorPage() {
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Tools', href: '/tools/' }, { label: 'Section 24 Calculator' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Free Tool</p>
-            <h1 className="font-display text-h1 text-white mb-4 leading-tight">Section 24 Tax Calculator</h1>
+            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-4 leading-tight">Section 24 Tax Calculator</h1>
             <p className="font-sans text-[17px] max-w-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>
               Enter your rental income and mortgage interest to calculate exactly how much the finance cost restriction is costing you each year.
             </p>

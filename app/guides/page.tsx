@@ -22,7 +22,7 @@ export default function GuidesPage() {
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>In-Depth Guides</p>
-            <h1 className="font-display text-h1 text-white mb-6 leading-tight">Property tax guides for UK landlords.</h1>
+            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">Property tax guides for UK landlords.</h1>
             <p className="font-sans text-[17px] max-w-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>Comprehensive, expert-written guides on the tax challenges facing UK property investors — with embedded calculators and direct links to specialist advice.</p>
           </div>
         </section>

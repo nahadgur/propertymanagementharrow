@@ -37,7 +37,7 @@ export default function LandlordsIndexPage() {
                 <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>
                   Find Your Match
                 </p>
-                <h1 className="font-display text-h1 text-white mb-6 leading-tight">
+                <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
                   Which type of landlord are you?
                 </h1>
                 <p className="font-sans text-[17px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>

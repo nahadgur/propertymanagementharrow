@@ -94,7 +94,7 @@ export default function HowWeMatchYouPage() {
             </nav>
             <div className="max-w-2xl">
               <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Our Process</p>
-              <h1 className="font-display text-h1 text-white mb-6 leading-tight">
+              <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
                 How we match you with the right property tax specialist.
               </h1>
               <p className="font-sans text-[17px] leading-relaxed mb-8" style={{ color: 'rgba(255,255,255,0.6)' }}>

@@ -38,7 +38,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
 
         {/* ── HERO ─────────────────────────────────────────────────── */}
         <section>
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_440px] min-h-[80vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] max-w-[1280px] mx-auto w-full">
             <div className="flex flex-col justify-center px-16 py-20" style={{ background: 'var(--green-deep)' }}>
               <Breadcrumbs
                 items={[
@@ -53,7 +53,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
                 {area.postcode} — {area.name}
               </span>
 
-              <h1 className="font-display text-h1 text-white mb-6 leading-tight">
+              <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
                 {area.heroHeadline}
               </h1>
 

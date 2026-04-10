@@ -37,7 +37,7 @@ export default function Header({ onOpenModal }: HeaderProps) {
       </div>
 
       {/* Main nav */}
-      <nav className="border-b border-[#f0eee8] bg-white">
+      <nav className="border-b border-[#f0eee8] bg-white relative">
         <div className="site-container flex items-center justify-between h-[68px]">
           {/* Logo */}
           <Link href="/" className="flex flex-col gap-0.5 no-underline">
@@ -80,9 +80,9 @@ export default function Header({ onOpenModal }: HeaderProps) {
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu - absolute so it overlays content */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-[#f0eee8] bg-white px-6 py-6 flex flex-col gap-5">
+          <div className="lg:hidden absolute left-0 right-0 top-full z-50 border-t border-[#f0eee8] bg-white shadow-xl px-6 py-6 flex flex-col gap-5">
             {navLinks.map(link => (
               <Link
                 key={link.href}
