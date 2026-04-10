@@ -48,7 +48,10 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
         {/* ── HERO ─────────────────────────────────────────────────── */}
         <section>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] max-w-[1280px] mx-auto w-full">
-            <div className="flex flex-col justify-center px-16 py-20" style={{ background: 'var(--green-deep)' }}>
+            <div className="relative flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16 lg:py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+              <img src={avatarImages[avatar.slug] ?? '/images/hero-services.png'} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 60%, rgba(15,51,32,0.9) 100%)' }} />
+              <div className="relative z-10">
               <Breadcrumbs
                 items={[
                   { label: 'Home',      href: '/' },
@@ -362,3 +365,4 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
     </>
   )
 }
+              </div>

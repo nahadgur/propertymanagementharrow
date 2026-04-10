@@ -44,11 +44,19 @@ export default function ServicePageContent({ service, content }: ServicePageCont
         {/* ── HERO ─────────────────────────────────────────────────── */}
         <section>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] max-w-[1280px] mx-auto w-full">
-            {/* Left */}
+            {/* Left — image background */}
             <div
-              className="flex flex-col justify-center px-16 py-20"
+              className="relative flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16 lg:py-20 overflow-hidden"
               style={{ background: 'var(--green-deep)' }}
             >
+              {/* Background image */}
+              <img
+                src={serviceImages[service.slug] ?? '/images/hero-services.png'}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover opacity-10"
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 60%, rgba(15,51,32,0.9) 100%)' }} />
+              <div className="relative z-10">
               <Breadcrumbs
                 items={[
                   { label: 'Home',     href: '/' },
@@ -93,7 +101,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
             </div>
 
             {/* Right — form */}
-            <HeroLeadForm service={service.title} location={`Hero: ${service.slug}`} />
+            <HeroLeadForm service={service.title} location={`Hero: ${service.slug}`} image={serviceImages[service.slug] ?? '/images/hero-services.png'} />
           </div>
         </section>
 
@@ -167,7 +175,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
         <section className="section-pad" style={{ background: 'var(--green-soft)' }}>
           <div className="site-container">
             <p className="eyebrow mb-4">The Problem</p>
-            <h2 className="font-display text-h2 text-text mb-12 leading-tight max-w-2xl">
+            <h2 className="font-display text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] text-text mb-12 leading-tight max-w-2xl">
               {content.problemHeading}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -216,7 +224,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
           <section className="section-pad" style={{ background: 'var(--green-soft)' }}>
             <div className="site-container">
               <p className="eyebrow mb-4">The Numbers</p>
-              <h2 className="font-display text-h2 text-text mb-3 leading-tight">
+              <h2 className="font-display text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] text-text mb-3 leading-tight">
                 {content.comparison.heading}
               </h2>
               <p className="font-sans text-[15px] text-text-muted mb-10 max-w-2xl">
@@ -269,7 +277,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
               <div>
                 <p className="eyebrow mb-4">How It Works</p>
-                <h2 className="font-display text-h2 text-text mb-6 leading-tight">
+                <h2 className="font-display text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] text-text mb-6 leading-tight">
                   {content.processHeading}
                 </h2>
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
@@ -305,7 +313,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
             <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-20">
               <div>
                 <p className="eyebrow mb-4">Common Questions</p>
-                <h2 className="font-display text-h2 text-text mb-6 leading-tight">
+                <h2 className="font-display text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] text-text mb-6 leading-tight">
                   {service.shortTitle} — frequently asked questions.
                 </h2>
                 <button onClick={() => setModalOpen(true)} className="btn-primary mt-2">
@@ -341,7 +349,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="eyebrow mb-4">Local Specialists</p>
-                <h2 className="font-display text-h2 text-text mb-4 leading-tight">
+                <h2 className="font-display text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] text-text mb-4 leading-tight">
                   Looking for a local Harrow {service.shortTitle.toLowerCase()} expert?
                 </h2>
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
@@ -379,7 +387,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
         {/* ── FINAL CTA ─────────────────────────────────────────────── */}
         <section style={{ background: 'var(--green)' }} className="py-20">
           <div className="site-container text-center">
-            <h2 className="font-display text-h2 text-white mb-4 leading-tight">
+            <h2 className="font-display text-[1.8rem] md:text-[2.2rem] lg:text-[2.6rem] text-white mb-4 leading-tight">
               Ready to get started?
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
