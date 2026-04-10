@@ -1,27 +1,42 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './data/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './data/**/*.{ts,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
         brand: {
-          50:  '#EDF5F5',
-          100: '#D0E8E8',
-          200: '#A8D4D4',
-          300: '#6BAAAA',
-          400: '#3D9090',
-          500: '#1F7A7A',
-          600: '#196666',
-          700: '#145252',
-          800: '#0F3E3E',
-          900: '#0A2E2E',
-          950: '#061E1E',
+          DEFAULT: '#277649',
+          dark:    '#1a5233',
+          deep:    '#0f3320',
+          light:   '#eaf4ee',
+          mid:     '#d0e9d8',
+          soft:    '#f2f9f4',
+        },
+        text: {
+          DEFAULT: '#0d1a0f',
+          muted:   '#555555',
+          faint:   '#888888',
         },
       },
       fontFamily: {
-        display: ['Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        sans:    ['var(--font-epilogue)', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'hero': ['4.5rem', { lineHeight: '1.03', letterSpacing: '-0.02em' }],
+        'h1':   ['3.5rem', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
+        'h2':   ['2.5rem', { lineHeight: '1.12', letterSpacing: '-0.015em' }],
+        'h3':   ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+      },
+      maxWidth: {
+        'site': '1280px',
+      },
+      borderColor: {
+        DEFAULT: '#f0eee8',
       },
     },
   },

@@ -1,307 +1,382 @@
-// data/serviceContent.ts - Auto-generated
-export const serviceContent: Record<string, {
-  intro: string[]; benefits: { title: string; desc: string }[];
-  candidateIntro: string; candidates: string[]; process: { title: string; desc: string }[];
-}> = {
-  "capital-gains-tax-planning": {
+export interface Benefit {
+  title: string
+  desc:  string
+}
+
+export interface ProcessStep {
+  title: string
+  body:  string
+}
+
+export interface ComparisonRow {
+  factor:   string
+  personal: string
+  company:  string
+  winner:   'personal' | 'company' | 'neutral'
+}
+
+export interface ServiceContent {
+  slug:           string
+  metaTitle:      string
+  metaDesc:       string
+  h1:             string
+  intro:          string[]
+  problemHeading: string
+  problems:       { head: string; body: string }[]
+  benefits:       Benefit[]
+  processHeading: string
+  processSteps:   ProcessStep[]
+  comparison?:    { heading: string; subheading: string; rows: ComparisonRow[] }
+  localBridge:    string
+}
+
+export const serviceContent: Record<string, ServiceContent> = {
+
+  'section-24-tax-mitigation': {
+    slug:      'section-24-tax-mitigation',
+    metaTitle: 'Section 24 Tax Mitigation for UK Landlords | Property Accountants Harrow',
+    metaDesc:
+      'Specialist Section 24 tax mitigation for UK landlords. ACCA and ICAEW certified property accountants who model your exposure and implement legal restructuring strategies. Harrow network.',
+    h1: 'Section 24 Tax Mitigation for Property Investors',
     intro: [
-  "Capital gains tax planning has become increasingly critical for Harrow property owners as average house prices have risen over 35% in recent years, creating substantial tax liabilities on disposals. Whether you're selling a family home disposing of buy-to-let properties, or restructuring investment portfolios across the local area, expert CGT advice ensures compliance with the 60-day reporting requirement while minimising your tax burden.",
-  "The complexity of CGT calculations has increased significantly with recent legislative changes, particularly affecting Harrow residents with mixed-use properties, overseas connections, or development activities. Principal private residence relief, lettings relief, and business asset disposal relief all have specific conditions that must be carefully managed to achieve optimal tax outcomes.",
-  "Our partner property tax specialists in Harrow have extensive experience handling CGT planning across all property types, from simple family home sales to complex commercial property disposals involving rollover relief and incorporation strategies. They understand local market conditions and work proactively to structure transactions for maximum tax efficiency."
-],
+      'The mortgage interest finance cost restriction — commonly known as Section 24 — has been the single most damaging piece of legislation for leveraged UK landlords since it was fully phased in from April 2020. For higher and additional rate taxpayers, the ability to deduct mortgage interest as a business expense has been replaced by a 20% tax credit that bears no relation to actual finance costs.',
+      'The result is that landlords who have borrowed to build their portfolios — which is to say, most serious property investors — are now paying income tax on profits they never actually received. A landlord paying 40% income tax with £30,000 of annual mortgage interest loses £6,000 per year to Section 24 compared to the pre-2017 position. Across a larger portfolio, that figure can reach five or even six figures annually.',
+      'The good news is that legal mitigation strategies exist. The right approach depends on your specific portfolio — its size, leverage ratio, income composition, and long-term objectives. Our Harrow specialists model the full picture before recommending any action.',
+    ],
+    problemHeading: 'Who Section 24 hits hardest — and why most landlords are underreacting',
+    problems: [
+      {
+        head: 'Higher-rate taxpayers with mortgaged portfolios',
+        body: 'If your total income — including rental income — pushes you above the basic rate threshold, you receive only a 20% tax credit on finance costs. The gap between what you pay in mortgage interest and what you recover in relief grows with every percentage point of income tax above 20%. For a 45% additional rate taxpayer, three quarters of every pound of mortgage interest generates no relief whatsoever.',
+      },
+      {
+        head: 'Landlords approaching the higher-rate threshold',
+        body: "Section 24 is particularly cruel to landlords whose rental income alone crosses into higher-rate territory. Even if their other income is modest, adding rental income to the calculation — and then adding back the grossed-up finance cost for threshold purposes — pushes thousands of accidental higher-rate taxpayers into a position where they pay more in tax than they earn in profit.",
+      },
+      {
+        head: 'Landlords who have not reviewed their position since 2020',
+        body: "Section 24 was fully implemented in April 2020. Many landlords absorbed the initial shock, made no structural changes, and have been quietly haemorrhaging tax ever since. Without a specialist review, there is no way to know whether the amount being paid is unavoidable or whether restructuring could recover a significant portion of it.",
+      },
+    ],
     benefits: [
-  {
-    "title": "Maximise Available Tax Reliefs",
-    "desc": "Expert identification and application of all available CGT reliefs including PPR relief, lettings relief, and business asset disposal relief. Proper planning can often reduce tax liabilities by thousands of pounds on Harrow property disposals."
+      {
+        title: 'Full exposure modelling before any action',
+        desc:  'Your specialist calculates your exact annual Section 24 cost based on your actual finance costs, rental income, and personal tax position — before recommending any strategy.',
+      },
+      {
+        title: 'SPV incorporation economics assessed',
+        desc:  'Where incorporation is the right answer, your specialist models the SDLT and CGT cost of transfer against projected annual tax savings to give you a precise breakeven timeline.',
+      },
+      {
+        title: 'Alternative strategies where incorporation does not stack up',
+        desc:  'Spousal income splitting, pension contributions to reduce taxable income, and selective portfolio disposal are all modelled where SPV transfer is not cost-effective.',
+      },
+      {
+        title: 'Ongoing compliance and annual review',
+        desc:  'Section 24 interacts with other elements of your tax position that can shift year to year. Your specialist reviews your position annually to ensure the strategy remains optimal.',
+      },
+    ],
+    processHeading: 'How we match you with a Section 24 specialist',
+    processSteps: [
+      {
+        title: 'Tell us about your portfolio and finance costs',
+        body:  'Share the number of properties, approximate mortgage balances, current interest rates, and your estimated rental income and personal income. The more detail, the more accurate the initial assessment.',
+      },
+      {
+        title: 'We identify your specialist',
+        body:  'We match your enquiry to an ACCA or ICAEW certified accountant in our network who focuses specifically on Section 24 restructuring and has handled portfolios of your size and leverage profile before.',
+      },
+      {
+        title: 'Initial assessment within 48 hours',
+        body:  'Your matched specialist contacts you directly. Most begin with a brief call to understand your position before preparing a written assessment of your exposure and the available mitigation options.',
+      },
+      {
+        title: 'Strategy implementation',
+        body:  'Once you agree on an approach, your specialist implements the strategy — whether that means a phased SPV transfer, income adjustments, or a combination. All actions are taken with full awareness of the tax implications at each stage.',
+      },
+    ],
+    localBridge: 'Looking for a Section 24 specialist in Harrow? Our local network covers all Harrow areas — including Stanmore, Pinner, Wealdstone, and Harrow on the Hill — with specialists who understand local rental yields and portfolio profiles.',
   },
-  {
-    "title": "Ensure 60-Day Compliance",
-    "desc": "Professional management of the mandatory 60-day CGT reporting requirement for residential property disposals. Avoid penalties and interest charges while ensuring accurate tax calculations and timely HMRC submissions."
-  },
-  {
-    "title": "Optimise Transaction Timing",
-    "desc": "Strategic advice on disposal timing to utilise annual CGT allowances, manage tax year planning, and coordinate with other income sources. Proper timing can significantly reduce overall tax liabilities for Harrow property investors."
-  },
-  {
-    "title": "Structure Complex Disposals",
-    "desc": "Professional guidance on multi-property disposals, part-disposals, and transfers between spouses or family members. Complex transactions require careful structuring to achieve optimal CGT treatment under current legislation."
-  }
-],
-    candidateIntro: "Capital gains tax planning is essential for Harrow property owners in these situations",
-    candidates: [
-  "Family homeowners selling high-value properties with substantial gains",
-  "BTL landlords disposing of rental properties and needing to optimise CGT liabilities",
-  "Property developers distinguishing between trading stock and capital assets for tax purposes",
-  "Non-resident property owners subject to special CGT rules and reporting requirements",
-  "Anyone facing the 60-day residential property CGT reporting deadline"
-],
-    process: [
-  {
-    "title": "Property Portfolio Assessment",
-    "desc": "Comprehensive review of your Harrow property holdings, acquisition costs, and improvement expenditure to establish accurate base costs for CGT calculations."
-  },
-  {
-    "title": "Relief Optimisation Strategy",
-    "desc": "Detailed analysis of available reliefs including PPR, lettings relief, and business asset disposal relief, with recommendations for maximising tax efficiency."
-  },
-  {
-    "title": "Transaction Structuring",
-    "desc": "Professional advice on disposal timing, partial disposals, and family transfers to optimise CGT treatment and utilise available allowances effectively."
-  },
-  {
-    "title": "Compliance and Reporting",
-    "desc": "Management of all CGT reporting requirements including 60-day returns, annual self-assessments, and ongoing compliance with HMRC obligations."
-  }
-],
-  },  "property-company-structuring": {
+
+  'spv-company-incorporation': {
+    slug:      'spv-company-incorporation',
+    metaTitle: 'SPV Company Incorporation for Property Investors | Property Accountants Harrow',
+    metaDesc:
+      'Specialist SPV company incorporation advice for UK landlords. ACCA and ICAEW certified property accountants who model SDLT, CGT and the full economics before any transfer. Harrow network.',
+    h1: 'SPV Company Incorporation for Property Portfolios',
     intro: [
-  "Property company structuring has become increasingly important for Harrow investors managing multiple rental properties or development projects, particularly following Section 24 mortgage interest restrictions affecting higher-rate taxpayers. The decision to incorporate existing property portfolios or establish new property companies requires careful analysis of current tax position, future growth plans, and exit strategies.",
-  "Many Harrow landlords with properties across Northwest London find that company structures provide better tax efficiency, especially when combined with pension contributions or family income splitting strategies. However, incorporation involves immediate SDLT costs (though relief may apply), ongoing compliance obligations, and potential future extraction challenges that must be weighed against the benefits.",
-  "Our partner specialists understand the complex interactions between income tax, corporation tax, and capital gains tax when structuring property investments through companies. They provide comprehensive analysis covering incorporation mechanics, ongoing compliance, and exit planning to ensure property company structures deliver genuine long-term benefits for Harrow investors."
-],
+      'Incorporating a buy-to-let portfolio into a Special Purpose Vehicle limited company is one of the most powerful tools available to highly leveraged UK landlords. Inside a limited company, mortgage interest is a fully deductible business expense — not subject to the Section 24 restriction. Profits are taxed at the corporation tax rate (currently 25% for profits above £50,000, or 19% for smaller companies) rather than at income tax rates of up to 45%. And the company structure creates a more flexible, transferable asset for succession planning purposes.',
+      'But SPV incorporation is not a decision that should be made quickly, or on the basis of the tax benefits alone. The Stamp Duty Land Tax payable on transferring personally-held properties into a company — at standard rates plus the 3% additional dwelling surcharge — can be substantial. The Capital Gains Tax triggered on disposal from personal name to company must also be calculated. In many cases, these transfer costs run to tens of thousands of pounds, and the payback period can stretch to several years.',
+      'The right approach is to model the full economics of incorporation before a single property moves — and to consider whether a full transfer, a partial transfer, or purchasing only future acquisitions through the company is the most cost-effective strategy for your specific situation.',
+    ],
+    problemHeading: 'Why most SPV decisions go wrong — and how to avoid it',
+    problems: [
+      {
+        head: 'Underestimating the transfer costs',
+        body: 'SDLT on a portfolio transfer to a company is calculated at the same rates as a market-value purchase — including the 3% additional dwelling surcharge. On a portfolio of five properties worth £250,000 each, the SDLT alone could exceed £37,000. This figure must be modelled against projected annual tax savings before any transfer is agreed.',
+      },
+      {
+        head: 'Ignoring Capital Gains Tax on transfer',
+        body: 'Transferring a personally-held property to a company is a disposal for CGT purposes. If the property has increased in value since purchase, CGT is payable on the gain at the point of transfer — even though no cash changes hands. Holdover relief is generally not available on residential investment property, making CGT planning critical before any transfer.',
+      },
+      {
+        head: 'Choosing the wrong company structure',
+        body: "Not all limited companies are treated equally by buy-to-let mortgage lenders. Using the correct SIC code (68100 or 68209) is essential for accessing buy-to-let mortgage products within the company. Setting up a trading company rather than a property SPV, or using an existing company that trades in other activities, can create significant mortgage and compliance complications.",
+      },
+    ],
     benefits: [
-  {
-    "title": "Overcome Section 24 Restrictions",
-    "desc": "Property companies can claim full mortgage interest relief against rental profits, overcoming the restriction to basic rate relief that affects individual landlords. This is particularly beneficial for higher-rate taxpayers with leveraged property portfolios."
+      {
+        title: 'Full SDLT and CGT modelling before transfer',
+        desc:  'Your specialist calculates the exact transfer cost for your portfolio before any decision is made — including SDLT, CGT, legal fees, and mortgage arrangement costs.',
+      },
+      {
+        title: 'Breakeven analysis and payback timeline',
+        desc:  'The annual tax saving inside the company is compared against the total transfer cost to produce a precise breakeven point — typically expressed in years to recoup the transfer costs.',
+      },
+      {
+        title: 'Correct company structure from day one',
+        desc:  'Your specialist sets up the SPV with the right SIC code, share structure, and director/shareholder arrangements — ensuring mortgage lender compatibility and optimising the ownership structure for succession planning.',
+      },
+      {
+        title: 'Future acquisition strategy',
+        desc:  'Where a full transfer does not stack up economically, your specialist identifies the optimal strategy for future acquisitions — typically purchasing new properties through the company while holding existing ones personally.',
+      },
+    ],
+    processHeading: 'How we match you with an SPV incorporation specialist',
+    processSteps: [
+      {
+        title: 'Share your portfolio details',
+        body:  'Tell us the number of properties, current values, original purchase prices, outstanding mortgage balances, and your personal income tax position. This enables an accurate initial modelling of transfer costs and projected savings.',
+      },
+      {
+        title: 'We match you with a specialist',
+        body:  'We identify an ACCA or ICAEW certified accountant in our Harrow network with specific experience in SPV incorporations — including the SDLT and CGT modelling that most generalist accountants are not equipped to perform accurately.',
+      },
+      {
+        title: 'Full economics modelled and presented',
+        body:  'Your specialist presents a written analysis of the transfer costs, annual savings, and breakeven timeline before any action is taken. You make a fully informed decision.',
+      },
+      {
+        title: 'Company setup and transfer execution',
+        body:  'If incorporation proceeds, your specialist manages the company formation, coordinates with your solicitor on the SDLT return, and plans the transfer sequencing to minimise avoidable costs.',
+      },
+    ],
+    comparison: {
+      heading:    'Personal ownership vs SPV limited company',
+      subheading: 'How the two structures compare across the factors that matter most to leveraged property investors.',
+      rows: [
+        { factor: 'Mortgage interest relief',   personal: '20% tax credit only (Section 24)',  company: '100% deductible business expense',     winner: 'company' },
+        { factor: 'Income tax on profits',      personal: '20–45% income tax',                 company: '19–25% corporation tax',               winner: 'company' },
+        { factor: 'SDLT on transfer',           personal: 'N/A (already owned)',               company: 'Full SDLT + 3% surcharge on transfer',  winner: 'personal' },
+        { factor: 'CGT on transfer',            personal: 'N/A (already owned)',               company: 'CGT payable on gain at transfer',       winner: 'personal' },
+        { factor: 'CGT on eventual sale',       personal: '18–24% personal CGT',              company: 'Within company, then dividend/salary',  winner: 'neutral' },
+        { factor: 'Succession planning',        personal: 'Complex — IHT at 40% on estate',  company: 'Share transfer — more flexible',        winner: 'company' },
+        { factor: 'Profit extraction',          personal: 'Direct — all rental income yours', company: 'Via salary or dividend — more tax steps', winner: 'personal' },
+        { factor: 'Mortgage product access',   personal: 'Full standard BTL range',           company: 'Growing range — SPV-specific products',  winner: 'personal' },
+        { factor: 'Accountancy complexity',    personal: 'Self-assessment return',            company: 'Corporation tax return + accounts',      winner: 'personal' },
+      ],
+    },
+    localBridge: 'Searching for an SPV incorporation specialist in Harrow? Our network includes accountants who have structured SPV transfers for landlords across Stanmore, Pinner, Kenton, and the wider Harrow area — with full knowledge of local portfolio types and yield profiles.',
   },
-  {
-    "title": "Flexible Profit Extraction",
-    "desc": "Company structures allow flexible profit extraction through salary, dividends, and pension contributions, enabling tax-efficient income planning. This is especially valuable for Harrow families looking to manage overall household tax liabilities."
-  },
-  {
-    "title": "Enhanced Investment Growth",
-    "desc": "Corporation tax rates of 19-25% on retained profits often compare favourably to higher-rate income tax, allowing faster portfolio growth through retained earnings and reinvestment in additional properties."
-  },
-  {
-    "title": "Improved Succession Planning",
-    "desc": "Company shares can be gifted or sold more easily than direct property ownership, facilitating family wealth transfer and succession planning. Business asset disposal relief may also apply to qualifying disposals of company shares."
-  }
-],
-    candidateIntro: "Property company structuring should be considered by Harrow investors in these situations",
-    candidates: [
-  "Higher-rate taxpayers with multiple BTL properties affected by Section 24 mortgage interest restrictions",
-  "Property developers undertaking regular development projects requiring corporate structure benefits",
-  "Families planning wealth transfer or succession of property investments to next generation",
-  "Investors seeking to retain profits within structure for portfolio expansion rather than personal extraction",
-  "Landlords with substantial property portfolios where corporation tax rates provide better overall efficiency"
-],
-    process: [
-  {
-    "title": "Portfolio Analysis and Modelling",
-    "desc": "Comprehensive review of current property holdings, mortgage levels, and tax position with detailed modelling of incorporation benefits versus costs over multiple tax years."
-  },
-  {
-    "title": "Structure Design and Implementation",
-    "desc": "Design of optimal company structure including share classes, director arrangements, and consideration of SDLT relief on incorporation transfers."
-  },
-  {
-    "title": "Transfer Management",
-    "desc": "Professional management of property transfers to company including SDLT compliance, mortgage arrangements, and land registry procedures to ensure smooth incorporation process."
-  },
-  {
-    "title": "Ongoing Compliance Setup",
-    "desc": "Establishment of corporation tax compliance procedures, VAT registration if required, and ongoing advisory relationship for profit extraction and portfolio growth strategies."
-  }
-],
-  },  "stamp-duty-advice": {
+
+  'capital-gains-tax-planning': {
+    slug:      'capital-gains-tax-planning',
+    metaTitle: 'Capital Gains Tax Planning for Property Investors | Property Accountants Harrow',
+    metaDesc:
+      'Specialist Capital Gains Tax planning for UK property investors. PRR, lettings relief, holdover elections and disposal timing — structured before the sale is agreed. Harrow network.',
+    h1: 'Capital Gains Tax Planning for Property Investors',
     intro: [
-  "Stamp duty land tax planning is crucial for all Harrow property transactions, with the borough's high property values meaning most purchases face significant SDLT liabilities. Current market conditions see average property prices well above the £250,000 starting threshold, and many family homes in premium areas exceed the higher rate bands, creating substantial tax costs that require careful planning.",
-  "The complexity of SDLT has increased dramatically with multiple surcharge regimes affecting second homes, BTL properties, non-resident purchasers, and high-value transactions. Harrow's attraction to international buyers and property investors means many transactions involve multiple surcharges, while the interaction with other taxes like CGT and inheritance tax requires coordinated planning.",
-  "Our partner SDLT specialists serving Harrow understand both the technical rules and practical planning opportunities available to minimise tax costs. From mixed-use property relief to sub-sale arrangements and corporate structuring, they identify legitimate strategies to reduce SDLT liabilities while ensuring full compliance with increasingly complex legislation."
-],
+      'Capital Gains Tax on property disposals is one of the most expensive and most avoidable costs in property investment — provided the planning happens before the sale is agreed, not after it completes. The reliefs available to property investors are numerous and sometimes surprising, but each carries specific conditions that must be met at the right time and in the right sequence.',
+      'Private Residence Relief can exempt the entire gain on a property that has been your main home, including the final nine months of ownership regardless of whether you still live there. Lettings relief of up to £40,000 per owner applies where PRR is also available and the property was let during part of the ownership period. Holdover relief, Business Asset Disposal Relief, and gift relief each play a role in specific circumstances — though availability on residential investment property is more limited than many landlords assume.',
+      'The CGT rate on residential property disposals is 18% for basic rate taxpayers and 24% for higher and additional rate taxpayers (reduced from 28% in October 2024). Across a significant property gain, the difference between a planned and unplanned disposal can represent tens of thousands of pounds. Our Harrow specialists structure exits in advance — not as an afterthought.',
+    ],
+    problemHeading: 'The CGT mistakes property investors make — and what they cost',
+    problems: [
+      {
+        head: 'Selling without reviewing PRR eligibility',
+        body: 'Many landlords who previously lived in a property they later let out are entitled to Private Residence Relief for the period of occupation — plus the final nine months of ownership — but never claim it. A property lived in for two years and let for six years still qualifies for PRR on approximately 27% of the gain, plus potential lettings relief. This relief is frequently missed by generalist accountants.',
+      },
+      {
+        head: 'Failing to use the Annual Exempt Amount strategically',
+        body: 'The CGT Annual Exempt Amount is currently £3,000 per individual (2024/25). For jointly owned properties, both owners have their own exemption. Staggering disposals across two tax years — where practical — effectively doubles the exempt amount per owner. On a significant gain, this simple timing strategy can save up to £1,440 in CGT per individual owner.',
+      },
+      {
+        head: 'Ignoring the interaction between CGT and income tax',
+        body: "Where a disposal pushes a basic rate taxpayer into higher rate territory, CGT is charged at 18% on the portion of the gain within the basic rate band and 24% above it. A specialist models your total income in the disposal year — including employment income, pension income, and other investment income — before selecting the optimal disposal structure and timing.",
+      },
+    ],
     benefits: [
-  {
-    "title": "Minimise Multiple Surcharges",
-    "desc": "Expert navigation of the 3% second home surcharge and 2% non-resident surcharge that often apply to Harrow property purchases. Proper planning can sometimes avoid or reclaim surcharges through main residence elections or timing strategies."
+      {
+        title: 'PRR and lettings relief assessment before sale',
+        desc:  'Your specialist reviews the occupation and letting history of every property being sold to identify all available PRR and lettings relief before exchange is agreed.',
+      },
+      {
+        title: 'Disposal timing and tax year planning',
+        desc:  'Where flexibility exists on completion date, your specialist models the CGT liability in the current versus next tax year — and across different disposal scenarios — to identify the lowest-cost timing.',
+      },
+      {
+        title: 'Spousal transfers and ownership restructuring',
+        desc:  'Transfers between spouses are exempt from CGT. Transferring a share of a property to a lower-rate taxpaying spouse before disposal can significantly reduce the overall CGT bill — if structured correctly and in advance.',
+      },
+      {
+        title: 'Post-disposal reporting and payment planning',
+        desc:  'CGT on property disposals must be reported and paid within 60 days of completion. Your specialist prepares the CGT return and plans the payment cashflow to avoid interest charges.',
+      },
+    ],
+    processHeading: 'How we match you with a CGT planning specialist',
+    processSteps: [
+      {
+        title: 'Tell us about the property and its history',
+        body:  'Share the original purchase price, current value, occupation history (whether you have ever lived in the property), and your current income level. This enables an accurate initial CGT estimate.',
+      },
+      {
+        title: 'We identify your specialist',
+        body:  'We match your enquiry to an ACCA or ICAEW certified specialist with specific experience in property CGT planning — particularly PRR, lettings relief, and disposal sequencing for portfolio landlords.',
+      },
+      {
+        title: 'Pre-sale CGT review and planning',
+        body:  'Your specialist presents a written analysis of the likely CGT position, available reliefs, and any planning opportunities — before you exchange contracts.',
+      },
+      {
+        title: 'Post-disposal compliance',
+        body:  'Your specialist prepares and submits the 60-day CGT return to HMRC, calculates the exact payment due, and reviews the position in your annual self-assessment return.',
+      },
+    ],
+    localBridge: 'Looking for a CGT planning specialist in Harrow? Our local network includes accountants who specialise in property disposals across Stanmore, Pinner, Harrow on the Hill, and Edgware — with strong familiarity with local property values and gain profiles.',
   },
-  {
-    "title": "Optimise Relief Claims",
-    "desc": "Professional identification of available reliefs including first-time buyer relief, mixed-use property relief, and multiple dwellings relief where applicable. These reliefs can provide substantial savings on qualifying Harrow property purchases."
-  },
-  {
-    "title": "Structure Complex Transactions",
-    "desc": "Advanced planning for high-value purchases, corporate acquisitions, and development transactions to achieve optimal SDLT treatment. Proper structuring can often reduce SDLT costs significantly through legitimate planning techniques."
-  },
-  {
-    "title": "Ensure Accurate Compliance",
-    "desc": "Professional SDLT return preparation and submission ensuring accurate tax calculations and timely compliance. Mistakes can be costly and HMRC increasingly challenges SDLT return accuracy through compliance reviews."
-  }
-],
-    candidateIntro: "Expert SDLT advice is essential for these Harrow property transactions",
-    candidates: [
-  "Non-resident buyers purchasing Harrow properties facing 2% surcharge on top of standard rates",
-  "BTL investors acquiring additional properties subject to 3% second home surcharge",
-  "High-value transactions where SDLT exceeds £50,000 and planning is essential",
-  "Corporate property acquisitions requiring analysis of SDLT versus share purchase alternatives",
-  "Property developers purchasing sites where mixed-use or development relief may apply"
-],
-    process: [
-  {
-    "title": "Transaction Structure Analysis",
-    "desc": "Comprehensive review of proposed Harrow property purchase including buyer circumstances, property type, and applicable SDLT rates and surcharges to identify planning opportunities."
-  },
-  {
-    "title": "Relief and Planning Strategy",
-    "desc": "Detailed analysis of available reliefs and legitimate planning techniques including timing strategies, structure alternatives, and surcharge mitigation where possible."
-  },
-  {
-    "title": "Implementation and Documentation",
-    "desc": "Professional management of chosen strategy including contract advice, completion arrangements, and ensuring all planning steps are properly documented and evidenced."
-  },
-  {
-    "title": "Return Preparation and Compliance",
-    "desc": "Accurate SDLT return preparation and submission within the 14-day deadline, plus ongoing advice on any subsequent compliance issues or HMRC enquiries."
-  }
-],
-  },  "non-resident-cgt": {
+
+  'sdlt-stamp-duty-planning': {
+    slug:      'sdlt-stamp-duty-planning',
+    metaTitle: 'SDLT & Stamp Duty Planning for Property Investors | Property Accountants Harrow',
+    metaDesc:
+      'Specialist SDLT and stamp duty planning for UK property investors. 3% surcharge mitigation, multiple dwellings relief, mixed-use analysis. Reviewed before exchange. Harrow network.',
+    h1: 'SDLT & Stamp Duty Planning for Property Investors',
     intro: [
-  "Non-resident capital gains tax obligations have become increasingly complex for overseas investors in Harrow property, with the extension of CGT to non-resident disposals of UK residential property creating new compliance requirements and tax liabilities. The 60-day reporting requirement applies to all non-resident disposals, regardless of whether CGT is actually due, making professional compliance management essential.",
-  "Many non-resident owners of Harrow properties face multiple tax considerations including annual tax on enveloped dwellings (ATED) for company-owned properties, income tax on rental profits, and complex calculations of CGT liability that may involve overseas tax credit relief. The interaction with double taxation treaties adds further complexity requiring specialist expertise.",
-  "Our partner non-resident tax specialists understand the unique challenges facing overseas investors in Harrow's property market. They provide comprehensive compliance services from initial UK tax registration through ongoing return preparation and disposal planning, ensuring full HMRC compliance while optimising overall tax efficiency within UK and overseas tax frameworks."
-],
+      'Stamp Duty Land Tax is often the largest single upfront cost for property investors — and it is frequently higher than it needs to be. The 3% additional dwelling surcharge, introduced in April 2016, applies to almost all purchases of residential property by investors, adding thousands to the cost of every acquisition. But numerous legitimate reliefs exist that, when identified and applied correctly, can significantly reduce or in some cases eliminate the SDLT liability.',
+      'Multiple Dwellings Relief, mixed-use property classification, first-time buyer reliefs in specific circumstances, and the linked transaction rules all represent planning opportunities that many solicitors — and most general accountants — either overlook or do not have the property-specific expertise to apply correctly. SDLT is also time-critical: the relief analysis must be completed before exchange, and errors are difficult and expensive to correct after completion.',
+      'Our Harrow specialists review every acquisition before exchange to apply every legitimate relief available — and work with your solicitor to ensure the SDLT return reflects the correct position from the outset.',
+    ],
+    problemHeading: 'SDLT mistakes that cost property investors thousands',
+    problems: [
+      {
+        head: 'Paying the residential rate on mixed-use properties',
+        body: "Properties with both residential and non-residential elements — a flat above a commercial unit, a house with an agricultural outbuilding, a property with a granny annexe — may qualify for the non-residential SDLT rates, which are significantly lower and carry no 3% surcharge. Whether a property qualifies as mixed-use depends on its specific characteristics at completion. This is a frequently missed classification opportunity that can save five-figure sums on the right property.",
+      },
+      {
+        head: 'Missing the 3% surcharge reclaim deadline',
+        body: "If you purchase a new main residence before selling your previous one, you pay the 3% surcharge at completion. If you then sell the previous property within three years, you are entitled to a full refund of the surcharge. This reclaim must be made within 12 months of the sale — or the three-year deadline, whichever is earlier. It is a substantial and frequently missed reclaim opportunity for owner-occupiers who also hold investment property.",
+      },
+      {
+        head: 'Incorrect handling of linked transactions',
+        body: "Where two or more property purchases from the same seller are linked — including purchases by connected persons — HMRC may aggregate the consideration for SDLT purposes, potentially pushing the total into higher rate bands. Conversely, linked transactions between unconnected buyers may be incorrectly aggregated by HMRC. Both types of error are common and can result in either underpaid or overpaid SDLT.",
+      },
+    ],
     benefits: [
-  {
-    "title": "UK Tax Registration and Setup",
-    "desc": "Professional management of UK tax registration including National Insurance numbers, UTR allocation, and establishment of compliance procedures for ongoing UK tax obligations."
+      {
+        title: 'Pre-exchange SDLT review on every acquisition',
+        desc:  'Your specialist reviews each purchase before exchange to identify applicable reliefs, confirm the correct classification, and calculate the SDLT liability that should apply.',
+      },
+      {
+        title: 'Mixed-use assessment and supporting documentation',
+        desc:  'Where a mixed-use claim is supportable, your specialist prepares the documentation needed to substantiate the classification in the event of an HMRC enquiry.',
+      },
+      {
+        title: 'Surcharge reclaim identification and submission',
+        body:  'Your specialist tracks all surcharge-paying purchases and flags reclaim windows as they approach — ensuring no eligible refund is missed through oversight.',
+      },
+      {
+        title: 'Portfolio-level SDLT planning',
+        desc:  'Across a portfolio of planned acquisitions, your specialist models the SDLT implications of different purchase sequences and structures to minimise the aggregate liability.',
+      },
+    ],
+    processHeading: 'How we match you with an SDLT planning specialist',
+    processSteps: [
+      {
+        title: 'Tell us about the property being acquired',
+        body:  'Share the purchase price, property type, and any details you have about its current or historic use — commercial elements, annexes, agricultural land, or other features that might affect its classification.',
+      },
+      {
+        title: 'We match you with a specialist',
+        body:  'We identify an ACCA or ICAEW certified accountant in our network with specific SDLT experience — particularly mixed-use analysis and multiple dwellings relief — for your property type.',
+      },
+      {
+        title: 'Pre-exchange SDLT analysis',
+        body:  'Your specialist provides a written analysis of the correct SDLT position before you exchange contracts — including any reliefs available and the documentation required to support them.',
+      },
+      {
+        title: 'SDLT return preparation and submission',
+        body:  'Your specialist prepares the SDLT return in coordination with your solicitor, ensuring it correctly reflects the agreed position and is submitted within the required 14-day window.',
+      },
+    ],
+    localBridge: 'Looking for an SDLT specialist in Harrow? Our network includes accountants who regularly handle SDLT reviews for acquisitions across Harrow, Stanmore, Pinner, Edgware, and the wider North-West London area — with familiarity with the local mixed-use property stock.',
   },
-  {
-    "title": "60-Day CGT Compliance",
-    "desc": "Expert handling of mandatory 60-day reporting for residential property disposals including accurate gain calculations, treaty relief claims, and payment arrangements to avoid penalties and interest."
-  },
-  {
-    "title": "Treaty Relief Optimisation",
-    "desc": "Specialist advice on double taxation treaty benefits and overseas tax credit relief to minimise overall tax costs on UK property investments and disposals."
-  },
-  {
-    "title": "Ongoing Compliance Management",
-    "desc": "Comprehensive UK tax compliance including annual self-assessment returns, ATED compliance where applicable, and coordination with overseas tax obligations and reporting requirements."
-  }
-],
-    candidateIntro: "Non-resident CGT advice is essential for these overseas investors in Harrow property",
-    candidates: [
-  "Non-UK residents owning Harrow rental properties requiring annual UK tax return compliance",
-  "Overseas investors disposing of UK residential property subject to 60-day CGT reporting",
-  "Non-resident property companies owning high-value Harrow properties subject to ATED charges",
-  "International families with UK property investments requiring treaty relief optimisation",
-  "Non-residents considering UK property purchase and needing advance tax planning advice"
-],
-    process: [
-  {
-    "title": "UK Tax Status Assessment",
-    "desc": "Comprehensive review of UK tax residence position, treaty entitlements, and existing UK compliance obligations to establish current position and requirements."
-  },
-  {
-    "title": "Registration and Setup",
-    "desc": "Professional management of UK tax registration including UTR applications, gateway account setup, and establishment of compliance procedures for ongoing obligations."
-  },
-  {
-    "title": "Ongoing Compliance Management",
-    "desc": "Annual self-assessment preparation, ATED compliance where applicable, and management of all UK tax obligations with coordination of overseas tax considerations."
-  },
-  {
-    "title": "Disposal Planning and Reporting",
-    "desc": "Expert CGT planning for UK property disposals including 60-day reporting compliance, treaty relief claims, and coordination with overseas tax implications."
-  }
-],
-  },  "property-development-tax": {
+
+  'property-inheritance-tax': {
+    slug:      'property-inheritance-tax',
+    metaTitle: 'Property Inheritance Tax Planning | Property Accountants Harrow',
+    metaDesc:
+      'Specialist property inheritance tax planning for UK landlords and investors. BPR, family investment companies, trusts and lifetime gifting — structured for portfolio succession. Harrow network.',
+    h1: 'Property Inheritance Tax Planning for Portfolio Landlords',
     intro: [
-  "Property development taxation in Harrow requires expert handling of the crucial distinction between trading and investment activities, which determines whether profits are subject to income tax and National Insurance or capital gains tax. With regeneration projects around Harrow and Wealdstone station and ongoing residential development across the borough, many investors find themselves undertaking activities that blur this distinction.",
-  "Development projects in Harrow must navigate complex VAT rules including option to tax elections, CIS deductions on contractor payments, and potential liability for SDLT on land acquisitions. The interaction between different taxes, timing of reliefs, and treatment of development costs requires specialist knowledge to ensure compliance while optimising tax efficiency throughout project lifecycles.",
-  "Our partner property development tax specialists understand the specific challenges facing developers in Harrow's market. They provide comprehensive advice from initial project structuring through completion and disposal, ensuring proper tax treatment of all activities while maximising available reliefs and maintaining full compliance with HMRC requirements."
-],
+      'For high-net-worth property investors, Inheritance Tax represents one of the largest — and most foreseeable — threats to intergenerational wealth transfer. Residential buy-to-let property held in a personal name is fully exposed to IHT at 40% on the value above the nil-rate band (currently £325,000 per individual, or up to £1 million for a married couple with a residential nil-rate band and full transferability). There is no Business Property Relief for standard residential investment property.',
+      "The cumulative value of a Harrow property portfolio — even a modest one of five or six properties — can easily reach £1.5 to £2 million. Without IHT planning, a significant portion of that value passes to HMRC rather than to the investor's family. The IHT charge at death is unavoidable unless planning is in place during the investor's lifetime.",
+      "The available tools are powerful — Family Investment Companies, discretionary trusts, lifetime gifting programmes, and portfolio structuring via limited company — but each requires careful design, proper legal documentation, and ongoing compliance. Most property investors wait far too long to begin. Our Harrow specialists start planning while there is still time to make a material difference.",
+    ],
+    problemHeading: 'Why property portfolios are particularly exposed to IHT',
+    problems: [
+      {
+        head: 'Residential property does not qualify for Business Property Relief',
+        body: "Business Property Relief at 100% is available for qualifying business assets — but HMRC treats standard residential buy-to-let as investment activity, not a trading business. Unlike commercial property or shares in a trading company, residential portfolios receive no BPR. The full value above the nil-rate band is exposed to 40% IHT at death, with no structural exemption available under current rules.",
+      },
+      {
+        head: 'Property values in Harrow have grown substantially',
+        body: 'Average property values in the Harrow and North-West London area have increased significantly over the past two decades. A portfolio acquired for £600,000 in 2005 may now be worth £1.4 million or more. This growth — welcome as it is — has pushed many landlords well above the IHT threshold without any structural mitigation in place.',
+      },
+      {
+        head: 'Most investors leave planning too late',
+        body: 'The seven-year rule for lifetime gifts means that effective IHT planning requires a long runway. Gifts made within seven years of death are still subject to IHT (with taper relief applying between three and seven years). Planning that begins at 75 is significantly less effective than planning that begins at 60. The earlier the structure is put in place, the greater the wealth that can be passed on.',
+      },
+    ],
     benefits: [
-  {
-    "title": "Trading vs Investment Clarification",
-    "desc": "Expert determination of tax treatment for development activities ensuring correct classification for income tax, NICs, or CGT purposes. Proper classification can significantly impact overall tax liabilities and cash flow throughout development projects."
+      {
+        title: 'IHT exposure assessment across your full estate',
+        desc:  'Your specialist calculates the current IHT exposure across your property portfolio and overall estate — giving you a clear picture of what would pass to HMRC under the current position.',
+      },
+      {
+        title: 'Family Investment Company design',
+        desc:  'Where appropriate, your specialist designs a Family Investment Company structure that allows portfolio growth to accumulate in your children\'s shares — outside your estate — while you retain control and income.',
+      },
+      {
+        title: 'Trust and gifting strategy',
+        body:  'Your specialist designs a lifetime gifting programme — including the use of discretionary trusts where appropriate — to progressively move portfolio value out of your estate over time.',
+      },
+      {
+        title: 'CGT and IHT interaction planning',
+        desc:  'Every gift of property triggers CGT on the gain. Your specialist models the combined CGT and IHT impact of different gifting strategies — identifying the net wealth-preserving outcome of each approach.',
+      },
+    ],
+    processHeading: 'How we match you with an IHT planning specialist',
+    processSteps: [
+      {
+        title: 'Share your estate and portfolio details',
+        body:  'Tell us the estimated current value of your property portfolio, how it is held (personal name or company), your approximate overall estate value, and your family objectives for succession.',
+      },
+      {
+        title: 'We identify your specialist',
+        body:  'We match your enquiry to an ACCA or ICAEW certified accountant in our network who focuses on property IHT planning — particularly FIC structures, trust design, and lifetime gifting for portfolio landlords. Some also hold STEP qualifications.',
+      },
+      {
+        title: 'Estate IHT assessment and options review',
+        body:  'Your specialist presents a written analysis of your current IHT exposure and the available mitigation strategies — modelled to your specific estate, family structure, and timeline.',
+      },
+      {
+        title: 'Structure implementation and ongoing review',
+        body:  'Once a strategy is agreed, your specialist manages implementation — coordinating with solicitors on trust deeds, company articles, or gifting documentation — and reviews the structure annually as your estate and the legislation evolve.',
+      },
+    ],
+    localBridge: 'Looking for a property IHT planning specialist in Harrow? Our local network includes accountants who work with high-net-worth Harrow landlords in Stanmore, Pinner, and Harrow on the Hill — areas with significant property value concentration and strong succession planning needs.',
   },
-  {
-    "title": "VAT Strategy Optimisation",
-    "desc": "Professional VAT advice including option to tax elections, zero-rating claims on new builds, and DIY housebuilder relief where applicable. Proper VAT planning can improve project cash flow and reduce overall tax costs."
-  },
-  {
-    "title": "CIS Compliance Management",
-    "desc": "Comprehensive construction industry scheme compliance including contractor verification, deduction management, and monthly return preparation to ensure full compliance with complex CIS obligations."
-  },
-  {
-    "title": "Development Cost Planning",
-    "desc": "Strategic advice on treatment of development costs, interest capitalisation, and timing of relief claims to optimise tax efficiency throughout project lifecycles and minimise cash flow impact."
-  }
-],
-    candidateIntro: "Property development tax advice is crucial for these Harrow development activities",
-    candidates: [
-  "Residential developers undertaking new build projects around Harrow transport hubs",
-  "Property investors converting existing buildings or undertaking major refurbishment projects",
-  "Family developers selling developed land or completed properties with unclear trading status",
-  "Commercial developers undertaking mixed-use developments requiring complex VAT treatment",
-  "Anyone undertaking regular property development activities requiring clear tax classification"
-],
-    process: [
-  {
-    "title": "Development Activity Analysis",
-    "desc": "Comprehensive review of planned or ongoing development activities to determine correct tax classification and identify compliance requirements throughout project lifecycle."
-  },
-  {
-    "title": "Tax Structure Design",
-    "desc": "Design of optimal tax structure including entity selection, VAT registration strategy, and CIS compliance procedures to maximise tax efficiency while ensuring full compliance."
-  },
-  {
-    "title": "Implementation and Compliance",
-    "desc": "Professional management of tax registrations, ongoing compliance obligations, and coordination with project timelines to ensure smooth development progress."
-  },
-  {
-    "title": "Completion and Disposal Planning",
-    "desc": "Strategic advice on disposal timing, relief claims, and profit recognition to optimise final tax position and cash flow from completed development projects."
-  }
-],
-  },  "inheritance-tax-property": {
-    intro: [
-  "Inheritance tax planning for Harrow property requires sophisticated strategies given the borough's high property values, with many family homes exceeding the combined nil-rate bands even before considering other assets. The residence nil-rate band provides additional relief for family homes passed to direct descendants, but complex rules around downsizing and property values require careful navigation.",
-  "Many established Harrow families hold substantial wealth in property portfolios spanning multiple generations, creating complex IHT exposure that requires coordinated planning across lifetime gifts, trust structures, and succession arrangements. The interaction between IHT, CGT, and income tax on trust structures adds complexity requiring specialist expertise to achieve effective outcomes.",
-  "Our partner inheritance tax specialists serving Harrow families understand both the technical rules and practical challenges of property-focused wealth transfer planning. They provide comprehensive advice covering lifetime planning, trust structures, and succession strategies to minimise IHT liabilities while achieving family objectives across multiple generations."
-],
-    benefits: [
-  {
-    "title": "Maximise Nil-Rate Band Relief",
-    "desc": "Expert utilisation of standard and residence nil-rate bands including spousal transfers, downsizing provisions, and trust planning to maximise available IHT exemptions for property wealth."
-  },
-  {
-    "title": "Lifetime Gift Planning",
-    "desc": "Strategic advice on potentially exempt transfers, gifts with reservation, and annual exemption utilisation to reduce estate values while managing CGT and income tax implications of lifetime transfers."
-  },
-  {
-    "title": "Trust Structure Planning",
-    "desc": "Professional design of trust arrangements for property assets including discretionary trusts, life interest trusts, and pilot trusts to achieve effective IHT mitigation while maintaining family control."
-  },
-  {
-    "title": "Business Property Relief",
-    "desc": "Expert advice on qualifying property investment businesses and furnished holiday lets for business property relief, potentially reducing IHT liability by 50% or 100% on qualifying property assets."
-  }
-],
-    candidateIntro: "Inheritance tax property planning is essential for these Harrow situations",
-    candidates: [
-  "Families with high-value Harrow properties exceeding combined nil-rate band thresholds",
-  "Property investors with substantial BTL portfolios requiring succession planning across generations",
-  "Elderly homeowners considering downsizing with residence nil-rate band implications",
-  "Family property businesses requiring business property relief qualification and planning",
-  "Non-UK domiciled individuals with UK property requiring specialised IHT advice"
-],
-    process: [
-  {
-    "title": "Estate Valuation and Analysis",
-    "desc": "Comprehensive assessment of property assets, other wealth, and current IHT exposure with detailed analysis of available reliefs and planning opportunities."
-  },
-  {
-    "title": "Strategy Design and Modelling",
-    "desc": "Development of comprehensive IHT planning strategy including gift planning, trust structures, and succession arrangements with detailed modelling of tax outcomes and cash flow implications."
-  },
-  {
-    "title": "Implementation and Documentation",
-    "desc": "Professional implementation of chosen planning strategies including trust documentation, gift transactions, and coordination with legal advisers and other professionals."
-  },
-  {
-    "title": "Ongoing Review and Management",
-    "desc": "Regular review of planning arrangements including trust compliance, gift monitoring, and strategy updates to reflect changing circumstances and legislation developments."
-  }
-],
-  }
-};
+}
+
+export const getServiceContentBySlug = (slug: string): ServiceContent | undefined =>
+  serviceContent[slug]

@@ -2,58 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap');
-
 :root {
-  --brand-50: #EDF5F5;
-  --brand-100: #D0E8E8;
-  --brand-200: #A8D4D4;
-  --brand-300: #6BAAAA;
-  --brand-400: #3D9090;
-  --brand-500: #1F7A7A;
-  --brand-600: #196666;
-  --brand-700: #145252;
-  --brand-800: #0F3E3E;
-  --brand-900: #0A2E2E;
-  --brand-950: #061E1E;
+  --green:       #277649;
+  --green-dark:  #1a5233;
+  --green-deep:  #0f3320;
+  --green-light: #eaf4ee;
+  --green-mid:   #d0e9d8;
+  --green-soft:  #f2f9f4;
+  --text:        #0d1a0f;
+  --text-muted:  #555555;
+  --text-faint:  #888888;
+  --border:      #f0eee8;
+  --border-dark: #ddd;
 }
 
 @layer base {
-  body {
-    @apply font-sans text-gray-800 antialiased;
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  body {
+    @apply font-sans bg-white text-text;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5 {
     @apply font-display;
   }
 }
 
 @layer components {
-  .container-width {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  /* ── Layout ── */
+  .site-container {
+    @apply max-w-site mx-auto px-16;
   }
-  .section-padding {
-    @apply py-16 md:py-24;
+
+  .section-pad {
+    @apply py-20;
   }
+
+  /* ── Buttons ── */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 active:bg-brand-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center gap-2
+           bg-brand text-white font-sans font-semibold text-sm
+           px-8 py-4 tracking-wide
+           transition-colors duration-200 hover:bg-brand-dark
+           cursor-pointer border-0;
   }
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 font-bold py-3 px-6 rounded-xl border-2 border-gray-200 hover:border-brand-300 transition-all;
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-[#ccc] text-text-muted bg-transparent font-sans font-normal text-sm
+           px-6 py-4
+           transition-colors duration-200 hover:border-brand hover:text-brand
+           cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2
+           text-brand font-sans font-semibold text-sm
+           cursor-pointer hover:underline;
+  }
+
+  /* ── Form elements ── */
+  .field-input {
+    @apply w-full border border-[#ddd] bg-white
+           text-text font-sans text-sm
+           px-4 py-3
+           transition-colors duration-200
+           focus:outline-none focus:border-brand;
+  }
+
+  .field-input-dark {
+    @apply w-full border border-white/10 bg-white/8
+           text-white font-sans text-sm placeholder:text-white/30
+           px-4 py-3
+           transition-colors duration-200
+           focus:outline-none focus:border-brand/60;
+    background-color: rgba(255,255,255,0.07);
+  }
+
+  .field-label {
+    @apply block font-sans text-[10px] uppercase tracking-widest text-text-faint font-medium mb-1.5;
+  }
+
+  /* ── Trust strip ── */
+  .trust-strip {
+    @apply flex items-center gap-8 flex-wrap;
+  }
+  .trust-strip-item {
+    @apply flex items-center gap-2.5 text-xs tracking-wide;
+  }
+  .trust-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0;
+  }
+
+  /* ── Section eyebrow ── */
+  .eyebrow {
+    @apply font-sans text-[10px] uppercase tracking-[0.18em] text-brand font-semibold;
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    @apply border-b border-[#f0eee8] py-6;
+  }
+  .faq-q {
+    @apply font-display text-lg text-text cursor-pointer flex justify-between items-center;
+  }
+  .faq-a {
+    @apply font-sans text-sm text-text-muted leading-relaxed mt-4 max-w-2xl;
   }
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes backdrop-out { from { opacity: 1; } to { opacity: 0; } }
-@keyframes modal-in { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-@keyframes modal-out { from { opacity: 1; transform: scale(1) translateY(0); } to { opacity: 0; transform: scale(0.95) translateY(10px); } }
-
-.animate-backdrop-in { animation: backdrop-in 0.2s ease-out forwards; }
-.animate-backdrop-out { animation: backdrop-out 0.2s ease-in forwards; }
-.animate-modal-in { animation: modal-in 0.3s ease-out forwards; }
-.animate-modal-out { animation: modal-out 0.2s ease-in forwards; }

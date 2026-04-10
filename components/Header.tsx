@@ -1,113 +1,107 @@
-// components/Header.tsx
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Menu, X, MapPin, ChevronDown } from 'lucide-react';
-import { services } from '@/data/services';
-import { siteConfig } from '@/data/site';
+import { useState } from 'react'
+import Link from 'next/link'
+import { siteConfig, navLinks } from '@/data/site'
 
 interface HeaderProps {
-  onOpenModal?: () => void;
+  onOpenModal: () => void
 }
 
-export function Header({ onOpenModal }: HeaderProps) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => { setMobileOpen(false); }, [pathname]);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+export default function Header({ onOpenModal }: HeaderProps) {
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <>
-      {/* Top Bar */}
-      <div className="bg-brand-900 text-brand-50 py-2 px-4 text-sm hidden md:block">
-        <div className="container-width flex justify-between items-center">
-          <span className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" /> {siteConfig.name} Specialists
-          </span>
+    <header className="sticky top-0 z-50 bg-white">
+      {/* Top bar */}
+      <div style={{ background: 'var(--green)' }} className="hidden md:block">
+        <div className="site-container flex justify-between items-center h-9">
+          <p className="text-white/70 text-[11px] tracking-wide">
+            Harrow&apos;s Vetted Property Tax Accountant Network — ACCA &amp; ICAEW Certified
+          </p>
+          <div className="flex items-center gap-6">
+            <a
+              href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
+              className="text-white text-[11px] font-semibold tracking-wide hover:text-white/80 transition-colors"
+            >
+              {siteConfig.phone}
+            </a>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="text-white/70 text-[11px] hover:text-white transition-colors"
+            >
+              {siteConfig.email}
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Main Header */}
-      <header className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b transition-shadow duration-200 ${scrolled ? 'shadow-md border-gray-200' : 'shadow-sm border-gray-100'}`}>
-        <div className="container-width">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt={siteConfig.name} className="h-10 w-auto" />
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl leading-none text-gray-900">{siteConfig.name.split(" ").slice(0, -1).join(" ")}</span>
-                <span className="text-xs text-brand-500 font-semibold tracking-widest uppercase">{siteConfig.name.split(" ").pop()}</span>
-              </div>
-            </Link>
+      {/* Main nav */}
+      <nav className="border-b border-[#f0eee8] bg-white">
+        <div className="site-container flex items-center justify-between h-[68px]">
+          {/* Logo */}
+          <Link href="/" className="flex flex-col gap-0.5 no-underline">
+            <span className="font-display text-[19px] text-text leading-none tracking-[-0.01em]">
+              Property<span style={{ color: 'var(--green)' }}>Accountants</span>Harrow
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.18em] text-text-faint font-medium font-sans">
+              Vetted Specialist Network
+            </span>
+          </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
-              <Link href="/" className="px-3 py-2 text-gray-600 hover:text-brand-600 font-medium transition-colors rounded-lg hover:bg-brand-50">Home</Link>
-
-              <div className="relative group">
-                <Link href="/services/" className="flex items-center gap-1 px-3 py-2 text-gray-600 group-hover:text-brand-600 font-medium transition-colors rounded-lg group-hover:bg-brand-50">
-                  Services <ChevronDown className="w-4 h-4" />
-                </Link>
-                <div className="absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 p-2 z-50">
-                  {services.map(service => (
-                    <Link
-                      key={service.id}
-                      href={`/services/${service.slug}/`}
-                      className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-700 rounded-lg transition-colors"
-                    >
-                      {service.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <Link href="/location/" className="px-3 py-2 text-gray-600 hover:text-brand-600 font-medium transition-colors rounded-lg hover:bg-brand-50">Locations</Link>
-
-              <Link href="/blog/" className="px-3 py-2 text-gray-600 hover:text-brand-600 font-medium transition-colors rounded-lg hover:bg-brand-50">Blog</Link>
-
-              <button onClick={onOpenModal} className="ml-3 btn-primary text-sm !py-2.5 !px-5 rounded-full">
-                Find a Specialist
-              </button>
-            </nav>
-
-            {/* Mobile Toggle */}
-            <button className="lg:hidden p-2 text-gray-600" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {/* Desktop links */}
+          <div className="hidden lg:flex items-center gap-6">
+            {navLinks.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[12px] text-text-muted no-underline hover:text-text transition-colors font-sans tracking-wide"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <button
+              onClick={onOpenModal}
+              className="btn-primary text-[12px] py-3 px-6"
+            >
+              Get Matched — Free
             </button>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="lg:hidden flex flex-col gap-[5px] p-2 cursor-pointer"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-5 h-[1.5px] bg-text transition-all ${mobileOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-text transition-all ${mobileOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-text transition-all ${mobileOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`} />
+          </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl z-50 max-h-[80vh] overflow-y-auto">
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              <Link href="/" className="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Home</Link>
-              <div className="px-3 py-2">
-                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Services</div>
-                {services.map(s => (
-                  <Link key={s.id} href={`/services/${s.slug}/`} className="block py-2 text-sm text-gray-600 hover:text-brand-600">{s.title}</Link>
-                ))}
-              </div>
-              <Link href="/location/" className="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Locations</Link>
-              <Link href="/blog/" className="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Blog</Link>
-
-              <div className="pt-4 px-3">
-                <button onClick={() => { onOpenModal?.(); setMobileOpen(false); }} className="block w-full btn-primary text-center">Find a Specialist</button>
-              </div>
-            </div>
+          <div className="lg:hidden border-t border-[#f0eee8] bg-white px-6 py-6 flex flex-col gap-5">
+            {navLinks.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[14px] text-text-muted no-underline font-sans"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <button
+              onClick={() => { setMobileOpen(false); onOpenModal() }}
+              className="btn-primary text-[13px] py-3 mt-2 self-start px-6"
+            >
+              Get Matched — Free
+            </button>
           </div>
         )}
-      </header>
-    </>
-  );
+      </nav>
+    </header>
+  )
 }

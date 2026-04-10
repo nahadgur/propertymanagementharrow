@@ -1,106 +1,51 @@
-// app/layout.tsx
-import type { Metadata } from 'next';
-import Script from 'next/script';
-import './globals.css';
-import { siteConfig } from '@/data/site';
+import type { Metadata } from 'next'
+import { Fraunces, Epilogue } from 'next/font/google'
+import './globals.css'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  axes: ['opsz'],
+})
+
+const epilogue = Epilogue({
+  subsets: ['latin'],
+  variable: '--font-epilogue',
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name + ' | Find Vetted Property Management Services in Harrow',
-    template: `%s | ${siteConfig.name}`,
+    default: 'Property Accountants Harrow | Vetted Property Tax Specialists',
+    template: '%s | Property Accountants Harrow',
   },
-  description: siteConfig.description,
-  alternates: { canonical: siteConfig.url },
-  robots: { index: true, follow: true },
-  verification: {
-    google: 'XFzSXTpxepsWdCH4sSHWBYMVJtL5yDOeF684TIUe6q4',
-  },
-  icons: {
-    icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.ico' },
-    ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-  },
+  description:
+    'Connect with vetted ACCA and ICAEW certified property tax accountants in Harrow. Specialists in Section 24 mitigation, SPV incorporation, CGT planning and inheritance tax for property investors.',
+  metadataBase: new URL('https://www.propertyaccountantsharrow.co.uk'),
   openGraph: {
     type: 'website',
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: siteConfig.name,
-    description: siteConfig.description,
     locale: 'en_GB',
-    images: [
-      {
-        url: '/android-chrome-512x512.png',
-        width: 512,
-        height: 512,
-        alt: siteConfig.name,
-      },
-    ],
+    url: 'https://www.propertyaccountantsharrow.co.uk',
+    siteName: 'Property Accountants Harrow',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: ['/android-chrome-512x512.png'],
+  robots: {
+    index: true,
+    follow: true,
   },
-};
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: siteConfig.name,
-    alternateName: siteConfig.tagline,
-    url: siteConfig.url,
-  };
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/android-chrome-512x512.png`,
-    description: siteConfig.description,
-    areaServed: {
-      '@type': 'AdministrativeArea',
-      name: 'Harrow',
-      containedInPlace: { '@type': 'Country', name: 'United Kingdom' },
-    },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      availableLanguage: 'English',
-    },
-  };
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en-GB">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-      </head>
-      <body className="min-h-screen flex flex-col">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1QDEPBMQJV"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1QDEPBMQJV');
-          `}
-        </Script>
+    <html lang="en" className={`${fraunces.variable} ${epilogue.variable}`}>
+      <body className="font-sans bg-white text-text antialiased flex flex-col min-h-screen">
         {children}
       </body>
     </html>
-  );
+  )
 }

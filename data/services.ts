@@ -1,80 +1,153 @@
-// data/services.ts
-export interface FAQ { question: string; answer: string; }
-export interface Service { id: string; title: string; slug: string; description: string; image: string; icon: string; color: string; faqs: FAQ[]; }
+export interface ServiceFAQ {
+  q: string
+  a: string
+}
+
+export interface Service {
+  id:          string
+  slug:        string
+  title:       string
+  shortTitle:  string
+  tagline:     string
+  description: string
+  heroDesc:    string
+  pill:        string
+  faqs:        ServiceFAQ[]
+}
+
 export const services: Service[] = [
   {
-    "id": "residential-lettings-management",
-    "title": "Residential Lettings Management",
-    "slug": "residential-lettings-management",
-    "description": "Full residential lettings management for Harrow landlords. From marketing and tenant find through to rent collection, inspections, maintenance, and renewals — your property managed professionally so you don't have to.",
-    "faqs": [
-      { "question": "What does full residential lettings management include?", "answer": "A full management service covers everything from marketing your property and conducting viewings, through tenant referencing and tenancy agreement preparation, to monthly rent collection, periodic inspections, maintenance coordination, and tenancy renewals or notice procedures. You hand over the day-to-day responsibility entirely — the agent handles all tenant contact and is the first call for any issue." },
-      { "question": "What percentage do property managers charge in Harrow?", "answer": "Full management fees in Harrow typically range from 8% to 15% of monthly rent depending on the agent and service level. Most agents also charge a tenant find fee (equivalent to one to two weeks' rent) when a new tenancy begins. Always confirm what is included in the management fee and what is charged separately — maintenance markups and inspection fees vary widely." },
-      { "question": "How often will my property be inspected?", "answer": "Most Harrow property managers conduct inspections every three to six months during a tenancy, with a formal check-in at the start and check-out at the end. Inspection reports with photographs should be provided after each visit. Frequency can sometimes be increased for higher-risk tenancies or properties with specific maintenance concerns." }
+    id:         'section-24',
+    slug:       'section-24-tax-mitigation',
+    title:      'Section 24 Tax Mitigation',
+    shortTitle: 'Section 24',
+    tagline:    'Stop the mortgage interest restriction destroying your returns',
+    pill:       'Most requested',
+    description:
+      'The mortgage interest finance cost restriction has been stripping income from leveraged UK landlords since 2017. Higher-rate taxpayers can no longer deduct mortgage interest as an expense — instead receiving only a 20% tax credit. For many, this turns profitable portfolios into loss-making ones on paper while generating real tax bills. Our specialist accountants model your exact position and implement legal restructuring strategies to recapture as much relief as possible.',
+    heroDesc:
+      'The finance cost restriction is the single biggest threat to highly leveraged UK property portfolios. Our Harrow specialists model your exact exposure and implement the right mitigation strategy — before HMRC takes more than they should.',
+    faqs: [
+      {
+        q: 'Who does Section 24 affect most?',
+        a: 'Higher and additional rate taxpayers with mortgaged buy-to-let properties are worst affected. If your total income — including rental income — pushes you into the 40% or 45% tax band, you receive only a 20% tax credit on finance costs rather than full relief. Landlords with high loan-to-value ratios on multiple properties often face the largest cumulative losses.',
+      },
+      {
+        q: 'Can Section 24 be avoided legally?',
+        a: "Yes, through a range of legitimate strategies depending on your situation. The most comprehensive solution is incorporating your portfolio into a limited company (SPV), which allows the company to deduct 100% of mortgage interest as a business expense. Other strategies include spousal income splitting, pension contributions to reduce taxable income, and strategic use of capital allowances on qualifying HMO properties. The right solution depends on your specific portfolio, income level, and long-term plans.",
+      },
+      {
+        q: 'How much could restructuring save me?',
+        a: 'This varies enormously by portfolio. A higher-rate taxpayer with £400,000 of buy-to-let mortgage debt at 5% interest might be paying over £4,000 per year in avoidable additional tax under Section 24. Across a larger leveraged portfolio, the figure can run to five figures annually. A specialist will model your exact position before any advice is given.',
+      },
     ],
-    "image": "/images/residential-lettings-management.png", "icon": "Home", "color": "brand"
   },
   {
-    "id": "block-estate-management",
-    "title": "Block & Estate Management",
-    "slug": "block-estate-management",
-    "description": "Professional block and estate management for Harrow freeholders, residents' management companies, and RTM companies. Comprehensive service charge administration, maintenance oversight, compliance management, and leaseholder communication.",
-    "faqs": [
-      { "question": "What does a block management company do?", "answer": "A block management company acts on behalf of the freeholder or residents' management company to run the day-to-day affairs of a building. This includes collecting service charges, arranging buildings insurance, commissioning and overseeing maintenance and major works, ensuring compliance with fire safety and health and safety legislation, and managing leaseholder communications and disputes." },
-      { "question": "How are service charges calculated and managed?", "answer": "Service charges are calculated based on the anticipated cost of running the building for the coming year, plus contributions to a reserve fund for major works. A well-run block manager prepares a transparent annual budget, issues demands in compliance with lease requirements, accounts for all expenditure, and provides year-end accounts. Service charges must be reasonable and properly consulted on for major works above the Section 20 threshold." },
-      { "question": "Can we switch block managers mid-lease?", "answer": "Yes — residents' management companies and RTM companies can change their block manager at any time by following the termination provisions in the management agreement. A professional handover involves transfer of all financial records, maintenance contracts, compliance certificates, and leaseholder contact details. We can match you with specialists experienced in taking over from underperforming managing agents." }
+    id:         'spv',
+    slug:       'spv-company-incorporation',
+    title:      'SPV Company Incorporation',
+    shortTitle: 'SPV Incorporation',
+    tagline:    'Move your portfolio into a limited company structure — the right way',
+    pill:       'High impact',
+    description:
+      "Incorporating a buy-to-let portfolio into a Special Purpose Vehicle limited company allows landlords to reclaim full mortgage interest relief, pay corporation tax (currently 25%) rather than income tax on profits, and build a more transferable asset structure. But the SDLT and CGT implications on transfer are significant — and must be modelled before any action is taken. Our specialists calculate the exact breakeven point for your specific portfolio before a single property moves.",
+    heroDesc:
+      'SPV incorporation is one of the most powerful tools available to leveraged UK landlords. The tax benefits are substantial — but only when the transfer is structured correctly. Our Harrow specialists model the full picture before you commit to anything.',
+    faqs: [
+      {
+        q: 'What is an SPV and how does it differ from a standard limited company?',
+        a: 'A Special Purpose Vehicle (SPV) is a limited company established specifically to hold property investments. Unlike a trading company, an SPV has a defined SIC code (68100 or 68209) that mortgage lenders recognise as a property holding entity — which is important for accessing buy-to-let mortgage products within the company structure. Most lenders require this distinction. Your accountant will set the company up correctly from the outset.',
+      },
+      {
+        q: 'Will I pay Stamp Duty Land Tax on transferring my existing portfolio?',
+        a: "In most cases, yes. When you transfer a personally-held property into a limited company, HMRC treats it as a disposal and a purchase — triggering SDLT at the rates applicable to the transfer value, including the 3% additional dwelling surcharge. This is one of the most significant costs of incorporation and must be modelled against projected tax savings to determine the breakeven timeline. Some partnerships may qualify for SDLT partnership relief — a specialist will assess whether this applies.",
+      },
+      {
+        q: 'Should I incorporate my existing portfolio or only buy new properties in the company?',
+        a: "Both approaches are used, depending on circumstances. For portfolios with significant built-in gains, it often makes more sense to hold existing properties personally and acquire future properties via the SPV — avoiding the CGT and SDLT double hit on transfer. For portfolios with little gain, or where leveraged Section 24 losses are severe, full incorporation may justify the transfer costs. Your specialist will model both scenarios before recommending either.",
+      },
     ],
-    "image": "/images/block-estate-management.png", "icon": "Building2", "color": "brand"
   },
   {
-    "id": "tenant-find-referencing",
-    "title": "Tenant Find & Referencing",
-    "slug": "tenant-find-referencing",
-    "description": "Tenant find and comprehensive referencing for Harrow landlords who self-manage but need professional help securing the right tenant. Full marketing, viewings, credit and reference checks, right to rent verification, and tenancy preparation.",
-    "faqs": [
-      { "question": "What does a tenant referencing check include?", "answer": "A comprehensive reference check covers credit history (including CCJs and bankruptcies), employment verification and income assessment, previous landlord references, and Right to Rent document checks as required under UK immigration law. Most agents also verify identity documents and check against tenancy fraud databases. The output is a written referencing report that helps you make an informed decision." },
-      { "question": "How long does it take to find a tenant in Harrow?", "answer": "In a well-priced Harrow property, a professional letting agent can typically find a suitable tenant within two to four weeks. Properties that are accurately priced for the current market and presented well generate enquiries quickly. Overpricing is the single biggest cause of extended void periods — a good agent will advise on realistic market rent before marketing begins." },
-      { "question": "What is included in the tenancy agreement preparation?", "answer": "A professionally prepared assured shorthold tenancy agreement covers all standard clauses required under current legislation, plus any specific provisions relevant to your property — pets clauses, permitted occupiers, maintenance responsibilities, and any special conditions. The agent ensures the agreement complies with current law, registers the deposit with an approved scheme, and serves all required prescribed information within the legal timeframe." }
+    id:         'cgt',
+    slug:       'capital-gains-tax-planning',
+    title:      'Capital Gains Tax Planning',
+    shortTitle: 'CGT Planning',
+    tagline:    'Preserve wealth when selling — before the disposal, not after',
+    pill:       'Wealth preservation',
+    description:
+      "Unplanned property disposals can trigger substantial Capital Gains Tax liabilities that are entirely avoidable with the right structure in place before the sale. Private Residence Relief, lettings relief, principal private residence nominations, holdover elections, and careful disposal timing are all tools available to property investors — but only when applied correctly and in advance. Our specialists structure disposals to preserve maximum wealth.",
+    heroDesc:
+      'Every pound of CGT paid on a property disposal is a pound that should have gone to you. Our Harrow specialists plan exits — before the sale is agreed, not after it completes.',
+    faqs: [
+      {
+        q: 'What CGT reliefs are available on property disposals?',
+        a: "Private Residence Relief (PRR) exempts gains on a property that has been your main home for any part of the ownership period — including the final 9 months regardless of occupation. Lettings relief of up to £40,000 per owner applies where PRR is also available and the property was let during occupation. Holdover relief, business asset disposal relief, and gift relief may apply in specific circumstances. The availability of each depends on the property's history and your broader tax position.",
+      },
+      {
+        q: 'How does the Annual Exempt Amount work for property investors?',
+        a: 'The CGT Annual Exempt Amount for individuals is currently £3,000 (2024/25), significantly reduced from the £12,300 that applied until 2022/23. For properties held jointly, each owner has their own exemption. Strategic use of spousal transfers and careful disposal timing across tax years can make meaningful differences to the net CGT liability on portfolio disposals.',
+      },
+      {
+        q: 'What is the CGT rate on residential property?',
+        a: 'Residential property gains above your Annual Exempt Amount are taxed at 18% for basic rate taxpayers and 24% for higher and additional rate taxpayers (from October 2024, reduced from 28%). Where a disposal pushes you from basic into higher rate, a blended rate applies to the portion in each band. A specialist will model your exact liability across different disposal scenarios before you commit to a sale.',
+      },
     ],
-    "image": "/images/tenant-find-referencing.png", "icon": "UserCheck", "color": "brand"
   },
   {
-    "id": "property-maintenance-coordination",
-    "title": "Property Maintenance Coordination",
-    "slug": "property-maintenance-coordination",
-    "description": "Maintenance coordination for Harrow landlords and property managers. Reliable trade network, prompt response to tenant reports, compliant repair management, and clear cost approval processes — keeping properties in good condition without the hassle.",
-    "faqs": [
-      { "question": "How does maintenance coordination work for landlords?", "answer": "When a maintenance issue is reported, the coordinator assesses urgency, sources an appropriate contractor from a vetted trade network, obtains quotes where required, coordinates access with the tenant, oversees the work, and reports back with completion confirmation and any invoices. Landlords set approval thresholds — works below the threshold proceed without sign-off; larger jobs are referred for approval before instruction." },
-      { "question": "What are a landlord's legal maintenance obligations?", "answer": "Landlords are legally required to keep the structure and exterior of the property in repair, ensure all gas appliances are annually safety checked with a valid Gas Safety Record, maintain electrical installations to EICR standards (inspection every five years), fit working smoke and carbon monoxide alarms, and ensure the property is free from category one hazards under the Housing Health and Safety Rating System. A good maintenance coordinator tracks compliance deadlines and flags upcoming requirements." },
-      { "question": "How quickly should emergency repairs be handled?", "answer": "Emergency repairs — those affecting safety or making a property uninhabitable, such as boiler failures in winter, flooding, or electrical faults — should be addressed within 24 hours. Urgent but non-emergency repairs such as appliance failures or minor leaks should be resolved within three to five working days. Routine repairs should be completed within 28 days. A professional coordinator has relationships with reliable trades available at short notice." }
+    id:         'sdlt',
+    slug:       'sdlt-stamp-duty-planning',
+    title:      'SDLT & Stamp Duty Planning',
+    shortTitle: 'SDLT Planning',
+    tagline:    'Mitigate the 3% surcharge and apply every relief available',
+    pill:       'Acquisition strategy',
+    description:
+      "Stamp Duty Land Tax is often the largest single transaction cost for property investors — particularly since the 3% additional dwelling surcharge was introduced in 2016. Multiple dwellings relief, mixed-use relief, linked transaction analysis, and first-time buyer edge cases all represent legitimate mitigation opportunities that many solicitors miss. Our specialist accountants review every acquisition before exchange to ensure no SDLT is paid unnecessarily.",
+    heroDesc:
+      'SDLT mistakes are expensive and often irreversible. Our Harrow specialists review acquisitions before exchange to apply every legitimate relief — and model portfolio-level SDLT exposure across planned purchases.',
+    faqs: [
+      {
+        q: 'What is Multiple Dwellings Relief and who qualifies?',
+        a: 'Multiple Dwellings Relief (MDR) allows buyers of two or more residential properties in a single transaction (or linked transactions) to calculate SDLT based on the mean consideration per dwelling rather than the aggregate total — which can move the entire purchase into a lower SDLT band. MDR was announced as being abolished from June 2024, so its availability depends on the completion date of your transaction. A specialist will confirm the current position and model any alternative reliefs.',
+      },
+      {
+        q: 'Can I reclaim the 3% surcharge if I sell my main home after buying a new one?',
+        a: 'Yes. If you purchase a new main residence before selling your previous one, you pay the 3% additional dwelling surcharge at completion. If you then sell your previous main home within three years, you can reclaim the surcharge from HMRC. The refund claim must be made within 12 months of the sale (or the three-year deadline, whichever is earlier). This is a frequently missed reclaim opportunity for owner-occupiers who also hold investment property.',
+      },
+      {
+        q: 'Does mixed-use SDLT apply to my property?',
+        a: "Properties with both residential and non-residential elements — such as a flat above a commercial unit, or a farmhouse with agricultural land — may qualify for non-residential SDLT rates, which are significantly lower than residential rates and carry no 3% surcharge. The classification of a property as mixed-use depends on its specific characteristics at the point of purchase. This is a contested area with active HMRC scrutiny, and specialist advice is strongly recommended before submitting any mixed-use SDLT return.",
+      },
     ],
-    "image": "/images/property-maintenance-coordination.png", "icon": "Wrench", "color": "brand"
   },
   {
-    "id": "rent-collection-arrears-management",
-    "title": "Rent Collection & Arrears Management",
-    "slug": "rent-collection-arrears-management",
-    "description": "Professional rent collection and arrears management for Harrow landlords. Reliable monthly collection, prompt arrears chasing, legally compliant escalation procedures, and clear reporting — protecting your rental income without the confrontation.",
-    "faqs": [
-      { "question": "What happens when a tenant falls into arrears?", "answer": "A professional rent collection service follows a defined arrears procedure. Initial contact is made within days of a missed payment — most arrears at this stage are resolved quickly. If arrears persist, the agent issues formal notices in the correct legal form, maintains a documented trail, and escalates to legal proceedings if required. Acting promptly and correctly from the outset significantly improves recovery rates and protects any subsequent possession claim." },
-      { "question": "What legal notices are involved in an arrears case?", "answer": "For assured shorthold tenancies, the primary route for rent arrears is a Section 8 notice citing grounds 8, 10, and 11 of the Housing Act 1988. Ground 8 (two months' arrears at both notice and hearing) is a mandatory ground for possession. A Section 21 notice may run concurrently where applicable. All notices must be correctly drafted and served — procedural errors can invalidate the notice and require the process to restart." },
-      { "question": "Can a specialist help recover historic arrears?", "answer": "Yes — arrears recovery specialists can pursue outstanding rent through the county court as a debt claim, independently of any possession proceedings. Where a tenancy has ended, former tenants can be pursued through the courts for outstanding rent for up to six years. Tracing services can locate tenants who have vacated without paying. We can match you with specialists who handle complex arrears and recovery cases." }
+    id:         'iht',
+    slug:       'property-inheritance-tax',
+    title:      'Property Inheritance Tax',
+    shortTitle: 'Inheritance Tax',
+    tagline:    'Structure your portfolio to pass wealth across generations',
+    pill:       'Generational planning',
+    description:
+      "For high-net-worth property investors, Inheritance Tax can represent the single largest threat to intergenerational wealth transfer. Residential property does not qualify for Business Property Relief — meaning portfolios sitting in personal names are fully exposed to 40% IHT above the nil-rate band. Limited company structures, family investment companies, discretionary trusts, and lifetime gifting programmes each play a role in a comprehensive succession plan. Our specialists design structures around your family's specific goals and timeline.",
+    heroDesc:
+      'Your property portfolio has taken years to build. Without the right structure, up to 40% of it could pass to HMRC rather than your family. Our Harrow specialists plan succession properly — while there is still time.',
+    faqs: [
+      {
+        q: "Does Business Property Relief apply to my property portfolio?",
+        a: "Business Property Relief (BPR) at 100% applies to qualifying business assets — but standard residential buy-to-let portfolios do not qualify, as HMRC treats them as investment activities rather than trading businesses. HMO portfolios with significant active management may qualify in limited circumstances, but this is a contested area. Furnished Holiday Let portfolios have historically received more favourable treatment, though this is subject to the FHL abolition from April 2025. A specialist will assess your portfolio's BPR position accurately.",
+      },
+      {
+        q: 'How can a Family Investment Company help with IHT planning?',
+        a: "A Family Investment Company (FIC) is a private limited company through which the founder holds investments — typically via preference shares retaining value and income rights — while younger family members hold growth shares that appreciate in value outside the estate. Over time, the growth in the company's asset value accumulates in the children's shares rather than the founder's estate. FICs are a legitimate and HMRC-acknowledged planning structure, though they require careful setup and ongoing compliance.",
+      },
+      {
+        q: 'What is the seven-year gifting rule and how does it interact with property?',
+        a: "Lifetime gifts to individuals (other than your spouse) fall out of your estate for IHT purposes after seven years, with taper relief reducing the IHT charge for gifts made three to seven years before death. Gifting property directly triggers CGT on the gain at the date of gift — which must be modelled against the IHT saving to determine the net benefit. Holdover relief can defer the CGT in some circumstances but is not always available on residential property. A specialist will model the combined CGT and IHT impact across different gifting scenarios.",
+      },
     ],
-    "image": "/images/rent-collection-arrears-management.png", "icon": "PoundSterling", "color": "brand"
   },
-  {
-    "id": "hmo-management",
-    "title": "HMO Management",
-    "slug": "hmo-management",
-    "description": "Specialist HMO management for Harrow landlords. Licensing compliance, room-by-room tenancy management, communal area maintenance, tenant relations, and full regulatory oversight — expert management for one of the most complex property types.",
-    "faqs": [
-      { "question": "What HMO licences are required in Harrow?", "answer": "In the London Borough of Harrow, HMOs occupied by five or more people forming two or more households require a mandatory HMO licence. The council may also operate additional licensing schemes covering smaller HMOs. Licences must be renewed and conditions complied with throughout — failure to hold a required licence is a criminal offence and allows tenants to apply for a Rent Repayment Order recovering up to 12 months' rent. A specialist will assess your property's licensing position and manage the application process." },
-      { "question": "How is an HMO managed differently to a standard let?", "answer": "HMO management is significantly more complex than a single-household tenancy. Individual room agreements must be managed, room-by-room check-ins and check-outs coordinated, shared facility maintenance prioritised, utility bills (often included in rent) managed, and communal areas regularly inspected. Compliance requirements are stricter — fire safety, room size standards, and amenity ratios must be maintained. A specialist HMO manager handles all of this as a matter of course." },
-      { "question": "What are the fire safety requirements for an HMO?", "answer": "HMOs are subject to stricter fire safety requirements than single-household properties. These typically include interlinked mains-wired smoke alarms on every floor and in every room, heat detectors in kitchens, fire doors on habitable rooms and kitchens, emergency lighting in communal areas, and a fire risk assessment. Specific requirements vary by property size and licence conditions. A specialist HMO manager ensures all requirements are met, documented, and maintained." }
-    ],
-    "image": "/images/hmo-management.png", "icon": "Key", "color": "brand"
-  }
-];
+]
 
-export const getAllServiceSlugs = (): string[] => services.map(s => s.slug);
-export const getServiceBySlug = (slug: string): Service | undefined => services.find(s => s.slug === slug);
+export const getAllServiceSlugs = (): string[] => services.map(s => s.slug)
+export const getServiceBySlug = (slug: string): Service | undefined =>
+  services.find(s => s.slug === slug)

@@ -1,133 +1,122 @@
-'use client';
+'use client'
 
-import { siteConfig } from '@/data/site';
-import { services } from '@/data/services';
-import { useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+import { useState } from 'react'
 
 interface HeroLeadFormProps {
-  city?: string;
-  service?: string;
+  service?:  string
+  location?: string
 }
 
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+const SCRIPT_URL = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? ''
 
-export function HeroLeadForm({ city, service }: HeroLeadFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    location: city || '',
-    treatment: service || '',
-  });
+export default function HeroLeadForm({ service, location }: HeroLeadFormProps) {
+  const [form, setForm] = useState({
+    name:      '',
+    email:     '',
+    phone:     '',
+    portfolio: '',
+    concern:   service ?? '',
+  })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }))
+  }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('sending')
     try {
-      const payload = {
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        location: formData.location || city || '',
-        treatment: formData.treatment || service || '',
-        page: window.location.href,
-        source: siteConfig.name,
-      };
-
-      const res = await fetch(GOOGLE_SCRIPT_URL, {
+      await fetch(SCRIPT_URL, {
         method: 'POST',
-        body: JSON.stringify(payload),
-      });
-
-      const text = await res.text();
-      let data: { ok?: boolean; error?: string } = {};
-      try { data = JSON.parse(text); } catch {}
-
-      if (data && data.ok === false) throw new Error(data.error || 'Submission failed');
-
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    } catch (err) {
-      console.error(err);
-      setIsSubmitting(false);
-      alert('Something went wrong. Please try again.');
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, source: location ?? 'Hero Form', timestamp: new Date().toISOString() }),
+      })
+      setStatus('success')
+    } catch {
+      setStatus('error')
     }
-  };
-
-  const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition";
-
-  if (isSuccess) {
-    return (
-      <div className="bg-white text-gray-900 rounded-2xl p-8 shadow-2xl border border-gray-100 flex flex-col items-center justify-center text-center gap-4 min-h-[340px]">
-        <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center">
-          <CheckCircle className="w-10 h-10" />
-        </div>
-        <h3 className="text-2xl font-display font-bold">Request Received!</h3>
-        <p className="text-gray-600">
-          We&apos;ve matched you with a vetted property management specialist{city ? ` in ${city}` : ''}. Check your email for next steps.
-        </p>
-      </div>
-    );
   }
 
   return (
-    <div className="bg-white text-gray-900 rounded-2xl p-6 md:p-8 shadow-2xl border border-gray-100">
-      <div className="mb-6">
-        <span className="inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">
-          Free Matching Service
-        </span>
-        <h3 className="text-2xl font-display font-bold leading-tight">
-          Get Matched{city ? ` in ${city}` : ''}
-        </h3>
-        <p className="text-gray-600 text-sm mt-1">
-          Up to 3 vetted property management specialists will contact you within 24 hours
-        </p>
-      </div>
+    <div style={{ background: 'var(--green-deep)' }} className="p-8 h-full flex flex-col justify-center">
+      {/* Strip accent */}
+      <div style={{ height: 3, background: 'var(--green)', marginBottom: '2rem' }} />
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <input required name="fullName" type="text" value={formData.fullName} onChange={handleChange} placeholder="Full Name *" className={inputClass} />
-
-        <div className="grid grid-cols-2 gap-3">
-          <input required name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="Phone Number *" className={inputClass} />
-          <input required name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email Address *" className={inputClass} />
+      {status === 'success' ? (
+        <div className="text-center py-8">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4"
+            style={{ background: 'rgba(39,118,73,0.25)' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4caf7d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <h3 className="font-display text-xl text-white mb-2">Enquiry received</h3>
+          <p className="font-sans text-[13px] text-white/55 leading-relaxed">
+            We will review your details and introduce you to a matched specialist within 48 hours.
+          </p>
         </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="flex flex-col gap-0">
+          <h3 className="font-display text-[22px] text-white leading-tight mb-1">
+            Find Your Specialist
+          </h3>
+          <p className="font-sans text-[12px] text-white/45 mb-7 leading-relaxed">
+            Free matching &middot; 48-hour introduction guarantee
+          </p>
 
-        <select required name="treatment" value={formData.treatment} onChange={handleChange} className={inputClass + " appearance-none cursor-pointer"}>
-          <option value="" disabled>What type of service? *</option>
-          {services.map(s => (
-            <option key={s.id} value={s.title}>{s.title}</option>
-          ))}
-        </select>
+          <div className="grid grid-cols-2 gap-2.5 mb-2.5">
+            <input name="name" value={form.name} onChange={handleChange} required
+              placeholder="First name" className="field-input-dark" />
+            <input name="phone" value={form.phone} onChange={handleChange} required
+              placeholder="Phone" className="field-input-dark" />
+          </div>
 
-        {!city && (
-          <input required name="location" type="text" value={formData.location} onChange={handleChange} placeholder="Town or postcode *" className={inputClass} />
-        )}
+          <input name="email" type="email" value={form.email} onChange={handleChange} required
+            placeholder="Email address" className="field-input-dark mb-2.5" />
 
-        <button
-          disabled={isSubmitting}
-          type="submit"
-          className="w-full bg-brand-500 hover:bg-brand-600 disabled:opacity-60 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-sm mt-1"
-        >
-          {isSubmitting ? 'Sending...' : 'Get 3 Free Quotes'}
-        </button>
+          <select name="portfolio" value={form.portfolio} onChange={handleChange} required
+            className="field-input-dark mb-2.5"
+            style={{ color: form.portfolio ? 'white' : 'rgba(255,255,255,0.3)' }}>
+            <option value="">Portfolio size...</option>
+            <option>1&ndash;2 properties</option>
+            <option>3&ndash;5 properties</option>
+            <option>6&ndash;10 properties</option>
+            <option>10+ properties</option>
+          </select>
 
-        <div className="flex items-center justify-center gap-4 pt-1">
-          {['100% Free', 'No Spam', '24hr Response'].map(item => (
-            <span key={item} className="flex items-center gap-1 text-xs text-green-600 font-medium">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-              {item}
-            </span>
-          ))}
-        </div>
-      </form>
+          <select name="concern" value={form.concern} onChange={handleChange} required
+            className="field-input-dark mb-5"
+            style={{ color: form.concern ? 'white' : 'rgba(255,255,255,0.3)' }}>
+            <option value="">Primary concern...</option>
+            <option>Section 24 Mitigation</option>
+            <option>SPV Incorporation</option>
+            <option>Capital Gains Tax</option>
+            <option>Inheritance Tax</option>
+            <option>SDLT Planning</option>
+            <option>General tax review</option>
+          </select>
+
+          {status === 'error' && (
+            <p className="text-[12px] text-red-400 font-sans mb-3">
+              Something went wrong. Please try again or call us directly.
+            </p>
+          )}
+
+          <button type="submit" disabled={status === 'sending'}
+            className="w-full font-sans font-bold text-[13px] tracking-wide py-4 border-0 cursor-pointer transition-colors duration-200"
+            style={{ background: 'var(--green)', color: 'white' }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'var(--green-dark)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'var(--green)')}>
+            {status === 'sending' ? 'Sending...' : 'Match Me With a Specialist \u2192'}
+          </button>
+
+          <p className="font-sans text-[10px] text-white/30 text-center mt-3 leading-relaxed">
+            Free service &middot; GDPR compliant &middot; No obligation
+          </p>
+        </form>
+      )}
     </div>
-  );
+  )
 }

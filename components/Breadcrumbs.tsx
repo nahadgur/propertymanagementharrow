@@ -1,41 +1,37 @@
-import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { siteConfig } from '@/data/site';
+import Link from 'next/link'
 
-interface BreadcrumbItem {
-  label: string;
-  href?: string;
+interface Crumb {
+  label: string
+  href?: string
 }
 
-export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
-  const allItems = [{ label: 'Home', href: '/' }, ...items];
+interface BreadcrumbsProps {
+  items:  Crumb[]
+  dark?:  boolean
+}
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": allItems.map((item, i) => ({
-      "@type": "ListItem",
-      "position": i + 1,
-      "name": item.label,
-      ...(item.href ? { "item": `${siteConfig.url}${item.href}` } : {})
-    }))
-  };
+export default function Breadcrumbs({ items, dark = true }: BreadcrumbsProps) {
+  const baseColor = dark ? 'rgba(255,255,255,0.4)' : '#999'
+  const activeColor = dark ? 'rgba(255,255,255,0.75)' : '#333'
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ol className="flex items-center flex-wrap gap-1 text-sm text-gray-500">
-        {allItems.map((item, i) => (
-          <li key={i} className="flex items-center gap-1">
-            {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-gray-300" />}
-            {item.href ? (
-              <Link href={item.href} className="hover:text-brand-600 transition-colors">{item.label}</Link>
-            ) : (
-              <span className="text-gray-900 font-medium">{item.label}</span>
-            )}
-          </li>
-        ))}
-      </ol>
+    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[12px] font-sans mb-8 flex-wrap">
+      {items.map((crumb, i) => (
+        <span key={i} className="flex items-center gap-2">
+          {i > 0 && <span style={{ color: dark ? 'rgba(255,255,255,0.2)' : '#ccc' }}>/</span>}
+          {crumb.href ? (
+            <Link
+              href={crumb.href}
+              className="no-underline transition-colors hover:opacity-80"
+              style={{ color: baseColor }}
+            >
+              {crumb.label}
+            </Link>
+          ) : (
+            <span style={{ color: activeColor }}>{crumb.label}</span>
+          )}
+        </span>
+      ))}
     </nav>
-  );
+  )
 }
