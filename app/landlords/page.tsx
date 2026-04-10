@@ -29,7 +29,10 @@ export default function LandlordsIndexPage() {
 
       <main className="flex-grow">
         {/* Hero */}
-        <section style={{ background: 'var(--green-deep)' }} className="py-20">
+        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/tenant-find-referencing.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 50%, rgba(15,51,32,0.92) 100%)' }} />
+          <div className="relative z-10">
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Landlords' }]} />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
@@ -68,6 +71,7 @@ export default function LandlordsIndexPage() {
               </div>
             </div>
           </div>
+                  </div>
         </section>
 
         {/* Avatar grid */}

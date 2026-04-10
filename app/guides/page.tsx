@@ -57,7 +57,10 @@ export default function GuidesPage() {
       <Header onOpenModal={() => setModalOpen(true)} />
       <main className="flex-grow">
         {/* Hero */}
-        <section style={{ background: 'var(--green-deep)' }} className="py-16 md:py-20">
+        <section className="relative py-16 md:py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/block-estate-management.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 50%, rgba(15,51,32,0.92) 100%)' }} />
+          <div className="relative z-10">
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>In-Depth Guides</p>
@@ -68,6 +71,7 @@ export default function GuidesPage() {
               Comprehensive, specialist-written guides covering the full property tax lifecycle — holding, structuring, exiting, and developing. All include HMRC citations and direct links to specialist advice.
             </p>
           </div>
+                  </div>
         </section>
 
         {/* Guides list */}

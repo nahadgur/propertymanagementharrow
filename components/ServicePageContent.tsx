@@ -16,6 +16,15 @@ interface ServicePageContentProps {
   content: ServiceContent
 }
 
+
+const serviceImages: Record<string, string> = {
+  'section-24-tax-mitigation':   '/images/residential-lettings-management.png',
+  'spv-company-incorporation':   '/images/block-estate-management.png',
+  'capital-gains-tax-planning':  '/images/rent-collection-arrears-management.png',
+  'sdlt-stamp-duty-planning':    '/images/property-maintenance-coordination.png',
+  'property-inheritance-tax':    '/images/tenant-find-referencing.png',
+}
+
 export default function ServicePageContent({ service, content }: ServicePageContentProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const [openFaq, setOpenFaq]     = useState<number | null>(null)

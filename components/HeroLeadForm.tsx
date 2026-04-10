@@ -5,11 +5,12 @@ import { useState } from 'react'
 interface HeroLeadFormProps {
   service?:  string
   location?: string
+  image?:    string
 }
 
 const SCRIPT_URL = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? ''
 
-export default function HeroLeadForm({ service, location }: HeroLeadFormProps) {
+export default function HeroLeadForm({ service, location, image = '/images/hero-main.png' }: HeroLeadFormProps) {
   const [form, setForm] = useState({
     name:      '',
     email:     '',
@@ -46,7 +47,7 @@ export default function HeroLeadForm({ service, location }: HeroLeadFormProps) {
       <div className="relative overflow-hidden" style={{ minHeight: '340px', flex: '1' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/hero-main.png"
+          src={image}
           alt="Harrow property — property tax specialists"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"

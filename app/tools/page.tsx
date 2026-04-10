@@ -19,13 +19,17 @@ export default function ToolsPage() {
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Tools Index" />
       <Header onOpenModal={() => setModalOpen(true)} />
       <main className="flex-grow">
-        <section style={{ background: 'var(--green-deep)' }} className="py-20">
+        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/residential-lettings-management.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 50%, rgba(15,51,32,0.92) 100%)' }} />
+          <div className="relative z-10">
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Free Tools' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Free Interactive Tools</p>
             <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">Property tax calculators for UK landlords.</h1>
             <p className="font-sans text-[17px] max-w-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>Understand your tax position before speaking to a specialist. All tools are free, fully interactive, and built for UK landlords and property investors.</p>
           </div>
+                  </div>
         </section>
         <section className="section-pad bg-white">
           <div className="site-container">

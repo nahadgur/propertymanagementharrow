@@ -15,7 +15,10 @@ export default function AboutPage() {
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="About" />
       <Header onOpenModal={() => setModalOpen(true)} />
       <main className="flex-grow">
-        <section style={{ background: 'var(--green-deep)' }} className="py-20">
+        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/property-maintenance-coordination.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 50%, rgba(15,51,32,0.92) 100%)' }} />
+          <div className="relative z-10">
           <div className="site-container max-w-3xl">
             <nav className="flex items-center gap-2 text-[12px] mb-8" style={{ color: 'rgba(255,255,255,0.4)' }}>
               <Link href="/" className="no-underline" style={{ color: 'rgba(255,255,255,0.4)' }}>Home</Link>
@@ -30,6 +33,7 @@ export default function AboutPage() {
               We are a Harrow-based specialist matching service connecting property investors with vetted, ACCA and ICAEW certified property tax accountants. We do not provide accountancy advice ourselves — our expertise is knowing which specialists to trust with your portfolio.
             </p>
           </div>
+                  </div>
         </section>
 
         <section className="section-pad bg-white">

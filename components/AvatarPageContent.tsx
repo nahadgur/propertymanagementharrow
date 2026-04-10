@@ -15,6 +15,14 @@ interface AvatarPageContentProps {
   avatar: AvatarContent
 }
 
+
+const avatarImages: Record<string, string> = {
+  'accidental-landlords':  '/images/residential-lettings-management.png',
+  'portfolio-investors':   '/images/block-estate-management.png',
+  'hmo-operators':         '/images/hmo-management.png',
+  'non-resident':          '/images/rent-collection-arrears-management.png',
+}
+
 export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const [openFaq, setOpenFaq]     = useState<number | null>(null)

@@ -85,7 +85,10 @@ export default function HowWeMatchYouPage() {
 
       <main className="flex-grow">
         {/* Hero */}
-        <section style={{ background: 'var(--green-deep)' }} className="py-20">
+        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+          <img src="/images/hero-services.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--green-deep) 50%, rgba(15,51,32,0.92) 100%)' }} />
+          <div className="relative z-10">
           <div className="site-container">
             <nav className="flex items-center gap-2 text-[12px] mb-8" style={{ color: 'rgba(255,255,255,0.4)' }}>
               <Link href="/" className="no-underline hover:text-white/70 transition-colors" style={{ color: 'rgba(255,255,255,0.4)' }}>Home</Link>
@@ -105,6 +108,7 @@ export default function HowWeMatchYouPage() {
               </button>
             </div>
           </div>
+                  </div>
         </section>
 
         {/* The guarantee */}
