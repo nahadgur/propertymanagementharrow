@@ -9,12 +9,19 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 
 // Areas with dedicated spoke pages
 const SPOKE_PAGES: Record<string, string> = {
-  'stanmore':          '/harrow/stanmore/',
-  'pinner':            '/harrow/pinner/',
-  'wealdstone':        '/harrow/wealdstone/',
-  'harrow-on-the-hill':'/harrow/harrow-on-the-hill/',
-  'harrow-town-centre':'/harrow/harrow-on-the-hill/',
-  'edgware':           '/harrow/edgware/',
+  'stanmore':           '/harrow/stanmore/',
+  'pinner':             '/harrow/pinner/',
+  'wealdstone':         '/harrow/wealdstone/',
+  'harrow-on-the-hill': '/harrow/harrow-on-the-hill/',
+  'harrow-town-centre': '/harrow/harrow-town-centre/',
+  'edgware':            '/harrow/edgware/',
+  'north-harrow':       '/harrow/north-harrow/',
+  'south-harrow':       '/harrow/south-harrow/',
+  'kenton':             '/harrow/kenton/',
+  'rayners-lane':       '/harrow/rayners-lane/',
+  'hatch-end':          '/harrow/hatch-end/',
+  'canons-park':        '/harrow/canons-park/',
+  'queensbury':         '/harrow/queensbury/',
 }
 
 function toSlug(name: string): string {
@@ -206,13 +213,21 @@ export default function LocationsContent() {
             <h2 className="font-display text-[1.8rem] md:text-[2.2rem] text-text mb-8 leading-tight">
               In-depth property tax information by Harrow area
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { name: 'Stanmore',           href: '/harrow/stanmore/',           postcode: 'HA7', desc: 'Detached stock, high BTL yields' },
-                { name: 'Pinner',             href: '/harrow/pinner/',             postcode: 'HA5', desc: 'Period homes, strong capital growth' },
-                { name: 'Wealdstone',         href: '/harrow/wealdstone/',         postcode: 'HA3', desc: 'HMO-heavy, regeneration zone' },
-                { name: 'Harrow on the Hill', href: '/harrow/harrow-on-the-hill/', postcode: 'HA1', desc: 'Mixed stock, high rental demand' },
-                { name: 'Edgware',            href: '/harrow/edgware/',            postcode: 'HA8', desc: 'Growing investor interest' },
+                { name: 'Stanmore',           href: '/harrow/stanmore/',            postcode: 'HA7', desc: 'Detached stock, strong IHT demand' },
+                { name: 'Pinner',             href: '/harrow/pinner/',              postcode: 'HA5', desc: 'Period homes, capital growth focus' },
+                { name: 'Hatch End',          href: '/harrow/hatch-end/',           postcode: 'HA5', desc: 'Premium residential, IHT planning' },
+                { name: 'Wealdstone',         href: '/harrow/wealdstone/',          postcode: 'HA3', desc: 'HMO-heavy, Section 24 hotspot' },
+                { name: 'Kenton',             href: '/harrow/kenton/',              postcode: 'HA3', desc: 'Long-term ownership, IHT focus' },
+                { name: 'Harrow on the Hill', href: '/harrow/harrow-on-the-hill/',  postcode: 'HA1', desc: 'Mixed stock, high rental demand' },
+                { name: 'Harrow Town Centre', href: '/harrow/harrow-town-centre/',  postcode: 'HA1', desc: 'Dense rental market, accidental landlords' },
+                { name: 'North Harrow',       href: '/harrow/north-harrow/',        postcode: 'HA2', desc: 'Mid-portfolio, Section 24 exposed' },
+                { name: 'South Harrow',       href: '/harrow/south-harrow/',        postcode: 'HA2', desc: 'High-yield, HMO operators' },
+                { name: 'Rayners Lane',       href: '/harrow/rayners-lane/',        postcode: 'HA2', desc: 'Yield-focused, active investors' },
+                { name: 'Edgware',            href: '/harrow/edgware/',             postcode: 'HA8', desc: 'Portfolio builders, SDLT planning' },
+                { name: 'Canons Park',        href: '/harrow/canons-park/',         postcode: 'HA8', desc: 'Premium HA8, CGT & IHT focus' },
+                { name: 'Queensbury',         href: '/harrow/queensbury/',          postcode: 'HA8', desc: 'Growing investor interest' },
               ].map(spoke => (
                 <Link key={spoke.href} href={spoke.href}
                   className="flex flex-col p-5 bg-white border border-[#e8f0e8] no-underline hover:border-brand transition-colors group">
