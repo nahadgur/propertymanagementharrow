@@ -97,23 +97,23 @@ export default function HeroLeadForm({ service, location, image = '/images/hero-
             <select name="portfolio" value={form.portfolio} onChange={handleChange} required
               className="field-input-dark mb-2"
               style={{ color: form.portfolio ? 'white' : 'rgba(255,255,255,0.3)' }}>
-              <option value="">Portfolio size...</option>
-              <option>1&ndash;2 properties</option>
-              <option>3&ndash;5 properties</option>
-              <option>6&ndash;10 properties</option>
-              <option>10+ properties</option>
+              <option value="" style={{ color: "#333", background: "white" }}>Portfolio size...</option>
+              <option style={{ color: "#333", background: "white" }}>1&ndash;2 properties</option>
+              <option style={{ color: "#333", background: "white" }}>3&ndash;5 properties</option>
+              <option style={{ color: "#333", background: "white" }}>6&ndash;10 properties</option>
+              <option style={{ color: "#333", background: "white" }}>10+ properties</option>
             </select>
 
             <select name="concern" value={form.concern} onChange={handleChange} required
               className="field-input-dark mb-4"
               style={{ color: form.concern ? 'white' : 'rgba(255,255,255,0.3)' }}>
-              <option value="">Primary concern...</option>
-              <option>Section 24 Mitigation</option>
-              <option>SPV Incorporation</option>
-              <option>Capital Gains Tax</option>
-              <option>Inheritance Tax</option>
-              <option>SDLT Planning</option>
-              <option>General tax review</option>
+              <option value="" style={{ color: "#333", background: "white" }}>Primary concern...</option>
+              <option style={{ color: "#333", background: "white" }}>Section 24 Mitigation</option>
+              <option style={{ color: "#333", background: "white" }}>SPV Incorporation</option>
+              <option style={{ color: "#333", background: "white" }}>Capital Gains Tax</option>
+              <option style={{ color: "#333", background: "white" }}>Inheritance Tax</option>
+              <option style={{ color: "#333", background: "white" }}>SDLT Planning</option>
+              <option style={{ color: "#333", background: "white" }}>General tax review</option>
             </select>
 
             {status === 'error' && (

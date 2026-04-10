@@ -127,22 +127,22 @@ export default function LeadFormModal({ isOpen, onClose, service, location }: Le
                 <label className="field-label">Portfolio size</label>
                 <select name="portfolio" value={form.portfolio} onChange={handleChange} required className="field-input">
                   <option value="">Select...</option>
-                  <option>1&ndash;2 properties</option>
-                  <option>3&ndash;5 properties</option>
-                  <option>6&ndash;10 properties</option>
-                  <option>10+ properties</option>
+                  <option style={{ color: "#333", background: "white" }}>1&ndash;2 properties</option>
+                  <option style={{ color: "#333", background: "white" }}>3&ndash;5 properties</option>
+                  <option style={{ color: "#333", background: "white" }}>6&ndash;10 properties</option>
+                  <option style={{ color: "#333", background: "white" }}>10+ properties</option>
                 </select>
               </div>
               <div>
                 <label className="field-label">Primary concern</label>
                 <select name="concern" value={form.concern} onChange={handleChange} required className="field-input">
                   <option value="">Select...</option>
-                  <option>Section 24 Mitigation</option>
-                  <option>SPV Incorporation</option>
-                  <option>Capital Gains Tax</option>
-                  <option>Inheritance Tax</option>
-                  <option>SDLT Planning</option>
-                  <option>General tax review</option>
+                  <option style={{ color: "#333", background: "white" }}>Section 24 Mitigation</option>
+                  <option style={{ color: "#333", background: "white" }}>SPV Incorporation</option>
+                  <option style={{ color: "#333", background: "white" }}>Capital Gains Tax</option>
+                  <option style={{ color: "#333", background: "white" }}>Inheritance Tax</option>
+                  <option style={{ color: "#333", background: "white" }}>SDLT Planning</option>
+                  <option style={{ color: "#333", background: "white" }}>General tax review</option>
                 </select>
               </div>
             </div>
