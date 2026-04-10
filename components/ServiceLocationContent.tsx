@@ -19,28 +19,28 @@ interface Props {
 }
 
 const serviceImages: Record<string, string> = {
-  'section-24-tax-mitigation':   '/images/residential-lettings-management.png',
-  'spv-company-incorporation':   '/images/block-estate-management.png',
-  'capital-gains-tax-planning':  '/images/rent-collection-arrears-management.png',
-  'sdlt-stamp-duty-planning':    '/images/property-maintenance-coordination.png',
-  'property-inheritance-tax':    '/images/tenant-find-referencing.png',
+  'residential-lettings-management': '/images/residential-lettings-management.png',
+  'tenant-find-letting':             '/images/tenant-find-referencing.png',
+  'block-management':                '/images/block-estate-management.png',
+  'hmo-management':                  '/images/hmo-management.png',
+  'rent-collection-accounting':      '/images/rent-collection-arrears-management.png',
 }
 
 // Dynamic intro paragraph combining service + area context
 function getIntro(service: Service, area: SpokeArea): string {
   const s = service.slug
   const a = area
-  if (s === 'section-24-tax-mitigation')
-    return `${a.name} landlords with buy-to-let mortgages are among the most affected by Section 24 in the London Borough of Harrow. With average property values of ${a.avgPrice} in the ${a.postcode} postcode and gross yields of ${a.avgYield}, many ${a.name} investors hold leveraged portfolios where the finance cost restriction is creating a significant and growing annual tax cost. A specialist will calculate your exact Section 24 exposure and identify the right mitigation strategy for your ${a.name} portfolio — whether that means income restructuring, phased SPV incorporation, or a combination of both.`
-  if (s === 'spv-company-incorporation')
-    return `${a.name} property investors considering a company structure face a decision that has long-term tax consequences. With ${a.postcode} properties averaging ${a.avgPrice} and typical yields of ${a.avgYield}, the economics of SPV incorporation depend heavily on the specific portfolio — the built-in gains on existing properties, the ongoing Section 24 cost in personal name, and the planned holding period. A specialist will model the full breakeven analysis for your ${a.name} portfolio before any recommendation is made.`
-  if (s === 'capital-gains-tax-planning')
-    return `Property investors in ${a.name} planning to sell or restructure their ${a.postcode} holdings face Capital Gains Tax on any gain since acquisition. With average values of ${a.avgPrice} in the area, landlords who have held for five years or more often have significant unrealised gains — and a CGT bill that can be materially reduced with specialist pre-disposal planning. A specialist will review your Private Residence Relief eligibility, disposal timing, and spousal transfer options before you exchange contracts.`
-  if (s === 'sdlt-stamp-duty-planning')
-    return `Every property acquisition in ${a.name} triggers Stamp Duty Land Tax at the standard residential rates plus the 3% additional dwelling surcharge. On a ${a.avgPrice} ${a.postcode} property, the surcharge alone is approximately £${Math.round(parseFloat(a.avgPrice.replace(/[£,]/g,'').replace(/,/g,'')) * 0.03 / 1000) * 1000 > 0 ? (parseFloat(a.avgPrice.replace(/£/,'').replace(/,/g,'')) * 0.03).toLocaleString('en-GB', {maximumFractionDigits: 0}) : '12,000'}. A specialist reviews the correct SDLT position on each ${a.name} acquisition before exchange — confirming any applicable reliefs and ensuring the return is submitted correctly within the 14-day deadline.`
-  if (s === 'property-inheritance-tax')
-    return `${a.name} property investors with ${a.postcode} holdings averaging ${a.avgPrice} often have estate values that exceed the inheritance tax threshold — particularly when property is combined with a main residence, pension assets, and other investments. Standard residential buy-to-let does not qualify for Business Property Relief, meaning the full value above the threshold is exposed to 40% IHT on death. A specialist will review your ${a.name} portfolio as part of your wider estate and design a structured plan to progressively reduce this exposure.`
-  return `${a.name} landlords and property investors can get matched with an ACCA or ICAEW certified specialist in ${service.title.toLowerCase()} through our vetted ${a.postcode} network. Free matching, 48-hour introduction.`
+  if (s === 'residential-lettings-management')
+    return `${a.name} landlords with buy-to-let portfolios face some of the most demanding lettings management challenges in the London Borough of Harrow. With average property values of ${a.avgPrice} in the ${a.postcode} postcode and gross yields of ${a.avgYield}, effective lettings management is essential to protect your investment. A specialist will assess your current tenancy arrangements, identify compliance gaps, and implement a structured management plan for your ${a.name} portfolio — covering tenant vetting, rent collection, maintenance coordination, and regulatory compliance.`
+  if (s === 'tenant-find-referencing')
+    return `${a.name} property investors looking for quality tenants need a service that understands the local rental market. With ${a.postcode} properties averaging ${a.avgPrice} and typical yields of ${a.avgYield}, finding the right tenant quickly is critical to minimising void periods and protecting your asset. A specialist will handle the full tenant find process for your ${a.name} portfolio — marketing, viewings, referencing, Right to Rent checks, and tenancy agreement preparation.`
+  if (s === 'block-management')
+    return `Property investors in ${a.name} with freehold blocks or shared buildings in the ${a.postcode} area need specialist block management. With average values of ${a.avgPrice} in the area, the service charge budgeting, Section 20 consultation requirements, and communal maintenance obligations require dedicated expertise. A specialist will handle the day-to-day management of your ${a.name} block — from leaseholder communications to contractor coordination and regulatory compliance.`
+  if (s === 'hmo-management')
+    return `HMO properties in ${a.name} require specialist management to ensure licensing compliance and maximise occupancy. With ${a.postcode} properties averaging ${a.avgPrice}, HMO landlords need a managing agent who understands Harrow Council's licensing requirements, room-by-room letting strategies, and the higher maintenance demands of multi-tenant properties. A specialist will manage your ${a.name} HMO end-to-end — ensuring full compliance while maximising rental income across all rooms.`
+  if (s === 'rent-collection-accounting')
+    return `${a.name} property investors with ${a.postcode} holdings averaging ${a.avgPrice} need reliable rent collection and transparent financial reporting. Late payments, arrears, and poor record-keeping can erode returns and create problems at year-end. A specialist will handle rent collection, chase arrears proactively, and provide monthly statements formatted for your accountant — ensuring your ${a.name} portfolio runs efficiently and every pound is accounted for.`
+  return `${a.name} landlords and property investors can get matched with an ARLA Propertymark or RICS qualified specialist in ${service.title.toLowerCase()} through our vetted ${a.postcode} network. Free matching, 48-hour introduction.`
 }
 
 export default function ServiceLocationContent({ service, content, area }: Props) {
@@ -81,10 +81,10 @@ export default function ServiceLocationContent({ service, content, area }: Props
                 </h1>
                 <p className="font-sans text-[16px] leading-relaxed mb-8 max-w-[520px]"
                   style={{ color: 'rgba(255,255,255,0.6)' }}>
-                  Specialist {service.title.toLowerCase()} advice for {area.name} landlords and property investors. Vetted ACCA and ICAEW certified specialists, free matching.
+                  Specialist {service.title.toLowerCase()} advice for {area.name} landlords and property investors. Vetted ARLA Propertymark and RICS qualified specialists, free matching.
                 </p>
                 <div className="flex flex-col gap-2.5">
-                  {['ACCA and ICAEW certified specialists only', `Specialists who know the ${area.name} market`, 'Matched within 48 hours — free'].map(item => (
+                  {['ARLA Propertymark and RICS qualified specialists only', `Specialists who know the ${area.name} market`, 'Matched within 48 hours — free'].map(item => (
                     <div key={item} className="flex items-center gap-3 font-sans text-[13px]"
                       style={{ color: 'rgba(255,255,255,0.7)' }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#277649" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>
@@ -206,7 +206,7 @@ export default function ServiceLocationContent({ service, content, area }: Props
                 {[
                   { label: `${area.name} area guide`,  href: `/harrow/${area.slug}/` },
                   { label: `${service.title} overview`, href: `/services/${service.slug}/` },
-                  { label: 'All Harrow specialists',    href: '/property-accountants-harrow/' },
+                  { label: 'All Harrow specialists',    href: '/property-management-harrow/' },
                   { label: 'How we match you',          href: '/how-we-match-you/' },
                 ].map(link => (
                   <Link key={link.href} href={link.href}
@@ -258,7 +258,7 @@ export default function ServiceLocationContent({ service, content, area }: Props
             </h2>
             <p className="font-sans text-[16px] leading-relaxed mb-8 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              ACCA and ICAEW certified. 48-hour introduction. Serving {area.name} and all {area.postcode} postcodes.
+              ARLA Propertymark and RICS qualified. 48-hour introduction. Serving {area.name} and all {area.postcode} postcodes.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <button onClick={() => setModalOpen(true)}

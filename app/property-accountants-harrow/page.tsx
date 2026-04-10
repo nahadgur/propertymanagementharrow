@@ -5,12 +5,12 @@ import { harrowBoroughData, spokeAreas } from '@/data/harrowData'
 import { services } from '@/data/services'
 
 export const metadata: Metadata = {
-  title:       'Property Tax Accountants Harrow | Vetted Local Specialist Network',
-  description: 'Find vetted ACCA and ICAEW certified property tax accountants across the London Borough of Harrow. Specialists in Section 24, SPV incorporation, CGT planning and inheritance tax for Harrow landlords.',
+  title:       'Property Management Harrow | Vetted Local Specialist Network',
+  description: 'Find vetted ARLA Propertymark and RICS qualified property management specialists across the London Borough of Harrow. Experts in lettings management, tenant sourcing, compliance, and portfolio management for Harrow landlords.',
   alternates:  { canonical: `${siteConfig.url}/property-accountants-harrow/` },
   openGraph: {
-    title:       'Property Tax Accountants Harrow | Vetted Local Specialist Network',
-    description: 'Find vetted ACCA and ICAEW certified property tax accountants across the London Borough of Harrow.',
+    title:       'Property Management Harrow | Vetted Local Specialist Network',
+    description: 'Find vetted ARLA Propertymark and RICS qualified property management specialists across the London Borough of Harrow.',
     url:         `${siteConfig.url}/property-accountants-harrow/`,
     type:        'website',
   },
@@ -21,10 +21,10 @@ const schema = [
     '@context': 'https://schema.org',
     '@type':    ['LocalBusiness', 'ProfessionalService'],
     '@id':      `${siteConfig.url}/property-accountants-harrow/#local`,
-    name:       'Property Accountants Harrow',
+    name:       'Property Management Harrow',
     url:        `${siteConfig.url}/property-accountants-harrow/`,
     description:
-      'Vetted ACCA and ICAEW certified property tax accountant network serving the London Borough of Harrow. Specialists in Section 24 mitigation, SPV incorporation, CGT planning, SDLT, and inheritance tax for property investors.',
+      'Vetted ARLA Propertymark and RICS qualified property management network serving the London Borough of Harrow. Specialists in lettings management, tenant sourcing, rent collection, compliance, and portfolio management for landlords.',
     telephone:  siteConfig.phone,
     email:      siteConfig.email,
     areaServed: {
@@ -34,7 +34,7 @@ const schema = [
     },
     hasOfferCatalog: {
       '@type':          'OfferCatalog',
-      name:             'Property Tax Services',
+      name:             'Property Management Services',
       itemListElement:  services.map(s => ({
         '@type':      'Offer',
         itemOffered:  { '@type': 'Service', name: s.title },

@@ -139,7 +139,7 @@ export default function LandlordsContent() {
               <button onClick={() => setModalOpen(true)} className="btn-primary">
                 Get Matched — Free
               </button>
-              <Link href="/property-accountants-harrow/" className="btn-outline">
+              <Link href="/property-management-harrow/" className="btn-outline">
                 See Harrow Specialists
               </Link>
             </div>

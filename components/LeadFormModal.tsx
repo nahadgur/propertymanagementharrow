@@ -137,12 +137,12 @@ export default function LeadFormModal({ isOpen, onClose, service, location }: Le
                 <label className="field-label">Primary concern</label>
                 <select name="concern" value={form.concern} onChange={handleChange} required className="field-input">
                   <option value="">Select...</option>
-                  <option style={{ color: "#333", background: "white" }}>Section 24 Mitigation</option>
-                  <option style={{ color: "#333", background: "white" }}>SPV Incorporation</option>
-                  <option style={{ color: "#333", background: "white" }}>Capital Gains Tax</option>
-                  <option style={{ color: "#333", background: "white" }}>Inheritance Tax</option>
-                  <option style={{ color: "#333", background: "white" }}>SDLT Planning</option>
-                  <option style={{ color: "#333", background: "white" }}>General tax review</option>
+                  <option style={{ color: "#333", background: "white" }}>Residential Lettings</option>
+                  <option style={{ color: "#333", background: "white" }}>Tenant Find</option>
+                  <option style={{ color: "#333", background: "white" }}>Block Management</option>
+                  <option style={{ color: "#333", background: "white" }}>HMO Management</option>
+                  <option style={{ color: "#333", background: "white" }}>Rent Collection</option>
+                  <option style={{ color: "#333", background: "white" }}>General management review</option>
                 </select>
               </div>
             </div>

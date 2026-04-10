@@ -190,7 +190,7 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
               {avatar.servicesHeading}
             </h2>
             <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-12 max-w-xl">
-              Every service below is delivered by an ACCA or ICAEW certified specialist in our Harrow network — matched to your specific situation, not sent generically.
+              Every service below is delivered by an ARLA Propertymark or RICS qualified specialist in our Harrow network — matched to your specific situation, not sent generically.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -277,7 +277,7 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
                   Our network covers the full London Borough of Harrow. These areas have the highest concentration of {avatar.shortTitle.toLowerCase()} situations in the borough.
                 </p>
-                <Link href="/property-accountants-harrow/" className="btn-primary inline-flex">
+                <Link href="/property-management-harrow/" className="btn-primary inline-flex">
                   All Harrow Specialists
                 </Link>
               </div>
@@ -344,7 +344,7 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Free matching. ACCA and ICAEW certified. Matched to your exact situation within 48 hours.
+              Free matching. ARLA Propertymark and RICS qualified. Matched to your exact situation within 48 hours.
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <button

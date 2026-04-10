@@ -38,7 +38,7 @@ export default function SpokeAreaPage({ params }: Props) {
       '@context':   'https://schema.org',
       '@type':      ['LocalBusiness', 'ProfessionalService'],
       '@id':        `${siteConfig.url}/harrow/${area.slug}/#local`,
-      name:         `Property Tax Accountants ${area.name}`,
+      name:         `Property Management ${area.name}`,
       url:          `${siteConfig.url}/harrow/${area.slug}/`,
       description:  area.metaDesc,
       telephone:    siteConfig.phone,
@@ -73,7 +73,7 @@ export default function SpokeAreaPage({ params }: Props) {
       '@type':          'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home',               item: siteConfig.url },
-        { '@type': 'ListItem', position: 2, name: 'Harrow Specialists',  item: `${siteConfig.url}/property-accountants-harrow/` },
+        { '@type': 'ListItem', position: 2, name: 'Harrow Specialists',  item: `${siteConfig.url}/property-management-harrow/` },
         { '@type': 'ListItem', position: 3, name: area.name },
       ],
     },
@@ -86,15 +86,15 @@ export default function SpokeAreaPage({ params }: Props) {
           name:    `Do you cover ${area.name} specifically?`,
           acceptedAnswer: {
             '@type': 'Answer',
-            text:    `Yes. Our network includes ACCA and ICAEW certified specialists who actively manage clients with property in the ${area.postcode} postcode area. Most also cover neighbouring Harrow postcodes and wider North-West London.`,
+            text:    `Yes. Our network includes ARLA Propertymark and RICS qualified specialists who actively manage properties in the ${area.postcode} postcode area. Most also cover neighbouring Harrow postcodes and wider North-West London.`,
           },
         },
         {
           '@type': 'Question',
-          name:    `What is the primary tax issue for ${area.name} landlords?`,
+          name:    `What is the primary property management focus for ${area.name} landlords?`,
           acceptedAnswer: {
             '@type': 'Answer',
-            text:    `${area.name}'s primary tax focus is ${area.primaryFocus}. ${area.taxAngles[0].body}`,
+            text:    `${area.name}'s primary management focus is ${area.primaryFocus}. ${area.managementAngles[0].body}`,
           },
         },
       ],

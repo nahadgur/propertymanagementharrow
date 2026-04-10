@@ -18,17 +18,17 @@ const epilogue = Epilogue({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Property Accountants Harrow | Vetted Property Tax Specialists',
-    template: '%s | Property Accountants Harrow',
+    default: 'Property Management Harrow | Vetted Property Management Specialists',
+    template: '%s | Property Management Harrow',
   },
   description:
-    'Connect with vetted ACCA and ICAEW certified property tax accountants in Harrow. Specialists in Section 24 mitigation, SPV incorporation, CGT planning and inheritance tax for property investors.',
-  metadataBase: new URL('https://www.propertyaccountantsharrow.co.uk'),
+    'Connect with vetted ARLA Propertymark and RICS qualified property management specialists in Harrow. Experts in lettings management, tenant sourcing, rent collection, compliance, and portfolio management for landlords.',
+  metadataBase: new URL('https://www.propertymanagementharrow.co.uk'),
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://www.propertyaccountantsharrow.co.uk',
-    siteName: 'Property Accountants Harrow',
+    url: 'https://www.propertymanagementharrow.co.uk',
+    siteName: 'Property Management Harrow',
   },
   robots: {
     index: true,

@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Property Accountants Harrow — Vetted Property Tax Specialist Network'
+export const alt = 'Property Management Harrow — Vetted Property Management Specialist Network'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -46,7 +46,7 @@ export default async function Image() {
               padding: '6px 16px', fontSize: '13px', fontFamily: 'sans-serif',
               fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase',
             }}>
-              ACCA &amp; ICAEW Certified Network
+              ARLA &amp; RICS Qualified Network
             </div>
           </div>
 
@@ -56,7 +56,7 @@ export default async function Image() {
             lineHeight: 1.05, letterSpacing: '-0.02em',
             fontFamily: 'Georgia, serif', maxWidth: '780px', marginBottom: '28px',
           }}>
-            Harrow&apos;s Property Tax Accountants.
+            Harrow&apos;s Property Management Specialists.
           </div>
 
           {/* Sub */}
@@ -65,7 +65,7 @@ export default async function Image() {
             fontFamily: 'sans-serif', lineHeight: 1.5, maxWidth: '680px',
             marginBottom: 'auto',
           }}>
-            Section 24 mitigation · SPV incorporation · CGT planning · Inheritance tax structuring
+            Lettings management · Tenant sourcing · Rent collection · Property compliance
           </div>
 
           {/* Bottom row */}
@@ -77,7 +77,7 @@ export default async function Image() {
               fontSize: '20px', fontWeight: 700, color: '#ffffff',
               fontFamily: 'Georgia, serif', letterSpacing: '-0.01em',
             }}>
-              PropertyAccountantsHarrow.co.uk
+              PropertyManagementHarrow.co.uk
             </div>
             <div style={{
               display: 'flex', gap: '32px',

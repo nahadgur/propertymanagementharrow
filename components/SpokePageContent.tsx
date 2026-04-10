@@ -46,7 +46,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
               <Breadcrumbs
                 items={[
                   { label: 'Home',               href: '/' },
-                  { label: 'Harrow Specialists',  href: '/property-accountants-harrow/' },
+                  { label: 'Harrow Specialists',  href: '/property-management-harrow/' },
                   { label: area.name },
                 ]}
               />
@@ -105,7 +105,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
               <div>
                 <p className="eyebrow mb-4">{area.name} Property Market</p>
                 <h2 className="font-display text-h2 text-text mb-8 leading-tight">
-                  The {area.name} landlord&apos;s tax position.
+                  The {area.name} landlord&apos;s management profile.
                 </h2>
                 <div className="flex flex-col gap-5">
                   {area.marketProfile.map((para, i) => (
@@ -146,13 +146,13 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
         {/* ── TAX ANGLES ────────────────────────────────────────────── */}
         <section className="section-pad" style={{ background: 'var(--green-soft)' }}>
           <div className="site-container">
-            <p className="eyebrow mb-4">Key Tax Issues</p>
+            <p className="eyebrow mb-4">Key Management Challenges</p>
             <h2 className="font-display text-h2 text-text mb-12 leading-tight max-w-2xl">
-              The tax challenges specific to {area.name} property investors.
+              The property management challenges specific to {area.name} landlords.
             </h2>
 
             <div className="flex flex-col gap-px bg-[#e0e9e0]">
-              {area.taxAngles.map((angle, i) => (
+              {area.managementAngles.map((angle, i) => (
                 <div key={i} className="bg-white p-8 grid grid-cols-[60px_1fr] gap-8">
                   <div className="font-display text-[36px] leading-none" style={{ color: 'var(--green-mid)' }}>
                     {String(i + 1).padStart(2, '0')}
@@ -216,7 +216,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
                 </h2>
               </div>
               {/* Citadel Rule — link back up to hub */}
-              <Link href="/property-accountants-harrow/"
+              <Link href="/property-management-harrow/"
                 className="btn-primary text-[13px] py-3 hidden md:inline-flex">
                 All Harrow Specialists
               </Link>
@@ -242,7 +242,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
             </div>
 
             {/* Citadel Rule — mobile hub link */}
-            <Link href="/property-accountants-harrow/"
+            <Link href="/property-management-harrow/"
               className="btn-primary text-[13px] py-3 mt-6 md:hidden inline-flex">
               All Harrow Specialists
             </Link>
@@ -269,15 +269,15 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
                 {[
                   {
                     q: `Do you cover ${area.name} specifically?`,
-                    a: `Yes. Our network includes ACCA and ICAEW certified specialists who actively manage clients with property in the ${area.postcode} postcode area. Most also cover neighbouring Harrow postcodes and wider North-West London. When we make an introduction, we match you to a specialist with direct experience of ${area.name}'s property market and typical landlord profiles — not someone working from a generic Harrow template.`,
+                    a: `Yes. Our property management service covers ${area.name} and the ${area.postcode} postcode area specifically. We also cover neighbouring Harrow postcodes and wider North-West London. When we take on a property, we manage it with direct knowledge of ${area.name}'s rental market, tenant demographics, and typical landlord requirements — not a generic one-size-fits-all approach.`,
                   },
                   {
-                    q: `What is the primary tax issue for ${area.name} landlords?`,
-                    a: `${area.name}'s primary tax focus is ${area.primaryFocus}. ${area.taxAngles[0].body}`,
+                    q: `What is the primary property management focus for ${area.name} landlords?`,
+                    a: `${area.name}'s primary management focus is ${area.primaryFocus}. ${area.managementAngles[0].body}`,
                   },
                   {
-                    q: `How quickly can I be matched with a ${area.name} specialist?`,
-                    a: `Most landlords are matched within 48 hours of submitting their enquiry. For urgent situations — where a disposal is imminent, a transfer is time-sensitive, or an HMO licence application is outstanding — we can often arrange a same-day introduction from our ${area.name} and wider Harrow network.`,
+                    q: `How quickly can you start managing my ${area.name} property?`,
+                    a: `Most new instructions are onboarded within one to two weeks of initial contact, including property inspection, compliance audit, and tenancy review. For urgent situations — where a property is vacant and needs immediate letting, or where an HMO licence issue needs addressing — we can begin work within days.`,
                   },
                 ].map((faq, i) => (
                   <div key={i} className="faq-item">
@@ -302,11 +302,11 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
         <section style={{ background: 'var(--green)' }} className="py-20">
           <div className="site-container text-center">
             <h2 className="font-display text-h2 text-white mb-4 leading-tight">
-              Find your {area.name} property tax specialist.
+              Find your {area.name} property management specialist.
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Free matching. ACCA and ICAEW certified. Matched to your {area.postcode} portfolio within 48 hours.
+              Local expertise. Professional management. Tailored to your {area.postcode} portfolio.
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <button
@@ -316,7 +316,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
               >
                 Get Matched — Free
               </button>
-              <Link href="/property-accountants-harrow/"
+              <Link href="/property-management-harrow/"
                 className="font-sans text-[14px] font-medium no-underline flex items-center gap-2"
                 style={{ color: 'rgba(255,255,255,0.75)' }}>
                 All Harrow specialists &rarr;

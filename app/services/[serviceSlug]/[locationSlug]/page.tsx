@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area    = getSpokeBySlug(params.locationSlug)
   if (!service || !area) return { title: 'Not Found' }
 
-  const title = `${service.title} ${area.name} ${area.postcode} | Property Accountants Harrow`
-  const description = `Specialist ${service.title.toLowerCase()} advice for ${area.name} landlords and property investors. Vetted ACCA and ICAEW certified specialists serving ${area.postcode}. Free matching, 48-hour introduction.`
+  const title = `${service.title} ${area.name} ${area.postcode} | Property Management Harrow`
+  const description = `Specialist ${service.title.toLowerCase()} for ${area.name} landlords and property investors. Vetted ARLA Propertymark and RICS qualified specialists serving ${area.postcode}. Free matching, 48-hour introduction.`
   const canonical   = `${siteConfig.url}/services/${service.slug}/${area.slug}/`
 
   return {

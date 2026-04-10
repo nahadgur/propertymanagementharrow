@@ -193,7 +193,7 @@ export const serviceLocationContent: Record<string, ServiceLocationPageContent> 
   },
 },
 
-"block-estate-management": {
+"block-management": {
   introHeading: (city) => {
     const p = prof(city);
     if (!p) return `Block and Estate Management in ${city}`;
@@ -228,7 +228,7 @@ export const serviceLocationContent: Record<string, ServiceLocationPageContent> 
   ]; },
 },
 
-"tenant-find-referencing": {
+"tenant-find-letting": {
   introHeading: (city) => { const p = prof(city); if (!p) return `Tenant Find and Referencing in ${city}`; return pick(city, [`Finding the Right Tenant for Your ${city} Property — Not Just the First One`, `Tenant Find in the ${p.postcode} Area: What Thorough Referencing Actually Looks Like`, `Why ${city} Landlords Pay for Professional Tenant Find Instead of Going Direct`, `Beyond Rightmove: How ${city} Agents Find Tenants Who Stay and Pay`]); },
   stepsHeading: (city) => pick(city, [`From Empty to Occupied: Tenant Find in ${city}`, `The ${city} Tenant Find Process`, `How We Fill Your ${city} Property With the Right Tenant`, `Marketing to Move-In: Your ${city} Tenant Find Timeline`]),
   whyHeading: (city) => pick(city, [`Why ${city} Landlords Use Matched Tenant Find`, `What Professional Tenant Find Gets You in ${city}`, `The Value of Expert Tenant Find in the ${city} Market`]),
@@ -254,33 +254,7 @@ export const serviceLocationContent: Record<string, ServiceLocationPageContent> 
   ]; },
 },
 
-"property-maintenance-coordination": {
-  introHeading: (city) => { const p = prof(city); if (!p) return `Property Maintenance Coordination in ${city}`; return pick(city, [`Keeping ${p.propertyMix[0]} in ${city} Maintained Without Losing Your Mind`, `Responsive Maintenance for ${city} Landlords: Not Just an Emergency Number`, `The Real Cost of DIY Maintenance for ${city} Rental Properties`, `${p.borough} Contractor Networks: What ${city} Landlords Get Through Professional Coordination`]); },
-  stepsHeading: (city) => pick(city, [`How Maintenance Coordination Works for ${city} Properties`, `From Report to Resolution: Maintenance in ${city}`, `Your ${city} Maintenance Process`, `Planned and Emergency Maintenance for ${city} Landlords`]),
-  whyHeading: (city) => pick(city, [`Why ${city} Landlords Outsource Maintenance Coordination`, `The Value of Professional Maintenance Management in ${city}`, `What Coordinated Maintenance Gets You in ${city}`]),
-  heroDesc: (city) => { const p = prof(city); if (!p) return `Property maintenance coordination covering ${city}. Free matching, no obligation.`; return `Tenants judge your property by how quickly you fix things. In ${city}'s ${p.postcode} area, responsive maintenance keeps good tenants and protects your investment. We match you with agents who have vetted ${p.borough} contractors ready to go.`; },
-  heroBullets: (city) => { const p = prof(city); if (!p) return ['Vetted contractor networks', 'Emergency and planned maintenance', 'Cost-controlled repairs']; return [`Vetted ${p.borough} contractors covering plumbing, electrics, gas, roofing, and specialist trades`, `24/7 emergency line for your ${city} tenants — burst pipes, boiler failures, lock-outs handled without waking you`, `Planned maintenance schedules that prevent the expensive emergencies caused by neglect`]; },
-  trustLine: (city) => { const p = prof(city); return p ? `Coordinating maintenance across ${city} and ${p.borough}` : `Coordinating maintenance across ${city}`; },
-  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
-    { title: "Contractors You Can Trust", desc: `Your agent has established relationships with ${p.borough} trades — not someone found on Checkatrade at midnight. These contractors are vetted, insured, priced competitively, and accountable because they want to keep the agent's ongoing work.` },
-    { title: "Emergency Without the Panic", desc: `Your ${city} tenant calls a 24/7 number, not your personal mobile. The agent triages the issue, contacts the right contractor, and manages the resolution. You get an update by email, not a 2am phone call.` },
-    { title: "Prevention Over Cure", desc: `${p.managementChallenges}. Annual boiler services, gutter clearances, seasonal drainage checks, and proactive inspection of wear items prevent the £3,000 emergency that a £200 service would have caught.` },
-    { title: "Cost Transparency", desc: `Every repair quoted competitively, every cost above your pre-agreed threshold approved before work starts, every invoice checked before payment. No surprise bills, no unnecessary work, no contractor markups hidden in management fees.` },
-  ]; },
-  intro: (city) => { const p = prof(city); if (!p) return ['Maintenance coordination means responsive repairs and planned upkeep.', 'The right agent protects your property and keeps your tenants happy.']; return [
-    `The tenant in your ${city} property does not care that you are in a meeting, on holiday, or asleep. When the boiler breaks, they want it fixed today. When the tap drips, they want someone there this week. And when you ignore maintenance, they leave — costing you a month of void, re-letting fees, and whatever the next tenant negotiates off the rent because the place looks tired.`,
-    `${p.managementChallenges}. An agent with established ${p.borough} contractor relationships handles all of this without your involvement. They know which plumber answers on Saturday, which electrician does quality work at fair prices, and which roofer actually turns up when they say they will.`,
-  ]; },
-  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Maintenance audit of your ${city} property identifying immediate priorities and planned maintenance needs`, `Set up reporting channels — how your tenant contacts the agent, how the agent contacts you, and your approval threshold for works`, `Connect your property to vetted ${p.postcode} area contractors covering every standard and specialist trade`, `Planned maintenance calendar: boiler service, gutter clear, smoke alarm test, seasonal checks`, `Day-to-day repairs managed from report to completion with competitive quoting and quality oversight`, `24/7 emergency response for genuine emergencies at your ${city} property`, `Monthly maintenance reporting showing costs, outstanding works, and property condition notes`]; },
-  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Vetted ${p.borough} contractor networks with established pricing and accountability`, `24/7 emergency cover so your ${city} tenants' urgent issues never land on your phone`, `Planned maintenance that prevents the expensive emergency repairs neglected properties generate`, `Cost transparency with competitive quoting and pre-approval for works above threshold`]; },
-  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['property-maintenance-coordination'](city); return [
-    { question: `Who pays for repairs in my ${city} rental property?`, answer: `Landlords are responsible for structure, exterior, heating, plumbing, electrics, and gas. Tenants are responsible for minor consumables and damage they cause. The grey area — where most disputes live — is wear and tear versus damage. Your agent documents property condition at check-in and inspections, making it clear who is responsible when issues arise.` },
-    { question: `How quickly do contractors respond to ${city} tenant requests?`, answer: `Emergencies (flooding, gas leaks, no heating in winter) get same-day response. Urgent issues (broken appliance, plumbing leak) within 24-48 hours. Routine maintenance within 3-5 working days. Your agent's ${p.borough} contractor relationships mean faster response than you would get calling around yourself.` },
-    { question: `How are maintenance costs controlled for ${city} properties?`, answer: `Pre-agreed approval thresholds (typically £150-£300) let your agent handle routine repairs without calling you for every washer replacement. Above the threshold, they obtain competitive quotes before proceeding. Monthly reporting shows exactly what was spent and why. For ${p.propertyMix[0]} in the ${p.postcode} area, this prevents both over-spending and the under-maintenance that costs more long-term.` },
-  ]; },
-},
-
-"rent-collection-arrears-management": {
+"rent-collection-accounting": {
   introHeading: (city) => { const p = prof(city); if (!p) return `Rent Collection and Arrears Management in ${city}`; return pick(city, [`Getting Paid On Time in ${city}: Rent Collection That Actually Works`, `When ${city} Tenants Stop Paying: Arrears Management Before It Gets Legal`, `Rent Collection for ${city} Landlords: Process, Not Hope`, `Protecting Your ${city} Rental Income From Day One to Day One Thousand`]); },
   stepsHeading: (city) => pick(city, [`How Rent Collection Works for ${city} Properties`, `The ${city} Rent Collection and Arrears Process`, `From Standing Order to Legal Notice: Your ${city} Protection`, `Systematic Rent Collection for ${city} Landlords`]),
   whyHeading: (city) => pick(city, [`Why ${city} Landlords Outsource Rent Collection`, `The Value of Professional Rent Recovery in ${city}`, `What Systematic Collection Gets ${city} Landlords`]),
@@ -344,9 +318,8 @@ function defSteps(city: string) { return [`Assess your property and management n
 function defWhyPoints(city: string) { return [`Local specialists covering ${city}`, `Full compliance management`, `Responsive maintenance`, `Transparent fees`]; }
 const defFaqs: Record<string, (city: string) => { question: string; answer: string }[]> = {
   'residential-lettings-management': (c) => [{ question: `How much do agents charge?`, answer: `8-15% for full management. All provide clear fee schedules.` }, { question: `How quickly can you let?`, answer: `2-4 weeks for well-priced properties.` }, { question: `What compliance is needed?`, answer: `Gas, EICR, EPC, deposit, right-to-rent, smoke/CO alarms.` }],
-  'block-estate-management': (c) => [{ question: `How much does block management cost?`, answer: `£150-£400 per unit per year.` }, { question: `What does it include?`, answer: `Service charges, H&S, insurance, contractors, accounts.` }, { question: `How do we change agent?`, answer: `Board resolution or Section 24 tribunal application.` }],
-  'tenant-find-referencing': (c) => [{ question: `What does it cost?`, answer: `4-8 weeks rent as a one-off.` }, { question: `How long?`, answer: `2-4 weeks to move-in.` }, { question: `What checks?`, answer: `Employment, credit, landlord, right-to-rent, affordability.` }],
-  'property-maintenance-coordination': (c) => [{ question: `How does it work?`, answer: `Agent receives reports, obtains quotes, manages work.` }, { question: `Emergencies?`, answer: `24/7 response for genuine emergencies.` }, { question: `Cost control?`, answer: `Approval thresholds, competitive quoting, monthly reporting.` }],
-  'rent-collection-arrears-management': (c) => [{ question: `What if they dont pay?`, answer: `Day-one contact, formal process, legal escalation if needed.` }, { question: `Prevention?`, answer: `Thorough referencing and clear payment expectations.` }, { question: `What notice?`, answer: `Section 8 for arrears, Section 21 for no-fault.` }],
+  'block-management': (c) => [{ question: `How much does block management cost?`, answer: `£150-£400 per unit per year.` }, { question: `What does it include?`, answer: `Service charges, H&S, insurance, contractors, accounts.` }, { question: `How do we change agent?`, answer: `Board resolution or Section 24 tribunal application.` }],
+  'tenant-find-letting': (c) => [{ question: `What does it cost?`, answer: `4-8 weeks rent as a one-off.` }, { question: `How long?`, answer: `2-4 weeks to move-in.` }, { question: `What checks?`, answer: `Employment, credit, landlord, right-to-rent, affordability.` }],
+  'rent-collection-accounting': (c) => [{ question: `What if they dont pay?`, answer: `Day-one contact, formal process, legal escalation if needed.` }, { question: `Prevention?`, answer: `Thorough referencing and clear payment expectations.` }, { question: `What notice?`, answer: `Section 8 for arrears, Section 21 for no-fault.` }],
   'hmo-management': (c) => [{ question: `Need a license?`, answer: `Mandatory for 5+ tenants, 2+ households. Additional schemes may apply.` }, { question: `Cost?`, answer: `12-18% of gross rent.` }, { question: `Fire safety?`, answer: `Interlinked alarms, fire doors, emergency lighting, maintained escape routes.` }],
 };

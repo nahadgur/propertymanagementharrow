@@ -29,13 +29,13 @@ export default function ServicesContent() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
               <div>
                 <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                  National Property Tax Services
+                  Property Management Services
                 </p>
                 <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
-                  Specialist property tax services for UK investors.
+                  Specialist property management services for Harrow landlords.
                 </h1>
                 <p className="font-sans text-[17px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                  Every service in our network is delivered by an ACCA or ICAEW certified accountant whose practice is built exclusively around property tax — not a generalist who occasionally takes on landlord clients.
+                  Every service in our network is delivered by an ARLA Propertymark or RICS qualified specialist whose practice is built around property management — not a generalist who occasionally manages a landlord's property.
                 </p>
               </div>
               <div className="flex flex-col gap-4">
@@ -48,7 +48,7 @@ export default function ServicesContent() {
                   <div className="w-px h-12 bg-white/10 mx-4" />
                   <div>
                     <p className="font-display text-[36px] text-white leading-none">&pound;2.4M+</p>
-                    <p className="font-sans text-[12px] mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>In tax savings identified</p>
+                    <p className="font-sans text-[12px] mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>In rental income managed</p>
                   </div>
                 </div>
                 <button onClick={() => setModalOpen(true)} className="btn-primary self-start">
@@ -110,10 +110,10 @@ export default function ServicesContent() {
               Looking for a Harrow-based specialist?
             </h2>
             <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-8 max-w-lg mx-auto">
-              All services above are available through our Harrow specialist network — accountants who understand local property yields, HMO licensing in the London Borough of Harrow, and the local portfolio landscape.
+              All services above are available through our Harrow specialist network — property managers who understand local property yields, HMO licensing in the London Borough of Harrow, and the local portfolio landscape.
             </p>
-            <Link href="/property-accountants-harrow/" className="btn-primary inline-flex">
-              See Harrow Property Tax Specialists
+            <Link href="/property-management-harrow/" className="btn-primary inline-flex">
+              See Harrow Property Management Specialists
             </Link>
           </div>
         </section>

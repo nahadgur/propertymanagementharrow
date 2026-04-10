@@ -8,44 +8,44 @@ import Link from 'next/link'
 
 const guides = [
   {
-    title: 'The Ultimate Guide to Section 24 Tax for UK Landlords',
-    desc: 'Everything you need to understand the mortgage interest finance cost restriction — how it works, the real-world impact on your returns, and the legal strategies to mitigate it. Includes an interactive Section 24 calculator.',
-    href: '/guides/ultimate-guide-section-24/',
-    pill: 'Section 24 — The Hold',
+    title: 'The Complete Guide to HMO Licensing in Harrow',
+    desc: 'Everything Harrow landlords need to know about mandatory and additional HMO licensing — when a licence is required, the application process, conditions, penalties for non-compliance, and how to ensure your property meets all licensing standards.',
+    href: '/guides/hmo-licensing-harrow/',
+    pill: 'HMO — Compliance',
     readTime: '~15 min',
-    tags: ['Section 24', 'Tax mitigation', 'Portfolio investors'],
+    tags: ['HMO licensing', 'Compliance', 'Harrow Council'],
   },
   {
-    title: 'The Complete Guide to Incorporating a Buy-to-Let Portfolio into an SPV',
-    desc: 'A step-by-step guide to SPV company incorporation — the SDLT cost, CGT on transfer, annual tax saving, and breakeven calculation. Includes the SPV vs personal tax calculator.',
-    href: '/guides/incorporating-buy-to-let-portfolio/',
-    pill: 'SPV — The Structure',
+    title: 'The Landlord Compliance Checklist for 2025/26',
+    desc: 'A comprehensive checklist covering every legal obligation for UK landlords — gas safety certificates, electrical inspections, EPC requirements, Right to Rent checks, deposit protection, and smoke & CO alarms. Stay compliant and avoid penalties.',
+    href: '/guides/landlord-compliance-checklist/',
+    pill: 'Compliance — Essentials',
     readTime: '~20 min',
-    tags: ['SPV', 'Incorporation', 'Section 24 mitigation'],
+    tags: ['Compliance', 'Safety certificates', 'Legal obligations'],
   },
   {
-    title: 'The Complete Guide to Capital Gains Tax on UK Property',
-    desc: 'How to legally minimise your CGT bill when selling a UK buy-to-let. Rates, Private Residence Relief, the 60-day rule, spousal transfers, and disposal timing — with HMRC citations and an embedded CGT calculator.',
-    href: '/guides/capital-gains-tax-uk-property/',
-    pill: 'CGT — The Exit',
+    title: 'Tenant Screening Best Practices for UK Landlords',
+    desc: 'How to find and vet quality tenants — referencing processes, affordability checks, Right to Rent verification, guarantor requirements, and red flags to watch for. Reduce arrears, protect your property, and minimise void periods.',
+    href: '/guides/tenant-screening-best-practices/',
+    pill: 'Tenant Find — Vetting',
     readTime: '~18 min',
-    tags: ['CGT', 'PRR', 'Property disposal'],
+    tags: ['Tenant screening', 'Referencing', 'Void periods'],
   },
   {
-    title: 'The Ultimate List of Allowable Expenses for UK Landlords (2025/26)',
-    desc: 'The definitive guide to what you can and cannot claim against rental income — the critical revenue vs capital distinction, the full expenses table with HMRC PIM references, Section 24, and replacement furniture relief.',
-    href: '/guides/allowable-expenses-uk-landlords/',
-    pill: 'Expenses — The Hold',
-    readTime: '~20 min',
-    tags: ['Allowable expenses', 'Self-assessment', 'Rental income'],
+    title: 'The Deposit Protection Guide for UK Landlords',
+    desc: 'Everything you need to know about tenancy deposit protection — the three government-approved schemes, prescribed information requirements, deadlines, and the consequences of non-compliance including potential claims of up to 3x the deposit.',
+    href: '/guides/deposit-protection-guide/',
+    pill: 'Deposits — Protection',
+    readTime: '~15 min',
+    tags: ['Deposit protection', 'TDS', 'Tenancy compliance'],
   },
   {
-    title: 'Property Flipping vs Buy-to-Let: The UK Tax Rules Explained',
-    desc: 'Are you an investor or a trader? How HMRC classifies property projects using the badges of trade, the income tax vs CGT difference, CIS obligations, VAT, and how to structure a development business correctly.',
-    href: '/guides/property-flipping-vs-buy-to-let/',
-    pill: 'Development — The Build',
-    readTime: '~18 min',
-    tags: ['Property flipping', 'CIS', 'Trading vs investment'],
+    title: 'How to Switch Property Managers Without Disruption',
+    desc: 'A step-by-step guide to changing your managing agent — notice periods, handover checklists, tenant communication, key and document transfers, and how to ensure continuity of rent collection and maintenance throughout the transition.',
+    href: '/guides/switching-property-managers/',
+    pill: 'Management — Transition',
+    readTime: '~12 min',
+    tags: ['Switching agents', 'Handover', 'Portfolio management'],
   },
 ]
 
@@ -65,10 +65,10 @@ export default function GuidesContent() {
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>In-Depth Guides</p>
             <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
-              Property tax guides for UK landlords and investors.
+              Property management guides for UK landlords and investors.
             </h1>
             <p className="font-sans text-[16px] md:text-[17px] max-w-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              Comprehensive, specialist-written guides covering the full property tax lifecycle — holding, structuring, exiting, and developing. All include HMRC citations and direct links to specialist advice.
+              Comprehensive, specialist-written guides covering the full property management lifecycle — lettings, compliance, tenant screening, and portfolio oversight. All include practical checklists and direct links to specialist advice.
             </p>
           </div>
                   </div>
@@ -116,7 +116,7 @@ export default function GuidesContent() {
           <div className="site-container text-center">
             <h2 className="font-display text-[1.8rem] md:text-h2 text-white mb-4">Ready to act on what you have read?</h2>
             <p className="font-sans text-[16px] mb-8 max-w-md mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              A vetted Harrow property tax specialist will model the right strategy for your portfolio — free, within 48 hours.
+              A vetted Harrow property management specialist will assess the right approach for your portfolio — free, within 48 hours.
             </p>
             <button onClick={() => setModalOpen(true)}
               className="font-sans font-bold text-[14px] px-10 py-4 border-0 cursor-pointer"

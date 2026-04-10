@@ -3,14 +3,14 @@ import { siteConfig } from '@/data/site'
 import ContactContent from './ContactContent'
 
 export const metadata: Metadata = {
-  title: 'Contact Property Accountants Harrow | Free Specialist Matching',
-  description: 'Get matched with a vetted property tax accountant in Harrow — free, within 48 hours. Covering all HA postcodes. ACCA and ICAEW certified specialists only.',
+  title: 'Contact Property Management Harrow | Free Specialist Matching',
+  description: 'Get matched with a vetted property management specialist in Harrow — free, within 48 hours. Covering all HA postcodes. ARLA Propertymark and RICS qualified specialists only.',
   alternates: {
     canonical: `${siteConfig.url}/contact/`,
   },
   openGraph: {
-    title: 'Contact Property Accountants Harrow | Free Specialist Matching',
-    description: 'Get matched with a vetted property tax accountant in Harrow — free, within 48 hours. Covering all HA postcodes. ACCA and ICAEW certified specialists only.',
+    title: 'Contact Property Management Harrow | Free Specialist Matching',
+    description: 'Get matched with a vetted property management specialist in Harrow — free, within 48 hours. Covering all HA postcodes. ARLA Propertymark and RICS qualified specialists only.',
     url: `${siteConfig.url}/contact/`,
     type: 'website',
   },

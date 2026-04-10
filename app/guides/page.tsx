@@ -3,14 +3,14 @@ import { siteConfig } from '@/data/site'
 import GuidesContent from './GuidesContent'
 
 export const metadata: Metadata = {
-  title: 'Property Tax Guides for UK Landlords — Section 24, SPV, CGT | Property Accountants Harrow',
-  description: 'In-depth property tax guides with HMRC citations — Section 24, SPV incorporation, CGT, allowable expenses, and property flipping. Includes interactive calculators.',
+  title: 'Property Management Guides for UK Landlords — HMO Licensing, Compliance, Tenant Screening | Property Management Harrow',
+  description: 'In-depth property management guides for Harrow landlords — HMO licensing, compliance checklists, tenant screening, deposit protection, and switching agents. Expert advice from qualified specialists.',
   alternates: {
     canonical: `${siteConfig.url}/guides/`,
   },
   openGraph: {
-    title: 'Property Tax Guides for UK Landlords — Section 24, SPV, CGT | Property Accountants Harrow',
-    description: 'In-depth property tax guides with HMRC citations — Section 24, SPV incorporation, CGT, allowable expenses, and property flipping. Includes interactive calculators.',
+    title: 'Property Management Guides for UK Landlords — HMO Licensing, Compliance, Tenant Screening | Property Management Harrow',
+    description: 'In-depth property management guides for Harrow landlords — HMO licensing, compliance checklists, tenant screening, deposit protection, and switching agents. Expert advice from qualified specialists.',
     url: `${siteConfig.url}/guides/`,
     type: 'website',
   },

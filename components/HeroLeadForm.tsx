@@ -48,7 +48,7 @@ export default function HeroLeadForm({ service, location, image = '/images/hero-
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
-          alt="Harrow property — property tax specialists"
+          alt="Harrow property — property management specialists"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
         />
@@ -108,12 +108,12 @@ export default function HeroLeadForm({ service, location, image = '/images/hero-
               className="field-input-dark mb-4"
               style={{ color: form.concern ? 'white' : 'rgba(255,255,255,0.3)' }}>
               <option value="" style={{ color: "#333", background: "white" }}>Primary concern...</option>
-              <option style={{ color: "#333", background: "white" }}>Section 24 Mitigation</option>
-              <option style={{ color: "#333", background: "white" }}>SPV Incorporation</option>
-              <option style={{ color: "#333", background: "white" }}>Capital Gains Tax</option>
-              <option style={{ color: "#333", background: "white" }}>Inheritance Tax</option>
-              <option style={{ color: "#333", background: "white" }}>SDLT Planning</option>
-              <option style={{ color: "#333", background: "white" }}>General tax review</option>
+              <option style={{ color: "#333", background: "white" }}>Residential Lettings</option>
+              <option style={{ color: "#333", background: "white" }}>Tenant Find</option>
+              <option style={{ color: "#333", background: "white" }}>Block Management</option>
+              <option style={{ color: "#333", background: "white" }}>HMO Management</option>
+              <option style={{ color: "#333", background: "white" }}>Rent Collection</option>
+              <option style={{ color: "#333", background: "white" }}>General management review</option>
             </select>
 
             {status === 'error' && (

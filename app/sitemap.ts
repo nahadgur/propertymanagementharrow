@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ── Core pages ──────────────────────────────────────────────────────────────
   const corePages: MetadataRoute.Sitemap = [
     { url: `${base}/`,                             lastModified: NOW,     changeFrequency: 'weekly',  priority: 1.0  },
-    { url: `${base}/property-accountants-harrow/`, lastModified: NOW,     changeFrequency: 'weekly',  priority: 0.95 },
+    { url: `${base}/property-management-harrow/`, lastModified: NOW,     changeFrequency: 'weekly',  priority: 0.95 },
     { url: `${base}/how-we-match-you/`,            lastModified: NOW,     changeFrequency: 'monthly', priority: 0.8  },
     { url: `${base}/about/`,                       lastModified: MONTHLY, changeFrequency: 'monthly', priority: 0.6  },
     { url: `${base}/contact/`,                     lastModified: MONTHLY, changeFrequency: 'monthly', priority: 0.7  },
@@ -53,11 +53,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── Guides ──────────────────────────────────────────────────────────────────
   const guideSlugs = [
-    'ultimate-guide-section-24',
-    'incorporating-buy-to-let-portfolio',
-    'capital-gains-tax-uk-property',
-    'allowable-expenses-uk-landlords',
-    'property-flipping-vs-buy-to-let',
+    'hmo-licensing-harrow',
+    'landlord-compliance-checklist',
+    'tenant-screening-best-practices',
+    'deposit-protection-guide',
+    'switching-property-managers',
   ]
 
   const guidePages: MetadataRoute.Sitemap = [
@@ -72,9 +72,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── Tools ───────────────────────────────────────────────────────────────────
   const toolSlugs = [
-    'section-24-calculator',
-    'spv-vs-personal-tax-calculator',
-    'capital-gains-tax-calculator-uk',
+    'rental-yield-calculator',
+    'landlord-compliance-checker',
+    'void-period-cost-calculator',
   ]
 
   const toolPages: MetadataRoute.Sitemap = [

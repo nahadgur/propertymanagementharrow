@@ -1,2 +1,2 @@
 import { permanentRedirect } from 'next/navigation'
-export default function LocationCityPage() { permanentRedirect('/property-accountants-harrow/') }
+export default function LocationCityPage() { permanentRedirect('/property-management-harrow/') }

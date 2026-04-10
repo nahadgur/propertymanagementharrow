@@ -4,14 +4,14 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
-    'Terms of Use for Property Accountants Harrow — the rules governing use of our website and specialist matching service.',
-  alternates: { canonical: 'https://www.propertyaccountantsharrow.co.uk/terms/' },
+    'Terms of Use for Property Management Harrow — the rules governing use of our website and specialist matching service.',
+  alternates: { canonical: 'https://www.propertymanagementharrow.co.uk/terms/' },
 }
 
 const sections = [
   {
     title: 'Nature of the service',
-    body: 'Property Accountants Harrow is a specialist matching and introduction service. We connect property investors with ACCA and ICAEW certified accountants who specialise in property tax. We do not provide accountancy, tax, legal or financial advice ourselves, and no content on this website constitutes professional advice. Always seek advice from a qualified professional regarding your specific circumstances before taking any action in relation to your property or tax affairs.',
+    body: 'Property Management Harrow is a specialist matching and introduction service. We connect landlords with ARLA Propertymark and RICS qualified professionals who specialise in property management. We do not provide property management, legal or financial advice ourselves, and no content on this website constitutes professional advice. Always seek advice from a qualified professional regarding your specific circumstances before taking any action in relation to your property affairs.',
   },
   {
     title: 'Eligibility',
@@ -23,19 +23,19 @@ const sections = [
   },
   {
     title: 'Nature of the specialist relationship',
-    body: 'Specialists in our network are independent, self-employed or firm-based professionals. They are not employees, contractors or agents of Property Accountants Harrow. We are not responsible for the advice given, fees charged, work performed, or any outcome arising from an engagement between you and a specialist following an introduction. Any engagement is governed solely by the agreement between you and the specialist.',
+    body: 'Specialists in our network are independent, self-employed or firm-based professionals. They are not employees, contractors or agents of Property Management Harrow. We are not responsible for the advice given, fees charged, work performed, or any outcome arising from an engagement between you and a specialist following an introduction. Any engagement is governed solely by the agreement between you and the specialist.',
   },
   {
     title: 'Accuracy of website content',
-    body: 'We take reasonable care to ensure that information on this website is accurate and up to date. However, property tax legislation changes frequently and without notice. Nothing on this website should be relied upon as current professional advice. Tax rates, reliefs, thresholds and rules cited on this site may have changed since publication. Always verify the current position with a qualified property tax adviser.',
+    body: 'We take reasonable care to ensure that information on this website is accurate and up to date. However, property legislation and regulations change frequently and without notice. Nothing on this website should be relied upon as current professional advice. Regulations, requirements and rules cited on this site may have changed since publication. Always verify the current position with a qualified property management professional.',
   },
   {
     title: 'Intellectual property',
-    body: 'All content on this website — including text, design, tools, calculators, copy, and structural elements — is the intellectual property of Property Accountants Harrow or its licensors. You may not reproduce, republish, distribute, adapt or commercially exploit any content from this site without our prior written consent. Linking to our website for non-commercial purposes is permitted.',
+    body: 'All content on this website — including text, design, tools, copy, and structural elements — is the intellectual property of Property Management Harrow or its licensors. You may not reproduce, republish, distribute, adapt or commercially exploit any content from this site without our prior written consent. Linking to our website for non-commercial purposes is permitted.',
   },
   {
     title: 'Limitation of liability',
-    body: 'To the fullest extent permitted by applicable law, Property Accountants Harrow excludes all liability for any loss or damage — including direct, indirect, incidental, or consequential loss — arising from your use of this website, reliance on its content, or any introduction made through our matching service. This limitation does not affect any liability that cannot lawfully be excluded, including liability for death or personal injury caused by our negligence.',
+    body: 'To the fullest extent permitted by applicable law, Property Management Harrow excludes all liability for any loss or damage — including direct, indirect, incidental, or consequential loss — arising from your use of this website, reliance on its content, or any introduction made through our matching service. This limitation does not affect any liability that cannot lawfully be excluded, including liability for death or personal injury caused by our negligence.',
   },
   {
     title: 'Third-party links',
@@ -74,7 +74,7 @@ export default function TermsPage() {
         <div className="site-container max-w-3xl">
           {/* Intro */}
           <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-14 pb-10 border-b border-[#f0eee8]">
-            These terms govern your use of the Property Accountants Harrow website and specialist matching service. By using our website or submitting an enquiry, you agree to these terms. Please read them carefully before proceeding.
+            These terms govern your use of the Property Management Harrow website and specialist matching service. By using our website or submitting an enquiry, you agree to these terms. Please read them carefully before proceeding.
           </p>
 
           <div className="flex flex-col gap-0">
@@ -92,12 +92,12 @@ export default function TermsPage() {
           {/* Footer note */}
           <div className="mt-14 pt-10 border-t border-[#f0eee8] flex flex-col gap-3">
             <p className="font-sans text-[13px] text-text-faint leading-relaxed">
-              Property Accountants Harrow is registered in England and Wales.
+              Property Management Harrow is registered in England and Wales.
             </p>
             <p className="font-sans text-[13px] text-text-faint leading-relaxed">
               Questions about these terms:{' '}
-              <a href="mailto:hello@propertyaccountantsharrow.co.uk" className="text-brand">
-                hello@propertyaccountantsharrow.co.uk
+              <a href="mailto:hello@propertymanagementharrow.co.uk" className="text-brand">
+                hello@propertymanagementharrow.co.uk
               </a>
             </p>
           </div>

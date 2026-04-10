@@ -27,10 +27,10 @@ export default function AboutContent() {
             </nav>
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>About Us</p>
             <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
-              Who runs Property Accountants Harrow.
+              Who runs Property Management Harrow.
             </h1>
             <p className="font-sans text-[17px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              We are a Harrow-based specialist matching service connecting property investors with vetted, ACCA and ICAEW certified property tax accountants. We do not provide accountancy advice ourselves — our expertise is knowing which specialists to trust with your portfolio.
+              We are a Harrow-based specialist matching service connecting landlords with vetted, ARLA Propertymark and RICS qualified property management professionals. We do not provide property management services ourselves — our expertise is knowing which specialists to trust with your portfolio.
             </p>
           </div>
                   </div>
@@ -42,11 +42,11 @@ export default function AboutContent() {
               {[
                 {
                   h: 'Why this service exists',
-                  p: "The property tax landscape in the UK has changed dramatically since 2017. Section 24, the 3% SDLT surcharge, and tightening CGT rules have created a specialist advisory need that most general accountancy practices are simply not equipped to meet. A landlord with a leveraged portfolio needs an accountant who spends most of their working week on property tax — not one who dabbles in it between VAT returns and company accounts. Property Accountants Harrow was built to solve this problem for Harrow's property investor community.",
+                  p: "Managing rental property in Harrow has become increasingly complex. Evolving legislation around tenant deposits, gas safety certificates, EPC requirements, Right to Rent checks, and HMO licensing means landlords need professional management — not a general letting agent who treats property management as an afterthought. Property Management Harrow was built to solve this problem for Harrow's landlord community.",
                 },
                 {
                   h: 'Our standards',
-                  p: 'Every specialist in our network has been assessed against six mandatory criteria: professional qualification (ACCA or ICAEW only), property-specific practice evidence, Section 24 and SPV modelling capability, client reference verification, professional indemnity coverage, and ICO registration. These are not aspirational standards — they are the baseline for network inclusion.',
+                  p: 'Every specialist in our network has been assessed against six mandatory criteria: ARLA Propertymark or RICS membership, property management experience in the Harrow area, client money protection scheme membership, property redress scheme registration, verified client references from landlords, and professional indemnity insurance. These are not aspirational standards — they are the baseline for network inclusion.',
                 },
                 {
                   h: 'Our coverage',

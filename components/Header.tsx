@@ -17,7 +17,7 @@ export default function Header({ onOpenModal }: HeaderProps) {
       <div style={{ background: 'var(--green)' }} className="hidden md:block">
         <div className="site-container flex justify-between items-center h-9">
           <p className="text-white/70 text-[11px] tracking-wide">
-            Harrow&apos;s Vetted Property Tax Accountant Network — ACCA &amp; ICAEW Certified
+            Harrow&apos;s Vetted Property Management Specialists — ARLA Propertymark Members
           </p>
           <div className="flex items-center gap-6">
             <a
@@ -42,7 +42,7 @@ export default function Header({ onOpenModal }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex flex-col gap-0.5 no-underline">
             <span className="font-display text-[16px] md:text-[19px] text-text leading-none tracking-[-0.01em]">
-              Property<span style={{ color: 'var(--green)' }}>Accountants</span>Harrow
+              Property<span style={{ color: 'var(--green)' }}>Management</span>Harrow
             </span>
             <span className="text-[9px] uppercase tracking-[0.18em] text-text-faint font-medium font-sans">
               Vetted Specialist Network

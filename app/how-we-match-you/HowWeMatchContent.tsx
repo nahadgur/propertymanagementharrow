@@ -11,58 +11,58 @@ import { siteConfig } from '@/data/site'
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'How We Match You — Property Accountants Harrow',
+  name: 'How We Match You — Property Management Harrow',
   url: `${siteConfig.url}/how-we-match-you/`,
   description:
-    'Learn how Property Accountants Harrow vets and matches property investors with specialist ACCA and ICAEW certified property tax accountants.',
+    'Learn how Property Management Harrow vets and matches landlords with ARLA Propertymark and RICS qualified property management specialists.',
   isPartOf: { '@id': `${siteConfig.url}/#website` },
 }
 
 const vettingCriteria = [
   {
     num: '01',
-    title: 'Professional qualification',
-    body: 'Every specialist in our network holds a current ACCA or ICAEW qualification. We verify membership status directly with each professional body before any introduction is made. We do not introduce AAT-qualified bookkeepers, unqualified practitioners, or accountants in the process of qualification.',
+    title: 'ARLA Propertymark or RICS membership',
+    body: 'Every specialist in our network holds current ARLA Propertymark or RICS membership. We verify membership status directly with each professional body before any introduction is made. We do not introduce unqualified agents, unregulated operators, or firms without recognised industry accreditation.',
   },
   {
     num: '02',
-    title: 'Property-specific practice',
-    body: 'We require evidence that property tax advisory represents a substantial and defined component of the specialist\'s practice — not occasional landlord work absorbed into a general caseload. This means dedicated property tax knowledge, continuing professional development in property legislation, and a demonstrable track record with portfolio investors.',
+    title: 'Property management expertise',
+    body: 'We require evidence that property management represents a substantial and defined component of the specialist\'s practice — not occasional landlord work absorbed into a general lettings caseload. This means dedicated property management knowledge, continuing professional development in landlord and tenant legislation, and a demonstrable track record managing portfolios in the Harrow area.',
   },
   {
     num: '03',
-    title: 'Section 24 and SPV competence',
-    body: 'Any accountant can read Section 24. Very few have the modelling capability to design restructuring strategies across complex, highly leveraged portfolios. We assess each specialist\'s working knowledge of SPV incorporation economics, SDLT and CGT implications on transfer, and the practical mechanics of different mitigation approaches.',
+    title: 'Compliance management capability',
+    body: 'Any agent can list a property. Very few have the systems and expertise to manage the full compliance burden — gas safety certificates, electrical safety inspections, EPC requirements, deposit protection, Right to Rent checks, and HMO licensing. We assess each specialist\'s compliance management processes and verify that nothing falls through the cracks.',
   },
   {
     num: '04',
-    title: 'Client reference verification',
-    body: 'We speak directly with existing clients of prospective network members before approving their inclusion. References are assessed for responsiveness, proactivity, quality of advice, and whether the accountant identified tax-saving opportunities the client had not previously considered.',
+    title: 'Client references from landlords',
+    body: 'We speak directly with existing landlord clients of prospective network members before approving their inclusion. References are assessed for responsiveness, proactivity, quality of management, and whether the property manager identified ways to improve portfolio performance the landlord had not previously considered.',
   },
   {
     num: '05',
-    title: 'Professional indemnity insurance',
-    body: 'All network specialists carry professional indemnity insurance appropriate to the value of advice they provide. We verify coverage levels and confirm that property advisory work is within the scope of each specialist\'s policy. Advisers without adequate coverage are not included in our network.',
+    title: 'Professional indemnity and client money protection',
+    body: 'All network specialists carry professional indemnity insurance and are members of a client money protection scheme. We verify coverage levels and confirm that property management work is within the scope of each specialist\'s policy. Agents without adequate coverage or client money protection are not included in our network.',
   },
   {
     num: '06',
-    title: 'ICO registration and data compliance',
-    body: 'All specialists in our network are registered with the Information Commissioner\'s Office and operate in compliance with UK GDPR. We do not make introductions to practitioners who cannot confirm appropriate data handling procedures for the confidential portfolio information shared during an advisory relationship.',
+    title: 'Property redress scheme and data compliance',
+    body: 'All specialists in our network are registered with a government-approved property redress scheme and the Information Commissioner\'s Office. They operate in compliance with UK GDPR. We do not make introductions to practitioners who cannot confirm appropriate complaint resolution procedures and data handling for the confidential information shared during a management relationship.',
   },
 ]
 
 const matchingSteps = [
   {
     title: 'Your enquiry arrives',
-    body: 'When you complete our matching form or call us directly, we capture the detail of your portfolio — size, location, mortgage levels, current accountant (if any), and the specific tax issue you are trying to address.',
+    body: 'When you complete our matching form or call us directly, we capture the detail of your portfolio — size, location, property types, current management arrangement (if any), and the specific management need you are trying to address.',
   },
   {
     title: 'We assess your situation',
-    body: 'A member of our team reviews your enquiry, categorises the primary advisory need, and identifies which area of Harrow or London our network specialists cover for your property locations.',
+    body: 'A member of our team reviews your enquiry, categorises the primary management need, and identifies which area of Harrow or London our network specialists cover for your property locations.',
   },
   {
     title: 'We identify your specialist',
-    body: 'We match your enquiry against our active network — looking for a specialist with the right qualification, relevant portfolio experience (HMO vs standard buy-to-let, personal vs company holdings, residential vs mixed-use), and capacity to take on new client work.',
+    body: 'We match your enquiry against our active network — looking for a specialist with the right accreditation, relevant portfolio experience (HMO vs standard buy-to-let, single property vs portfolio, residential vs mixed-use), and capacity to take on new management instructions.',
   },
   {
     title: 'We make the introduction',
@@ -98,7 +98,7 @@ export default function HowWeMatchContent() {
             <div className="max-w-2xl">
               <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Our Process</p>
               <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
-                How we match you with the right property tax specialist.
+                How we match you with the right property management specialist.
               </h1>
               <p className="font-sans text-[17px] leading-relaxed mb-8" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 Every specialist in our Harrow network is vetted against six mandatory criteria before any introduction is made. This page explains exactly what we check, why we check it, and how we match your specific portfolio to the right professional.
@@ -116,7 +116,7 @@ export default function HowWeMatchContent() {
           <div className="site-container">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
-                { n: '100%', l: 'ACCA or ICAEW certified' },
+                { n: '100%', l: 'ARLA or RICS qualified' },
                 { n: '6',    l: 'Mandatory vetting criteria' },
                 { n: '48hr', l: 'Introduction guarantee' },
                 { n: 'Free', l: 'For all property investors' },
@@ -207,12 +207,12 @@ export default function HowWeMatchContent() {
             </h2>
             {[
               {
-                q: 'We are not an accountancy firm.',
-                a: 'Property Accountants Harrow does not provide accountancy, tax, or financial advice directly. We are a specialist matching service. Every specialist we introduce is an independently regulated professional — ACCA or ICAEW certified — with their own professional obligations and indemnity coverage.',
+                q: 'We are not a property management company.',
+                a: 'Property Management Harrow does not provide property management services directly. We are a specialist matching service. Every specialist we introduce is an independently regulated professional — ARLA Propertymark or RICS qualified — with their own professional obligations and indemnity coverage.',
               },
               {
                 q: 'We are not a referral mill.',
-                a: 'We do not pass your details to multiple accountants simultaneously, or add you to a circulation list. Each enquiry receives a single, considered match. If the first match is not right, we reassess and introduce an alternative — we do not flood your inbox.',
+                a: 'We do not pass your details to multiple property managers simultaneously, or add you to a circulation list. Each enquiry receives a single, considered match. If the first match is not right, we reassess and introduce an alternative — we do not flood your inbox.',
               },
               {
                 q: 'We are paid by the specialists, not by you.',

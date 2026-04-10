@@ -19,11 +19,11 @@ interface ServicePageContentProps {
 
 
 const serviceImages: Record<string, string> = {
-  'section-24-tax-mitigation':   '/images/residential-lettings-management.png',
-  'spv-company-incorporation':   '/images/block-estate-management.png',
-  'capital-gains-tax-planning':  '/images/rent-collection-arrears-management.png',
-  'sdlt-stamp-duty-planning':    '/images/property-maintenance-coordination.png',
-  'property-inheritance-tax':    '/images/tenant-find-referencing.png',
+  'residential-lettings-management': '/images/residential-lettings-management.png',
+  'tenant-find-letting':             '/images/tenant-find-referencing.png',
+  'block-management':                '/images/block-estate-management.png',
+  'hmo-management':                  '/images/hmo-management.png',
+  'rent-collection-accounting':      '/images/rent-collection-arrears-management.png',
 }
 
 export default function ServicePageContent({ service, content }: ServicePageContentProps) {
@@ -85,7 +85,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
               {/* Trust signals */}
               <div className="flex flex-col gap-2.5">
                 {[
-                  'ACCA and ICAEW certified specialists only',
+                  'ARLA Propertymark and RICS qualified specialists only',
                   'Full economics modelled before any action is taken',
                   'Matched to your portfolio type within 48 hours',
                 ].map(item => (
@@ -152,7 +152,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
                       100%
                     </span>
                     <p className="font-sans text-[13px] text-text-muted">
-                      ACCA or ICAEW certified
+                      ARLA Propertymark or RICS qualified
                     </p>
                   </div>
                   <div className="border-t border-[#e0e9e0] pt-6">
@@ -221,7 +221,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
           </div>
         </section>
 
-        {/* ── COMPARISON TABLE (SPV page only) ─────────────────────── */}
+        {/* ── COMPARISON TABLE (optional) ─────────────────────── */}
         {content.comparison && (
           <section className="section-pad" style={{ background: 'var(--green-soft)' }}>
             <div className="site-container">
@@ -237,8 +237,8 @@ export default function ServicePageContent({ service, content }: ServicePageCont
                   <thead>
                     <tr style={{ background: 'var(--green-deep)' }}>
                       <th className="text-left py-4 px-6 text-white font-semibold text-[12px] uppercase tracking-wide">Factor</th>
-                      <th className="text-left py-4 px-6 text-white font-semibold text-[12px] uppercase tracking-wide">Personal ownership</th>
-                      <th className="text-left py-4 px-6 text-white font-semibold text-[12px] uppercase tracking-wide">SPV Ltd company</th>
+                      <th className="text-left py-4 px-6 text-white font-semibold text-[12px] uppercase tracking-wide">Self-management</th>
+                      <th className="text-left py-4 px-6 text-white font-semibold text-[12px] uppercase tracking-wide">Professional management</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -357,7 +357,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
                   {content.localBridge}
                 </p>
-                <Link href="/property-accountants-harrow/" className="btn-primary inline-flex">
+                <Link href="/property-management-harrow/" className="btn-primary inline-flex">
                   See Harrow Specialists
                 </Link>
               </div>
@@ -368,7 +368,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
                   { label: 'Wealdstone',        href: '/harrow/wealdstone/' },
                   { label: 'Harrow on the Hill',href: '/harrow/harrow-on-the-hill/' },
                   { label: 'Edgware',           href: '/harrow/edgware/' },
-                  { label: 'All Harrow areas',  href: '/property-accountants-harrow/' },
+                  { label: 'All Harrow areas',  href: '/property-management-harrow/' },
                 ].map(area => (
                   <Link
                     key={area.href}
@@ -394,7 +394,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Get matched with a Harrow {service.title.toLowerCase()} specialist — free. ACCA and ICAEW certified. 48-hour introduction guarantee.
+              Get matched with a Harrow {service.title.toLowerCase()} specialist — free. ARLA Propertymark and RICS qualified. 48-hour introduction guarantee.
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <button

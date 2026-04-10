@@ -15,14 +15,14 @@ export function PricingSection({ cityName, serviceId, serviceName }: PricingSect
   const heading = cityName && serviceName
     ? `How Much Do ${serviceName} Cost in ${cityName}?`
     : cityName
-    ? `How Much Do Property Tax Services Cost in ${cityName}?`
+    ? `How Much Do Property Management Services Cost in ${cityName}?`
     : serviceName
     ? `${serviceName} Pricing Guide`
     : 'Pricing Guide';
 
   const intro = cityName
-    ? `Prices in ${cityName} vary depending on portfolio complexity and the specific services required. Below are typical costs from vetted property tax accountants in the ${cityName} area.`
-    : 'Prices vary depending on portfolio complexity and services required. Below are typical costs from property tax accountants in our network.';
+    ? `Prices in ${cityName} vary depending on portfolio complexity and the specific services required. Below are typical costs from vetted property management specialists in the ${cityName} area.`
+    : 'Prices vary depending on portfolio complexity and services required. Below are typical costs from property management specialists in our network.';
 
   return (
     <section className="mb-16">
@@ -112,7 +112,7 @@ export function PricingSection({ cityName, serviceId, serviceName }: PricingSect
       {cityName && (
         <div className="mt-8 prose prose-sm max-w-none text-gray-600">
           <p>
-            The cost of property tax services in {cityName} depends on your portfolio complexity and the specific advice required. Property tax accountants in our {cityName} network offer transparent pricing and will provide a clear fixed-fee quote before any work begins.
+            The cost of property management services in {cityName} depends on your portfolio complexity and the specific services required. Property management specialists in our {cityName} network offer transparent pricing and will provide a clear fixed-fee quote before any work begins.
           </p>
         </div>
       )}

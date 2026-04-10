@@ -36,12 +36,12 @@ export default function LocalHubContent() {
               </p>
 
               <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
-                Harrow&apos;s Vetted Property Tax Accountant Network.
+                Harrow&apos;s Vetted Property Management Specialist Network.
               </h1>
 
               <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-[540px]"
                 style={{ color: 'rgba(255,255,255,0.6)' }}>
-                We connect Harrow landlords and property investors with ACCA and ICAEW certified accountants who specialise exclusively in property tax — across all {harrowBoroughData.postcodes} postcode areas in the London Borough of Harrow.
+                We connect Harrow landlords and property investors with ARLA Propertymark and RICS qualified specialists who focus exclusively on property management — across all {harrowBoroughData.postcodes} postcode areas in the London Borough of Harrow.
               </p>
 
               {/* Borough postcodes */}
@@ -82,7 +82,7 @@ export default function LocalHubContent() {
               <div>
                 <p className="eyebrow mb-4">The Harrow Property Market</p>
                 <h2 className="font-display text-h2 text-text mb-8 leading-tight">
-                  Why Harrow landlords face distinct tax challenges.
+                  Why Harrow landlords face distinct management challenges.
                 </h2>
                 <div className="flex flex-col gap-5">
                   {harrowBoroughData.marketContext.map((para, i) => (
@@ -140,7 +140,7 @@ export default function LocalHubContent() {
               Find your Harrow area specialist.
             </h2>
             <p className="font-sans text-[16px] mb-12 max-w-xl" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              Each area has distinct property types, yield profiles, and tax challenges. Our network specialists are matched to the specific area — not sent generically.
+              Each area has distinct property types, yield profiles, and management challenges. Our network specialists are matched to the specific area — not sent generically.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
@@ -217,7 +217,7 @@ export default function LocalHubContent() {
               What our Harrow specialists cover.
             </h2>
             <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-12 max-w-2xl">
-              Every service below is available through our Harrow network — delivered by accountants who understand the local property market, not generalists working from a national template.
+              Every service below is available through our Harrow network — delivered by property management specialists who understand the local property market, not generalists working from a national template.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -284,11 +284,11 @@ export default function LocalHubContent() {
         <section style={{ background: 'var(--green)' }} className="py-20">
           <div className="site-container text-center">
             <h2 className="font-display text-h2 text-white mb-4 leading-tight">
-              Find your Harrow property tax specialist.
+              Find your Harrow property management specialist.
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Free. ACCA and ICAEW certified. Matched to your Harrow area and portfolio type within 48 hours.
+              Free. ARLA Propertymark and RICS qualified. Matched to your Harrow area and portfolio type within 48 hours.
             </p>
             <button
               onClick={() => setModalOpen(true)}

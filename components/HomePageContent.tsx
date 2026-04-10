@@ -26,13 +26,13 @@ const schemaOrg = {
         containedInPlace: { '@type': 'Country', name: 'United Kingdom' },
       },
       knowsAbout: [
-        'Section 24 Tax Mitigation',
-        'SPV Company Incorporation',
-        'Capital Gains Tax Planning',
-        'SDLT Planning',
-        'Property Inheritance Tax',
-        'Property Tax',
-        'Buy-to-Let Tax',
+        'Residential Lettings Management',
+        'Tenant Find & Letting',
+        'Block Management',
+        'HMO Management',
+        'Rent Collection & Accounting',
+        'Property Management',
+        'Buy-to-Let Management',
       ],
     },
     {
@@ -69,17 +69,17 @@ export default function HomePageContent() {
               <div>
                 <div className="flex items-center gap-3 mb-8">
                   <div style={{ width: 36, height: 2, background: 'var(--green)' }} />
-                  <span className="eyebrow">Property Tax Accountants Harrow — ACCA &amp; ICAEW Certified</span>
+                  <span className="eyebrow">Property Management Harrow — ARLA Propertymark &amp; RICS Qualified</span>
                 </div>
 
                 <h1 className="font-display text-[2.6rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.5rem] leading-tight text-text mb-6">
                   Harrow&apos;s specialist<br />
-                  property tax<br />
-                  <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>accountants.</em>
+                  property<br />
+                  <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>managers.</em>
                 </h1>
 
                 <p className="font-sans text-[15px] md:text-[17px] text-text-muted leading-relaxed max-w-[500px] mb-8 md:mb-10">
-                  We match Harrow landlords and property investors with vetted, ACCA and ICAEW certified accountants who specialise exclusively in property tax — Section 24 mitigation, SPV company incorporation, CGT planning, and inheritance tax structuring.
+                  We match Harrow landlords and property investors with vetted, ARLA Propertymark and RICS qualified specialists who focus exclusively on property management — lettings, tenant sourcing, compliance, rent collection, and portfolio oversight.
                 </p>
 
                 <div className="flex gap-4 items-center mb-16">
@@ -125,23 +125,23 @@ export default function HomePageContent() {
           </div>
         </div>
 
-        {/* ── SECTION 24 AGITATION ─────────────────────────────────── */}
+        {/* ── MANAGEMENT CHALLENGES ─────────────────────────────────── */}
         <section className="section-pad bg-white">
           <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-16">
               <div>
                 <p className="eyebrow mb-4">The Problem</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
-                  Section 24 is costing Harrow landlords thousands every year. Is your property tax accountant doing anything about it?
+                  Managing rental property in Harrow is getting harder every year. Is your current agent keeping up?
                 </h2>
                 <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-6">
-                  Since 2017, the mortgage interest finance cost restriction has been stripping income from leveraged UK landlords. Higher-rate taxpayers can no longer deduct mortgage interest as an expense — instead receiving only a 20% tax credit that fails to reflect their actual cost.
+                  Evolving regulations, licensing requirements, and tenant expectations mean that hands-off landlording no longer works. From mandatory HMO licensing to deposit protection deadlines, the compliance burden on Harrow landlords has never been higher.
                 </p>
                 <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-8">
-                  For many Harrow landlords, this transforms a profitable portfolio into a loss-making one on paper — while generating a very real tax bill. Most still have no restructuring strategy in place.
+                  For many Harrow landlords, void periods, maintenance emergencies, and late rent are eroding returns — while regulatory non-compliance risks fines of up to £30,000. Most still have no structured management strategy in place.
                 </p>
                 <button onClick={() => setModalOpen(true)} className="btn-primary">
-                  Find Out What You Could Save
+                  Find Out How We Can Help
                 </button>
               </div>
 
@@ -150,18 +150,18 @@ export default function HomePageContent() {
                 {[
                   {
                     num: '01',
-                    head: 'Your mortgage interest is no longer fully deductible',
-                    body: 'Under Section 24, higher and additional rate taxpayers receive only a 20% tax credit on finance costs — not full deduction. If you pay 40% income tax, you are losing 20p in every pound of mortgage interest. Permanently.',
+                    head: 'Compliance requirements are increasing every year',
+                    body: 'From Right to Rent checks to electrical safety certificates, gas safety records, and EPC requirements, the regulatory burden on landlords grows annually. Missing a single obligation can result in civil penalties, rent repayment orders, or prosecution.',
                   },
                   {
                     num: '02',
-                    head: 'The impact compounds as portfolios grow',
-                    body: 'A higher-rate taxpayer with £500,000 of buy-to-let mortgage debt at 5% interest faces up to £5,000 per year in avoidable additional tax. Across a larger leveraged portfolio, the annual figure can run into five figures.',
+                    head: 'Void periods and poor tenants destroy returns',
+                    body: 'A single month of void costs the average Harrow landlord £1,400 or more in lost rent. Poor tenant vetting leads to arrears, property damage, and costly eviction proceedings — problems that compound across a growing portfolio.',
                   },
                   {
                     num: '03',
-                    head: 'Most generalist accountants have no restructuring strategy',
-                    body: 'Understanding Section 24 in theory and knowing how to restructure around it are very different things. SPV modelling, spousal income splitting, and pension contributions require property-specific expertise that most high-street accountants simply do not have.',
+                    head: 'Most high-street agents offer a generic, reactive service',
+                    body: 'Understanding property management in theory and delivering proactive, compliant portfolio oversight are very different things. Local market knowledge, rigorous tenant referencing, and structured maintenance programmes require specialist expertise that most generalist agents simply do not have.',
                   },
                 ].map(card => (
                   <div key={card.num}
@@ -184,10 +184,10 @@ export default function HomePageContent() {
               className="border border-[var(--green-mid)] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
                 <h3 className="font-display text-[22px] text-text mb-1">
-                  There are legal strategies that work.
+                  There is a better way to manage your portfolio.
                 </h3>
                 <p className="font-sans text-[14px] text-text-muted">
-                  SPV incorporation, spousal splitting, and pension contributions — all modelled to your specific portfolio before any action is taken.
+                  Professional lettings management, rigorous tenant vetting, and proactive compliance — all tailored to your specific portfolio before any instruction is given.
                 </p>
               </div>
               <button onClick={() => setModalOpen(true)} className="btn-primary flex-shrink-0">
@@ -206,7 +206,7 @@ export default function HomePageContent() {
                   Specialist Services
                 </p>
                 <h2 className="font-display text-h2 text-white leading-tight">
-                  Five specialist property tax<br />services for Harrow investors.
+                  Five specialist property management<br />services for Harrow landlords.
                 </h2>
               </div>
               <Link href="/services/"
@@ -269,11 +269,11 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">Our Process</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
-                  Not just any property tax accountant.<br />
+                  Not just any property manager.<br />
                   <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>The right one.</em>
                 </h2>
                 <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-8">
-                  Every specialist in our Harrow network is rigorously vetted before joining. We check professional qualifications, verify property-specific experience, review client history, and confirm professional indemnity coverage. You are never sent a generic list — you are introduced to one matched specialist who has handled portfolios like yours before.
+                  Every specialist in our Harrow network is rigorously vetted before joining. We check professional qualifications, verify property management experience, review client history, and confirm client money protection and professional indemnity coverage. You are never sent a generic list — you are introduced to one matched specialist who has managed portfolios like yours before.
                 </p>
                 <Link href="/how-we-match-you/" className="btn-primary inline-flex">
                   See Our Vetting Process
@@ -286,12 +286,12 @@ export default function HomePageContent() {
                   {
                     step: '01',
                     title: 'Tell us about your portfolio',
-                    desc: 'Share your portfolio size, location, mortgage levels, and the tax issue you need to address. The more detail, the better the match.',
+                    desc: 'Share your portfolio size, location, property types, and the management challenge you need to address. The more detail, the better the match.',
                   },
                   {
                     step: '02',
                     title: 'We identify the right specialist',
-                    desc: 'Our team reviews your enquiry against our vetted Harrow network — matching on qualification, specialism, portfolio type, and availability.',
+                    desc: 'Our team reviews your enquiry against our vetted Harrow network — matching on qualification, management specialism, portfolio type, and availability.',
                   },
                   {
                     step: '03',
@@ -363,7 +363,7 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">Harrow Specialists</p>
                 <h2 className="font-display text-h2 text-text mb-4 leading-tight">
-                  Looking for a property tax accountant in your area of Harrow?
+                  Looking for a property management specialist in your area of Harrow?
                 </h2>
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed">
                   Our Harrow network covers Stanmore, Pinner, Harrow on the Hill, Wealdstone, Edgware, Kenton, and all surrounding areas. Specialists who understand local yields, HMO licensing in the London Borough of Harrow, and the specific property types that make up the local stock.
@@ -371,11 +371,11 @@ export default function HomePageContent() {
               </div>
               <div className="flex flex-col gap-3">
                 {[
-                  { label: 'Stanmore', desc: 'High-value estates — CGT &amp; Inheritance Tax', href: '/harrow/stanmore/' },
-                  { label: 'Pinner', desc: 'Affluent portfolios — SPV incorporation', href: '/harrow/pinner/' },
-                  { label: 'Wealdstone', desc: 'Regeneration area — HMO operators', href: '/harrow/wealdstone/' },
-                  { label: 'Harrow on the Hill', desc: 'Premium rentals — non-resident landlords', href: '/harrow/harrow-on-the-hill/' },
-                  { label: 'Edgware', desc: 'Expanding portfolios — trade compliance', href: '/harrow/edgware/' },
+                  { label: 'Stanmore', desc: 'Premium lettings &amp; family homes', href: '/harrow/stanmore/' },
+                  { label: 'Pinner', desc: 'Affluent portfolios &amp; tenant vetting', href: '/harrow/pinner/' },
+                  { label: 'Wealdstone', desc: 'Regeneration area — HMO management', href: '/harrow/wealdstone/' },
+                  { label: 'Harrow on the Hill', desc: 'Premium rentals — full management', href: '/harrow/harrow-on-the-hill/' },
+                  { label: 'Edgware', desc: 'Expanding portfolios — lettings &amp; compliance', href: '/harrow/edgware/' },
                 ].map(area => (
                   <Link key={area.href} href={area.href}
                     className="flex justify-between items-center p-4 border border-[#f0eee8] no-underline hover:border-brand hover:bg-[var(--green-soft)] transition-colors group">
@@ -389,7 +389,7 @@ export default function HomePageContent() {
                     <span style={{ color: 'var(--green)' }} className="font-sans text-sm">&rarr;</span>
                   </Link>
                 ))}
-                <Link href="/property-accountants-harrow/"
+                <Link href="/property-management-harrow/"
                   className="font-sans text-[13px] font-semibold no-underline flex items-center gap-2 mt-2"
                   style={{ color: 'var(--green)' }}>
                   View all Harrow specialists &rarr;
@@ -406,7 +406,7 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">Common Questions</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
-                  Frequently asked questions about our Harrow property tax accountant matching service.
+                  Frequently asked questions about our Harrow property management specialist matching service.
                 </h2>
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
                   If you have a question we have not answered here, call us directly or use the form and we will respond within 24 hours.
@@ -443,11 +443,11 @@ export default function HomePageContent() {
         <section style={{ background: 'var(--green)' }} className="py-20">
           <div className="site-container text-center">
             <h2 className="font-display text-h2 text-white mb-4 leading-tight">
-              Ready to find your Harrow property tax accountant?
+              Ready to find your Harrow property management specialist?
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Get matched with a vetted, ACCA or ICAEW certified property tax accountant in Harrow — free. Specialists in Section 24, SPV incorporation, CGT and inheritance tax. 48-hour introduction guarantee.
+              Get matched with a vetted, ARLA Propertymark or RICS qualified property management specialist in Harrow — free. Experts in lettings, tenant sourcing, compliance, and portfolio management. 48-hour introduction guarantee.
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <button

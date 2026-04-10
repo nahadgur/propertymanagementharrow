@@ -24,9 +24,9 @@ export default function NotFound() {
         </div>
         <div className="mt-12 flex flex-col gap-2 text-[14px]">
           {[
-            { label: 'Section 24 Tax Mitigation', href: '/services/section-24-tax-mitigation/' },
-            { label: 'SPV Company Incorporation', href: '/services/spv-company-incorporation/' },
-            { label: 'Harrow Specialists', href: '/property-accountants-harrow/' },
+            { label: 'Residential Lettings Management', href: '/services/residential-lettings-management/' },
+            { label: 'Tenant Find & Referencing', href: '/services/tenant-find-referencing/' },
+            { label: 'Harrow Specialists', href: '/property-management-harrow/' },
             { label: 'How We Match You', href: '/how-we-match-you/' },
           ].map(l => (
             <Link key={l.href} href={l.href}

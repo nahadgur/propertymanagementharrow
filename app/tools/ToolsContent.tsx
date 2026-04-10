@@ -7,9 +7,9 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import Link from 'next/link'
 
 const tools = [
-  { title: 'Section 24 Calculator', desc: 'Enter your rental income and mortgage interest to see exactly how much the finance cost restriction is costing you each year — and over 5 and 10 year horizons.', href: '/tools/section-24-calculator/', pill: 'Most used' },
-  { title: 'SPV vs Personal Tax Calculator', desc: 'Compare the annual tax position of holding your portfolio personally against an SPV limited company. Includes a breakeven analysis on the cost of transfer.', href: '/tools/spv-vs-personal-tax-calculator/', pill: 'Portfolio investors' },
-  { title: 'UK Property CGT Calculator', desc: 'Estimate your Capital Gains Tax on a residential property disposal. Includes Private Residence Relief, lettings relief, and the 2024/25 Annual Exempt Amount.', href: '/tools/capital-gains-tax-calculator-uk/', pill: 'Selling a property' },
+  { title: 'Rental Yield Calculator', desc: 'Enter your property value, monthly rent, and running costs to calculate gross and net rental yield — and see your true annual return after expenses.', href: '/tools/rental-yield-calculator/', pill: 'Most used' },
+  { title: 'Management Fee Calculator', desc: 'Calculate the cost of professional property management including monthly fees, tenant find charges, and portfolio-level costs. Compare against self-management.', href: '/tools/management-fee-calculator/', pill: 'Comparing options' },
+  { title: 'Void Cost Calculator', desc: 'See the true cost of empty periods — lost rent, re-letting expenses, and mortgage payments. Find out how many days faster a manager needs to let to pay for themselves.', href: '/tools/void-cost-calculator/', pill: 'Reducing voids' },
 ]
 
 export default function ToolsContent() {
@@ -20,14 +20,14 @@ export default function ToolsContent() {
       <Header onOpenModal={() => setModalOpen(true)} />
       <main className="flex-grow">
         <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
-          <img src="/images/residential-lettings-management.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
+          <img src="/images/hero-services.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(15,51,32,0.88) 0%, rgba(15,51,32,0.6) 100%)' }} />
           <div className="relative z-10">
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Free Tools' }]} />
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Free Interactive Tools</p>
-            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">Property tax calculators for UK landlords.</h1>
-            <p className="font-sans text-[17px] max-w-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>Understand your tax position before speaking to a specialist. All tools are free, fully interactive, and built for UK landlords and property investors.</p>
+            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">Free property management calculators for Harrow landlords.</h1>
+            <p className="font-sans text-[17px] max-w-xl" style={{ color: 'rgba(255,255,255,0.6)' }}>Understand your management costs, rental yield, and void impact before choosing a specialist. All tools are free, fully interactive, and built for Harrow landlords.</p>
           </div>
                   </div>
         </section>
@@ -47,9 +47,9 @@ export default function ToolsContent() {
         </section>
         <section className="py-16 border-t border-[#f0eee8]" style={{ background: 'var(--green-soft)' }}>
           <div className="site-container text-center">
-            <h2 className="font-display text-h2 text-text mb-4 leading-tight">Know your number. Then get the strategy.</h2>
-            <p className="font-sans text-[16px] text-text-muted mb-8 max-w-lg mx-auto">These tools give you the direction. A specialist gives you the action plan — free, within 48 hours.</p>
-            <button onClick={() => setModalOpen(true)} className="btn-primary">Find My Specialist — Free</button>
+            <h2 className="font-display text-h2 text-text mb-4 leading-tight">Know your numbers. Then find the right manager.</h2>
+            <p className="font-sans text-[16px] text-text-muted mb-8 max-w-lg mx-auto">These tools help you understand the real costs. A vetted specialist gives you the solution — free matching, within 24 hours.</p>
+            <button onClick={() => setModalOpen(true)} className="btn-primary">Get Matched With a Specialist — Free</button>
           </div>
         </section>
       </main>

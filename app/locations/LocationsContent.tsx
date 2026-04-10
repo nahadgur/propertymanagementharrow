@@ -87,9 +87,9 @@ export default function LocationsContent() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: 'Property Tax Accountants — All Harrow Locations',
-        description: 'Find a property tax accountant specialist serving your area. We cover all Harrow postcodes — HA1 through HA9 — and surrounding areas including Ruislip, Uxbridge, and Bushey.',
-        url: 'https://www.propertyaccountantsharrow.co.uk/locations/',
+        name: 'Property Management Specialists — All Harrow Locations',
+        description: 'Find a property management specialist serving your area. We cover all Harrow postcodes — HA1 through HA9 — and surrounding areas including Ruislip, Uxbridge, and Bushey.',
+        url: 'https://www.propertymanagementharrow.co.uk/locations/',
       }) }} />
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Locations Page" />
       <Header onOpenModal={() => setModalOpen(true)} />
@@ -110,10 +110,10 @@ export default function LocationsContent() {
               {totalAreas} Areas Covered
             </p>
             <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight max-w-2xl">
-              Property Tax Accountants Across All Harrow Postcodes
+              Property Management Specialists Across All Harrow Postcodes
             </h1>
             <p className="font-sans text-[16px] md:text-[17px] max-w-xl leading-relaxed mb-8" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              We match landlords and property investors across every HA postcode — and surrounding areas — with ACCA and ICAEW certified property tax specialists.
+              We match landlords and property investors across every HA postcode — and surrounding areas — with ARLA Propertymark and RICS qualified property management specialists.
             </p>
             {/* Search */}
             <div className="max-w-md">
@@ -173,7 +173,7 @@ export default function LocationsContent() {
                                   Area guide →
                                 </Link>
                               ) : (
-                                <Link href="/property-accountants-harrow/"
+                                <Link href="/property-management-harrow/"
                                   className="font-sans text-[11px] text-text-faint no-underline hover:text-brand transition-colors">
                                   Covered →
                                 </Link>
@@ -219,29 +219,29 @@ export default function LocationsContent() {
           <div className="site-container">
             <p className="eyebrow mb-4">Detailed Area Guides</p>
             <h2 className="font-display text-[1.8rem] md:text-[2.2rem] text-text mb-8 leading-tight">
-              In-depth property tax information by Harrow area
+              In-depth property management information by Harrow area
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
               {[
-                { name: 'Stanmore',           href: '/harrow/stanmore/',           postcode: 'HA7', desc: 'Detached stock, IHT planning' },
-                { name: 'Pinner',             href: '/harrow/pinner/',             postcode: 'HA5', desc: 'Period homes, capital growth' },
-                { name: 'Pinner Green',       href: '/harrow/pinner-green/',       postcode: 'HA5', desc: 'Premium residential, CGT focus' },
-                { name: 'Hatch End',          href: '/harrow/hatch-end/',          postcode: 'HA5', desc: 'High-value, IHT planning' },
-                { name: 'Northwood',          href: '/harrow/northwood/',          postcode: 'HA6', desc: 'Ultra-premium, wealth structuring' },
-                { name: 'Ruislip',            href: '/harrow/ruislip/',            postcode: 'HA4', desc: 'Premium, CGT & IHT focus' },
-                { name: 'Eastcote',           href: '/harrow/eastcote/',           postcode: 'HA4', desc: 'Premium residential, mid-term' },
+                { name: 'Stanmore',           href: '/harrow/stanmore/',           postcode: 'HA7', desc: 'Premium lettings, family homes' },
+                { name: 'Pinner',             href: '/harrow/pinner/',             postcode: 'HA5', desc: 'Period homes, tenant vetting' },
+                { name: 'Pinner Green',       href: '/harrow/pinner-green/',       postcode: 'HA5', desc: 'Premium residential, full management' },
+                { name: 'Hatch End',          href: '/harrow/hatch-end/',          postcode: 'HA5', desc: 'High-value, professional lets' },
+                { name: 'Northwood',          href: '/harrow/northwood/',          postcode: 'HA6', desc: 'Ultra-premium, portfolio management' },
+                { name: 'Ruislip',            href: '/harrow/ruislip/',            postcode: 'HA4', desc: 'Premium, full management' },
+                { name: 'Eastcote',           href: '/harrow/eastcote/',           postcode: 'HA4', desc: 'Premium residential, lettings' },
                 { name: 'Harrow on the Hill', href: '/harrow/harrow-on-the-hill/', postcode: 'HA1', desc: 'Mixed stock, high demand' },
-                { name: 'Harrow Town Centre', href: '/harrow/harrow-town-centre/', postcode: 'HA1', desc: 'Dense rental, Section 24' },
-                { name: 'Wealdstone',         href: '/harrow/wealdstone/',         postcode: 'HA3', desc: 'HMO-heavy, Section 24 hotspot' },
-                { name: 'Kenton',             href: '/harrow/kenton/',             postcode: 'HA3', desc: 'Long-term hold, IHT focus' },
-                { name: 'North Harrow',       href: '/harrow/north-harrow/',       postcode: 'HA2', desc: 'Mid-portfolio, Section 24' },
-                { name: 'West Harrow',        href: '/harrow/west-harrow/',        postcode: 'HA2', desc: 'Steady BTL, medium-term' },
-                { name: 'Headstone',          href: '/harrow/headstone/',          postcode: 'HA2', desc: 'Residential BTL, SPV focus' },
-                { name: 'South Harrow',       href: '/harrow/south-harrow/',       postcode: 'HA2', desc: 'High-yield, HMO operators' },
+                { name: 'Harrow Town Centre', href: '/harrow/harrow-town-centre/', postcode: 'HA1', desc: 'Dense rental, compliance focus' },
+                { name: 'Wealdstone',         href: '/harrow/wealdstone/',         postcode: 'HA3', desc: 'HMO-heavy, licensing & compliance' },
+                { name: 'Kenton',             href: '/harrow/kenton/',             postcode: 'HA3', desc: 'Long-term hold, full management' },
+                { name: 'North Harrow',       href: '/harrow/north-harrow/',       postcode: 'HA2', desc: 'Mid-portfolio, lettings management' },
+                { name: 'West Harrow',        href: '/harrow/west-harrow/',        postcode: 'HA2', desc: 'Steady BTL, medium-term lets' },
+                { name: 'Headstone',          href: '/harrow/headstone/',          postcode: 'HA2', desc: 'Residential BTL, tenant find' },
+                { name: 'South Harrow',       href: '/harrow/south-harrow/',       postcode: 'HA2', desc: 'High-yield, HMO management' },
                 { name: 'Rayners Lane',       href: '/harrow/rayners-lane/',       postcode: 'HA2', desc: 'Active BTL, yield-focused' },
                 { name: 'North Wembley',      href: '/harrow/north-wembley/',      postcode: 'HA9', desc: 'Yield-focused, active investors' },
-                { name: 'Edgware',            href: '/harrow/edgware/',            postcode: 'HA8', desc: 'Portfolio building, SDLT' },
-                { name: 'Canons Park',        href: '/harrow/canons-park/',        postcode: 'HA8', desc: 'Premium HA8, CGT & IHT' },
+                { name: 'Edgware',            href: '/harrow/edgware/',            postcode: 'HA8', desc: 'Portfolio building, lettings' },
+                { name: 'Canons Park',        href: '/harrow/canons-park/',        postcode: 'HA8', desc: 'Premium HA8, full management' },
                 { name: 'Queensbury',         href: '/harrow/queensbury/',         postcode: 'HA8', desc: 'Growing investor interest' },
                 { name: 'Burnt Oak',          href: '/harrow/burnt-oak/',          postcode: 'HA8', desc: 'Active portfolio building' },
               ].map(spoke => (
@@ -268,10 +268,10 @@ export default function LocationsContent() {
         <section style={{ background: 'var(--green)' }} className="py-16">
           <div className="site-container text-center">
             <h2 className="font-display text-[1.8rem] md:text-h2 text-white mb-4 leading-tight">
-              Find your local property tax specialist
+              Find your local property management specialist
             </h2>
             <p className="font-sans text-[16px] mb-8 max-w-md mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Free matching, 48-hour introduction guarantee. ACCA and ICAEW certified specialists only.
+              Free matching, 48-hour introduction guarantee. ARLA Propertymark and RICS qualified specialists only.
             </p>
             <button onClick={() => setModalOpen(true)}
               className="font-sans font-bold text-[14px] px-10 py-4 border-0 cursor-pointer"

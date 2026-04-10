@@ -28,11 +28,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="no-underline block mb-4">
               <span className="font-display text-[18px] text-white leading-none tracking-[-0.01em]">
-                Property<span style={{ color: 'var(--green)' }}>Accountants</span>Harrow
+                Property<span style={{ color: 'var(--green)' }}>Management</span>Harrow
               </span>
             </Link>
             <p className="text-[13px] leading-relaxed text-white/50 max-w-xs mb-6">
-              We connect Harrow&apos;s property investors with ACCA and ICAEW certified accountants who specialise exclusively in property tax and wealth structuring.
+              We connect Harrow&apos;s landlords and freeholders with vetted property management professionals who specialise in residential lettings, block management, and HMO services.
             </p>
             <div className="flex flex-col gap-1.5">
               <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
@@ -82,7 +82,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="site-container py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
           <p className="text-[11px] text-white/30 leading-relaxed max-w-2xl">
-            &copy; {year} Property Accountants Harrow. A lead generation and specialist matching service. We are not a regulated accountancy firm and do not provide accountancy, legal or financial advice directly. All specialists in our network are independently regulated. ICO registered.
+            &copy; {year} Property Management Harrow. A lead generation and specialist matching service. We are not a property management firm and do not manage properties directly. All specialists in our network hold relevant professional memberships and client money protection. ICO registered.
           </p>
           <div className="flex gap-4 flex-shrink-0">
             <Link href="/privacy-policy/" className="text-[11px] text-white/25 no-underline hover:text-white/50 transition-colors">Privacy</Link>

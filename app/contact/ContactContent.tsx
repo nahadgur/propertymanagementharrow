@@ -78,7 +78,7 @@ export default function ContactContent() {
               <div className="mt-10 p-6 border border-[#e0ece0]" style={{ background: 'var(--green-soft)' }}>
                 <h3 className="font-display text-[20px] text-text mb-2">Looking for a specialist match?</h3>
                 <p className="font-sans text-[13px] text-text-muted mb-5 leading-relaxed">
-                  Use our full matching form for the fastest introduction to the right property tax specialist.
+                  Use our full matching form for the fastest introduction to the right property management specialist.
                 </p>
                 <button onClick={() => setModalOpen(true)} className="btn-primary text-[13px] py-3">
                   Find My Specialist — Free

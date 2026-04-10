@@ -88,5 +88,5 @@ export const cityPageContent = {
       { question: `Can I meet a property manager in ${cityName}?`, answer: `Yes — most agents in our ${cityName} network conduct free property assessments at your ${p.postcode} area property, providing face-to-face advice on rental value, compliance requirements, and management approach before you commit.` },
     ];
   },
-  schemaServiceTypes: ["residential-lettings-management", "block-estate-management", "tenant-find-referencing", "property-maintenance-coordination", "rent-collection-arrears-management", "hmo-management"],
+  schemaServiceTypes: ["residential-lettings-management", "tenant-find-letting", "block-management", "hmo-management", "rent-collection-accounting"],
 };
