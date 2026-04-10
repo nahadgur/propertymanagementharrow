@@ -22,6 +22,14 @@ const SPOKE_PAGES: Record<string, string> = {
   'hatch-end':          '/harrow/hatch-end/',
   'canons-park':        '/harrow/canons-park/',
   'queensbury':         '/harrow/queensbury/',
+  'west-harrow':        '/harrow/west-harrow/',
+  'headstone':          '/harrow/headstone/',
+  'ruislip':            '/harrow/ruislip/',
+  'northwood':          '/harrow/northwood/',
+  'pinner-green':       '/harrow/pinner-green/',
+  'north-wembley':      '/harrow/north-wembley/',
+  'burnt-oak':          '/harrow/burnt-oak/',
+  'eastcote':           '/harrow/eastcote/',
 }
 
 function toSlug(name: string): string {
@@ -213,21 +221,29 @@ export default function LocationsContent() {
             <h2 className="font-display text-[1.8rem] md:text-[2.2rem] text-text mb-8 leading-tight">
               In-depth property tax information by Harrow area
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
               {[
-                { name: 'Stanmore',           href: '/harrow/stanmore/',            postcode: 'HA7', desc: 'Detached stock, strong IHT demand' },
-                { name: 'Pinner',             href: '/harrow/pinner/',              postcode: 'HA5', desc: 'Period homes, capital growth focus' },
-                { name: 'Hatch End',          href: '/harrow/hatch-end/',           postcode: 'HA5', desc: 'Premium residential, IHT planning' },
-                { name: 'Wealdstone',         href: '/harrow/wealdstone/',          postcode: 'HA3', desc: 'HMO-heavy, Section 24 hotspot' },
-                { name: 'Kenton',             href: '/harrow/kenton/',              postcode: 'HA3', desc: 'Long-term ownership, IHT focus' },
-                { name: 'Harrow on the Hill', href: '/harrow/harrow-on-the-hill/',  postcode: 'HA1', desc: 'Mixed stock, high rental demand' },
-                { name: 'Harrow Town Centre', href: '/harrow/harrow-town-centre/',  postcode: 'HA1', desc: 'Dense rental market, accidental landlords' },
-                { name: 'North Harrow',       href: '/harrow/north-harrow/',        postcode: 'HA2', desc: 'Mid-portfolio, Section 24 exposed' },
-                { name: 'South Harrow',       href: '/harrow/south-harrow/',        postcode: 'HA2', desc: 'High-yield, HMO operators' },
-                { name: 'Rayners Lane',       href: '/harrow/rayners-lane/',        postcode: 'HA2', desc: 'Yield-focused, active investors' },
-                { name: 'Edgware',            href: '/harrow/edgware/',             postcode: 'HA8', desc: 'Portfolio builders, SDLT planning' },
-                { name: 'Canons Park',        href: '/harrow/canons-park/',         postcode: 'HA8', desc: 'Premium HA8, CGT & IHT focus' },
-                { name: 'Queensbury',         href: '/harrow/queensbury/',          postcode: 'HA8', desc: 'Growing investor interest' },
+                { name: 'Stanmore',           href: '/harrow/stanmore/',           postcode: 'HA7', desc: 'Detached stock, IHT planning' },
+                { name: 'Pinner',             href: '/harrow/pinner/',             postcode: 'HA5', desc: 'Period homes, capital growth' },
+                { name: 'Pinner Green',       href: '/harrow/pinner-green/',       postcode: 'HA5', desc: 'Premium residential, CGT focus' },
+                { name: 'Hatch End',          href: '/harrow/hatch-end/',          postcode: 'HA5', desc: 'High-value, IHT planning' },
+                { name: 'Northwood',          href: '/harrow/northwood/',          postcode: 'HA6', desc: 'Ultra-premium, wealth structuring' },
+                { name: 'Ruislip',            href: '/harrow/ruislip/',            postcode: 'HA4', desc: 'Premium, CGT & IHT focus' },
+                { name: 'Eastcote',           href: '/harrow/eastcote/',           postcode: 'HA4', desc: 'Premium residential, mid-term' },
+                { name: 'Harrow on the Hill', href: '/harrow/harrow-on-the-hill/', postcode: 'HA1', desc: 'Mixed stock, high demand' },
+                { name: 'Harrow Town Centre', href: '/harrow/harrow-town-centre/', postcode: 'HA1', desc: 'Dense rental, Section 24' },
+                { name: 'Wealdstone',         href: '/harrow/wealdstone/',         postcode: 'HA3', desc: 'HMO-heavy, Section 24 hotspot' },
+                { name: 'Kenton',             href: '/harrow/kenton/',             postcode: 'HA3', desc: 'Long-term hold, IHT focus' },
+                { name: 'North Harrow',       href: '/harrow/north-harrow/',       postcode: 'HA2', desc: 'Mid-portfolio, Section 24' },
+                { name: 'West Harrow',        href: '/harrow/west-harrow/',        postcode: 'HA2', desc: 'Steady BTL, medium-term' },
+                { name: 'Headstone',          href: '/harrow/headstone/',          postcode: 'HA2', desc: 'Residential BTL, SPV focus' },
+                { name: 'South Harrow',       href: '/harrow/south-harrow/',       postcode: 'HA2', desc: 'High-yield, HMO operators' },
+                { name: 'Rayners Lane',       href: '/harrow/rayners-lane/',       postcode: 'HA2', desc: 'Active BTL, yield-focused' },
+                { name: 'North Wembley',      href: '/harrow/north-wembley/',      postcode: 'HA9', desc: 'Yield-focused, active investors' },
+                { name: 'Edgware',            href: '/harrow/edgware/',            postcode: 'HA8', desc: 'Portfolio building, SDLT' },
+                { name: 'Canons Park',        href: '/harrow/canons-park/',        postcode: 'HA8', desc: 'Premium HA8, CGT & IHT' },
+                { name: 'Queensbury',         href: '/harrow/queensbury/',         postcode: 'HA8', desc: 'Growing investor interest' },
+                { name: 'Burnt Oak',          href: '/harrow/burnt-oak/',          postcode: 'HA8', desc: 'Active portfolio building' },
               ].map(spoke => (
                 <Link key={spoke.href} href={spoke.href}
                   className="flex flex-col p-5 bg-white border border-[#e8f0e8] no-underline hover:border-brand transition-colors group">

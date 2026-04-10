@@ -8,6 +8,7 @@ import LeadFormModal from '@/components/LeadFormModal'
 import HeroLeadForm from '@/components/HeroLeadForm'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { trustBadges } from '@/data/site'
+import { spokeAreas } from '@/data/harrowData'
 import { type Service } from '@/data/services'
 import { type ServiceContent } from '@/data/serviceContent'
 
