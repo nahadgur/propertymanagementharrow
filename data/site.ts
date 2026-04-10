@@ -18,11 +18,30 @@ export const navLinks = [
 ]
 
 export const trustBadges = [
-  { label: 'ACCA Certified Network' },
-  { label: 'ICAEW Members' },
-  { label: 'Property Specialists Only' },
-  { label: 'ICO Registered — GDPR Compliant' },
-  { label: 'Free Matching for Landlords' },
+  {
+    label: 'ACCA Certified Network',
+    title: 'ACCA Certified Network',
+    icon: 'Award',
+    description: 'Every specialist in our network holds a current ACCA qualification, verified before any introduction is made.',
+  },
+  {
+    label: 'ICAEW Members',
+    title: 'ICAEW Members',
+    icon: 'ShieldCheck',
+    description: 'Our network includes ICAEW certified accountants with demonstrated expertise in property tax.',
+  },
+  {
+    label: 'Property Specialists Only',
+    title: 'Property Specialists Only',
+    icon: 'UserCheck',
+    description: 'We match you to accountants whose practice is built around property investors — not generalists.',
+  },
+  {
+    label: 'Free Matching for Landlords',
+    title: 'Free Matching for Landlords',
+    icon: 'PoundSterling',
+    description: 'The matching service is completely free for landlords. You pay only the specialist you engage.',
+  },
 ]
 
 export const stats = [
@@ -138,3 +157,19 @@ export const footerLinks = {
     { label: 'How We Match You',href: '/how-we-match-you/' },
   ],
 }
+
+// Legacy export — required by old location pages
+export const FAQS_LOCATION = [
+  {
+    question: 'Do you cover all areas of Harrow?',
+    answer: 'Yes. Our network covers all Harrow areas including Stanmore, Pinner, Harrow on the Hill, Wealdstone, Kenton, Edgware, North Harrow, South Harrow, and surrounding HA postcodes.',
+  },
+  {
+    question: 'Why use a Harrow-based property tax specialist?',
+    answer: 'Harrow specialists understand local rental yields, HMO licensing requirements in the London Borough of Harrow, and the property types that make up the local stock.',
+  },
+  {
+    question: 'Can you match specialists for portfolio landlords?',
+    answer: 'Yes. Portfolio management requires specialist expertise in Section 24, SPV structuring, and CGT planning. We match you with accountants who have direct experience with portfolios of your size.',
+  },
+]
