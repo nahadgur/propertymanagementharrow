@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+  
 :root {
   --green:       #277649;
   --green-dark:  #1a5233;
