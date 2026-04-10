@@ -1,74 +1,38 @@
 import type { MetadataRoute } from 'next'
-import { services } from '@/data/services'
-import { spokeAreas } from '@/data/harrowData'
-import { avatarContent } from '@/data/avatarContent'
-import { siteConfig } from '@/data/site'
+import { services }       from '@/data/services'
+import { spokeAreas }     from '@/data/harrowData'
+import { avatarContent }  from '@/data/avatarContent'
+import { blogArticles }   from '@/data/blog'
+import { siteConfig }     from '@/data/site'
 
-// Last updated dates — update these when content changes
-const NOW     = new Date('2026-01-15')
-const MONTHLY = new Date('2025-12-01')
+// Bump these dates when content changes
+const NOW     = new Date('2026-04-10')
+const MONTHLY = new Date('2026-01-15')
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url
 
-  // ── Core pages ─────────────────────────────────────────────────────────────
+  // ── Core pages ──────────────────────────────────────────────────────────────
   const corePages: MetadataRoute.Sitemap = [
-    {
-      url:             `${base}/`,
-      lastModified:    NOW,
-      changeFrequency: 'weekly',
-      priority:        1.0,
-    },
-    {
-      url:             `${base}/property-accountants-harrow/`,
-      lastModified:    NOW,
-      changeFrequency: 'weekly',
-      priority:        0.95,
-    },
-    {
-      url:             `${base}/locations/`,
-      lastModified:    NOW,
-      changeFrequency: 'weekly',
-      priority:        0.85,
-    },
-    {
-      url:             `${base}/how-we-match-you/`,
-      lastModified:    NOW,
-      changeFrequency: 'monthly',
-      priority:        0.8,
-    },
-    {
-      url:             `${base}/about/`,
-      lastModified:    MONTHLY,
-      changeFrequency: 'monthly',
-      priority:        0.6,
-    },
-    {
-      url:             `${base}/contact/`,
-      lastModified:    MONTHLY,
-      changeFrequency: 'monthly',
-      priority:        0.7,
-    },
+    { url: `${base}/`,                             lastModified: NOW,     changeFrequency: 'weekly',  priority: 1.0  },
+    { url: `${base}/property-accountants-harrow/`, lastModified: NOW,     changeFrequency: 'weekly',  priority: 0.95 },
+    { url: `${base}/how-we-match-you/`,            lastModified: NOW,     changeFrequency: 'monthly', priority: 0.8  },
+    { url: `${base}/about/`,                       lastModified: MONTHLY, changeFrequency: 'monthly', priority: 0.6  },
+    { url: `${base}/contact/`,                     lastModified: MONTHLY, changeFrequency: 'monthly', priority: 0.7  },
   ]
 
   // ── Services ────────────────────────────────────────────────────────────────
-  const serviceIndex: MetadataRoute.Sitemap = [
-    {
-      url:             `${base}/services/`,
+  const servicePages: MetadataRoute.Sitemap = [
+    { url: `${base}/services/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.9 },
+    ...services.map(s => ({
+      url:             `${base}/services/${s.slug}/`,
       lastModified:    NOW,
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority:        0.9,
-    },
+    })),
   ]
 
-  const servicePages: MetadataRoute.Sitemap = services.map(s => ({
-    url:             `${base}/services/${s.slug}/`,
-    lastModified:    NOW,
-    changeFrequency: 'weekly' as const,
-    priority:        0.9,
-  }))
-
-  // ── Harrow spoke areas ──────────────────────────────────────────────────────
+  // ── Harrow spoke areas (21 pages) ───────────────────────────────────────────
   const harrowPages: MetadataRoute.Sitemap = spokeAreas.map(area => ({
     url:             `${base}/harrow/${area.slug}/`,
     lastModified:    NOW,
@@ -77,21 +41,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // ── Landlord avatar pages ───────────────────────────────────────────────────
-  const landlordIndex: MetadataRoute.Sitemap = [
-    {
-      url:             `${base}/landlords/`,
+  const landlordPages: MetadataRoute.Sitemap = [
+    { url: `${base}/landlords/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.85 },
+    ...avatarContent.map(a => ({
+      url:             `${base}/landlords/${a.slug}/`,
       lastModified:    NOW,
-      changeFrequency: 'weekly',
-      priority:        0.85,
-    },
+      changeFrequency: 'weekly' as const,
+      priority:        0.8,
+    })),
   ]
- 
-  const landlordPages: MetadataRoute.Sitemap = avatarContent.map(a => ({
-    url:             `${base}/landlords/${a.slug}/`,
-    lastModified:    NOW,
-    changeFrequency: 'weekly' as const,
-    priority:        0.8,
-  }))
 
   // ── Guides ──────────────────────────────────────────────────────────────────
   const guideSlugs = [
@@ -102,21 +60,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'property-flipping-vs-buy-to-let',
   ]
 
-  const guideIndex: MetadataRoute.Sitemap = [
-    {
-      url:             `${base}/guides/`,
+  const guidePages: MetadataRoute.Sitemap = [
+    { url: `${base}/guides/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.85 },
+    ...guideSlugs.map(slug => ({
+      url:             `${base}/guides/${slug}/`,
       lastModified:    NOW,
-      changeFrequency: 'weekly',
-      priority:        0.85,
-    },
+      changeFrequency: 'monthly' as const,
+      priority:        0.9,
+    })),
   ]
-
-  const guidePages: MetadataRoute.Sitemap = guideSlugs.map(slug => ({
-    url:             `${base}/guides/${slug}/`,
-    lastModified:    NOW,
-    changeFrequency: 'monthly' as const,
-    priority:        0.9,
-  }))
 
   // ── Tools ───────────────────────────────────────────────────────────────────
   const toolSlugs = [
@@ -125,62 +77,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'capital-gains-tax-calculator-uk',
   ]
 
-  const toolIndex: MetadataRoute.Sitemap = [
-    {
-      url:             `${base}/tools/`,
+  const toolPages: MetadataRoute.Sitemap = [
+    { url: `${base}/tools/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.8 },
+    ...toolSlugs.map(slug => ({
+      url:             `${base}/tools/${slug}/`,
       lastModified:    NOW,
-      changeFrequency: 'weekly',
-      priority:        0.8,
-    },
+      changeFrequency: 'monthly' as const,
+      priority:        0.85,
+    })),
   ]
 
-  const toolPages: MetadataRoute.Sitemap = toolSlugs.map(slug => ({
-    url:             `${base}/tools/${slug}/`,
-    lastModified:    NOW,
-    changeFrequency: 'monthly' as const,
-    priority:        0.85,
-  }))
+  // ── Blog (3 posts) ──────────────────────────────────────────────────────────
+  const blogPages: MetadataRoute.Sitemap = [
+    { url: `${base}/blog/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.75 },
+    ...blogArticles.map(post => ({
+      url:             `${base}/blog/${post.slug}/`,
+      lastModified:    NOW,
+      changeFrequency: 'monthly' as const,
+      priority:        0.7,
+    })),
+  ]
 
   // ── Legal ───────────────────────────────────────────────────────────────────
   const legalPages: MetadataRoute.Sitemap = [
-    {
-      url:             `${base}/privacy-policy/`,
-      lastModified:    MONTHLY,
-      changeFrequency: 'yearly',
-      priority:        0.3,
-    },
-    {
-      url:             `${base}/terms/`,
-      lastModified:    MONTHLY,
-      changeFrequency: 'yearly',
-      priority:        0.3,
-    },
+    { url: `${base}/privacy-policy/`, lastModified: MONTHLY, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/terms/`,          lastModified: MONTHLY, changeFrequency: 'yearly', priority: 0.3 },
   ]
 
-  // ── Service × Location pages ───────────────────────────────────────────────
-  const serviceLocationPages: MetadataRoute.Sitemap = []
-  for (const service of services) {
-    for (const area of spokeAreas) {
-      serviceLocationPages.push({
-        url:             `${base}/services/${service.slug}/${area.slug}/`,
-        lastModified:    NOW,
-        changeFrequency: 'monthly' as const,
-        priority:        0.75,
-      })
-    }
-  }
+  // ── Service × Location (5 services × 21 spoke areas = 105 pages) ───────────
+  const serviceLocationPages: MetadataRoute.Sitemap = services.flatMap(service =>
+    spokeAreas.map(area => ({
+      url:             `${base}/services/${service.slug}/${area.slug}/`,
+      lastModified:    NOW,
+      changeFrequency: 'monthly' as const,
+      priority:        0.75,
+    }))
+  )
 
   return [
     ...corePages,
-    ...serviceIndex,
     ...servicePages,
     ...harrowPages,
-    ...landlordIndex,
     ...landlordPages,
-    ...guideIndex,
     ...guidePages,
-    ...toolIndex,
     ...toolPages,
+    ...blogPages,
     ...legalPages,
     ...serviceLocationPages,
   ]
