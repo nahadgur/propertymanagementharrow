@@ -5,9 +5,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import LeadFormModal from '@/components/LeadFormModal'
 import Link from 'next/link'
-import { siteConfig } from '@/data/site'
 
-const SCRIPT_URL = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? ''
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwFsGn1hEa134t4at3Qv_dVSUBrUI8DuS8STgtyw0Nvnr8sEONvut-CUyxCy_uH9Jt1/exec'
 
 export default function ContactContent() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -21,7 +20,7 @@ export default function ContactContent() {
     e.preventDefault()
     setStatus('sending')
     try {
-      await fetch(SCRIPT_URL, {
+      await fetch(GAS_URL, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, source: 'Contact Page', timestamp: new Date().toISOString() }),
@@ -37,98 +36,145 @@ export default function ContactContent() {
       <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} location="Contact" />
       <Header />
       <main className="flex-grow">
+
+        {/* Hero */}
         <section style={{ background: 'var(--green-deep)' }} className="py-20">
           <div className="site-container">
-            <nav className="flex items-center gap-2 text-[12px] mb-8" style={{ color: 'rgba(255,255,255,0.4)' }}>
-              <Link href="/" className="no-underline" style={{ color: 'rgba(255,255,255,0.4)' }}>Home</Link>
-              <span>/</span>
-              <span style={{ color: 'rgba(255,255,255,0.7)' }}>Contact</span>
+            <nav className="flex items-center gap-2 mb-8" style={{ fontSize: 12 }}>
+              <Link href="/" className="no-underline font-raleway" style={{ color: 'rgba(255,255,255,0.4)' }}>Home</Link>
+              <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
+              <span className="font-raleway" style={{ color: 'rgba(255,255,255,0.7)' }}>Contact</span>
             </nav>
-            <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-4 leading-tight">Get in touch.</h1>
-            <p className="font-sans text-[17px]" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            <h1 className="font-baskerville text-white mb-4" style={{ fontSize: 'clamp(28px, 4vw, 52px)', lineHeight: 1.1 }}>
+              Get in touch.
+            </h1>
+            <p className="font-raleway" style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)' }}>
               We respond to all enquiries within 24 hours.
             </p>
           </div>
         </section>
 
-        <section className="section-pad bg-white">
-          <div className="site-container grid grid-cols-1 lg:grid-cols-2 gap-20">
-            {/* Contact details */}
-            <div>
-              <h2 className="font-display text-h3 text-text mb-8">Contact details</h2>
-              <div className="flex flex-col gap-6 font-sans text-[15px]">
-                <div>
-                  <p className="text-[11px] uppercase tracking-widest text-text-faint font-medium mb-1">Telephone</p>
-                  <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="text-brand font-medium">{siteConfig.phone}</a>
-                </div>
-                <div>
-                  <p className="text-[11px] uppercase tracking-widest text-text-faint font-medium mb-1">Email</p>
-                  <a href={`mailto:${siteConfig.email}`} className="text-brand font-medium">{siteConfig.email}</a>
-                </div>
-                <div>
-                  <p className="text-[11px] uppercase tracking-widest text-text-faint font-medium mb-1">Service area</p>
-                  <p className="text-text-muted">London Borough of Harrow and surrounding HA postcodes</p>
-                </div>
-                <div>
-                  <p className="text-[11px] uppercase tracking-widest text-text-faint font-medium mb-1">Response time</p>
-                  <p className="text-text-muted">All enquiries acknowledged within 24 hours. Specialist introductions within 48 hours.</p>
-                </div>
-              </div>
+        {/* Content */}
+        <section className="section-pad" style={{ background: '#fff' }}>
+          <div className="site-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
-              <div className="mt-10 p-6 border border-[#e0ece0]" style={{ background: 'var(--green-soft)' }}>
-                <h3 className="font-display text-[20px] text-text mb-2">Looking for a specialist match?</h3>
-                <p className="font-sans text-[13px] text-text-muted mb-5 leading-relaxed">
-                  Use our full matching form for the fastest introduction to the right property management specialist.
-                </p>
-                <button onClick={() => setModalOpen(true)} className="btn-primary text-[13px] py-3">
-                  Find My Specialist — Free
-                </button>
-              </div>
-            </div>
+              {/* Left — contact info */}
+              <div>
+                <h2 className="font-baskerville mb-8" style={{ fontSize: 22, color: 'var(--text)' }}>
+                  Contact details
+                </h2>
 
-            {/* Message form */}
-            <div>
-              <h2 className="font-display text-h3 text-text mb-8">Send a message</h2>
-              {status === 'success' ? (
-                <div className="p-8 border border-[#e0ece0]" style={{ background: 'var(--green-soft)' }}>
-                  <h3 className="font-display text-[22px] text-text mb-3">Message received</h3>
-                  <p className="font-sans text-[15px] text-text-muted leading-relaxed">
-                    Thank you. We will be in touch within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="flex flex-col gap-6">
                   <div>
-                    <label className="field-label">Full name</label>
-                    <input name="name" value={form.name} onChange={handleChange} required
-                      placeholder="Your full name" className="field-input" />
-                  </div>
-                  <div>
-                    <label className="field-label">Email address</label>
-                    <input name="email" type="email" value={form.email} onChange={handleChange} required
-                      placeholder="you@example.com" className="field-input" />
-                  </div>
-                  <div>
-                    <label className="field-label">Phone (optional)</label>
-                    <input name="phone" value={form.phone} onChange={handleChange}
-                      placeholder="07XXX XXX XXX" className="field-input" />
-                  </div>
-                  <div>
-                    <label className="field-label">Message</label>
-                    <textarea name="message" value={form.message} onChange={handleChange} required
-                      rows={5} placeholder="How can we help?" className="field-input resize-none" />
-                  </div>
-                  {status === 'error' && (
-                    <p className="text-[13px] text-red-600 font-sans">
-                      Something went wrong. Please call us directly on {siteConfig.phone}.
+                    <p className="font-raleway mb-1" style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-light)' }}>
+                      Service Area
                     </p>
-                  )}
-                  <button type="submit" disabled={status === 'sending'} className="btn-primary">
-                    {status === 'sending' ? 'Sending...' : 'Send Message'}
+                    <p className="font-raleway" style={{ fontSize: 15, color: 'var(--text-muted)' }}>
+                      London Borough of Harrow and surrounding HA postcodes
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-raleway mb-1" style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-light)' }}>
+                      Response Time
+                    </p>
+                    <p className="font-raleway" style={{ fontSize: 15, color: 'var(--text-muted)' }}>
+                      All enquiries acknowledged within 24 hours. Specialist introductions within 48 hours.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-raleway mb-1" style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-light)' }}>
+                      Service
+                    </p>
+                    <p className="font-raleway" style={{ fontSize: 15, color: 'var(--text-muted)' }}>
+                      Free specialist matching for Harrow landlords. ARLA Propertymark vetted network.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Specialist match CTA */}
+                <div
+                  className="mt-10 p-6"
+                  style={{ background: 'var(--green-soft)', border: '1px solid var(--green-mid)' }}
+                >
+                  <h3 className="font-baskerville mb-2" style={{ fontSize: 19, color: 'var(--text)' }}>
+                    Looking for a specialist match?
+                  </h3>
+                  <p className="font-raleway mb-5" style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.75 }}>
+                    Use our full matching form for the fastest introduction to the right property management specialist in Harrow.
+                  </p>
+                  <button onClick={() => setModalOpen(true)} className="btn-primary">
+                    Find My Specialist — Free
                   </button>
-                  <p className="font-sans text-[11px] text-text-faint">GDPR compliant &middot; ICO registered</p>
-                </form>
-              )}
+                </div>
+              </div>
+
+              {/* Right — message form */}
+              <div>
+                <h2 className="font-baskerville mb-8" style={{ fontSize: 22, color: 'var(--text)' }}>
+                  Send a message
+                </h2>
+
+                {status === 'success' ? (
+                  <div className="p-8" style={{ background: 'var(--green-soft)', border: '1px solid var(--green-mid)' }}>
+                    <h3 className="font-baskerville mb-3" style={{ fontSize: 22, color: 'var(--text)' }}>
+                      Message received
+                    </h3>
+                    <p className="font-raleway" style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.75 }}>
+                      Thank you. We will be in touch within 24 hours.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-1">
+                      <label className="font-raleway" style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>
+                        Full name
+                      </label>
+                      <input name="name" value={form.name} onChange={handleChange} required
+                        placeholder="Your full name" className="pm-input" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="font-raleway" style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>
+                        Email address
+                      </label>
+                      <input name="email" type="email" value={form.email} onChange={handleChange} required
+                        placeholder="you@example.com" className="pm-input" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="font-raleway" style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>
+                        Phone <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
+                      </label>
+                      <input name="phone" value={form.phone} onChange={handleChange}
+                        placeholder="07XXX XXX XXX" className="pm-input" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="font-raleway" style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>
+                        Message
+                      </label>
+                      <textarea
+                        name="message" value={form.message} onChange={handleChange} required
+                        rows={5} placeholder="How can we help?"
+                        className="pm-input resize-none"
+                        style={{ resize: 'none' }}
+                      />
+                    </div>
+
+                    {status === 'error' && (
+                      <p className="font-raleway" style={{ fontSize: 13, color: '#c0392b' }}>
+                        Something went wrong. Please try again or use the matching form above.
+                      </p>
+                    )}
+
+                    <button type="submit" disabled={status === 'sending'} className="pm-btn mt-1">
+                      {status === 'sending' ? 'Sending…' : 'Send Message'}
+                    </button>
+                    <p className="font-raleway" style={{ fontSize: 10, color: 'var(--text-light)' }}>
+                      GDPR compliant · ICO registered
+                    </p>
+                  </form>
+                )}
+              </div>
+
             </div>
           </div>
         </section>

@@ -2,8 +2,8 @@ export const siteConfig = {
   name: 'Property Management Harrow',
   tagline: 'Vetted Property Management Specialists',
   url: 'https://www.propertymanagementharrow.co.uk',
-  phone: '0208 050 3880',
-  email: 'hello@propertymanagementharrow.co.uk',
+  phone: '',
+  email: '',
   description:
     'We connect Harrow landlords with vetted property management professionals — ARLA Propertymark members with client money protection, specialising in residential lettings management, tenant find, block management, and HMO licensing across every Harrow postcode.',
 }
