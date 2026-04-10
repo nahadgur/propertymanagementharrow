@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import HeroHome from '@/components/HeroHome'
 import LeadFormModal from '@/components/LeadFormModal'
-import HeroLeadForm from '@/components/HeroLeadForm'
 import { siteConfig, stats, testimonials, homeFaqs, trustBadges } from '@/data/site'
 import { services } from '@/data/services'
 import Link from 'next/link'
@@ -61,55 +61,8 @@ export default function HomePageContent() {
 
       <main className="flex-grow">
 
-        {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section className="bg-white">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] max-w-[1280px] mx-auto w-full">
-            {/* Left — copy */}
-            <div className="flex flex-col justify-between px-6 py-12 md:px-12 lg:px-16 lg:py-20 bg-white">
-              <div>
-                <div className="flex items-center gap-3 mb-8">
-                  <div style={{ width: 36, height: 2, background: 'var(--green)' }} />
-                  <span className="eyebrow">Property Management Harrow — ARLA Propertymark &amp; RICS Qualified</span>
-                </div>
-
-                <h1 className="font-display text-[2.6rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.5rem] leading-tight text-text mb-6">
-                  Harrow&apos;s specialist<br />
-                  property<br />
-                  <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>managers.</em>
-                </h1>
-
-                <p className="font-sans text-[15px] md:text-[17px] text-text-muted leading-relaxed max-w-[500px] mb-8 md:mb-10">
-                  We match Harrow landlords and property investors with vetted, ARLA Propertymark and RICS qualified specialists who focus exclusively on property management — lettings, tenant sourcing, compliance, rent collection, and portfolio oversight.
-                </p>
-
-                <div className="flex gap-4 items-center mb-16">
-                  <button onClick={() => setModalOpen(true)} className="btn-primary text-[14px] py-4">
-                    Find My Specialist — Free
-                  </button>
-                  <Link href="/how-we-match-you/" className="btn-ghost text-[14px]">
-                    How we vet specialists &rarr;
-                  </Link>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="flex flex-wrap gap-8 border-t border-[#f0eee8] pt-8 md:pt-10">
-                {stats.map((s, i) => (
-                  <div key={s.number}
-                    className="flex flex-col">
-                    <span className="font-display text-[40px] leading-none" style={{ color: 'var(--green)' }}>
-                      {s.number}
-                    </span>
-                    <p className="font-sans text-[12px] text-text-faint mt-1">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right — form panel */}
-            <HeroLeadForm location="Homepage Hero" />
-          </div>
-        </section>
+        {/* ── HERO — matches approved design ─────────────────────── */}
+        <HeroHome />
 
         {/* ── TRUST STRIP ──────────────────────────────────────────── */}
         <div className="bg-[#f8fbf8] border-y border-[#e8f0e8]">
@@ -134,10 +87,10 @@ export default function HomePageContent() {
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
                   Managing rental property in Harrow is getting harder every year. Is your current agent keeping up?
                 </h2>
-                <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-6">
+                <p className="font-raleway text-[16px] text-text-muted leading-relaxed mb-6">
                   Evolving regulations, licensing requirements, and tenant expectations mean that hands-off landlording no longer works. From mandatory HMO licensing to deposit protection deadlines, the compliance burden on Harrow landlords has never been higher.
                 </p>
-                <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-8">
+                <p className="font-raleway text-[16px] text-text-muted leading-relaxed mb-8">
                   For many Harrow landlords, void periods, maintenance emergencies, and late rent are eroding returns — while regulatory non-compliance risks fines of up to £30,000. Most still have no structured management strategy in place.
                 </p>
                 <button onClick={() => setModalOpen(true)} className="btn-primary">
@@ -172,7 +125,7 @@ export default function HomePageContent() {
                     </span>
                     <div>
                       <h3 className="font-display text-[17px] text-text mb-2 leading-snug">{card.head}</h3>
-                      <p className="font-sans text-[13px] text-text-muted leading-relaxed">{card.body}</p>
+                      <p className="font-raleway text-[13px] text-text-muted leading-relaxed">{card.body}</p>
                     </div>
                   </div>
                 ))}
@@ -181,12 +134,12 @@ export default function HomePageContent() {
 
             {/* Pivot CTA */}
             <div style={{ background: 'var(--green-soft)' }}
-              className="border border-[var(--green-mid)] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              className="border border-[#95d5b2] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
                 <h3 className="font-display text-[22px] text-text mb-1">
                   There is a better way to manage your portfolio.
                 </h3>
-                <p className="font-sans text-[14px] text-text-muted">
+                <p className="font-raleway text-[14px] text-text-muted">
                   Professional lettings management, rigorous tenant vetting, and proactive compliance — all tailored to your specific portfolio before any instruction is given.
                 </p>
               </div>
@@ -210,7 +163,7 @@ export default function HomePageContent() {
                 </h2>
               </div>
               <Link href="/services/"
-                className="font-sans text-[13px] font-semibold no-underline hidden md:flex items-center gap-2"
+                className="font-raleway text-[13px] font-semibold no-underline hidden md:flex items-center gap-2"
                 style={{ color: 'var(--green-mid)' }}>
                 All services &rarr;
               </Link>
@@ -224,16 +177,16 @@ export default function HomePageContent() {
                   style={{ background: 'rgba(255,255,255,0.03)' }}
                   className="p-8 no-underline group hover:bg-white/6 transition-colors block"
                 >
-                  <div className="eyebrow mb-4" style={{ color: 'var(--green)' }}>
+                  <div className="eyebrow mb-4" style={{ color: 'var(--green-mid)' }}>
                     {svc.pill}
                   </div>
                   <h3 className="font-display text-[22px] text-white mb-3 leading-snug group-hover:text-white/90 transition-colors">
                     {svc.title}
                   </h3>
-                  <p className="font-sans text-[13px] leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                  <p className="font-raleway text-[13px] leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.45)' }}>
                     {svc.tagline}
                   </p>
-                  <span className="font-sans text-[12px] font-semibold uppercase tracking-wide flex items-center gap-2"
+                  <span className="font-raleway text-[12px] font-semibold uppercase tracking-wide flex items-center gap-2"
                     style={{ color: 'var(--green-mid)' }}>
                     Learn more &rarr;
                   </span>
@@ -253,7 +206,7 @@ export default function HomePageContent() {
                 </div>
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="font-sans text-[12px] font-bold uppercase tracking-wide text-white border border-white/30 px-6 py-3 hover:bg-white/10 transition-colors cursor-pointer bg-transparent self-start"
+                  className="font-raleway text-[12px] font-bold uppercase tracking-wide text-white border border-white/30 px-6 py-3 hover:bg-white/10 transition-colors cursor-pointer bg-transparent self-start"
                 >
                   Get matched free &rarr;
                 </button>
@@ -270,9 +223,9 @@ export default function HomePageContent() {
                 <p className="eyebrow mb-4">Our Process</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
                   Not just any property manager.<br />
-                  <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>The right one.</em>
+                  <em style={{ color: 'var(--green)', fontStyle: 'italic' }}>The right one.</em>
                 </h2>
-                <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-8">
+                <p className="font-raleway text-[16px] text-text-muted leading-relaxed mb-8">
                   Every specialist in our Harrow network is rigorously vetted before joining. We check professional qualifications, verify property management experience, review client history, and confirm client money protection and professional indemnity coverage. You are never sent a generic list — you are introduced to one matched specialist who has managed portfolios like yours before.
                 </p>
                 <Link href="/how-we-match-you/" className="btn-primary inline-flex">
@@ -308,7 +261,7 @@ export default function HomePageContent() {
                     </div>
                     <div>
                       <h3 className="font-display text-[19px] text-text mb-2">{step.title}</h3>
-                      <p className="font-sans text-[14px] text-text-muted leading-relaxed">{step.desc}</p>
+                      <p className="font-raleway text-[14px] text-text-muted leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -338,14 +291,14 @@ export default function HomePageContent() {
                     ))}
                   </div>
 
-                  <blockquote className="font-sans text-[14px] text-text-muted leading-relaxed flex-grow mb-8 italic">
+                  <blockquote className="font-raleway text-[14px] text-text-muted leading-relaxed flex-grow mb-8 italic">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
 
                   <div className="border-t border-[#f0eee8] pt-5">
                     <p className="font-display text-[16px] text-text">{t.name}</p>
-                    <p className="font-sans text-[12px] text-text-faint mt-0.5">{t.location}</p>
-                    <p className="font-sans text-[11px] uppercase tracking-wide mt-1"
+                    <p className="font-raleway text-[12px] text-text-faint mt-0.5">{t.location}</p>
+                    <p className="font-raleway text-[11px] uppercase tracking-wide mt-1"
                       style={{ color: 'var(--green)' }}>
                       {t.portfolioType}
                     </p>
@@ -356,7 +309,7 @@ export default function HomePageContent() {
           </div>
         </section>
 
-        {/* ── LOCAL CITADEL CTA ─────────────────────────────────────── */}
+        {/* ── LOCAL AREAS ──────────────────────────────────────────── */}
         <section className="py-16 bg-white border-y border-[#f0eee8]">
           <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -365,32 +318,32 @@ export default function HomePageContent() {
                 <h2 className="font-display text-h2 text-text mb-4 leading-tight">
                   Looking for a property management specialist in your area of Harrow?
                 </h2>
-                <p className="font-sans text-[15px] text-text-muted leading-relaxed">
+                <p className="font-raleway text-[15px] text-text-muted leading-relaxed">
                   Our Harrow network covers Stanmore, Pinner, Harrow on the Hill, Wealdstone, Edgware, Kenton, and all surrounding areas. Specialists who understand local yields, HMO licensing in the London Borough of Harrow, and the specific property types that make up the local stock.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
                 {[
-                  { label: 'Stanmore', desc: 'Premium lettings &amp; family homes', href: '/harrow/stanmore/' },
-                  { label: 'Pinner', desc: 'Affluent portfolios &amp; tenant vetting', href: '/harrow/pinner/' },
-                  { label: 'Wealdstone', desc: 'Regeneration area — HMO management', href: '/harrow/wealdstone/' },
-                  { label: 'Harrow on the Hill', desc: 'Premium rentals — full management', href: '/harrow/harrow-on-the-hill/' },
-                  { label: 'Edgware', desc: 'Expanding portfolios — lettings &amp; compliance', href: '/harrow/edgware/' },
+                  { label: 'Stanmore',           desc: 'Premium lettings &amp; family homes',            href: '/harrow/stanmore/' },
+                  { label: 'Pinner',             desc: 'Affluent portfolios &amp; tenant vetting',       href: '/harrow/pinner/' },
+                  { label: 'Wealdstone',         desc: 'Regeneration area — HMO management',             href: '/harrow/wealdstone/' },
+                  { label: 'Harrow on the Hill', desc: 'Premium rentals — full management',              href: '/harrow/harrow-on-the-hill/' },
+                  { label: 'Edgware',            desc: 'Expanding portfolios — lettings &amp; compliance', href: '/harrow/edgware/' },
                 ].map(area => (
                   <Link key={area.href} href={area.href}
-                    className="flex justify-between items-center p-4 border border-[#f0eee8] no-underline hover:border-brand hover:bg-[var(--green-soft)] transition-colors group">
+                    className="flex justify-between items-center p-4 border border-[#f0eee8] no-underline hover:border-green-DEFAULT hover:bg-[var(--green-soft)] transition-colors group">
                     <div>
-                      <span className="font-display text-[17px] text-text group-hover:text-brand transition-colors">
+                      <span className="font-display text-[17px] text-text">
                         {area.label}
                       </span>
-                      <span className="font-sans text-[12px] text-text-faint ml-3"
+                      <span className="font-raleway text-[12px] text-text-faint ml-3"
                         dangerouslySetInnerHTML={{ __html: area.desc }} />
                     </div>
-                    <span style={{ color: 'var(--green)' }} className="font-sans text-sm">&rarr;</span>
+                    <span style={{ color: 'var(--green)' }} className="font-raleway text-sm">&rarr;</span>
                   </Link>
                 ))}
                 <Link href="/property-management-harrow/"
-                  className="font-sans text-[13px] font-semibold no-underline flex items-center gap-2 mt-2"
+                  className="font-raleway text-[13px] font-semibold no-underline flex items-center gap-2 mt-2"
                   style={{ color: 'var(--green)' }}>
                   View all Harrow specialists &rarr;
                 </Link>
@@ -408,7 +361,7 @@ export default function HomePageContent() {
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
                   Frequently asked questions about our Harrow property management specialist matching service.
                 </h2>
-                <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
+                <p className="font-raleway text-[15px] text-text-muted leading-relaxed mb-8">
                   If you have a question we have not answered here, call us directly or use the form and we will respond within 24 hours.
                 </p>
                 <button onClick={() => setModalOpen(true)} className="btn-primary">
@@ -424,7 +377,7 @@ export default function HomePageContent() {
                       onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     >
                       <span className="font-display text-[18px]">{faq.q}</span>
-                      <span className="flex-shrink-0 ml-4 font-sans text-[18px]"
+                      <span className="flex-shrink-0 ml-4 font-raleway text-[18px]"
                         style={{ color: 'var(--green)' }}>
                         {openFaq === i ? '−' : '+'}
                       </span>
@@ -445,14 +398,14 @@ export default function HomePageContent() {
             <h2 className="font-display text-h2 text-white mb-4 leading-tight">
               Ready to find your Harrow property management specialist?
             </h2>
-            <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
+            <p className="font-raleway text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
               Get matched with a vetted, ARLA Propertymark or RICS qualified property management specialist in Harrow — free. Experts in lettings, tenant sourcing, compliance, and portfolio management. 48-hour introduction guarantee.
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <button
                 onClick={() => setModalOpen(true)}
-                className="font-sans font-bold text-[14px] tracking-wide px-10 py-4 border-0 cursor-pointer transition-colors duration-200"
+                className="font-raleway font-bold text-[14px] tracking-wide px-10 py-4 border-0 cursor-pointer transition-colors duration-200"
                 style={{ background: 'white', color: 'var(--green)' }}
                 onMouseEnter={e => (e.currentTarget.style.background = '#f5f5f5')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'white')}
@@ -460,7 +413,7 @@ export default function HomePageContent() {
                 Find My Specialist — Free
               </button>
               <Link href="/how-we-match-you/"
-                className="font-sans text-[14px] font-medium no-underline flex items-center gap-2"
+                className="font-raleway text-[14px] font-medium no-underline flex items-center gap-2"
                 style={{ color: 'rgba(255,255,255,0.75)' }}>
                 How we vet our network &rarr;
               </Link>

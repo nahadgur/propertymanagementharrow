@@ -8,6 +8,7 @@
 :root {
   --green:        #2d7a4f;
   --green-dark:   #1a4730;
+  --green-deep:   #1a4730;
   --green-mid:    #95d5b2;
   --green-soft:   #e8f3ed;
   --green-pale:   #f2f8f4;
@@ -24,8 +25,18 @@ html { font-family: 'Raleway', sans-serif; }
 body { background: var(--cream); color: var(--text); }
 
 /* Font helpers */
-.font-raleway    { font-family: 'Raleway', sans-serif; }
+.font-raleway     { font-family: 'Raleway', sans-serif; }
 .font-baskerville { font-family: 'Libre Baskerville', serif; }
+.font-display     { font-family: 'Libre Baskerville', serif; }
+
+/* ── Text size helpers ── */
+.text-h2 { font-size: clamp(22px, 3vw, 36px); line-height: 1.15; }
+
+/* ── Text colour helpers ── */
+.text-text       { color: var(--text); }
+.text-text-muted { color: var(--text-muted); }
+.text-text-faint { color: var(--text-light); }
+.text-brand      { color: var(--green); }
 
 /* ── Form elements — LIGHT theme always ── */
 .pm-input {
@@ -61,6 +72,23 @@ body { background: var(--cream); color: var(--text); }
   background-position: right 13px center;
 }
 
+/* ── Dark field input (HeroLeadForm) ── */
+.field-input-dark {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  background: rgba(255,255,255,0.07);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field-input-dark::placeholder { color: rgba(255,255,255,0.3); }
+.field-input-dark:focus { border-color: rgba(255,255,255,0.3); }
+
 /* ── Buttons — green bg only, NO dark buttons ── */
 .pm-btn {
   width: 100%;
@@ -80,7 +108,7 @@ body { background: var(--cream); color: var(--text); }
 .pm-btn:hover   { background: var(--green-dark); }
 .pm-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-/* Outline variant — green border + green text */
+/* Outline variant */
 .pm-btn-outline {
   display: inline-block;
   padding: 9px 22px;
@@ -98,6 +126,48 @@ body { background: var(--cream); color: var(--text); }
   text-decoration: none;
 }
 .pm-btn-outline:hover { background: var(--green-soft); }
+
+/* ── btn-primary (used in HomePageContent) ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 28px;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--green-dark); }
+
+/* ── btn-ghost (used in HomePageContent) ── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-ghost:hover { background: var(--green-soft); }
 
 /* ── Section padding ── */
 .section-pad { padding: 64px 0; }
@@ -124,6 +194,48 @@ body { background: var(--cream); color: var(--text); }
   letter-spacing: 0.04em;
   padding: 5px 12px;
   border-radius: 100px;
+}
+
+/* ── Trust strip (HomePageContent) ── */
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+.trust-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.trust-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+/* ── FAQ (HomePageContent) ── */
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  font-family: 'Libre Baskerville', serif;
+}
+.faq-a {
+  padding: 0 0 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
 }
 
 /* ── Eyebrow label ── */

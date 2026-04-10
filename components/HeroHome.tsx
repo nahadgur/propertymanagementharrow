@@ -24,7 +24,7 @@ const BADGES = [
   'No Hidden Fees',
 ]
 
-const GAS_URL = 'REPLACE_WITH_YOUR_GAS_WEBHOOK_URL'
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwFsGn1hEa134t4at3Qv_dVSUBrUI8DuS8STgtyw0Nvnr8sEONvut-CUyxCy_uH9Jt1/exec'
 
 export default function HeroHome() {
   const [form, setForm] = useState({ name: '', phone: '', postcode: '', service: '' })
@@ -36,6 +36,8 @@ export default function HeroHome() {
     try {
       await fetch(GAS_URL, {
         method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, source: 'Homepage Hero', submitted_at: new Date().toISOString() }),
       })
       setStatus('done')
