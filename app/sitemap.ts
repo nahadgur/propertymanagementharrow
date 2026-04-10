@@ -85,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:        0.85,
     },
   ]
-
+ 
   const landlordPages: MetadataRoute.Sitemap = avatarContent.map(a => ({
     url:             `${base}/landlords/${a.slug}/`,
     lastModified:    NOW,
