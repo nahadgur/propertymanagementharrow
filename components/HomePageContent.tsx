@@ -62,8 +62,8 @@ export default function HomePageContent() {
       <main className="flex-grow">
 
         {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section>
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_440px]">
+        <section className="bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] max-w-[1280px] mx-auto w-full">
             {/* Left — copy */}
             <div className="flex flex-col justify-between px-6 py-12 md:px-12 lg:px-16 lg:py-20 bg-white">
               <div>
@@ -72,7 +72,7 @@ export default function HomePageContent() {
                   <span className="eyebrow">Property Tax Accountants Harrow — ACCA &amp; ICAEW Certified</span>
                 </div>
 
-                <h1 className="font-display text-[2.8rem] md:text-[3.5rem] lg:text-hero leading-tight text-text mb-6 max-w-[580px]">
+                <h1 className="font-display text-[2.6rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.5rem] leading-tight text-text mb-6">
                   Harrow&apos;s specialist<br />
                   property tax<br />
                   <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>accountants.</em>
