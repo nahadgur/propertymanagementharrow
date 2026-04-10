@@ -301,7 +301,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 Mitigation',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'capital-gains-tax-planning'],
     heroHeadline: 'Property Tax Specialists for North Harrow Landlords',
-    heroDesc:     'North Harrow's mix of terraced stock and strong rental demand makes it a popular buy-to-let area — but Section 24 is quietly eroding returns for many HA2 investors. Our ACCA and ICAEW certified specialists help North Harrow landlords identify and implement the right mitigation strategy.',
+    heroDesc:     "North Harrow"s mix of terraced stock and strong rental demand makes it a popular buy-to-let area — but Section 24 is quietly eroding returns for many HA2 investors. Our ACCA and ICAEW certified specialists help North Harrow landlords identify and implement the right mitigation strategy.',
     metaTitle:    'Property Tax Accountants North Harrow HA2 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for North Harrow landlords. Section 24 mitigation, SPV incorporation, and CGT planning for HA2 buy-to-let investors. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -346,7 +346,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'HMO Tax & Section 24',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'sdlt-stamp-duty-planning'],
     heroHeadline: 'Property Tax Specialists for South Harrow HMO Operators and Landlords',
-    heroDesc:     'South Harrow's strong rental yields and active HMO market create specific tax challenges — Section 24, HMO licensing costs, and the question of whether to incorporate. Our ACCA and ICAEW certified specialists serve HA2 investors across the full range of tax issues.',
+    heroDesc:     "South Harrow"s strong rental yields and active HMO market create specific tax challenges — Section 24, HMO licensing costs, and the question of whether to incorporate. Our ACCA and ICAEW certified specialists serve HA2 investors across the full range of tax issues.',
     metaTitle:    'Property Tax Accountants South Harrow HA2 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for South Harrow HMO operators and buy-to-let landlords. Section 24, SPV advice, and SDLT planning for HA2 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -365,7 +365,7 @@ export const spokeAreas: SpokeArea[] = [
       },
       {
         head: 'SDLT on multiple acquisitions',
-        body: 'South Harrow's lower entry prices make it attractive for investors building portfolios quickly. Each acquisition attracts SDLT at standard rates plus the 3% surcharge. On a £370,000 property, the surcharge alone is £11,100. Across a portfolio build of five properties, the aggregate SDLT can exceed £80,000. Pre-purchase SDLT planning on each acquisition is essential.',
+        body: "South Harrow"s lower entry prices make it attractive for investors building portfolios quickly. Each acquisition attracts SDLT at standard rates plus the 3% surcharge. On a £370,000 property, the surcharge alone is £11,100. Across a portfolio build of five properties, the aggregate SDLT can exceed £80,000. Pre-purchase SDLT planning on each acquisition is essential.',
       },
     ],
     keyFacts: [
@@ -391,7 +391,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Inheritance Tax & CGT',
     focusSlugs:   ['property-inheritance-tax', 'capital-gains-tax-planning', 'section-24-tax-mitigation'],
     heroHeadline: 'Property Tax Specialists for Kenton Landlords and Property Investors',
-    heroDesc:     'Kenton's established residential character and long-term property ownership make inheritance tax and CGT planning a priority for many HA3 investors. Our ACCA and ICAEW certified specialists support Kenton landlords at every stage of portfolio planning and generational transfer.',
+    heroDesc:     "Kenton"s established residential character and long-term property ownership make inheritance tax and CGT planning a priority for many HA3 investors. Our ACCA and ICAEW certified specialists support Kenton landlords at every stage of portfolio planning and generational transfer.',
     metaTitle:    'Property Tax Accountants Kenton HA3 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Kenton landlords and investors. Inheritance tax planning, CGT advice, and Section 24 mitigation for HA3 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -409,7 +409,7 @@ export const spokeAreas: SpokeArea[] = [
         body: 'Properties held for 20+ years in Kenton carry substantial built-in gains. A disposal that looked simple on paper — £150,000 purchase, £450,000 sale — generates a £300,000 gain and a CGT bill of up to £72,000. Pre-disposal planning, including spousal transfers and disposal timing, can significantly reduce this. A specialist reviews the full CGT position before any sale is agreed.',
       },
       {
-        head: 'Section 24 for Kenton's longer-term investors',
+        head: "Section 24 for Kenton"s longer-term investors',
         body: 'Many Kenton landlords remortgaged their properties in the 2010s as values rose — releasing equity for further investment. This finance now attracts Section 24 treatment, creating an additional tax cost that was not anticipated when the mortgages were taken out. A specialist reviews whether the current structure remains optimal or whether restructuring would recover a meaningful portion of this cost.',
       },
     ],
@@ -436,7 +436,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 & Portfolio Structure',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'sdlt-stamp-duty-planning'],
     heroHeadline: 'Property Tax Specialists for Rayners Lane Buy-to-Let Investors',
-    heroDesc:     'Rayners Lane's competitive yields and active BTL market make it one of Harrow's most popular investment areas — and one where Section 24 has the biggest impact on investor returns. Our ACCA and ICAEW certified specialists help HA2 landlords structure their portfolios for long-term tax efficiency.',
+    heroDesc:     "Rayners Lane"s competitive yields and active BTL market make it one of Harrow's most popular investment areas — and one where Section 24 has the biggest impact on investor returns. Our ACCA and ICAEW certified specialists help HA2 landlords structure their portfolios for long-term tax efficiency.',
     metaTitle:    'Property Tax Accountants Rayners Lane HA2 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Rayners Lane landlords. Section 24 mitigation, SPV advice, and SDLT planning for HA2 buy-to-let investors. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -466,7 +466,7 @@ export const spokeAreas: SpokeArea[] = [
       { label: 'Primary focus', value: 'Section 24 & SPV' },
       { label: 'Area type',     value: 'Active BTL / yield-focused' },
     ],
-    localInsight: 'Rayners Lane consistently appears in our network's top five areas for Section 24 mitigation enquiries. The combination of meaningful mortgage finance, competitive yields, and a high proportion of higher-rate taxpaying investors creates exactly the profile where Section 24 has the greatest impact and restructuring offers the greatest return. The average Section 24 cost we identify for Rayners Lane landlords in an initial review is over £4,000 per year.',
+    localInsight: "Rayners Lane consistently appears in our network"s top five areas for Section 24 mitigation enquiries. The combination of meaningful mortgage finance, competitive yields, and a high proportion of higher-rate taxpaying investors creates exactly the profile where Section 24 has the greatest impact and restructuring offers the greatest return. The average Section 24 cost we identify for Rayners Lane landlords in an initial review is over £4,000 per year.',
   },
 
   {
@@ -481,7 +481,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Inheritance Tax & Wealth Structuring',
     focusSlugs:   ['property-inheritance-tax', 'capital-gains-tax-planning', 'spv-company-incorporation'],
     heroHeadline: 'Property Tax Specialists for Hatch End High-Value Property Investors',
-    heroDesc:     'Hatch End's premium property values and long-term ownership patterns create substantial inheritance tax and CGT planning needs. Our ACCA and ICAEW certified specialists help HA5 investors structure and protect generational wealth.',
+    heroDesc:     "Hatch End"s premium property values and long-term ownership patterns create substantial inheritance tax and CGT planning needs. Our ACCA and ICAEW certified specialists help HA5 investors structure and protect generational wealth.',
     metaTitle:    'Property Tax Accountants Hatch End HA5 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Hatch End landlords and investors. Inheritance tax planning, CGT advice, and wealth structuring for high-value HA5 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -526,7 +526,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'CGT & Inheritance Tax',
     focusSlugs:   ['capital-gains-tax-planning', 'property-inheritance-tax', 'spv-company-incorporation'],
     heroHeadline: 'Property Tax Specialists for Canons Park Landlords and Investors',
-    heroDesc:     'Canons Park's premium residential character and high property values create significant CGT and inheritance tax planning needs. Our ACCA and ICAEW certified specialists serve HA8 investors with bespoke, generational tax planning.',
+    heroDesc:     "Canons Park"s premium residential character and high property values create significant CGT and inheritance tax planning needs. Our ACCA and ICAEW certified specialists serve HA8 investors with bespoke, generational tax planning.',
     metaTitle:    'Property Tax Accountants Canons Park HA8 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Canons Park landlords and investors. CGT planning, inheritance tax advice, and wealth structuring for HA8 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -571,7 +571,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 & HMO Tax',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'sdlt-stamp-duty-planning'],
     heroHeadline: 'Property Tax Specialists for Harrow Town Centre Landlords',
-    heroDesc:     'Harrow Town Centre's dense rental market and mix of flats, terraces and HMO conversions creates a range of tax planning needs for HA1 investors. Our ACCA and ICAEW certified specialists help town centre landlords structure their portfolios for maximum tax efficiency.',
+    heroDesc:     "Harrow Town Centre"s dense rental market and mix of flats, terraces and HMO conversions creates a range of tax planning needs for HA1 investors. Our ACCA and ICAEW certified specialists help town centre landlords structure their portfolios for maximum tax efficiency.',
     metaTitle:    'Property Tax Accountants Harrow Town Centre HA1 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Harrow Town Centre landlords. Section 24 mitigation, HMO tax advice, and SPV planning for HA1 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -590,7 +590,7 @@ export const spokeAreas: SpokeArea[] = [
       },
       {
         head: 'High-turnover acquisitions and SDLT',
-        body: 'Harrow Town Centre's accessible price point attracts investors who acquire multiple properties quickly. SDLT planning on each acquisition — including the 3% surcharge, correct calculation for linked transactions, and any applicable reliefs — is essential. Getting SDLT wrong at the point of acquisition cannot be corrected after completion without significant cost.',
+        body: "Harrow Town Centre"s accessible price point attracts investors who acquire multiple properties quickly. SDLT planning on each acquisition — including the 3% surcharge, correct calculation for linked transactions, and any applicable reliefs — is essential. Getting SDLT wrong at the point of acquisition cannot be corrected after completion without significant cost.',
       },
     ],
     keyFacts: [
@@ -616,7 +616,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'SPV Incorporation & CGT',
     focusSlugs:   ['spv-company-incorporation', 'capital-gains-tax-planning', 'section-24-tax-mitigation'],
     heroHeadline: 'Property Tax Specialists for Queensbury Landlords and Investors',
-    heroDesc:     'Queensbury's strong residential character and growing investor interest create specific tax planning needs around SPV structure and CGT. Our ACCA and ICAEW certified specialists help HA8 investors manage their tax position at every stage.',
+    heroDesc:     "Queensbury"s strong residential character and growing investor interest create specific tax planning needs around SPV structure and CGT. Our ACCA and ICAEW certified specialists help HA8 investors manage their tax position at every stage.',
     metaTitle:    'Property Tax Accountants Queensbury HA8 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Queensbury landlords and investors. SPV incorporation, CGT planning, and Section 24 mitigation for HA8 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -662,7 +662,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 Mitigation',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'capital-gains-tax-planning'],
     heroHeadline: 'Property Tax Specialists for West Harrow Landlords',
-    heroDesc:     'West Harrow's accessible entry prices and steady rental demand make it a consistent BTL investment area — but Section 24 is quietly eroding annual returns for many HA2 investors. Our ACCA and ICAEW certified specialists help West Harrow landlords identify the right mitigation strategy.',
+    heroDesc:     "West Harrow"s accessible entry prices and steady rental demand make it a consistent BTL investment area — but Section 24 is quietly eroding annual returns for many HA2 investors. Our ACCA and ICAEW certified specialists help West Harrow landlords identify the right mitigation strategy.',
     metaTitle:    'Property Tax Accountants West Harrow HA2 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for West Harrow landlords. Section 24 mitigation, SPV incorporation, and CGT planning for HA2 buy-to-let investors. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -671,7 +671,7 @@ export const spokeAreas: SpokeArea[] = [
       'West Harrow investors tend to be medium-term holders — people who bought one or two properties in the area five to fifteen years ago and have benefited from moderate capital appreciation. Many are now at the point where Section 24 has made a meaningful difference to their annual returns, and the question of whether to restructure is becoming pressing.',
     ],
     taxAngles: [
-      { head: 'Section 24 on West Harrow's leveraged portfolios', body: 'A West Harrow landlord with two properties and £250,000 of mortgage finance at 5% is paying £12,500 per year in mortgage interest — and losing £2,500 annually to Section 24 as a 40% taxpayer. Across a ten-year horizon, this is £25,000 of avoidable tax. A specialist quantifies the exact cost and models the available options before any recommendation is made.' },
+      { head: "Section 24 on West Harrow"s leveraged portfolios', body: "A West Harrow landlord with two properties and £250,000 of mortgage finance at 5% is paying £12,500 per year in mortgage interest — and losing £2,500 annually to Section 24 as a 40% taxpayer. Across a ten-year horizon, this is £25,000 of avoidable tax. A specialist quantifies the exact cost and models the available options before any recommendation is made." },
       { head: 'SPV incorporation — the timing question for HA2 investors', body: 'West Harrow investors who are considering their next acquisition face a key decision: personal name or company? For higher-rate taxpayers, each new leveraged purchase in personal name increases the Section 24 burden. Acquiring through a company from the outset avoids this. A specialist models the full economics of both approaches before any commitment is made.' },
       { head: 'Accumulated gains on West Harrow properties', body: 'Properties acquired in West Harrow between 2010 and 2016 have typically appreciated by 35–55%. This built-in gain creates a CGT liability that must be considered in any disposal or restructuring decision. A specialist reviews the CGT position for each property and identifies the most tax-efficient approach before any action is taken.' },
     ],
@@ -695,7 +695,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 & SPV',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'sdlt-stamp-duty-planning'],
     heroHeadline: 'Property Tax Specialists for Headstone Landlords and Investors',
-    heroDesc:     'Headstone's residential appeal and strong rental market make it a reliable BTL investment area in HA2. Our ACCA and ICAEW certified specialists help Headstone landlords manage Section 24 exposure and structure their portfolios for long-term tax efficiency.',
+    heroDesc:     "Headstone"s residential appeal and strong rental market make it a reliable BTL investment area in HA2. Our ACCA and ICAEW certified specialists help Headstone landlords manage Section 24 exposure and structure their portfolios for long-term tax efficiency.',
     metaTitle:    'Property Tax Accountants Headstone HA2 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Headstone landlords. Section 24 mitigation, SPV advice, and SDLT planning for HA2 buy-to-let portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -728,7 +728,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'CGT & SPV Incorporation',
     focusSlugs:   ['capital-gains-tax-planning', 'spv-company-incorporation', 'property-inheritance-tax'],
     heroHeadline: 'Property Tax Specialists for Ruislip Landlords and Property Investors',
-    heroDesc:     'Ruislip's premium residential character and strong capital growth history create significant CGT and IHT planning needs for HA4 investors. Our ACCA and ICAEW certified specialists support Ruislip landlords at every stage of portfolio planning and exit.',
+    heroDesc:     "Ruislip"s premium residential character and strong capital growth history create significant CGT and IHT planning needs for HA4 investors. Our ACCA and ICAEW certified specialists support Ruislip landlords at every stage of portfolio planning and exit.',
     metaTitle:    'Property Tax Accountants Ruislip HA4 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Ruislip landlords and investors. CGT planning, SPV incorporation, and inheritance tax advice for HA4 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -746,7 +746,7 @@ export const spokeAreas: SpokeArea[] = [
       { label: 'Price range', value: '£320k–£750k' }, { label: 'Gross yield', value: '3.8–4.8%' },
       { label: 'Primary focus', value: 'CGT & Wealth Planning' }, { label: 'Area type', value: 'Premium / long-term hold' },
     ],
-    localInsight: 'Ruislip investors frequently have the most to gain from a formal tax review — and the most to lose from not having one. The combination of significant unrealised gains, high estate values, and a long planning horizon means that early action on CGT and IHT structuring can save hundreds of thousands of pounds across a generation. The cost of a specialist review is routinely a fraction of a single year's potential tax saving.',
+    localInsight: "Ruislip investors frequently have the most to gain from a formal tax review — and the most to lose from not having one. The combination of significant unrealised gains, high estate values, and a long planning horizon means that early action on CGT and IHT structuring can save hundreds of thousands of pounds across a generation. The cost of a specialist review is routinely a fraction of a single year"s potential tax saving.',
   },
 
   {
@@ -761,7 +761,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Inheritance Tax & Wealth Structuring',
     focusSlugs:   ['property-inheritance-tax', 'capital-gains-tax-planning', 'spv-company-incorporation'],
     heroHeadline: 'Property Tax Specialists for Northwood High-Value Property Investors',
-    heroDesc:     'Northwood's premium property values and established residential character create substantial inheritance tax and CGT planning needs. Our ACCA and ICAEW certified specialists help HA6 investors structure and protect generational wealth.',
+    heroDesc:     "Northwood"s premium property values and established residential character create substantial inheritance tax and CGT planning needs. Our ACCA and ICAEW certified specialists help HA6 investors structure and protect generational wealth.',
     metaTitle:    'Property Tax Accountants Northwood HA6 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Northwood landlords and investors. Inheritance tax planning, CGT advice, and wealth structuring for high-value HA6 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -770,7 +770,7 @@ export const spokeAreas: SpokeArea[] = [
       'Northwood attracts the most wealth-focused investor profile in the area — high-net-worth individuals for whom property is one component of a broader estate. Inheritance tax planning on multi-million pound estates, CGT planning on high-value disposals, and the structuring of family wealth for the next generation are the primary advisory needs. Annual income optimisation is secondary.',
     ],
     taxAngles: [
-      { head: 'IHT on Northwood's high-value estates', body: 'A single Northwood property at £680,000, combined with a main residence, investments, and other assets, can create an estate with £600,000–£1,000,000 or more above the nil-rate band threshold. At 40%, the potential IHT liability on this excess is £240,000–£400,000. A specialist designs a structured programme of lifetime giving, trust arrangements, and asset repositioning that progressively reduces this exposure.' },
+      { head: "IHT on Northwood"s high-value estates', body: "A single Northwood property at £680,000, combined with a main residence, investments, and other assets, can create an estate with £600,000–£1,000,000 or more above the nil-rate band threshold. At 40%, the potential IHT liability on this excess is £240,000–£400,000. A specialist designs a structured programme of lifetime giving, trust arrangements, and asset repositioning that progressively reduces this exposure." },
       { head: 'CGT planning on long-held Northwood investments', body: 'Properties acquired in Northwood in the 1990s and early 2000s may have appreciated by 200–300% in value. The CGT on disposal of a property acquired for £200,000 and now worth £680,000 could reach £115,200 before any reliefs. Pre-disposal planning — including the use of both spouses' annual exempt amounts, disposal timing, and PRR analysis — is essential. A specialist reviews the full position well before any sale is agreed.' },
       { head: 'Family Investment Companies for Northwood portfolios', body: 'For Northwood investors with multiple high-value properties and a clear succession objective, a Family Investment Company (FIC) can provide a tax-efficient framework for transferring wealth to the next generation while maintaining control. Unlike standard buy-to-let SPVs, FICs are specifically designed for estate planning purposes. A specialist with both property tax and estate planning expertise will assess whether an FIC is appropriate and model the long-term benefit.' },
     ],
@@ -794,7 +794,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'CGT & Inheritance Tax',
     focusSlugs:   ['capital-gains-tax-planning', 'property-inheritance-tax', 'spv-company-incorporation'],
     heroHeadline: 'Property Tax Specialists for Pinner Green Landlords and Investors',
-    heroDesc:     'Pinner Green's premium residential character and long-term ownership patterns create significant CGT and inheritance tax planning needs. Our ACCA and ICAEW certified specialists help HA5 investors structure their portfolios and protect generational wealth.',
+    heroDesc:     "Pinner Green"s premium residential character and long-term ownership patterns create significant CGT and inheritance tax planning needs. Our ACCA and ICAEW certified specialists help HA5 investors structure their portfolios and protect generational wealth.',
     metaTitle:    'Property Tax Accountants Pinner Green HA5 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Pinner Green landlords and investors. CGT planning, inheritance tax advice, and wealth structuring for HA5 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -827,7 +827,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 & HMO Tax',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'sdlt-stamp-duty-planning'],
     heroHeadline: 'Property Tax Specialists for North Wembley Landlords and Investors',
-    heroDesc:     'North Wembley's strong rental yields and active investment market create specific Section 24 and structure planning needs for HA9 landlords. Our ACCA and ICAEW certified specialists help North Wembley investors manage their tax position efficiently.',
+    heroDesc:     "North Wembley"s strong rental yields and active investment market create specific Section 24 and structure planning needs for HA9 landlords. Our ACCA and ICAEW certified specialists help North Wembley investors manage their tax position efficiently.',
     metaTitle:    'Property Tax Accountants North Wembley HA9 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for North Wembley landlords. Section 24 mitigation, SPV advice, and SDLT planning for HA9 buy-to-let investors. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -836,9 +836,9 @@ export const spokeAreas: SpokeArea[] = [
       'North Wembley attracts active investors who are building or managing portfolios of two to six properties. The majority have buy-to-let mortgages and are higher-rate taxpayers, creating a straightforward Section 24 exposure that is the most pressing immediate tax issue for most in this area.',
     ],
     taxAngles: [
-      { head: 'Section 24 on North Wembley's yield-focused portfolios', body: 'A North Wembley landlord with three leveraged properties, £280,000 of mortgage at 5%, and higher-rate tax status is paying approximately £2,800 per year more in tax than they would under the pre-2017 rules. A specialist quantifies this precisely and models the options — from income restructuring to staged SPV incorporation.' },
+      { head: "Section 24 on North Wembley"s yield-focused portfolios', body: "A North Wembley landlord with three leveraged properties, £280,000 of mortgage at 5%, and higher-rate tax status is paying approximately £2,800 per year more in tax than they would under the pre-2017 rules. A specialist quantifies this precisely and models the options — from income restructuring to staged SPV incorporation." },
       { head: 'Company structure for active HA9 investors', body: 'North Wembley investors who are still in the portfolio-building phase have the most to gain from establishing a company structure early. Each property acquired in personal name increases the future transfer cost if incorporation is pursued later. A specialist models the long-term tax position under both structures and identifies the optimal point to introduce a company.' },
-      { head: 'SDLT on active North Wembley acquisition', body: 'North Wembley's accessible entry price makes it popular for investors acquiring multiple properties. The 3% SDLT surcharge on each acquisition adds up quickly — £11,700 on a £390,000 property. Pre-purchase SDLT planning ensures the correct position is established before completion and that any available reliefs are claimed.' },
+      { head: "SDLT on active North Wembley acquisition", body: "North Wembley"s accessible entry price makes it popular for investors acquiring multiple properties. The 3% SDLT surcharge on each acquisition adds up quickly — £11,700 on a £390,000 property. Pre-purchase SDLT planning ensures the correct position is established before completion and that any available reliefs are claimed.' },
     ],
     keyFacts: [
       { label: 'Postcode', value: 'HA9' }, { label: 'Avg price', value: '£390,000' },
@@ -860,7 +860,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'Section 24 & Portfolio Building',
     focusSlugs:   ['section-24-tax-mitigation', 'spv-company-incorporation', 'sdlt-stamp-duty-planning'],
     heroHeadline: 'Property Tax Specialists for Burnt Oak Landlords and Investors',
-    heroDesc:     'Burnt Oak's competitive yields and active BTL market in HA8 create specific Section 24 and structure planning needs. Our ACCA and ICAEW certified specialists help Burnt Oak landlords manage their tax position as their portfolios grow.',
+    heroDesc:     "Burnt Oak"s competitive yields and active BTL market in HA8 create specific Section 24 and structure planning needs. Our ACCA and ICAEW certified specialists help Burnt Oak landlords manage their tax position as their portfolios grow.',
     metaTitle:    'Property Tax Accountants Burnt Oak HA8 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Burnt Oak landlords. Section 24 mitigation, SPV incorporation, and SDLT planning for HA8 buy-to-let investors. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -893,7 +893,7 @@ export const spokeAreas: SpokeArea[] = [
     primaryFocus: 'CGT & SPV Incorporation',
     focusSlugs:   ['capital-gains-tax-planning', 'spv-company-incorporation', 'property-inheritance-tax'],
     heroHeadline: 'Property Tax Specialists for Eastcote Landlords and Investors',
-    heroDesc:     'Eastcote's premium residential character and long-term capital growth profile create specific CGT and inheritance tax planning needs for HA4 investors. Our ACCA and ICAEW certified specialists help Eastcote landlords structure their portfolios for both annual efficiency and generational transfer.',
+    heroDesc:     "Eastcote"s premium residential character and long-term capital growth profile create specific CGT and inheritance tax planning needs for HA4 investors. Our ACCA and ICAEW certified specialists help Eastcote landlords structure their portfolios for both annual efficiency and generational transfer.',
     metaTitle:    'Property Tax Accountants Eastcote HA4 | Property Accountants Harrow',
     metaDesc:     'Specialist property tax accountants for Eastcote landlords and investors. CGT planning, SPV incorporation, and inheritance tax advice for HA4 portfolios. Vetted ACCA/ICAEW network.',
     marketProfile: [
@@ -902,9 +902,9 @@ export const spokeAreas: SpokeArea[] = [
       'Eastcote attracts a mix of established landlords who have held property for the long term and newer investors attracted by the area's residential quality and transport links. The established group tends to have CGT and IHT as their primary planning concerns; newer investors face the Section 24 and structure decision that comes with any leveraged buy-to-let acquisition.',
     ],
     taxAngles: [
-      { head: 'CGT on Eastcote's maturing investment properties', body: 'Properties acquired in Eastcote between 2008 and 2015 have typically appreciated by 50–80% in value. A property acquired for £280,000 in 2010 and now worth £500,000 carries a potential CGT bill of £52,800 for a higher-rate taxpayer. Pre-disposal planning — including disposal timing, spousal transfers, and PRR analysis — can materially reduce this. A specialist reviews the position before any sale is agreed.' },
+      { head: "CGT on Eastcote"s maturing investment properties', body: "Properties acquired in Eastcote between 2008 and 2015 have typically appreciated by 50–80% in value. A property acquired for £280,000 in 2010 and now worth £500,000 carries a potential CGT bill of £52,800 for a higher-rate taxpayer. Pre-disposal planning — including disposal timing, spousal transfers, and PRR analysis — can materially reduce this. A specialist reviews the position before any sale is agreed." },
       { head: 'SPV for future Eastcote acquisitions', body: 'Eastcote investors who are considering further acquisitions face a clear decision on structure. For higher-rate taxpayers, each new leveraged personal acquisition increases the ongoing Section 24 burden. Acquiring through a company from the outset preserves full finance cost deductibility. A specialist models both paths and identifies the optimal approach for the specific investor profile.' },
-      { head: 'Inheritance tax on Eastcote's long-held portfolios', body: 'Eastcote investors who have held property for twenty years or more often have significant estate planning needs. A property worth £500,000, combined with other assets, contributes materially to an IHT exposure. A specialist reviews the full estate picture and designs a lifetime structuring programme that progressively reduces the 40% charge that would otherwise apply on death.' },
+      { head: "Inheritance tax on Eastcote"s long-held portfolios', body: "Eastcote investors who have held property for twenty years or more often have significant estate planning needs. A property worth £500,000, combined with other assets, contributes materially to an IHT exposure. A specialist reviews the full estate picture and designs a lifetime structuring programme that progressively reduces the 40% charge that would otherwise apply on death." },
     ],
     keyFacts: [
       { label: 'Postcode', value: 'HA4' }, { label: 'Avg price', value: '£500,000' },
