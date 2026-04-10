@@ -54,6 +54,7 @@ export default function LocalHubContent() {
                   </span>
                 ))}
               </div>
+              </div>
             </div>
             <HeroLeadForm location="Harrow Hub Hero" />
           </div>

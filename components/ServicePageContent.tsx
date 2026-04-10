@@ -98,6 +98,7 @@ export default function ServicePageContent({ service, content }: ServicePageCont
                   </div>
                 ))}
               </div>
+              </div>
             </div>
 
             {/* Right — form */}

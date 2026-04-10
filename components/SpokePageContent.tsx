@@ -77,6 +77,7 @@ export default function SpokePageContent({ area }: SpokePageContentProps) {
                   </div>
                 ))}
               </div>
+              </div>
             </div>
             <HeroLeadForm location={`${area.name} Hero`} />
           </div>

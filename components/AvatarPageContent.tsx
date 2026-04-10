@@ -84,6 +84,7 @@ export default function AvatarPageContent({ avatar }: AvatarPageContentProps) {
                   How we vet specialists &rarr;
                 </Link>
               </div>
+              </div>
             </div>
             <HeroLeadForm location={`${avatar.title} Hero`} />
           </div>
