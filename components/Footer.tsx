@@ -6,7 +6,7 @@ export default function Footer() {
 
   const Col = ({ heading, links }: { heading: string; links: { label: string; href: string }[] }) => (
     <div>
-      <h4 className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold mb-4">{heading}</h4>
+      <h4 className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-700 mb-4">{heading}</h4>
       <ul className="flex flex-col gap-2.5 list-none p-0 m-0">
         {links.map(link => (
           <li key={link.href}>
@@ -20,14 +20,14 @@ export default function Footer() {
   )
 
   return (
-    <footer className="bg-[#0a1a0e] text-white/60 font-sans">
+    <footer className="bg-[#0a1a0e] text-white/60 font-raleway">
       <div className="site-container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-10">
 
           {/* Brand — spans 2 cols */}
           <div className="lg:col-span-2">
             <Link href="/" className="no-underline block mb-4">
-              <span className="font-display text-[18px] text-white leading-none tracking-[-0.01em]">
+              <span className="font-baskerville text-[18px] text-white leading-none tracking-[-0.01em]">
                 Property<span style={{ color: 'var(--green)' }}>Management</span>Harrow
               </span>
             </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
 
           {/* Tools + Guides stacked */}
           <div>
-            <h4 className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold mb-4">Free Tools</h4>
+            <h4 className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-700 mb-4">Free Tools</h4>
             <ul className="flex flex-col gap-2.5 list-none p-0 m-0 mb-8">
               {footerLinks.tools.map(link => (
                 <li key={link.href}>
@@ -62,7 +62,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <h4 className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-semibold mb-4">Guides</h4>
+            <h4 className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-700 mb-4">Guides</h4>
             <ul className="flex flex-col gap-2.5 list-none p-0 m-0">
               {footerLinks.guides.map(link => (
                 <li key={link.href}>

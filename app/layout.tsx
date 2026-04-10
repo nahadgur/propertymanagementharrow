@@ -1,20 +1,5 @@
 import type { Metadata } from 'next'
-import { Fraunces, Epilogue } from 'next/font/google'
 import './globals.css'
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  axes: ['opsz'],
-})
-
-const epilogue = Epilogue({
-  subsets: ['latin'],
-  variable: '--font-epilogue',
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -42,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${epilogue.variable}`}>
-      <body className="font-sans bg-white text-text antialiased flex flex-col min-h-screen">
+    <html lang="en">
+      <body className="antialiased flex flex-col min-h-screen" style={{ background: 'var(--cream)', color: 'var(--text)', fontFamily: "'Raleway', sans-serif" }}>
         {children}
       </body>
     </html>

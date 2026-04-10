@@ -47,171 +47,140 @@ export default function HeroHome() {
   }
 
   return (
-    <section>
-      {/* ── Full-width image banner ── */}
+    <section className="w-full">
+
+      {/* ── Full-width photo banner ── */}
       <div
-        className="relative overflow-hidden flex items-end"
-        style={{ height: 'clamp(190px, 28vw, 280px)' }}
+        className="relative w-full overflow-hidden flex items-end"
+        style={{ height: 'clamp(200px, 28vw, 300px)' }}
       >
-        {/* Photo */}
         <img
           src="/images/hero-main.png"
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Overlay */}
         <div
           className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to right, rgba(26,46,31,0.94) 0%, rgba(26,46,31,0.75) 45%, rgba(26,46,31,0.25) 100%)',
-          }}
+          style={{ background: 'linear-gradient(to right, rgba(26,46,31,0.95) 0%, rgba(26,46,31,0.72) 50%, rgba(26,46,31,0.20) 100%)' }}
         />
-        {/* Text */}
-        <div className="relative z-10 px-7 md:px-10 pb-8 pt-10 max-w-[680px]">
-          <p
-            className="text-[10px] font-raleway font-bold uppercase tracking-[.18em] mb-3"
-            style={{ color: 'rgba(255,255,255,0.5)' }}
-          >
-            Full-Service Property Management · London Borough of Harrow
-          </p>
-          <h1
-            className="font-baskerville text-[clamp(26px,4vw,44px)] leading-[1.08] text-white"
-          >
-            Your property, our{' '}
-            <em className="font-baskerville italic" style={{ color: 'var(--green-mid)' }}>
-              expertise.
-            </em>
-            <br />
-            Your peace of mind.
-          </h1>
+        {/* Text overlay */}
+        <div className="relative z-10 w-full" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 28px' }}>
+          <div className="pb-8 pt-10 max-w-[600px]">
+            <p
+              className="font-raleway font-700 uppercase mb-3"
+              style={{ fontSize: 10, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.45)' }}
+            >
+              Full-Service Property Management · London Borough of Harrow · ARLA Registered
+            </p>
+            <h1
+              className="font-baskerville text-white leading-[1.08]"
+              style={{ fontSize: 'clamp(26px, 4vw, 46px)' }}
+            >
+              Your property, our{' '}
+              <em className="font-baskerville italic" style={{ color: 'var(--green-mid)' }}>
+                expertise.
+              </em>
+              <br />
+              Your peace of mind.
+            </h1>
+          </div>
         </div>
 
-        {/* Stat strip — bottom right of banner */}
-        <div
-          className="absolute bottom-0 right-0 hidden md:flex items-stretch"
-          style={{ background: 'rgba(26,46,31,0.85)' }}
-        >
+        {/* Stat strip — bottom right, aligned to content max-width */}
+        <div className="absolute bottom-0 right-0 hidden md:flex items-stretch" style={{ background: 'rgba(26,46,31,0.88)' }}>
           {STATS.map((s, i) => (
             <div
               key={s.n}
-              className="flex flex-col items-center justify-center px-6 py-3 text-white"
+              className="flex flex-col items-center justify-center px-7 py-3 text-white"
               style={{ borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.12)' : 'none' }}
             >
-              <span className="font-raleway font-800 text-[22px] leading-none">{s.n}</span>
-              <span className="font-raleway text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                {s.label}
-              </span>
+              <span className="font-raleway text-white" style={{ fontSize: 22, fontWeight: 800, lineHeight: 1 }}>{s.n}</span>
+              <span className="font-raleway mt-1" style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)' }}>{s.label}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Split: description left + form right ── */}
-      <div
-        className="grid grid-cols-1 md:grid-cols-[1fr_380px]"
-        style={{ background: '#fff', borderTop: '1px solid var(--border)' }}
-      >
-        {/* LEFT — description + badges */}
+      {/* ── Split panel — constrained to same width as content sections ── */}
+      <div style={{ background: '#fff', borderBottom: '1px solid var(--border)' }}>
         <div
-          className="px-7 md:px-10 py-8 flex flex-col justify-center"
-          style={{ borderBottom: '1px solid var(--border)' }}
+          className="grid grid-cols-1 md:grid-cols-[1fr_360px]"
+          style={{ maxWidth: 1200, margin: '0 auto', borderTop: '1px solid var(--border)' }}
         >
-          <p
-            className="font-raleway font-400 text-[14px] leading-[1.8] mb-6"
-            style={{ color: 'var(--text-muted)', maxWidth: 480 }}
+          {/* LEFT — description + badges */}
+          <div
+            className="px-7 py-8 flex flex-col justify-center"
+            style={{ borderRight: '1px solid var(--border)' }}
           >
-            Residential lettings, HMO management and block management across Harrow.
-            Transparent fees, no surprises. One team handles everything from tenant
-            find to maintenance — so you can get on with your life.
-          </p>
-          {/* Trust badges */}
-          <div className="flex flex-wrap gap-2">
-            {BADGES.map(b => (
-              <span
-                key={b}
-                className="font-raleway font-700 text-[11px] px-3 py-1.5 rounded-full"
-                style={{ background: 'var(--green-soft)', color: 'var(--green)', letterSpacing: '.04em' }}
-              >
-                {b}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT — Lead form */}
-        <div
-          className="px-6 py-8"
-          style={{ borderLeft: '1px solid var(--border)', background: 'var(--cream)' }}
-        >
-          {status === 'done' ? (
-            <div className="flex flex-col items-center justify-center h-full text-center gap-3 py-8">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center"
-                style={{ background: 'var(--green-soft)' }}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2.5" strokeLinecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <p className="font-baskerville text-[20px]" style={{ color: 'var(--text)' }}>Thank you</p>
-              <p className="font-raleway text-[13px]" style={{ color: 'var(--text-muted)' }}>
-                We'll be in touch within 24 hours.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-              <div>
-                <p className="font-baskerville text-[19px] leading-snug mb-1" style={{ color: 'var(--text)' }}>
-                  Get a free quote
-                </p>
-                <p
-                  className="font-raleway font-700 text-[11px] tracking-[.04em] mb-3"
-                  style={{ color: 'var(--green)' }}
+            <p
+              className="font-raleway leading-[1.8] mb-6"
+              style={{ fontSize: 14, color: 'var(--text-muted)', maxWidth: 480 }}
+            >
+              Residential lettings, HMO management and block management across Harrow.
+              Transparent fees, no surprises. 14 years of local expertise, 850+ properties managed —
+              one team handles everything from tenant find to compliance.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {BADGES.map(b => (
+                <span
+                  key={b}
+                  className="font-raleway"
+                  style={{
+                    background: 'var(--green-soft)',
+                    color: 'var(--green)',
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    padding: '5px 12px',
+                    borderRadius: 100,
+                  }}
                 >
-                  24hr response · No obligation
-                </p>
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT — Lead form */}
+          <div className="px-6 py-8" style={{ background: 'var(--cream)' }}>
+            {status === 'done' ? (
+              <div className="flex flex-col items-center justify-center h-full text-center gap-3 py-8">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'var(--green-soft)' }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2.5" strokeLinecap="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <p className="font-baskerville" style={{ fontSize: 20, color: 'var(--text)' }}>Thank you</p>
+                <p className="font-raleway" style={{ fontSize: 13, color: 'var(--text-muted)' }}>We'll be in touch within 24 hours.</p>
               </div>
-              <input
-                className="pm-input"
-                placeholder="Your full name"
-                value={form.name}
-                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                required
-              />
-              <input
-                className="pm-input"
-                type="tel"
-                placeholder="Phone number"
-                value={form.phone}
-                onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                required
-              />
-              <input
-                className="pm-input"
-                placeholder="Property postcode"
-                value={form.postcode}
-                onChange={e => setForm(f => ({ ...f, postcode: e.target.value }))}
-                required
-              />
-              <select
-                className="pm-select"
-                value={form.service}
-                onChange={e => setForm(f => ({ ...f, service: e.target.value }))}
-                required
-              >
-                <option value="">Service needed...</option>
-                {SERVICES.map(s => (
-                  <option key={s}>{s}</option>
-                ))}
-              </select>
-              <button type="submit" className="pm-btn" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending...' : 'Get My Free Quote'}
-              </button>
-              <p className="font-raleway text-[10px] text-center" style={{ color: 'var(--text-light)' }}>
-                Free · No obligation · ARLA registered
-              </p>
-            </form>
-          )}
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <div>
+                  <p className="font-baskerville mb-1" style={{ fontSize: 19, color: 'var(--text)' }}>Get a free quote</p>
+                  <p className="font-raleway mb-3" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', color: 'var(--green)' }}>
+                    24hr response · No obligation
+                  </p>
+                </div>
+                <input className="pm-input" placeholder="Your full name" value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required />
+                <input className="pm-input" type="tel" placeholder="Phone number" value={form.phone}
+                  onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} required />
+                <input className="pm-input" placeholder="Property postcode" value={form.postcode}
+                  onChange={e => setForm(f => ({ ...f, postcode: e.target.value }))} required />
+                <select className="pm-select" value={form.service}
+                  onChange={e => setForm(f => ({ ...f, service: e.target.value }))} required>
+                  <option value="">Service needed...</option>
+                  {SERVICES.map(s => <option key={s}>{s}</option>)}
+                </select>
+                <button type="submit" className="pm-btn" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending…' : 'Get My Free Quote'}
+                </button>
+                <p className="font-raleway text-center" style={{ fontSize: 10, color: 'var(--text-light)' }}>
+                  Free · No obligation · ARLA registered
+                </p>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>
