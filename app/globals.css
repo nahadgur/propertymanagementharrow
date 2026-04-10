@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
 :root {
   --green:       #277649;
   --green-dark:  #1a5233;
@@ -76,7 +76,7 @@
   }
 
   .field-input-dark {
-    @apply w-full border border-white/10 bg-white/8
+    @apply w-full border border-white/10
            text-white font-sans text-sm placeholder:text-white/30
            px-4 py-3
            transition-colors duration-200
