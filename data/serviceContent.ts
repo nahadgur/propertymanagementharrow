@@ -282,7 +282,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       },
       {
         title: 'Surcharge reclaim identification and submission',
-        body:  'Your specialist tracks all surcharge-paying purchases and flags reclaim windows as they approach — ensuring no eligible refund is missed through oversight.',
+        desc:  'Your specialist tracks all surcharge-paying purchases and flags reclaim windows as they approach — ensuring no eligible refund is missed through oversight.',
       },
       {
         title: 'Portfolio-level SDLT planning',
@@ -348,7 +348,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       },
       {
         title: 'Trust and gifting strategy',
-        body:  'Your specialist designs a lifetime gifting programme — including the use of discretionary trusts where appropriate — to progressively move portfolio value out of your estate over time.',
+        desc:  'Your specialist designs a lifetime gifting programme — including the use of discretionary trusts where appropriate — to progressively move portfolio value out of your estate over time.',
       },
       {
         title: 'CGT and IHT interaction planning',
