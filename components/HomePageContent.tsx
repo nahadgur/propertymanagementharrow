@@ -69,17 +69,17 @@ export default function HomePageContent() {
               <div>
                 <div className="flex items-center gap-3 mb-8">
                   <div style={{ width: 36, height: 2, background: 'var(--green)' }} />
-                  <span className="eyebrow">Property Tax Specialists — Harrow</span>
+                  <span className="eyebrow">Property Tax Accountants Harrow — ACCA &amp; ICAEW Certified</span>
                 </div>
 
                 <h1 className="font-display text-[2.8rem] md:text-[3.5rem] lg:text-hero leading-tight text-text mb-6 max-w-[580px]">
-                  Serious property<br />
-                  needs <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>serious</em><br />
-                  tax counsel.
+                  Harrow&apos;s specialist<br />
+                  property tax<br />
+                  <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>accountants.</em>
                 </h1>
 
                 <p className="font-sans text-[15px] md:text-[17px] text-text-muted leading-relaxed max-w-[500px] mb-8 md:mb-10">
-                  We connect Harrow&apos;s property investors with ACCA and ICAEW certified accountants whose practices are built entirely around one thing: protecting portfolio wealth through Section 24, SPV structuring, and generational planning.
+                  We match Harrow landlords and property investors with vetted, ACCA and ICAEW certified accountants who specialise exclusively in property tax — Section 24 mitigation, SPV company incorporation, CGT planning, and inheritance tax structuring.
                 </p>
 
                 <div className="flex gap-4 items-center mb-16">
@@ -132,7 +132,7 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">The Problem</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
-                  Section 24 has quietly cost Harrow landlords millions. Are you one of them?
+                  Section 24 is costing Harrow landlords thousands every year. Is your property tax accountant doing anything about it?
                 </h2>
                 <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-6">
                   Since 2017, the mortgage interest finance cost restriction has been stripping income from leveraged UK landlords. Higher-rate taxpayers can no longer deduct mortgage interest as an expense — instead receiving only a 20% tax credit that fails to reflect their actual cost.
@@ -206,7 +206,7 @@ export default function HomePageContent() {
                   Specialist Services
                 </p>
                 <h2 className="font-display text-h2 text-white leading-tight">
-                  Five ways our specialists<br />protect your portfolio.
+                  Five specialist property tax<br />services for Harrow investors.
                 </h2>
               </div>
               <Link href="/services/"
@@ -269,7 +269,7 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">Our Process</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
-                  Not just any accountant.<br />
+                  Not just any property tax accountant.<br />
                   <em style={{ color: 'var(--green)', fontStyle: 'italic', fontWeight: 300 }}>The right one.</em>
                 </h2>
                 <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-8">
@@ -322,7 +322,7 @@ export default function HomePageContent() {
           <div className="site-container">
             <p className="eyebrow mb-4">Client Feedback</p>
             <h2 className="font-display text-h2 text-text mb-12 leading-tight max-w-lg">
-              What Harrow landlords say after being matched.
+              What Harrow property investors say about our specialist matching service.
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -363,7 +363,7 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">Harrow Specialists</p>
                 <h2 className="font-display text-h2 text-text mb-4 leading-tight">
-                  Looking for a local Harrow expert?
+                  Looking for a property tax accountant in your area of Harrow?
                 </h2>
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed">
                   Our Harrow network covers Stanmore, Pinner, Harrow on the Hill, Wealdstone, Edgware, Kenton, and all surrounding areas. Specialists who understand local yields, HMO licensing in the London Borough of Harrow, and the specific property types that make up the local stock.
@@ -406,7 +406,7 @@ export default function HomePageContent() {
               <div>
                 <p className="eyebrow mb-4">Common Questions</p>
                 <h2 className="font-display text-h2 text-text mb-6 leading-tight">
-                  Frequently asked questions.
+                  Frequently asked questions about our Harrow property tax accountant matching service.
                 </h2>
                 <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-8">
                   If you have a question we have not answered here, call us directly or use the form and we will respond within 24 hours.
@@ -443,11 +443,11 @@ export default function HomePageContent() {
         <section style={{ background: 'var(--green)' }} className="py-20">
           <div className="site-container text-center">
             <h2 className="font-display text-h2 text-white mb-4 leading-tight">
-              Ready to protect your portfolio?
+              Ready to find your Harrow property tax accountant?
             </h2>
             <p className="font-sans text-[17px] leading-relaxed mb-10 max-w-lg mx-auto"
               style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Get matched with a Harrow property tax specialist — free. ACCA and ICAEW certified. 48-hour introduction guarantee.
+              Get matched with a vetted, ACCA or ICAEW certified property tax accountant in Harrow — free. Specialists in Section 24, SPV incorporation, CGT and inheritance tax. 48-hour introduction guarantee.
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <button
