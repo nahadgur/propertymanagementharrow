@@ -37,8 +37,11 @@ export const testimonials = [
     name: 'Amit S.',
     location: 'Stanmore',
     portfolioType: 'Portfolio Investor — 6 properties',
+    service: 'Portfolio Investor — 6 properties',
     rating: 5,
     quote:
+      'I had been with a general accountant for eight years and had no idea how badly Section 24 was affecting me. The specialist they matched me with identified over £9,000 in avoidable tax in the first review. The matching process took less than 24 hours.',
+    text:
       'I had been with a general accountant for eight years and had no idea how badly Section 24 was affecting me. The specialist they matched me with identified over £9,000 in avoidable tax in the first review. The matching process took less than 24 hours.',
   },
   {
@@ -46,8 +49,11 @@ export const testimonials = [
     name: 'Priya K.',
     location: 'Pinner',
     portfolioType: 'Portfolio Investor — SPV Transfer',
+    service: 'Portfolio Investor — SPV Transfer',
     rating: 5,
     quote:
+      'Moving my portfolio into a limited company felt terrifying — the SDLT and CGT implications were completely unclear to me. The accountant they matched me with modelled the entire transfer before we touched a single property. Worth every penny.',
+    text:
       'Moving my portfolio into a limited company felt terrifying — the SDLT and CGT implications were completely unclear to me. The accountant they matched me with modelled the entire transfer before we touched a single property. Worth every penny.',
   },
   {
@@ -55,8 +61,11 @@ export const testimonials = [
     name: 'David O.',
     location: 'Harrow on the Hill',
     portfolioType: 'Non-Resident Landlord',
+    service: 'Non-Resident Landlord',
     rating: 5,
     quote:
+      'As a non-resident landlord, NRLS compliance is a constant headache. I had tried two generalist accountants who did not understand the nuances. The specialist they found actually knows this legislation inside out. First time I have felt properly looked after.',
+    text:
       'As a non-resident landlord, NRLS compliance is a constant headache. I had tried two generalist accountants who did not understand the nuances. The specialist they found actually knows this legislation inside out. First time I have felt properly looked after.',
   },
 ]
