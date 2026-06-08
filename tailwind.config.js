@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        raleway:     ['Raleway', 'sans-serif'],
-        baskerville: ['Libre Baskerville', 'serif'],
-        display:     ['Libre Baskerville', 'serif'],
-        sans:        ['Raleway', 'sans-serif'],
+        raleway:     ['var(--font-raleway)', 'sans-serif'],
+        baskerville: ['var(--font-baskerville)', 'serif'],
+        display:     ['var(--font-baskerville)', 'serif'],
+        sans:        ['var(--font-raleway)', 'sans-serif'],
       },
       fontWeight: {
         800: '800',

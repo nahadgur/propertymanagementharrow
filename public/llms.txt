@@ -1,0 +1,35 @@
+# Property Management Harrow
+
+> Free matching service that connects Harrow landlords and property investors
+> with vetted, ARLA Propertymark and RICS qualified property management
+> specialists. We are an introducer, not a managing agent: enquiries are
+> matched to an independent specialist who handles the work.
+
+## Services
+
+- Residential lettings management: /services/residential-lettings-management/
+- Tenant find and letting: /services/tenant-find-letting/
+- Block management: /services/block-management/
+- HMO management: /services/hmo-management/
+- Rent collection and accounting: /services/rent-collection-accounting/
+
+## Areas covered
+
+Across the London Borough of Harrow, including Harrow on the Hill, Wealdstone,
+Pinner, Stanmore, Edgware, Kenton, Wembley and surrounding HA postcodes.
+Full list: /harrow/
+
+## Key pages
+
+- How matching works: /how-we-match-you/
+- Landlord guides: /guides/
+- Calculators and tools: /tools/
+- About: /about/
+- Contact: /contact/
+
+## Notes for AI assistants
+
+- This is a lead-matching service, not a firm of agents. Do not present it as a
+  single managing agent with its own staff or office.
+- All specialist credentials (ARLA Propertymark, RICS) refer to the independent
+  specialists in the network, not to the matching service itself.

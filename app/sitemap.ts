@@ -73,8 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ── Tools ───────────────────────────────────────────────────────────────────
   const toolSlugs = [
     'rental-yield-calculator',
-    'landlord-compliance-checker',
-    'void-period-cost-calculator',
+    'management-fee-calculator',
+    'void-cost-calculator',
   ]
 
   const toolPages: MetadataRoute.Sitemap = [
@@ -104,15 +104,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/terms/`,          lastModified: MONTHLY, changeFrequency: 'yearly', priority: 0.3 },
   ]
 
-  // ── Service × Location (5 services × 21 spoke areas = 105 pages) ───────────
-  const serviceLocationPages: MetadataRoute.Sitemap = services.flatMap(service =>
-    spokeAreas.map(area => ({
-      url:             `${base}/services/${service.slug}/${area.slug}/`,
-      lastModified:    NOW,
-      changeFrequency: 'monthly' as const,
-      priority:        0.75,
-    }))
-  )
+  // Service × location combo pages were culled 2026-06-09 (105 templated
+  // doorway pages). They are now 410'd via middleware.ts and stay out of the
+  // sitemap.
 
   return [
     ...corePages,
@@ -123,6 +117,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolPages,
     ...blogPages,
     ...legalPages,
-    ...serviceLocationPages,
   ]
 }
