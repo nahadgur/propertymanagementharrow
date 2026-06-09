@@ -6,13 +6,17 @@ export interface ContentBlock {
 }
 export interface BlogArticle {
   slug: string; title: string; metaTitle: string; metaDescription: string;
-  category: string; publishDate: string; featuredImage: string; excerpt: string;
+  category: string; hub: string; draft: boolean;
+  publishDate: string; dateModified?: string; featuredImage: string; excerpt: string;
+  faqs?: { question: string; answer: string }[];
   content: ContentBlock[];
 }
 
 export const blogArticles: BlogArticle[] = [
   {
     slug: 'harrow-landlord-guide-property-management-2026',
+    hub: 'switching-property-managers',
+    draft: false,
     title: 'Harrow Landlord Guide: Choosing the Right Property Manager in 2026',
     metaTitle: 'Harrow Property Management Guide 2026 | Landlord Advice',
     metaDescription: 'Everything Harrow landlords need to know about choosing a property manager in 2026 — fees, qualifications, compliance requirements, and what to look for before signing a management agreement.',
@@ -35,6 +39,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'hmo-licensing-harrow-2026-landlord-checklist',
+    hub: 'hmo-licensing-harrow',
+    draft: false,
     title: 'HMO Licensing in Harrow 2026: Complete Landlord Checklist',
     metaTitle: 'HMO Licensing Harrow 2026: What Landlords Must Know',
     metaDescription: 'A complete guide to HMO licensing requirements in the London Borough of Harrow for 2026 — mandatory licensing thresholds, application process, licence conditions, and the penalties for non-compliance.',
@@ -66,6 +72,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'switching-property-manager-harrow-guide',
+    hub: 'switching-property-managers',
+    draft: false,
     title: 'How to Switch Property Managers in Harrow Without Disrupting Your Tenants',
     metaTitle: 'Switching Property Managers in Harrow | Step-by-Step Guide',
     metaDescription: 'A practical guide to switching property managers in Harrow — reviewing your management agreement, serving notice, managing the handover, and ensuring your tenants are not disrupted during the transition.',
@@ -98,4 +106,9 @@ export const blogArticles: BlogArticle[] = [
 ];
 
 export const getArticleBySlug = (slug: string): BlogArticle | undefined => blogArticles.find(a => a.slug === slug);
-export const getAllArticleSlugs = (): string[] => blogArticles.map(a => a.slug);
+
+// Draft gate: draft spokes 404 and are excluded from /blog, hub grids and the
+// sitemap until the publisher flips them live.
+export const getPublishedArticles = (): BlogArticle[] => blogArticles.filter(a => !a.draft);
+export const getArticlesByHub = (hub: string): BlogArticle[] => blogArticles.filter(a => a.hub === hub && !a.draft);
+export const getAllArticleSlugs = (): string[] => getPublishedArticles().map(a => a.slug);

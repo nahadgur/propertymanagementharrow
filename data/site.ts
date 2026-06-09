@@ -50,44 +50,14 @@ export const stats = [
   { number: '24hr',   label: 'Introduction guarantee' },
 ]
 
-export const testimonials = [
-  {
-    id: 't1',
-    name: 'Raj P.',
-    location: 'Stanmore',
-    portfolioType: 'Portfolio Landlord — 8 properties',
-    service: 'Portfolio Landlord — 8 properties',
-    rating: 5,
-    quote:
-      'I was self-managing across Stanmore and Edgware and the maintenance calls were relentless. The agent they matched me with took over within a week, set up proper contractor accounts, and my void periods have dropped from three weeks to four days on average. Should have done this years ago.',
-    text:
-      'I was self-managing across Stanmore and Edgware and the maintenance calls were relentless. The agent they matched me with took over within a week, set up proper contractor accounts, and my void periods have dropped from three weeks to four days on average. Should have done this years ago.',
-  },
-  {
-    id: 't2',
-    name: 'Sarah L.',
-    location: 'Pinner',
-    portfolioType: 'HMO Landlord — 2 licensed HMOs',
-    service: 'HMO Landlord — 2 licensed HMOs',
-    rating: 5,
-    quote:
-      'Running two HMOs in Pinner meant constant compliance headaches — fire safety checks, selective licensing paperwork, tenant disputes. The managing agent they introduced actually specialises in HMOs and sorted out my mandatory licensing renewal without me having to chase a single document.',
-    text:
-      'Running two HMOs in Pinner meant constant compliance headaches — fire safety checks, selective licensing paperwork, tenant disputes. The managing agent they introduced actually specialises in HMOs and sorted out my mandatory licensing renewal without me having to chase a single document.',
-  },
-  {
-    id: 't3',
-    name: 'Michael T.',
-    location: 'Harrow on the Hill',
-    portfolioType: 'Overseas Landlord — 1 property',
-    service: 'Overseas Landlord — 1 property',
-    rating: 5,
-    quote:
-      'I moved abroad and needed someone reliable to manage my flat on the Hill. The agent they matched me with handles everything — tenant referencing, quarterly inspections, deposit registration. The monthly statements are thorough and I finally feel my investment is in safe hands from 5,000 miles away.',
-    text:
-      'I moved abroad and needed someone reliable to manage my flat on the Hill. The agent they matched me with handles everything — tenant referencing, quarterly inspections, deposit registration. The monthly statements are thorough and I finally feel my investment is in safe hands from 5,000 miles away.',
-  },
-]
+// Real, attributable testimonials only. The previous entries could not be
+// verified as genuine attributable reviews, so the array is emptied:
+// fabricated reviews are a DMCCA and E-E-A-T risk. Re-add only verifiable,
+// consented client reviews.
+export const testimonials: {
+  id: string; name: string; location: string; portfolioType: string;
+  service: string; rating: number; quote: string; text: string;
+}[] = [];
 
 export const homeFaqs = [
   {

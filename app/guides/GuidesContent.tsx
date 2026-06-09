@@ -5,49 +5,17 @@ import Footer from '@/components/Footer'
 import LeadFormModal from '@/components/LeadFormModal'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import Link from 'next/link'
+import { guides as GUIDE_DATA } from '@/data/guides'
 
-const guides = [
-  {
-    title: 'The Complete Guide to HMO Licensing in Harrow',
-    desc: 'Everything Harrow landlords need to know about mandatory and additional HMO licensing — when a licence is required, the application process, conditions, penalties for non-compliance, and how to ensure your property meets all licensing standards.',
-    href: '/guides/hmo-licensing-harrow/',
-    pill: 'HMO — Compliance',
-    readTime: '~15 min',
-    tags: ['HMO licensing', 'Compliance', 'Harrow Council'],
-  },
-  {
-    title: 'The Landlord Compliance Checklist for 2025/26',
-    desc: 'A comprehensive checklist covering every legal obligation for UK landlords — gas safety certificates, electrical inspections, EPC requirements, Right to Rent checks, deposit protection, and smoke & CO alarms. Stay compliant and avoid penalties.',
-    href: '/guides/landlord-compliance-checklist/',
-    pill: 'Compliance — Essentials',
-    readTime: '~20 min',
-    tags: ['Compliance', 'Safety certificates', 'Legal obligations'],
-  },
-  {
-    title: 'Tenant Screening Best Practices for UK Landlords',
-    desc: 'How to find and vet quality tenants — referencing processes, affordability checks, Right to Rent verification, guarantor requirements, and red flags to watch for. Reduce arrears, protect your property, and minimise void periods.',
-    href: '/guides/tenant-screening-best-practices/',
-    pill: 'Tenant Find — Vetting',
-    readTime: '~18 min',
-    tags: ['Tenant screening', 'Referencing', 'Void periods'],
-  },
-  {
-    title: 'The Deposit Protection Guide for UK Landlords',
-    desc: 'Everything you need to know about tenancy deposit protection — the three government-approved schemes, prescribed information requirements, deadlines, and the consequences of non-compliance including potential claims of up to 3x the deposit.',
-    href: '/guides/deposit-protection-guide/',
-    pill: 'Deposits — Protection',
-    readTime: '~15 min',
-    tags: ['Deposit protection', 'TDS', 'Tenancy compliance'],
-  },
-  {
-    title: 'How to Switch Property Managers Without Disruption',
-    desc: 'A step-by-step guide to changing your managing agent — notice periods, handover checklists, tenant communication, key and document transfers, and how to ensure continuity of rent collection and maintenance throughout the transition.',
-    href: '/guides/switching-property-managers/',
-    pill: 'Management — Transition',
-    readTime: '~12 min',
-    tags: ['Switching agents', 'Handover', 'Portfolio management'],
-  },
-]
+// Data-driven from data/guides.ts so all 10 hubs list automatically.
+const guides = GUIDE_DATA.map(g => ({
+  title: g.title,
+  desc: g.metaDescription,
+  href: `/guides/${g.slug}/`,
+  pill: g.heroEyebrow,
+  readTime: `~${Math.max(8, Math.round(g.sections.length * 2.5))} min`,
+  tags: [] as string[],
+}))
 
 export default function GuidesContent() {
   const [modalOpen, setModalOpen] = useState(false)

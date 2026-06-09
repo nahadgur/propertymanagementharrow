@@ -2,7 +2,8 @@ import type { MetadataRoute } from 'next'
 import { services }       from '@/data/services'
 import { spokeAreas }     from '@/data/harrowData'
 import { avatarContent }  from '@/data/avatarContent'
-import { blogArticles }   from '@/data/blog'
+import { getPublishedArticles } from '@/data/blog'
+import { GUIDE_SLUGS }    from '@/data/guides'
 import { siteConfig }     from '@/data/site'
 
 // Bump these dates when content changes
@@ -51,18 +52,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ]
 
-  // ── Guides ──────────────────────────────────────────────────────────────────
-  const guideSlugs = [
-    'hmo-licensing-harrow',
-    'landlord-compliance-checklist',
-    'tenant-screening-best-practices',
-    'deposit-protection-guide',
-    'switching-property-managers',
-  ]
-
+  // ── Guides (10 hubs, data-driven from data/guides.ts) ───────────────────────
   const guidePages: MetadataRoute.Sitemap = [
     { url: `${base}/guides/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.85 },
-    ...guideSlugs.map(slug => ({
+    ...GUIDE_SLUGS.map(slug => ({
       url:             `${base}/guides/${slug}/`,
       lastModified:    NOW,
       changeFrequency: 'monthly' as const,
@@ -87,10 +80,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ]
 
-  // ── Blog (3 posts) ──────────────────────────────────────────────────────────
+  // ── Blog spokes (draft spokes excluded until published) ─────────────────────
   const blogPages: MetadataRoute.Sitemap = [
     { url: `${base}/blog/`, lastModified: NOW, changeFrequency: 'weekly', priority: 0.75 },
-    ...blogArticles.map(post => ({
+    ...getPublishedArticles().map(post => ({
       url:             `${base}/blog/${post.slug}/`,
       lastModified:    NOW,
       changeFrequency: 'monthly' as const,
