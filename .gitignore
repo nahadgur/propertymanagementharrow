@@ -3,3 +3,4 @@ node_modules/
 
 # typescript incremental build
 *.tsbuildinfo
+.next-dev.log

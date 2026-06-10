@@ -1,7 +1,7 @@
 // data/blog.ts
 
 export interface ContentBlock {
-  type: string; text?: string; src?: string; alt?: string;
+  type: string; text?: string; html?: string; src?: string; alt?: string;
   items?: string[]; articles?: { slug: string; title: string; image?: string }[];
 }
 export interface BlogArticle {
@@ -101,6 +101,59 @@ export const blogArticles: BlogArticle[] = [
         'Keys to all properties'
       ]},
       { type: 'p', text: 'Tenants should receive a formal written notification of the change of managing agent, the new contact details for maintenance and rent payment, and reassurance that their tenancy terms remain unchanged. A professionally managed transition should be entirely transparent to tenants — they notice the improvement in service, not the change itself.' },
+    ]
+  },
+  {
+    slug: 'tenant-find-fees-explained-harrow-landlords',
+    hub: 'property-management-fees-harrow',
+    draft: true,
+    title: 'Tenant Find Fees Explained for Harrow Landlords',
+    metaTitle: 'Tenant Find Fees for Harrow Landlords Explained',
+    metaDescription: 'What Harrow landlords pay in tenant find and setup fees, how the charge is structured, what it includes, the hidden extras to check, and how to weigh it against full management.',
+    category: 'Landlord Guides',
+    publishDate: '2026-06-10',
+    dateModified: '2026-06-10',
+    featuredImage: '/images/hero-services.png',
+    excerpt: 'A tenant find fee is the one-off charge for sourcing and referencing a tenant and setting up the tenancy. This guide explains what Harrow landlords pay, what the fee covers, and the extras to check before you sign.',
+    content: [
+      { type: 'p', text: 'A tenant find fee is the one-off charge a letting agent makes for finding and referencing a tenant and setting up the tenancy, typically one to two weeks rent plus VAT in Harrow. It covers marketing, viewings, referencing and the paperwork, but the agent steps away once the tenant has moved in.' },
+      { type: 'h2', text: 'What a Tenant Find Fee Actually Covers' },
+      { type: 'p', text: 'Tenant find, also called let-only, is the lightest service a letting agent offers. The agent values the rent, markets the property across the major portals, arranges and conducts viewings, vets applicants, references the chosen tenant, drafts the tenancy agreement, registers the deposit, and hands over the keys. After move-in the landlord takes over day-to-day management: collecting rent, handling repairs, conducting inspections, and tracking compliance deadlines.' },
+      { type: 'p', text: 'That scope matters because the fee is sometimes mistaken for an ongoing service. It is not. Once the tenancy starts, a let-only landlord is the point of contact for the tenant and carries the full legal responsibility for gas safety, electrical safety, deposit rules and the rest. The fee buys you the start of the tenancy, not its management.' },
+      { type: 'h2', text: 'How the Fee Is Charged in Harrow' },
+      { type: 'p', text: 'Tenant find fees in Harrow are usually structured in one of three ways: a percentage of the first month rent, a fixed number of weeks rent (commonly one to two weeks), or a flat fee. With average Harrow rents, a one-week charge on a typical two-bedroom flat can run to several hundred pounds plus VAT, while higher-value or HMO lettings cost more because the referencing and marketing work is greater.' },
+      { type: 'list', items: [
+        'Percentage of the first month rent, charged once on move-in.',
+        'A set number of weeks rent, most often one to two weeks plus VAT.',
+        'A flat fee fixed regardless of the rent achieved.',
+        'Renewal fees if the same tenant signs a further fixed term.',
+      ]},
+      { type: 'p', text: 'Always confirm whether the quoted figure includes VAT, and whether referencing, the tenancy agreement, deposit registration and the inventory are inside the fee or billed separately. The headline number tells you little until you know what sits underneath it.' },
+      { type: 'p', text: 'Local demand is a factor in how quickly a let-only instruction pays off. Strong tenant interest in HA1 around the town centre, HA2 across South Harrow and Rayners Lane, and HA3 in Wealdstone and Kenton means a well-marketed property at the right rent often lets within days, which is the point of a tenant find service. A weak listing, or a rent set above the local level, leaves the property empty while the fee still falls due once a tenant is eventually found.' },
+      { type: 'h2', text: 'Tenant Find Versus Full Management' },
+      { type: 'html', html: 'The right choice depends on how much of the work you want to keep. Tenant find suits hands-on landlords who live locally and have time for repairs and rent chasing. Full management, charged as an ongoing percentage of rent, suits landlords who are time-poor, hold property at a distance, or run higher-risk lettings such as HMOs. Our <a href="/guides/property-management-fees-harrow/">guide to Harrow management costs</a> sets out how the ongoing percentage compares with the one-off let-only charge.' },
+      { type: 'html', html: 'If you do want a managed service rather than let-only, the <a href="/services/tenant-find-letting/">tenant find and letting service</a> can be arranged through an agent who also offers ongoing management, so you can step up later without changing provider. We are a matching service: we connect Harrow landlords with vetted ARLA Propertymark agents and do not manage property ourselves, so the comparison we help with is impartial.' },
+      { type: 'h2', text: 'Hidden Extras to Check Before You Sign' },
+      { type: 'p', text: 'The let-only fee is rarely the only cost. Before instructing an agent, ask for a written schedule covering every charge that could appear on a tenant find arrangement, so there are no surprises at move-in or renewal.' },
+      { type: 'list', items: [
+        'Referencing and Right to Rent checks, if billed on top of the headline fee.',
+        'The inventory and check-in report, often a separate line.',
+        'Deposit registration and serving the prescribed information.',
+        'Renewal fees each time the tenant signs a further term.',
+        'Re-marketing costs if the first let falls through before move-in.',
+      ]},
+      { type: 'html', html: 'It is also worth knowing where the law sits. The <a href="https://www.gov.uk/government/publications/tenant-fees-act-2019-guidance" target="_blank" rel="noopener noreferrer">Tenant Fees Act 2019</a>, as the Government guidance explains, banned most fees charged to tenants in England but did not cap what agents may charge landlords. It does require agents to publish their landlord fees transparently, so a clear written schedule is a reasonable thing to expect.' },
+      { type: 'h2', text: 'Working Out the True Cost' },
+      { type: 'html', html: 'To compare a one-off tenant find fee against ongoing management fairly, look at the total cost across the likely length of the tenancy rather than the headline figure. A let-only fee that looks cheap can work out dearer if you face an early void, a renewal charge, and the cost of your own time. Our <a href="/tools/management-fee-calculator/">management fee calculator</a> lets you model the let-only charge against a full-management percentage across the rent you actually expect to achieve.' },
+      { type: 'p', text: 'Whichever route you choose, the agents matched through this site hold ARLA Propertymark membership, which requires client money protection and a published code of practice. That gives Harrow landlords recourse if a fee dispute or a service failure ever arises, on let-only just as on full management.' },
+    ],
+    faqs: [
+      { question: 'How much is a tenant find fee in Harrow?', answer: 'Tenant find fees in Harrow are typically one to two weeks rent plus VAT, or a percentage of the first month rent, charged once when the tenant moves in. Higher-value lettings and HMOs cost more because the referencing and marketing work is greater. Always confirm whether VAT, referencing, the tenancy agreement and the inventory are included.' },
+      { question: 'What does a tenant find or let-only fee include?', answer: 'It usually covers valuing the rent, marketing the property, arranging viewings, vetting and referencing the tenant, drafting the tenancy agreement, registering the deposit and handing over the keys. After move-in the landlord takes over rent collection, repairs, inspections and compliance, as the agent has no ongoing role.' },
+      { question: 'Is a tenant find fee cheaper than full management?', answer: 'A one-off tenant find fee is lower upfront than an ongoing management percentage, but it only covers setting up the tenancy. Whether it is cheaper overall depends on void risk, renewal fees and the value of your own time managing the let. Compare the total cost across the expected tenancy length rather than the headline figure.' },
+      { question: 'Can a letting agent charge the tenant a fee instead?', answer: 'No. The Tenant Fees Act 2019 banned most fees charged to tenants in England. It does not cap what agents charge landlords, but it does require them to publish their landlord fees transparently. A reputable Harrow agent will give you a clear written schedule before you sign.' },
+      { question: 'Are tenant find fees tax-deductible for landlords?', answer: 'Letting agent fees, including tenant find charges, are generally an allowable expense that can be deducted from rental income when working out taxable profit. This is general information rather than tax advice, so confirm your own position with an accountant.' },
+      { question: 'Do I pay a tenant find fee again at renewal?', answer: 'Some agents charge a renewal fee when the same tenant signs a further fixed term, which is separate from the original tenant find fee. Ask whether renewals are charged and at what rate before you instruct, as it affects the true cost of a longer tenancy.' },
     ]
   }
 ];

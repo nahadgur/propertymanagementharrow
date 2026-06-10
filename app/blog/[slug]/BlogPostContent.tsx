@@ -21,6 +21,7 @@ function Block({ block }: { block: ContentBlock }) {
       </ul>
     )
   }
+  if (block.html) return <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-5 [&_a]:text-brand [&_a]:font-semibold [&_a]:no-underline hover:[&_a]:underline" dangerouslySetInnerHTML={{ __html: block.html }} />
   return <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-5">{block.text}</p>
 }
 
