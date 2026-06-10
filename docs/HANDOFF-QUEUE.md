@@ -24,4 +24,4 @@ Run-blocks from the pmh-property-writer scheduler. Newest at the bottom.
   is now LF per the fleet `.gitattributes` rule. Worth a glance if other repos in
   the fleet show stray CRLF in the working tree.
 - tsc: `npx tsc --noEmit` clean (dev server left running, no `next build`).
-- git: committed to main; push status noted in the run report.
+- git: committed to main as `86e2525`. Push FAILED in the sandb
