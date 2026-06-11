@@ -7,9 +7,22 @@ import Footer from '@/components/Footer'
 import LeadFormModal from '@/components/LeadFormModal'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { FAQ } from '@/components/FAQ'
+import { SpokeHero } from '@/components/SpokeHero'
 import type { Guide, GuideBlock } from '@/data/guides'
 
 interface Spoke { slug: string; title: string; excerpt: string }
+
+function estimateGuideReadMins(guide: Guide): number {
+  let words = 0
+  for (const section of guide.sections) {
+    words += section.heading.trim().split(/\s+/).length
+    for (const b of section.blocks) {
+      if (b.text) words += b.text.trim().split(/\s+/).length
+      if (b.items) for (const it of b.items) words += it.trim().split(/\s+/).length
+    }
+  }
+  return Math.max(3, Math.round(words / 200))
+}
 
 function Block({ block }: { block: GuideBlock }) {
   if (block.type === 'h3') {
@@ -47,16 +60,21 @@ export default function GuideHubContent({
 
       <main id="main">
         {/* Hero */}
-        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+        <section className="section-pad bg-white pb-0">
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides', href: '/guides/' }, { label: guide.heroEyebrow }]} />
-            <div className="max-w-3xl">
-              <p className="eyebrow text-white/70 mb-4">{guide.heroEyebrow}</p>
-              <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] text-white mb-6 leading-tight">
-                {guide.heroHeading}
-              </h1>
-              <p className="font-sans text-[17px] text-white/85 leading-relaxed mb-4">{guide.heroIntro}</p>
-              <p className="font-sans text-[12px] text-white/55">
+            <h1 className="sr-only">{guide.heroHeading}</h1>
+            <div className="mt-6">
+              <SpokeHero
+                title={guide.heroHeading}
+                hubName="Guide"
+                hubSlug={guide.slug}
+                readMins={estimateGuideReadMins(guide)}
+              />
+            </div>
+            <div className="max-w-3xl mt-6">
+              <p className="font-sans text-[17px] text-text-muted leading-relaxed mb-4">{guide.heroIntro}</p>
+              <p className="font-sans text-[12px] text-text-muted/80">
                 By PMH, the Property Management Harrow editorial team. Reviewed {guide.updatedDate}.
               </p>
             </div>

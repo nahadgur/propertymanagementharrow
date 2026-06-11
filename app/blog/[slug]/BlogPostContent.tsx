@@ -7,9 +7,20 @@ import Footer from '@/components/Footer'
 import LeadFormModal from '@/components/LeadFormModal'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { FAQ } from '@/components/FAQ'
+import { SpokeHero } from '@/components/SpokeHero'
 import type { BlogArticle, ContentBlock } from '@/data/blog'
 
 interface Related { slug: string; title: string }
+
+function estimateReadMins(blocks: ContentBlock[]): number {
+  let words = 0
+  for (const b of blocks) {
+    if (b.text) words += b.text.trim().split(/\s+/).length
+    if (b.html) words += b.html.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length
+    if (b.items) for (const it of b.items) words += it.trim().split(/\s+/).length
+  }
+  return Math.max(3, Math.round(words / 200))
+}
 
 function Block({ block }: { block: ContentBlock }) {
   if (block.type === 'h2') return <h2 className="font-display text-h2 text-text mb-5 mt-10 leading-tight">{block.text}</h2>
@@ -42,19 +53,27 @@ export default function BlogPostContent({
       <Header />
 
       <main id="main">
-        <section className="relative py-20 overflow-hidden" style={{ background: 'var(--green-deep)' }}>
+        <section className="section-pad bg-white pb-0">
           <div className="site-container">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides', href: '/guides/' }, { label: 'Articles', href: '/blog/' }, { label: article.title }]} />
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 font-sans text-[12px] text-white/60 mb-4">
+            <h1 className="sr-only">{article.title}</h1>
+            <div className="mt-6">
+              <SpokeHero
+                title={article.title}
+                hubName={hub ? hub.title : null}
+                hubSlug={hub ? hub.slug : article.hub}
+                readMins={estimateReadMins(article.content)}
+              />
+            </div>
+            <div className="max-w-3xl mt-6">
+              <div className="flex items-center gap-3 font-sans text-[12px] text-text-muted mb-4">
                 <span>{article.category}</span>
-                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="w-1 h-1 rounded-full bg-[#d8d4c8]" />
                 <span>{article.publishDate}</span>
-                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="w-1 h-1 rounded-full bg-[#d8d4c8]" />
                 <span>By PMH</span>
               </div>
-              <h1 className="font-display text-[2.2rem] md:text-[2.8rem] lg:text-[3.4rem] text-white mb-5 leading-tight">{article.title}</h1>
-              <p className="font-sans text-[17px] text-white/85 leading-relaxed">{article.excerpt}</p>
+              <p className="font-sans text-[17px] text-text-muted leading-relaxed">{article.excerpt}</p>
             </div>
           </div>
         </section>
