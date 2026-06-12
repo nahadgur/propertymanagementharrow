@@ -114,4 +114,4 @@ H8 voids x1, H9 repairs/safety x1, H10 lettings process x1). Total spokes toward
 Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
 Do NOT: include a year/date; reuse or near-duplicate an existing slug; use a
 reserved head term or the parent hub's head term; keyword-stuff or repeat a word;
-use stop words (a/the/to/for). Never rename or
+use stop words (a/the/to/for). Never rename or reuse a published slug.
