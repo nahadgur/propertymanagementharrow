@@ -166,3 +166,11 @@ Run-blocks from the pmh-property-writer scheduler. Newest at the bottom.
   (written but never committed by the 2026-06-11 run due to the same bug) and this H10
   spoke. SILO-PLAN section 8 updated: 8 spokes toward 100, draft buffer 5.
 - git: see commit hash + push result reported at end of run.
+- git RESULT: committed to main as `45c34f0` (data/blog.ts + docs/SILO-PLAN.md +
+  docs/HANDOFF-QUEUE.md, 3 files; lands both the H9 gas-safety and H10 inventory
+  spokes). Cleared a stale 0-byte `.git/index.lock` (dated 2026-06-12 04:02) to get
+  the commit through. PUSH FAILED in the sandbox: `could not read Username for
+  'https://github.com'` (no GitHub credentials here). Branch is `ahead 1`. ACTION
+  NEEDED on Windows: `cd` to the repo and `git push origin main`. Earlier-run commits
+  (H6 86e2525, H8 ba12c1f) appear already on origin per `git status` being in sync
+  before this commit, so only 45c34f0 is outstanding.
