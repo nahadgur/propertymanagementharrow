@@ -105,14 +105,13 @@ Existing 5 hand-coded guides become H1-H5; add H6-H10.
 
 10 hubs live (data-driven). Spokes target ~100 (10/hub).
 
-Published spokes: 4 (H1 x2, H3 x1, H6 x1). Parked drafts: 9 (H6 fees x1, H7 yield
+Published spokes: 4 (H1 x2, H3 x1, H6 x1). Parked drafts: 10 (H6 fees x2, H7 yield
 x2, H8 voids/arrears x2, H9 repairs/safety x2, H10 lettings process x2). Total
-spokes toward 100: 13. Draft buffer: 9.
+spokes toward 100: 14. Draft buffer: 10.
 
 Live flip 2026-06-15: tenant-find-fees-explained-harrow-landlords (H6 fees). No
 live same-hub sibling yet, so hub-only up-link; compare-letting-agent-quotes-harrow
 (H6) still draft, wire reciprocal sibling links when it flips.
 
-## Slug rules (writer: follow on every spoke)
-
-Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 ch
+Writer 2026-06-15 (round-robin cursor -> H6): added draft
+full-management-fee-inclusions-harrow (H6 fees, intent: wha
