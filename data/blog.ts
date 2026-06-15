@@ -106,13 +106,13 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'tenant-find-fees-explained-harrow-landlords',
     hub: 'property-management-fees-harrow',
-    draft: true,
+    draft: false,
     title: 'Tenant Find Fees Explained for Harrow Landlords',
     metaTitle: 'Tenant Find Fees for Harrow Landlords Explained',
     metaDescription: 'What Harrow landlords pay in tenant find and setup fees, how the charge is structured, what it includes, the hidden extras to check, and how to weigh it against full management.',
     category: 'Landlord Guides',
-    publishDate: '2026-06-10',
-    dateModified: '2026-06-10',
+    publishDate: '2026-06-15',
+    dateModified: '2026-06-15',
     featuredImage: '/images/hero-services.png',
     excerpt: 'A tenant find fee is the one-off charge for sourcing and referencing a tenant and setting up the tenancy. This guide explains what Harrow landlords pay, what the fee covers, and the extras to check before you sign.',
     content: [
