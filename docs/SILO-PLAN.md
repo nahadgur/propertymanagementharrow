@@ -105,13 +105,24 @@ Existing 5 hand-coded guides become H1-H5; add H6-H10.
 
 10 hubs live (data-driven). Spokes target ~100 (10/hub).
 
-Published spokes: 4 (H1 x2, H3 x1, H6 x1). Parked drafts: 10 (H6 fees x2, H7 yield
-x2, H8 voids/arrears x2, H9 repairs/safety x2, H10 lettings process x2). Total
-spokes toward 100: 14. Draft buffer: 10.
+Published spokes: 4 (H1 x2, H3 x1, H6 x1). Parked drafts: 11 (H6 fees x2, H7 yield
+x3, H8 voids/arrears x2, H9 repairs/safety x2, H10 lettings process x2). Total
+spokes toward 100: 15. Draft buffer: 11.
 
 Live flip 2026-06-15: tenant-find-fees-explained-harrow-landlords (H6 fees). No
 live same-hub sibling yet, so hub-only up-link; compare-letting-agent-quotes-harrow
 (H6) still draft, wire reciprocal sibling links when it flips.
 
 Writer 2026-06-15 (round-robin cursor -> H6): added draft
-full-management-fee-inclusions-harrow (H6 fees, intent: wha
+full-management-fee-inclusions-harrow (H6 fees, intent: what a full management fee
+includes vs extra). Up-link to property-management-fees-harrow hub, management-fee
+calculator, live sibling tenant-find-fees-explained-harrow-landlords, /contact CTA;
+externals GOV.UK Tenant Fees Act + ARLA Propertymark. tsc clean, 0 broken links.
+COMMIT BLOCKED by a ~7h-stale .git/index.lock the sandbox cannot unlink; changes
+are on disk uncommitted (see HANDOFF-QUEUE).
+
+Writer 2026-06-16 (round-robin cursor -> H7): added draft
+allowable-expenses-harrow-landlords (H7 yield/finances, intent: which costs a
+landlord can deduct from rental income, repairs vs improvements, property
+allowance, replacement of domestic items relief, Making Tax Digital from
+April 2026). Up-link to rental-yield-landlord-finances-harrow hub, rent
