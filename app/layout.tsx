@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: {
-    google: 'tJkhyPoPI0qfxfpdJkWBvT5CXvPBvLAz0FZBk8SU5No',
+    google: 'XFzSXTpxepsWdCH4sSHWBYMVJtL5yDOeF684TIUe6q4',
   },
 }
 
