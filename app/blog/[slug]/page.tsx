@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getArticleBySlug, getPublishedArticles, getArticlesByHub } from '@/data/blog'
+import { getArticleBySlug, getPublishedArticles } from '@/data/blog'
 import { getGuideBySlug } from '@/data/guides'
 import { siteConfig } from '@/data/site'
 import {
@@ -50,11 +50,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const hubGuide = getGuideBySlug(article.hub)
   const hub = hubGuide ? { slug: hubGuide.slug, title: hubGuide.title } : null
 
-  const related = getArticlesByHub(article.hub)
-    .filter(a => a.slug !== article.slug)
-    .slice(0, 4)
-    .map(a => ({ slug: a.slug, title: a.title }))
-
   const schemas: object[] = [
     editorialAuthorJsonLd(),
     buildBreadcrumbSchema([
@@ -76,7 +71,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       {schemas.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
-      <BlogPostContent article={article} hub={hub} related={related} />
+      <BlogPostContent article={article} hub={hub} />
     </>
   )
 }

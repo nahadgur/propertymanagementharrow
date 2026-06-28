@@ -10,8 +10,6 @@ import { FAQ } from '@/components/FAQ'
 import { SpokeHero } from '@/components/SpokeHero'
 import type { BlogArticle, ContentBlock } from '@/data/blog'
 
-interface Related { slug: string; title: string }
-
 function estimateReadMins(blocks: ContentBlock[]): number {
   let words = 0
   for (const b of blocks) {
@@ -36,16 +34,37 @@ function Block({ block }: { block: ContentBlock }) {
   return <p className="font-sans text-[16px] text-text-muted leading-relaxed mb-5">{block.text}</p>
 }
 
+function CtaBanner({ onClick }: { onClick: () => void }) {
+  return (
+    <div className="my-12 p-8 rounded-lg border border-[#e8e5dd] bg-[#faf9f6] text-center">
+      <p className="eyebrow mb-2">Get matched</p>
+      <p className="font-display text-h3 text-text mb-2 leading-snug">Find a property manager in Harrow</p>
+      <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-5 max-w-xl mx-auto">
+        Free for landlords. We connect you with vetted ARLA Propertymark agents in Harrow.
+      </p>
+      <button onClick={onClick} className="btn-primary">Find a Specialist, Free</button>
+    </div>
+  )
+}
+
 export default function BlogPostContent({
   article,
   hub,
-  related,
 }: {
   article: BlogArticle
   hub: { slug: string; title: string } | null
-  related: Related[]
 }) {
   const [modalOpen, setModalOpen] = useState(false)
+
+  // Index of the 2nd h2 so we can inject a CTA banner immediately before it.
+  let h2Count = 0
+  let secondH2Index = -1
+  article.content.forEach((b, i) => {
+    if (b.type === 'h2') {
+      h2Count += 1
+      if (h2Count === 2 && secondH2Index === -1) secondH2Index = i
+    }
+  })
 
   return (
     <>
@@ -65,7 +84,7 @@ export default function BlogPostContent({
                 readMins={estimateReadMins(article.content)}
               />
             </div>
-            <div className="max-w-3xl mt-6">
+            <div className="mt-6">
               <div className="flex items-center gap-3 font-sans text-[12px] text-text-muted mb-4">
                 <span>{article.category}</span>
                 <span className="w-1 h-1 rounded-full bg-[#d8d4c8]" />
@@ -80,53 +99,25 @@ export default function BlogPostContent({
 
         <section className="section-pad bg-white">
           <div className="site-container">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16 items-start">
-              <article className="max-w-2xl">
-                {hub && (
-                  <p className="font-sans text-[13px] text-text-muted mb-6">
-                    Part of our guide:{' '}
-                    <Link href={`/guides/${hub.slug}/`} className="text-brand font-semibold no-underline hover:underline">{hub.title}</Link>
-                  </p>
-                )}
+            <article className="max-w-none">
+              {article.content.flatMap((b, i) =>
+                i === secondH2Index
+                  ? [<CtaBanner key="cta-mid" onClick={() => setModalOpen(true)} />, <Block key={i} block={b} />]
+                  : [<Block key={i} block={b} />]
+              )}
 
-                {article.content.map((b, i) => <Block key={i} block={b} />)}
-
-                {article.faqs && article.faqs.length > 0 && (
-                  <div className="mt-12">
-                    <FAQ faqs={article.faqs} title="Frequently asked questions" />
-                  </div>
-                )}
-
-                <div className="mt-10">
-                  <button onClick={() => setModalOpen(true)} className="btn-primary">Find a Specialist, Free</button>
+              {article.faqs && article.faqs.length > 0 && (
+                <div className="mt-12">
+                  <FAQ faqs={article.faqs} title="Frequently asked questions" />
                 </div>
-              </article>
+              )}
 
-              <aside>
-                <div className="lg:sticky lg:top-24 space-y-6">
-                  <div className="p-6 rounded-lg border border-[#e8e5dd] bg-[#faf9f6]">
-                    <p className="eyebrow mb-2">Get matched</p>
-                    <p className="font-sans text-[14px] text-text-muted leading-relaxed mb-4">
-                      Free for landlords. We connect you with vetted ARLA Propertymark agents in Harrow.
-                    </p>
-                    <button onClick={() => setModalOpen(true)} className="btn-primary w-full text-[13px] py-3">Find a Specialist</button>
-                  </div>
+              <CtaBanner onClick={() => setModalOpen(true)} />
 
-                  {related.length > 0 && (
-                    <div className="p-6 rounded-lg border border-[#e8e5dd]">
-                      <p className="eyebrow mb-3">More in this guide</p>
-                      <ul className="space-y-3">
-                        {related.map(r => (
-                          <li key={r.slug}>
-                            <Link href={`/blog/${r.slug}/`} className="font-sans text-[14px] text-text leading-snug no-underline hover:text-brand transition-colors">{r.title}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </aside>
-            </div>
+              <div className="mt-10">
+                <Link href="/blog/" className="text-brand font-semibold no-underline hover:underline">&larr; Back to all articles</Link>
+              </div>
+            </article>
           </div>
         </section>
       </main>
