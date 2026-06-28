@@ -36,13 +36,13 @@ function Block({ block }: { block: ContentBlock }) {
 
 function CtaBanner({ onClick }: { onClick: () => void }) {
   return (
-    <div className="my-12 p-8 rounded-lg border border-[#e8e5dd] bg-[#faf9f6] text-center">
-      <p className="eyebrow mb-2">Get matched</p>
-      <p className="font-display text-h3 text-text mb-2 leading-snug">Find a property manager in Harrow</p>
-      <p className="font-sans text-[15px] text-text-muted leading-relaxed mb-5 max-w-xl mx-auto">
+    <div className="my-10 px-6 py-6 md:px-10 md:py-7 rounded-lg border border-[#e8e5dd] bg-[#faf9f6] text-center">
+      <p className="eyebrow mb-2 text-xs">Get matched</p>
+      <p className="font-display text-[18px] lg:text-[21px] text-text mb-1.5 leading-snug">Find a property manager in Harrow</p>
+      <p className="font-sans text-[15px] text-text-muted leading-snug mb-4 max-w-xl mx-auto">
         Free for landlords. We connect you with vetted ARLA Propertymark agents in Harrow.
       </p>
-      <button onClick={onClick} className="btn-primary">Find a Specialist, Free</button>
+      <button onClick={onClick} className="btn-primary py-2.5">Find a Specialist, Free</button>
     </div>
   )
 }
