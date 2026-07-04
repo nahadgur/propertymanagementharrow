@@ -750,7 +750,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'right-to-rent-checks-harrow-landlords',
     hub: 'landlord-compliance-checklist',
-    draft: true,
+    draft: false,
     title: 'Right to Rent Checks: A Guide for Harrow Landlords',
     metaTitle: 'Right to Rent Checks for Harrow Landlords Explained',
     metaDescription: 'How Harrow landlords carry out a Right to Rent check: the three checking methods, which documents to accept, follow-up checks, the records that give you a statutory excuse, and the penalties for getting it wrong.',
