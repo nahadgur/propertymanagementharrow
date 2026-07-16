@@ -78,7 +78,7 @@ body { background: var(--cream); color: var(--text); }
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 4px;
   font-family: var(--font-raleway), sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: white;
   background: rgba(255,255,255,0.07);
