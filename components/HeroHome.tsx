@@ -76,12 +76,10 @@ export default function HeroHome() {
               className="font-baskerville text-white leading-[1.08]"
               style={{ fontSize: 'clamp(26px, 4vw, 46px)' }}
             >
-              Your property, our{' '}
+              Your Harrow property,{' '}
               <em className="font-baskerville italic" style={{ color: 'var(--green-mid)' }}>
-                expertise.
+                expertly managed.
               </em>
-              <br />
-              Your peace of mind.
             </h1>
           </div>
         </div>

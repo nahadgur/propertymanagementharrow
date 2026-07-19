@@ -125,4 +125,14 @@ Writer 2026-06-16 (round-robin cursor -> H7): added draft
 allowable-expenses-harrow-landlords (H7 yield/finances, intent: which costs a
 landlord can deduct from rental income, repairs vs improvements, property
 allowance, replacement of domestic items relief, Making Tax Digital from
-April 2026). Up-link to rental-yield-landlord-finances-harrow hub, rent
+April 2026). Up-link to rental-yield-landlord-finances-harrow hub, rental-yield
+calculator, rent-collection-accounting pillar, /contact CTA; external GOV.UK
+rental-income guidance. H7 siblings (section-24, gross-vs-net) still draft so
+hub-only up-link, no sibling wiring. tsc clean, 0 broken links.
+
+## Slug rules (writer: follow on every spoke)
+
+Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
+Do NOT: include a year/date; reuse or near-duplicate an existing slug; use a
+reserved head term or the parent hub's head term; keyword-stuff or repeat a word;
+use stop words (a/the/to/for). Never rename or reuse a published slug.
