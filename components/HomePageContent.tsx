@@ -31,6 +31,7 @@ const schemaOrg = {
       '@id': `${siteConfig.url}/#website`,
       url: siteConfig.url,
       name: siteConfig.name,
+      alternateName: ['PropertyManagementHarrow'],
       publisher: { '@id': `${siteConfig.url}/#organization` },
     },
   ],
